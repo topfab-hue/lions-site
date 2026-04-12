@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lions FC — Elite Football Club</title>
+  <style>
+    :root {
+      --navy:   #0D1B2A;
+      --navy2:  #152235;
+      --gold:   #C9A344;
+      --gold2:  #E8BE5A;
+      --text:   #F0EDE6;
+      --text-2: #7A8A9A;
+      --border: rgba(201,163,68,.12);
+      --font:   'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+      /* ── iOS 26 Liquid Glass ── */
+      --glass-bg:         rgba(14,26,42,.48);
+      --glass-bg-light:   rgba(255,255,255,.045);
+      --glass-border:     rgba(255,255,255,.10);
+      --glass-border-gold:rgba(201,163,68,.22);
+      --glass-blur:       blur(36px) saturate(180%) brightness(1.08);
+      --glass-blur-heavy: blur(52px) saturate(200%) brightness(1.06);
+      --glass-spec:       inset 0 1px 0 rgba(255,255,255,.14), inset 0 -1px 0 rgba(0,0,0,.12);
+      --glass-spec-gold:  inset 0 1px 0 rgba(201,163,68,.18), inset 0 -1px 0 rgba(0,0,0,.1);
+      --glass-shadow:     0 8px 40px rgba(0,0,0,.55), 0 1px 0 rgba(255,255,255,.07);
+      --glass-shadow-lg:  0 20px 70px rgba(0,0,0,.65), 0 1px 0 rgba(255,255,255,.08);
+      --glass-radius:     18px;
+      --glass-radius-sm:  14px;
+      --pill-radius:      100px;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: auto; }
+    body { font-family: var(--font); background: var(--navy); color: var(--text); overflow-x: hidden; }
+    ::selection { background: rgba(201,163,68,.3); }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--navy); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); }
+
+    /* ── SCROLL PROGRESS ── */
+    #scroll-prog {
+      position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+      background: linear-gradient(90deg, var(--gold), var(--gold2));
+      z-index: 10000;
+    }
+
+    /* ── CURSOR ── */
+    #cursor-glow {
+      position: fixed; width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,163,68,.06) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+      left: 0; top: 0; transform: translate(-50%,-50%);
+      transition: transform .06s linear;
+    }
+
+    /* ── LOADER ── */
+    #loader {
+      position: fixed; inset: 0;
+      background: radial-gradient(ellipse at 50% 60%, rgba(21,34,53,.95) 0%, #050c14 100%);
+      z-index: 9999;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 36px; transition: opacity .8s ease;
+    }
+    .ld-glass {
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur-heavy); -webkit-backdrop-filter: var(--glass-blur-heavy);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow-lg), var(--glass-spec);
+      border-radius: var(--glass-radius);
+      padding: 48px 56px;
+      display: flex; flex-direction: column; align-items: center; gap: 28px;
+      position: relative; overflow: hidden;
+    }
+    .ld-glass::before {
+      content: '';
+      position: absolute; top: 0; left: 20%; right: 20%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.2), transparent);
+    }
+    .ld-glass::after {
+      content: '';
+      position: absolute; inset: 0; border-radius: var(--glass-radius);
+      background: radial-gradient(ellipse at 50% 0%, rgba(201,163,68,.06), transparent 70%);
+      pointer-events: none;
+    }
+    .ld-crest {
+      position: relative; width: 80px; height: 80px;
+    }
+    .ld-hex {
+      position: absolute; inset: 0;
+      border: 1px solid rgba(201,163,68,.2); border-radius: 50%;
+      animation: spin 3s linear infinite;
+    }
+    .ld-hex:nth-child(2) { inset: 10px; border-color: rgba(201,163,68,.4); animation-duration: 2s; animation-direction: reverse; }
+    .ld-hex:nth-child(3) { inset: 20px; border-top-color: var(--gold); border-right-color: transparent; border-bottom-color: transparent; border-left-color: transparent; animation-duration: 1s; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .ld-lion {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+    }
+    .ld-name {
+      font-size: 1.4rem; font-weight: 900; letter-spacing: .4em;
+      text-transform: uppercase; color: var(--text);
+    }
+    .ld-name span { color: var(--gold); }
+    .ld-sub { font-size: .55rem; letter-spacing: 6px; text-transform: uppercase; color: var(--text-2); }
+    .ld-track { width: 200px; height: 1px; background: rgba(201,163,68,.1); overflow: hidden; border-radius: 99px; }
+    .ld-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--gold), var(--gold2)); transition: width .2s ease; border-radius: 99px; }
+
+    /* ── NAVBAR ── */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      transition: all .5s cubic-bezier(.16,1,.3,1);
+    }
+    .nav-inner {
+      max-width: 100%; margin: 0 auto; padding: 22px 48px;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: all .5s cubic-bezier(.16,1,.3,1);
+    }
+    #nav.pill { padding: 12px 24px; }
+    #nav.pill .nav-inner {
+      max-width: 1000px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: var(--glass-blur-heavy); -webkit-backdrop-filter: var(--glass-blur-heavy);
+      border-radius: var(--pill-radius); padding: 10px 28px;
+      box-shadow: var(--glass-shadow-lg), var(--glass-spec);
+    }
+    #nav.pill .nav-inner::before {
+      content: '';
+      position: absolute; top: 0; left: 15%; right: 15%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
+      border-radius: 99px;
+    }
+    .nav-inner { position: relative; }
+    .nav-brand {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none;
+    }
+    .nav-lion { font-size: 1.4rem; }
+    .nav-name {
+      font-size: .82rem; font-weight: 900; letter-spacing: .25em;
+      text-transform: uppercase; color: var(--text);
+    }
+    .nav-name span { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a {
+      font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--text); text-decoration: none; opacity: .45;
+      transition: opacity .2s, color .2s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: var(--gold); transform: scaleX(0);
+      transition: transform .3s ease;
+    }
+    .nav-links a:hover { opacity: 1; color: var(--gold); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-cta {
+      background: var(--gold) !important; color: var(--navy) !important;
+      padding: 9px 22px !important; opacity: 1 !important;
+      font-weight: 800 !important; border-radius: var(--pill-radius) !important;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.22), inset 0 -1px 0 rgba(0,0,0,.12), 0 4px 16px rgba(201,163,68,.3) !important;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--gold2) !important; color: var(--navy) !important; transform: translateY(-1px) !important; }
+    @media(max-width:768px) { .nav-links { display: none; } }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      justify-content: center; text-align: center;
+      padding: 120px 32px 100px; position: relative; overflow: hidden;
+    }
+    /* Stadium atmosphere BG */
+    .hero-stadium {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 80%, rgba(201,163,68,.12) 0%, transparent 70%),
+        radial-gradient(ellipse 120% 80% at 50% 100%, rgba(13,27,42,1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-stadium::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover; background-position: center 25%;
+      opacity: 0.15; z-index: -1;
+    }
+    .spotlight {
+      position: absolute; border-radius: 50%; filter: blur(120px); pointer-events: none;
+    }
+    .sp-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(201,163,68,.12), transparent);
+      top: -100px; left: 10%; will-change: transform;
+    }
+    .sp-2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(201,163,68,.09), transparent);
+      top: -80px; right: 8%; will-change: transform;
+    }
+    .sp-3 {
+      width: 600px; height: 300px;
+      background: radial-gradient(circle, rgba(201,163,68,.06), transparent);
+      bottom: 0; left: 50%; transform: translateX(-50%); filter: blur(80px);
+    }
+    .grid-lines {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(201,163,68,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,163,68,.025) 1px, transparent 1px);
+      background-size: 80px 80px; will-change: transform;
+    }
+    /* Gold diagonal accent lines */
+    .accent-line {
+      position: absolute; width: 1px; top: 0; bottom: 0;
+      background: linear-gradient(to bottom, transparent, rgba(201,163,68,.2), transparent);
+      will-change: transform;
+    }
+    .accent-line:nth-child(1) { left: 18%; }
+    .accent-line:nth-child(2) { right: 18%; }
+
+    .hero-content { position: relative; z-index: 2; max-width: 820px; will-change: transform; }
+    .eyebrow {
+      font-size: .58rem; font-weight: 700; letter-spacing: 7px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 28px;
+      display: flex; align-items: center; justify-content: center; gap: 16px;
+      opacity: 0; transform: translateY(16px); animation: fadeUp .8s .3s forwards;
+    }
+    .eyebrow::before, .eyebrow::after {
+      content: ''; flex: 1; max-width: 50px; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold));
+      opacity: .4;
+    }
+    .eyebrow::after { background: linear-gradient(to left, transparent, var(--gold)); }
+    h1 {
+      font-size: clamp(4.5rem, 11vw, 10rem); font-weight: 900;
+      letter-spacing: -.02em; line-height: .88; margin-bottom: 30px;
+      text-transform: uppercase;
+      opacity: 0; transform: translateY(28px); animation: fadeUp 1s .5s forwards;
+    }
+    h1 em { font-style: normal; color: var(--gold); }
+    .hero-divider {
+      width: 60px; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0 auto 28px;
+      opacity: 0; animation: fadeUp .8s .7s forwards;
+    }
+    .hero-sub {
+      font-size: clamp(.88rem, 1.6vw, 1.08rem); color: var(--text-2);
+      line-height: 1.75; margin-bottom: 48px; max-width: 520px;
+      margin-left: auto; margin-right: auto;
+      opacity: 0; transform: translateY(16px); animation: fadeUp .8s .75s forwards;
+    }
+    .btn-row {
+      display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+      opacity: 0; transform: translateY(16px); animation: fadeUp .8s .95s forwards;
+    }
+    .btn-p {
+      background: var(--gold); color: var(--navy); padding: 15px 38px;
+      border-radius: var(--pill-radius); text-decoration: none; font-size: .76rem;
+      font-weight: 900; letter-spacing: .18em; text-transform: uppercase;
+      position: relative; overflow: hidden;
+      box-shadow: 0 2px 0 rgba(255,255,255,.2) inset, 0 -2px 0 rgba(0,0,0,.15) inset, 0 8px 32px rgba(201,163,68,.25);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-p::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.3), transparent);
+      transform: translateX(-100%); transition: transform .5s;
+    }
+    .btn-p:hover { transform: translateY(-2px); box-shadow: 0 2px 0 rgba(255,255,255,.25) inset, 0 -2px 0 rgba(0,0,0,.15) inset, 0 16px 48px rgba(201,163,68,.45); }
+    .btn-p:hover::before { transform: translateX(100%); }
+    .btn-s {
+      background: var(--glass-bg); color: var(--text); padding: 15px 38px;
+      border-radius: var(--pill-radius); text-decoration: none; font-size: .76rem;
+      font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+      border: 1px solid var(--glass-border-gold);
+      backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+      box-shadow: var(--glass-shadow), var(--glass-spec-gold);
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .btn-s:hover { border-color: rgba(201,163,68,.5); color: var(--gold); transform: translateY(-2px); box-shadow: 0 16px 52px rgba(0,0,0,.5), 0 0 0 1px rgba(201,163,68,.3), var(--glass-spec-gold); }
+    .scroll-cue {
+      margin-top: 88px; display: flex; flex-direction: column;
+      align-items: center; gap: 12px;
+      opacity: 0; animation: fadeUp .8s 1.2s forwards;
+    }
+    .scroll-label { font-size: .55rem; letter-spacing: 5px; text-transform: uppercase; color: var(--text-2); }
+    .scroll-mouse {
+      width: 20px; height: 32px; border: 1px solid rgba(201,163,68,.3);
+      border-radius: 10px; display: flex; justify-content: center; padding-top: 5px;
+    }
+    .scroll-wheel {
+      width: 2px; height: 6px; background: var(--gold); border-radius: 2px;
+      animation: wheel 1.8s ease-in-out infinite;
+    }
+    @keyframes wheel {
+      0%   { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(12px); opacity: 0; }
+    }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    /* ── TICKER ── */
+    .ticker-wrap {
+      overflow: hidden; background: var(--gold); padding: 13px 0; position: relative; z-index: 2;
+    }
+    .ticker-track { display: flex; white-space: nowrap; animation: ticker 28s linear infinite; }
+    .ticker-item {
+      font-size: .6rem; font-weight: 900; letter-spacing: .25em;
+      text-transform: uppercase; color: var(--navy); padding: 0 32px;
+      display: flex; align-items: center; gap: 32px; flex-shrink: 0;
+    }
+    .ticker-item::after { content: '◆'; opacity: .4; font-size: .45rem; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ── SCROLL ANIMATION ── */
+    .anim-wrap { height: 420vh; position: relative; }
+    .anim-sticky {
+      position: sticky; top: 0; height: 100vh;
+      width: 100%; overflow: hidden; background: var(--navy);
+    }
+    #frame-canvas { position: absolute; top: 0; left: 0; }
+    /* Stadium vignette */
+    .anim-sticky::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse at center, transparent 45%, rgba(13,27,42,.75) 100%),
+        linear-gradient(to top, rgba(13,27,42,.9) 0%, transparent 30%);
+      z-index: 1;
+    }
+    /* Progress indicator */
+    .anim-hud {
+      position: absolute; bottom: 32px; right: 36px; z-index: 10;
+      display: flex; align-items: center; gap: 12px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+      border-radius: var(--pill-radius);
+      padding: 8px 14px 8px 8px;
+      box-shadow: var(--glass-shadow), var(--glass-spec);
+    }
+    .hud-ring { width: 44px; height: 44px; transform: rotate(-90deg); }
+    .ring-bg { fill: none; stroke: rgba(201,163,68,.1); stroke-width: 2; }
+    .ring-fill {
+      fill: none; stroke: var(--gold); stroke-width: 2;
+      stroke-dasharray: 120; stroke-dashoffset: 120;
+      stroke-linecap: round;
+    }
+    .hud-pct { font-size: .6rem; font-weight: 700; color: var(--text-2); letter-spacing: 1px; min-width: 32px; }
+    /* Match info badge */
+    .match-badge {
+      position: absolute; top: 32px; right: 36px; z-index: 10;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: var(--glass-blur-heavy); -webkit-backdrop-filter: var(--glass-blur-heavy);
+      border-radius: var(--glass-radius-sm);
+      box-shadow: var(--glass-shadow-lg), var(--glass-spec);
+      padding: 14px 22px; text-align: center; overflow: hidden;
+      opacity: 0; transform: translateY(-12px) scale(.96);
+      transition: opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1);
+    }
+    .match-badge::before {
+      content: ''; position: absolute; top: 0; left: 15%; right: 15%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.2), transparent);
+    }
+    .match-badge.on { opacity: 1; transform: translateY(0) scale(1); }
+    .mb-label { font-size: .5rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .mb-score { font-size: 1.4rem; font-weight: 900; letter-spacing: .1em; }
+    .mb-teams { font-size: .55rem; color: var(--text-2); letter-spacing: 2px; text-transform: uppercase; margin-top: 3px; }
+    @media(max-width:1024px) { .anim-wrap { height: 340vh; } }
+    @media(max-width:768px)  { .anim-wrap { height: 270vh; } }
+
+    /* ── ANNOTATION CARDS ── */
+    .card {
+      position: absolute; bottom: 10vh; left: 5vw; max-width: 300px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: var(--glass-blur-heavy); -webkit-backdrop-filter: var(--glass-blur-heavy);
+      border-radius: var(--glass-radius); padding: 22px 24px;
+      box-shadow: var(--glass-shadow-lg), var(--glass-spec);
+      opacity: 0; transform: translateX(-24px) scale(.97);
+      transition: opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1);
+      pointer-events: none; z-index: 10; overflow: hidden;
+    }
+    .card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 3px; height: 100%; background: linear-gradient(to bottom, var(--gold), transparent);
+      border-radius: 99px 0 0 99px;
+    }
+    .card::after {
+      content: ''; position: absolute; top: 0; left: 20%; right: 20%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
+    }
+    .card.on { opacity: 1; transform: translateX(0) scale(1); pointer-events: auto; }
+    .card-num { font-size: .55rem; font-weight: 700; color: var(--gold); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 10px; }
+    .card-title { font-size: 1rem; font-weight: 900; color: var(--text); margin-bottom: 8px; text-transform: uppercase; letter-spacing: .06em; }
+    .card-desc { font-size: .78rem; color: var(--text-2); line-height: 1.65; margin-bottom: 14px; }
+    .card-stat-n { font-size: 2.1rem; font-weight: 900; color: var(--gold); display: block; letter-spacing: -.04em; }
+    .card-stat-l { font-size: .58rem; color: var(--text-2); display: block; margin-top: 2px; letter-spacing: 2px; text-transform: uppercase; }
+    @media(max-width:768px) {
+      .card { bottom: 1.5vh; left: 2vw; right: 2vw; max-width: none; padding: 10px 14px; display: flex; align-items: center; gap: 12px; }
+      .card-desc, .card-stat { display: none; }
+      .card-num { margin-bottom: 0; white-space: nowrap; }
+    }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(44px); transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-44px); transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(44px); transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .d1 { transition-delay: .1s !important; } .d2 { transition-delay: .2s !important; }
+    .d3 { transition-delay: .3s !important; } .d4 { transition-delay: .4s !important; }
+    .d5 { transition-delay: .5s !important; } .d6 { transition-delay: .6s !important; }
+
+    /* ── STATS BAND ── */
+    #stats-band {
+      padding: 100px 48px;
+      background: linear-gradient(135deg, #070f18 0%, var(--navy2) 100%);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+    #stats-band::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(201,163,68,.05), transparent);
+      pointer-events: none;
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 16px; max-width: 1100px; margin: 0 auto; position: relative;
+    }
+    .stat-item {
+      text-align: center; padding: 40px 24px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+      border-radius: var(--glass-radius);
+      box-shadow: var(--glass-shadow), var(--glass-spec);
+      position: relative; overflow: hidden;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .stat-item:hover { transform: translateY(-4px); box-shadow: var(--glass-shadow-lg), var(--glass-spec); }
+    .stat-item::before {
+      content: ''; position: absolute; top: 0; left: 20%; right: 20%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.16), transparent);
+    }
+    .stat-item::after {
+      content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transition: width .8s cubic-bezier(.16,1,.3,1); border-radius: 99px;
+    }
+    .stat-item.visible::after { width: 60px; }
+    .stat-val {
+      font-size: 3.8rem; font-weight: 900; letter-spacing: -.06em;
+      line-height: 1; margin-bottom: 10px;
+      display: flex; align-items: flex-end; justify-content: center; gap: 4px;
+    }
+    .stat-n { color: var(--gold); transition: color .3s; }
+    .stat-u { font-size: 1.2rem; font-weight: 400; color: var(--text-2); padding-bottom: 6px; }
+    .stat-label { font-size: .62rem; color: var(--text-2); letter-spacing: 2.5px; text-transform: uppercase; }
+    @media(max-width:768px) {
+      .stats-grid { grid-template-columns: repeat(2,1fr); gap: 12px; }
+      .stat-item { border-right: none; border-bottom: none; }
+      .stat-val { font-size: 2.8rem; }
+    }
+
+    /* ── SQUAD SECTION ── */
+    #squad { padding: 140px 0; background: var(--navy); overflow: hidden; }
+    .squad-header { padding: 0 48px; margin-bottom: 64px; }
+    .sec-eyebrow {
+      font-size: .55rem; font-weight: 700; letter-spacing: 7px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .sec-eyebrow::before {
+      content: ''; width: 30px; height: 1px; background: var(--gold); opacity: .5;
+    }
+    .sec-title {
+      font-size: clamp(2.2rem, 5.5vw, 4rem); font-weight: 900;
+      letter-spacing: -.04em; line-height: .92; text-transform: uppercase;
+    }
+    .sec-title em { font-style: normal; color: var(--gold); }
+    .squad-track-wrap { overflow: hidden; cursor: grab; user-select: none; }
+    .squad-track-wrap:active { cursor: grabbing; }
+    .squad-track { display: flex; gap: 20px; padding: 0 48px 48px; }
+    .player-card {
+      min-width: 240px; flex-shrink: 0;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+      border-radius: var(--glass-radius);
+      overflow: hidden; position: relative;
+      box-shadow: var(--glass-shadow), var(--glass-spec);
+      transition: border-color .3s, transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s;
+    }
+    .player-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(13,27,42,.95) 0%, transparent 55%);
+      z-index: 1;
+    }
+    .player-card:hover { border-color: var(--glass-border-gold); transform: translateY(-8px) scale(1.02); box-shadow: var(--glass-shadow-lg), var(--glass-spec-gold); }
+    .player-num {
+      position: absolute; top: 14px; right: 16px; z-index: 2;
+      font-size: 3.5rem; font-weight: 900; color: rgba(201,163,68,.15);
+      letter-spacing: -.05em; line-height: 1;
+    }
+    .player-photo {
+      width: 100%; height: 260px; background: linear-gradient(135deg, var(--navy2), #1a2f4a);
+      display: block; object-fit: cover;
+    }
+    .player-info { padding: 16px 18px 20px; position: relative; z-index: 2; }
+    .player-pos { font-size: .52rem; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 6px; }
+    .player-name { font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: .06em; }
+    .player-flag { font-size: .9rem; margin-top: 6px; display: block; }
+    /* Gold bottom accent */
+    .player-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      height: 2px; width: 0%;
+      background: linear-gradient(90deg, var(--gold), var(--gold2));
+      transition: width .4s ease; z-index: 2;
+    }
+    .player-card:hover::after { width: 100%; }
+
+    /* ── PARALLAX QUOTE ── */
+    #quote {
+      padding: 180px 32px; text-align: center; position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #070f18 0%, var(--navy2) 100%);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .quote-glow {
+      position: absolute; width: 800px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,163,68,.08), transparent);
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+      filter: blur(60px); pointer-events: none; will-change: transform;
+    }
+    .q-line {
+      position: absolute; top: 0; bottom: 0; width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(201,163,68,.2), transparent);
+    }
+    .q-line:nth-child(1) { left: 15%; }
+    .q-line:nth-child(2) { right: 15%; }
+    .quote-text {
+      font-size: clamp(2.5rem, 7vw, 6rem); font-weight: 900;
+      letter-spacing: -.03em; line-height: .95; text-transform: uppercase;
+      position: relative; z-index: 1; will-change: transform;
+    }
+    .quote-text em { font-style: normal; color: var(--gold); }
+    .quote-author {
+      font-size: .58rem; letter-spacing: 5px; text-transform: uppercase;
+      color: var(--text-2); margin-top: 32px; position: relative; z-index: 1;
+    }
+
+    /* ── RESULTS STRIP ── */
+    .results-strip { background: #070f18; border-top: 1px solid var(--border); overflow-x: auto; padding: 0 16px; }
+    .results-inner { display: flex; min-width: max-content; }
+    .res-card { flex-shrink: 0; padding: 20px 28px; border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: 5px; cursor: default; transition: background .2s; }
+    .res-card:hover { background: rgba(201,163,68,.04); }
+    .res-comp { font-size: .42rem; letter-spacing: 3px; text-transform: uppercase; color: var(--text-2); }
+    .res-teams { display: flex; align-items: center; gap: 10px; }
+    .res-team { font-size: .68rem; font-weight: 700; text-transform: uppercase; }
+    .res-team.lions { color: var(--gold); }
+    .res-score { font-size: .85rem; font-weight: 900; letter-spacing: .05em; padding: 2px 8px; border-radius: 6px; }
+    .res-score.win { color: var(--gold); background: rgba(201,163,68,.1); }
+    .res-score.draw { color: var(--text-2); background: rgba(255,255,255,.05); }
+    .res-score.loss { color: rgba(255,120,120,.9); background: rgba(255,60,60,.08); }
+    .res-date { font-size: .42rem; color: var(--text-2); letter-spacing: 1px; }
+    .res-hd { flex-shrink: 0; padding: 20px 20px; border-right: 1px solid var(--border); display: flex; flex-direction: column; justify-content: center; }
+    .res-hd-l { font-size: .42rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); }
+    .res-hd-r { font-size: .58rem; color: var(--text-2); margin-top: 3px; }
+
+    /* ── PHOTO GALLERY ── */
+    #gallery { padding: 0; overflow: hidden; }
+    .gallery-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 260px 260px; gap: 4px; }
+    .gallery-item { overflow: hidden; position: relative; cursor: pointer; }
+    .gallery-item:first-child { grid-row: 1 / 3; }
+    .gi-img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.16,1,.3,1); display: block; background: var(--navy2); }
+    .gallery-item:hover .gi-img { transform: scale(1.07); }
+    .gi-overlay { position: absolute; inset: 0; background: rgba(13,27,42,.45); transition: opacity .4s; }
+    .gallery-item:hover .gi-overlay { opacity: 0; }
+    .gi-label { position: absolute; bottom: 14px; left: 16px; right: 16px; font-size: .48rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.55); z-index: 2; }
+    .gallery-cta { background: #070f18; padding: 28px 48px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); }
+    .gallery-cta p { font-size: .68rem; color: var(--text-2); letter-spacing: 1px; }
+    .gallery-cta a { font-size: .62rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,163,68,.3); padding-bottom: 2px; transition: border-color .2s; }
+    .gallery-cta a:hover { border-color: var(--gold); }
+    @media(max-width:768px) { .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 180px 180px 180px; } .gallery-item:first-child { grid-row: 1/2; grid-column: 1/3; } }
+
+    /* ── FEATURES ── */
+    #features {
+      padding: 140px 48px;
+      background: linear-gradient(180deg, var(--navy) 0%, #070f18 100%);
+      position: relative;
+    }
+    #features::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(201,163,68,.04), transparent);
+      pointer-events: none;
+    }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 16px; max-width: 1100px; margin: 0 auto; margin-top: 70px;
+    }
+    .feat-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+      border-radius: var(--glass-radius-sm);
+      padding: 40px 34px; position: relative; overflow: hidden;
+      box-shadow: var(--glass-shadow), var(--glass-spec);
+      transition: border-color .3s, transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s;
+    }
+    .feat-card::before {
+      content: attr(data-num);
+      position: absolute; top: -10px; right: 16px;
+      font-size: 7rem; font-weight: 900; letter-spacing: -.06em;
+      color: rgba(201,163,68,.05); line-height: 1; pointer-events: none;
+    }
+    .feat-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      height: 2px; width: 0; background: linear-gradient(90deg, var(--gold), var(--gold2));
+      transition: width .4s ease; border-radius: 0 0 99px 99px;
+    }
+    /* top specular line */
+    .feat-card .feat-spec {
+      position: absolute; top: 0; left: 15%; right: 15%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
+    }
+    .feat-card:hover { border-color: var(--glass-border-gold); transform: translateY(-5px); box-shadow: var(--glass-shadow-lg), var(--glass-spec-gold); }
+    .feat-card:hover::after { width: 100%; }
+    .feat-icon { font-size: 1.9rem; margin-bottom: 20px; display: block; }
+    .feat-card h3 {
+      font-size: .8rem; font-weight: 900; letter-spacing: .14em;
+      text-transform: uppercase; margin-bottom: 12px; color: var(--text);
+    }
+    .feat-card p { font-size: .8rem; color: var(--text-2); line-height: 1.7; }
+    @media(max-width:900px) { .features-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:600px) { .features-grid { grid-template-columns: 1fr; } }
+
+    /* ── CTA ── */
+    #cta {
+      padding: 200px 32px; text-align: center; position: relative; overflow: hidden;
+      background: var(--navy);
+    }
+    .cta-field {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to top, rgba(13,27,42,1) 0%, transparent 40%),
+        linear-gradient(135deg, rgba(201,163,68,.1) 0%, transparent 50%),
+        radial-gradient(ellipse 100% 60% at 50% 100%, rgba(201,163,68,.08), transparent);
+      will-change: transform;
+    }
+    /* Grass lines effect */
+    .cta-field::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(
+        90deg,
+        rgba(201,163,68,.015) 0px,
+        rgba(201,163,68,.015) 1px,
+        transparent 1px,
+        transparent 80px
+      );
+    }
+    .cta-wrap { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+    #cta h2 {
+      font-size: clamp(3rem, 8vw, 6.5rem); font-weight: 900;
+      letter-spacing: -.04em; line-height: .9; margin-bottom: 28px; text-transform: uppercase;
+    }
+    #cta h2 em { font-style: normal; color: var(--gold); }
+    .cta-divider { width: 60px; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 0 auto 28px; }
+    #cta p { font-size: .92rem; color: var(--text-2); margin-bottom: 48px; line-height: 1.75; max-width: 440px; margin-left: auto; margin-right: auto; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-cp {
+      background: var(--gold); color: var(--navy); padding: 17px 44px;
+      border-radius: var(--pill-radius); text-decoration: none; font-size: .76rem;
+      font-weight: 900; letter-spacing: .18em; text-transform: uppercase;
+      position: relative; overflow: hidden;
+      box-shadow: inset 0 2px 0 rgba(255,255,255,.22), inset 0 -2px 0 rgba(0,0,0,.15), 0 8px 32px rgba(201,163,68,.3);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-cp::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+      transform: translateX(-100%); transition: transform .5s;
+    }
+    .btn-cp:hover { transform: translateY(-3px); box-shadow: inset 0 2px 0 rgba(255,255,255,.25), inset 0 -2px 0 rgba(0,0,0,.15), 0 16px 56px rgba(201,163,68,.45); }
+    .btn-cp:hover::before { transform: translateX(100%); }
+    .btn-cs {
+      background: var(--glass-bg); color: var(--text); padding: 17px 44px;
+      border-radius: var(--pill-radius); text-decoration: none; font-size: .76rem;
+      font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+      border: 1px solid var(--glass-border-gold);
+      backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+      box-shadow: var(--glass-shadow), var(--glass-spec-gold);
+      transition: border-color .2s, transform .2s, color .2s, box-shadow .2s;
+    }
+    .btn-cs:hover { border-color: rgba(201,163,68,.5); color: var(--gold); transform: translateY(-3px); box-shadow: var(--glass-shadow-lg), var(--glass-spec-gold); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #050c14; border-top: 1px solid var(--border);
+      padding: 64px 48px 48px;
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      align-items: center; gap: 32px;
+    }
+    .ft-brand { display: flex; align-items: center; gap: 12px; }
+    .ft-lion { font-size: 1.6rem; }
+    .ft-name { font-size: .78rem; font-weight: 900; letter-spacing: .22em; text-transform: uppercase; }
+    .ft-name span { color: var(--gold); }
+    .ft-links { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; }
+    .ft-links a {
+      font-size: .62rem; color: var(--text-2); text-decoration: none;
+      letter-spacing: 2px; text-transform: uppercase; transition: color .2s;
+    }
+    .ft-links a:hover { color: var(--gold); }
+    .ft-copy { font-size: .6rem; color: #2a3a4a; letter-spacing: 1px; text-align: right; }
+    @media(max-width:768px) {
+      footer { grid-template-columns: 1fr; text-align: center; }
+      .ft-brand { justify-content: center; }
+      .ft-copy { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="cursor-glow"></div>
+<div id="scroll-prog"></div>
+
+<!-- Loader -->
+<div id="loader">
+  <div class="ld-glass">
+    <div class="ld-crest">
+      <div class="ld-hex"></div>
+      <div class="ld-hex"></div>
+      <div class="ld-hex"></div>
+      <div class="ld-lion"><svg width="50" height="50" viewBox="0 0 100 120" fill="none" stroke="var(--gold)" stroke-linecap="round" stroke-linejoin="round"><path d="M 50 5 L 90 20 L 85 75 C 85 95 60 110 50 115 C 40 110 15 95 15 75 L 10 20 Z" stroke-width="6"/><path d="M 50 5 V 115" stroke-width="2"/><path d="M 50 22 Q 50 30 58 30 Q 50 30 50 38 Q 50 30 42 30 Q 50 30 50 22 Z" fill="var(--gold)" stroke="none"/><path d="M 28 50 V 85 H 44" stroke-width="7"/><path d="M 56 50 V 85 M 56 50 H 74 M 56 68 H 70" stroke-width="7"/></svg></div>
+    </div>
+    <div class="ld-name"><span>Lions</span> FC</div>
+    <p class="ld-sub">Elite Football Club</p>
+    <div class="ld-track"><div class="ld-fill" id="ld-fill"></div></div>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">
+      <svg class="nav-lion" width="30" height="30" viewBox="0 0 100 120" fill="none" stroke="var(--gold)" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; display:inline-block; vertical-align:middle; margin-right:4px;"><path d="M 50 5 L 90 20 L 85 75 C 85 95 60 110 50 115 C 40 110 15 95 15 75 L 10 20 Z" stroke-width="6"/><path d="M 50 5 V 115" stroke-width="2"/><path d="M 50 22 Q 50 30 58 30 Q 50 30 50 38 Q 50 30 42 30 Q 50 30 50 22 Z" fill="var(--gold)" stroke="none"/><path d="M 28 50 V 85 H 44" stroke-width="7"/><path d="M 56 50 V 85 M 56 50 H 74 M 56 68 H 70" stroke-width="7"/></svg>
+      <span class="nav-name"><span>Lions</span> FC</span>
+    </a>
+    <div class="nav-links">
+      <a href="effectif.html">Effectif</a>
+      <a href="club.html">Club</a>
+      <a href="agenda.html">Agenda</a>
+      <a href="billetterie.html" class="nav-cta">Billetterie</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-stadium"></div>
+  <div class="spotlight sp-1" id="sp1"></div>
+  <div class="spotlight sp-2" id="sp2"></div>
+  <div class="spotlight sp-3"></div>
+  <div class="grid-lines" id="grid"></div>
+  <div class="accent-line" id="al1"></div>
+  <div class="accent-line" id="al2"></div>
+
+  <div class="hero-content" id="hero-content">
+    <p class="eyebrow">Lions FC — Elite Football Club</p>
+    <h1><em>Lions</em><br>Stadium.</h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">Depuis 1924, les Lions dominent le terrain avec une passion sans limite. Rejoignez l'élite du football mondial.</p>
+    <div class="btn-row">
+      <a href="#cta" class="btn-p">Rejoindre le club</a>
+      <a href="#squad" class="btn-s">L'effectif</a>
+    </div>
+    <div class="scroll-cue">
+      <span class="scroll-label">Faire défiler</span>
+      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Ticker -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="ticker-item">Lions FC</span>
+    <span class="ticker-item">Champions 2024</span>
+    <span class="ticker-item">Lions Stadium</span>
+    <span class="ticker-item">Elite Football</span>
+    <span class="ticker-item">Saison 2025</span>
+    <span class="ticker-item">Rejoindre le club</span>
+    <span class="ticker-item">Vorsprung Lions</span>
+    <span class="ticker-item">Lions FC</span>
+    <span class="ticker-item">Champions 2024</span>
+    <span class="ticker-item">Lions Stadium</span>
+    <span class="ticker-item">Elite Football</span>
+    <span class="ticker-item">Saison 2025</span>
+    <span class="ticker-item">Rejoindre le club</span>
+    <span class="ticker-item">Vorsprung Lions</span>
+  </div>
+</div>
+
+<!-- Results strip -->
+<div class="results-strip" id="results-strip">
+  <div class="results-inner" id="results-inner">
+    <div class="res-hd"><div class="res-hd-l">Derniers résultats</div><div class="res-hd-r">Saison 2025-26</div></div>
+  </div>
+</div>
+
+<!-- Scroll animation -->
+<div class="anim-wrap">
+  <div class="anim-sticky">
+    <canvas id="frame-canvas"></canvas>
+
+    <!-- HUD -->
+    <div class="anim-hud">
+      <svg class="hud-ring" viewBox="0 0 44 44">
+        <circle class="ring-bg" cx="22" cy="22" r="19"/>
+        <circle class="ring-fill" id="ring-fill" cx="22" cy="22" r="19"/>
+      </svg>
+      <span class="hud-pct" id="hud-pct">0%</span>
+    </div>
+
+    <!-- Match badge -->
+    <div class="match-badge" id="match-badge">
+      <div class="mb-label">Live Score</div>
+      <div class="mb-score">3 — 1</div>
+      <div class="mb-teams">Lions FC vs FC Elite</div>
+    </div>
+
+    <div class="card" data-show="0.12" data-hide="0.30">
+      <div class="card-num">01</div>
+      <div>
+        <div class="card-title">Lions Stadium</div>
+        <p class="card-desc">60 000 places. L'antre des Lions depuis 1952 — une enceinte mythique, une atmosphère unique.</p>
+        <div class="card-stat">
+          <span class="card-stat-n">60K</span>
+          <span class="card-stat-l">Places — Lions Stadium</span>
+        </div>
+      </div>
+    </div>
+    <div class="card" data-show="0.33" data-hide="0.52">
+      <div class="card-num">02</div>
+      <div>
+        <div class="card-title">Champions</div>
+        <p class="card-desc">12 titres de champion en 100 ans d'histoire. Un palmarès gravé dans la légende du football.</p>
+        <div class="card-stat">
+          <span class="card-stat-n">×12</span>
+          <span class="card-stat-l">Titres de champion</span>
+        </div>
+      </div>
+    </div>
+    <div class="card" data-show="0.55" data-hide="0.74">
+      <div class="card-num">03</div>
+      <div>
+        <div class="card-title">L'Effectif</div>
+        <p class="card-desc">27 joueurs d'élite, sélectionnés dans 18 nationalités différentes. La force d'un collectif mondial.</p>
+        <div class="card-stat">
+          <span class="card-stat-n">27</span>
+          <span class="card-stat-l">Joueurs — 18 nationalités</span>
+        </div>
+      </div>
+    </div>
+    <div class="card" data-show="0.77" data-hide="0.96">
+      <div class="card-num">04</div>
+      <div>
+        <div class="card-title">Performance</div>
+        <p class="card-desc">87% de victoires à domicile cette saison. Les Lions règnent sans partage sur leur terrain.</p>
+        <div class="card-stat">
+          <span class="card-stat-n">87%</span>
+          <span class="card-stat-l">Victoires à domicile</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Stats band -->
+<section id="stats-band">
+  <div class="stats-grid">
+    <div class="stat-item reveal d1" data-target="100">
+      <div class="stat-val"><span class="stat-n" id="s0">0</span><span class="stat-u">ans</span></div>
+      <span class="stat-label">D'histoire</span>
+    </div>
+    <div class="stat-item reveal d2" data-target="12">
+      <div class="stat-val"><span class="stat-n" id="s1">0</span></div>
+      <span class="stat-label">Titres nationaux</span>
+    </div>
+    <div class="stat-item reveal d3" data-target="60">
+      <div class="stat-val"><span class="stat-n" id="s2">0</span><span class="stat-u">K</span></div>
+      <span class="stat-label">Supporters</span>
+    </div>
+    <div class="stat-item reveal d4" data-target="87">
+      <div class="stat-val"><span class="stat-n" id="s3">0</span><span class="stat-u">%</span></div>
+      <span class="stat-label">Victoires domicile</span>
+    </div>
+  </div>
+</section>
+
+<!-- Squad -->
+<section id="squad">
+  <div class="squad-header">
+    <p class="sec-eyebrow reveal">Saison 2025</p>
+    <h2 class="sec-title reveal d1">L'effectif<br><em>d'élite.</em></h2>
+  </div>
+  <div class="squad-track-wrap" id="squad-wrap">
+    <div class="squad-track" id="squad-track">
+      <div class="player-card">
+        <div class="player-num">27</div>
+        <img class="player-photo" src="img/players/player1.png" alt="Marcus Leone" loading="lazy" />
+        <div class="player-info">
+          <div class="player-pos">Attaquant</div>
+          <div class="player-name">Marcus Leone</div>
+          <span class="player-flag">FRA</span>
+        </div>
+      </div>
+      <div class="player-card">
+        <div class="player-num">10</div>
+        <img class="player-photo" src="img/players/player3.png" alt="João Silva" loading="lazy" />
+        <div class="player-info">
+          <div class="player-pos">Milieu offensif</div>
+          <div class="player-name">João Silva</div>
+          <span class="player-flag">BRA</span>
+        </div>
+      </div>
+      <div class="player-card">
+        <div class="player-num">1</div>
+        <img class="player-photo" src="img/players/player1.png" alt="Keita Diallo" loading="lazy" />
+        <div class="player-info">
+          <div class="player-pos">Gardien</div>
+          <div class="player-name">Keita Diallo</div>
+          <span class="player-flag">SEN</span>
+        </div>
+      </div>
+      <div class="player-card">
+        <div class="player-num">4</div>
+        <img class="player-photo" src="img/players/player3.png" alt="Ricardo Vega" loading="lazy" />
+        <div class="player-info">
+          <div class="player-pos">Défenseur central</div>
+          <div class="player-name">Ricardo Vega</div>
+          <span class="player-flag">ESP</span>
+        </div>
+      </div>
+      <div class="player-card">
+        <div class="player-num">8</div>
+        <img class="player-photo" src="img/players/player2.png" alt="Lars Müller" loading="lazy" />
+        <div class="player-info">
+          <div class="player-pos">Milieu défensif</div>
+          <div class="player-name">Lars Müller</div>
+          <span class="player-flag">GER</span>
+        </div>
+      </div>
+      <div class="player-card">
+        <div class="player-num">11</div>
+        <img class="player-photo" src="img/players/player4.png" alt="Nabil Ouali" loading="lazy" />
+        <div class="player-info">
+          <div class="player-pos">Ailier gauche</div>
+          <div class="player-name">Nabil Ouali</div>
+          <span class="player-flag">MAR</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Quote -->
+<section id="quote">
+  <div class="quote-glow" id="quote-glow"></div>
+  <div class="q-line"></div>
+  <div class="q-line"></div>
+  <div class="quote-text reveal" id="quote-text">
+    Toujours<br><em>plus haut.</em>
+  </div>
+  <p class="quote-author reveal d2">Lions FC — Depuis 1924</p>
+</section>
+
+<!-- Photo Gallery -->
+<section id="gallery">
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img class="gi-img" src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1200&q=80" alt="Lions Stadium" loading="lazy"/>
+      <div class="gi-overlay"></div>
+      <div class="gi-label">Lions Stadium — 60 000 places</div>
+    </div>
+    <div class="gallery-item">
+      <img class="gi-img" src="https://images.unsplash.com/photo-1556056504-5c7696c4c28d?auto=format&fit=crop&w=700&q=80" alt="Supporters" loading="lazy"/>
+      <div class="gi-overlay"></div>
+      <div class="gi-label">Virage Nord</div>
+    </div>
+    <div class="gallery-item">
+      <img class="gi-img" src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=700&q=80" alt="Match" loading="lazy"/>
+      <div class="gi-overlay"></div>
+      <div class="gi-label">Match de gala</div>
+    </div>
+    <div class="gallery-item">
+      <img class="gi-img" src="https://images.unsplash.com/photo-1551958219-acbc595b8ef1?auto=format&fit=crop&w=700&q=80" alt="Fans" loading="lazy"/>
+      <div class="gi-overlay"></div>
+      <div class="gi-label">Les supporters Lions</div>
+    </div>
+    <div class="gallery-item">
+      <img class="gi-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&q=80" alt="Football" loading="lazy"/>
+      <div class="gi-overlay"></div>
+      <div class="gi-label">Terrain d'élite</div>
+    </div>
+  </div>
+  <div class="gallery-cta">
+    <p>Galerie officielle — Saison 2025/26</p>
+    <a href="club.html">Découvrir le club →</a>
+  </div>
+</section>
+
+<!-- Features -->
+<section id="features">
+  <p class="sec-eyebrow reveal">Le Club</p>
+  <h2 class="sec-title reveal d1">Une institution,<br><em>une passion.</em></h2>
+  <div class="features-grid">
+    <div class="feat-card reveal d1" data-num="01">
+      <div class="feat-spec"></div>
+      <svg class="feat-icon" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+      <h3>Académie Elite</h3>
+      <p>Formation des jeunes talents depuis l'âge de 7 ans. Un cursus d'excellence reconnu dans toute l'Europe.</p>
+    </div>
+    <div class="feat-card reveal d2" data-num="02">
+      <div class="feat-spec"></div>
+      <svg class="feat-icon" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      <h3>Centre Médical</h3>
+      <p>Équipe médicale de 24 spécialistes. Technologies de pointe pour la performance et la récupération.</p>
+    </div>
+    <div class="feat-card reveal d3" data-num="03">
+      <div class="feat-spec"></div>
+      <svg class="feat-icon" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="3" y1="20" x2="21" y2="20"/></svg>
+      <h3>Data Analytics</h3>
+      <p>Analyse vidéo et données en temps réel. Chaque décision tactique appuyée par l'intelligence artificielle.</p>
+    </div>
+    <div class="feat-card reveal d4" data-num="04">
+      <div class="feat-spec"></div>
+      <svg class="feat-icon" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <h3>Rayonnement Global</h3>
+      <p>Présents dans 45 pays. Une communauté mondiale de supporters unis par les couleurs bleu et or.</p>
+    </div>
+    <div class="feat-card reveal d5" data-num="05">
+      <div class="feat-spec"></div>
+      <svg class="feat-icon" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a8 8 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
+      <h3>Boutique Officielle</h3>
+      <p>Maillots, équipements et collections exclusives. Portez les couleurs des Lions avec fierté.</p>
+    </div>
+    <div class="feat-card reveal d6" data-num="06">
+      <div class="feat-spec"></div>
+      <svg class="feat-icon" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <h3>Experience VIP</h3>
+      <p>Loges privées, rencontres avec les joueurs, accès privilégiés. Vivez le football autrement.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-field" id="cta-field"></div>
+  <div class="cta-wrap">
+    <h2 class="reveal">Rejoignez<br>les <em>Lions.</em></h2>
+    <div class="cta-divider reveal d1"></div>
+    <p class="reveal d2">Abonnements saison, billetterie match par match ou expérience VIP. Choisissez votre place dans la légende.</p>
+    <div class="cta-btns reveal d3">
+      <a href="#" class="btn-cp">Billetterie</a>
+      <a href="#" class="btn-cs">En savoir plus</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="ft-brand">
+    <svg class="ft-lion" width="34" height="34" viewBox="0 0 100 120" fill="none" stroke="var(--gold)" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; display:inline-block; vertical-align:middle; margin-right:4px;"><path d="M 50 5 L 90 20 L 85 75 C 85 95 60 110 50 115 C 40 110 15 95 15 75 L 10 20 Z" stroke-width="6"/><path d="M 50 5 V 115" stroke-width="2"/><path d="M 50 22 Q 50 30 58 30 Q 50 30 50 38 Q 50 30 42 30 Q 50 30 50 22 Z" fill="var(--gold)" stroke="none"/><path d="M 28 50 V 85 H 44" stroke-width="7"/><path d="M 56 50 V 85 M 56 50 H 74 M 56 68 H 70" stroke-width="7"/></svg>
+    <span class="ft-name"><span>Lions</span> FC</span>
+  </div>
+  <div class="ft-links">
+    <a href="#">Mentions légales</a>
+    <a href="#">Confidentialité</a>
+    <a href="#">Presse</a>
+    <a href="#">Contact</a>
+  </div>
+  <p class="ft-copy">&copy; 2025 Lions FC. Tous droits réservés.</p>
+</footer>
+
+<script src="lions-data.js"></script>
+<script>
+/* ── CURSOR ── */
+const cursorGlow = document.getElementById('cursor-glow');
+document.addEventListener('mousemove', e => {
+  cursorGlow.style.left = e.clientX + 'px';
+  cursorGlow.style.top  = e.clientY + 'px';
+});
+
+/* ── FRAME PLAYER ── */
+const TOTAL = 142;
+const frames = [];
+let loaded = 0, ready = false, curIdx = -1, ticking = false;
+
+const canvas   = document.getElementById('frame-canvas');
+const ctx      = canvas.getContext('2d');
+const loader   = document.getElementById('loader');
+const ldFill   = document.getElementById('ld-fill');
+const ringFill = document.getElementById('ring-fill');
+const hudPct   = document.getElementById('hud-pct');
+const CIRCUMF  = 2 * Math.PI * 19;
+
+function resizeCanvas() {
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width  = window.innerWidth  * dpr;
+  canvas.height = window.innerHeight * dpr;
+  canvas.style.width  = window.innerWidth  + 'px';
+  canvas.style.height = window.innerHeight + 'px';
+  if (curIdx >= 0) drawFrame(curIdx);
+}
+
+function drawFrame(i) {
+  const img = frames[i];
+  if (!img || !img.complete) return;
+  const cw = canvas.width, ch = canvas.height;
+  ctx.fillStyle = '#0D1B2A';
+  ctx.fillRect(0, 0, cw, ch);
+  const ir = img.naturalWidth / img.naturalHeight;
+  const cr = cw / ch;
+  let dw, dh, dx, dy;
+  if (window.innerWidth > 768) {
+    if (cr > ir) { dw = cw; dh = cw / ir; } else { dh = ch; dw = ch * ir; }
+  } else {
+    if (cr > ir) { dh = ch * 1.15; dw = dh * ir; } else { dw = cw * 1.15; dh = dw / ir; }
+  }
+  dx = (cw - dw) / 2; dy = (ch - dh) / 2;
+  ctx.drawImage(img, dx, dy, dw, dh);
+}
+
+function onReady() {
+  ready = true; drawFrame(0); curIdx = 0;
+  loader.style.opacity = '0';
+  setTimeout(() => loader.style.display = 'none', 700);
+}
+
+for (let i = 0; i < TOTAL; i++) {
+  const img = new Image();
+  img.src = 'frames/frame_' + String(i + 1).padStart(4, '0') + '.jpg';
+  img.onload = img.onerror = () => {
+    ldFill.style.width = (++loaded / TOTAL * 100) + '%';
+    if (loaded === TOTAL) onReady();
+  };
+  frames[i] = img;
+}
+
+/* ── SCROLL ── */
+const progBar   = document.getElementById('scroll-prog');
+const nav       = document.getElementById('nav');
+const wrap      = document.querySelector('.anim-wrap');
+const cards     = document.querySelectorAll('.card');
+const zones     = [...cards].map(c => ({ show: parseFloat(c.dataset.show), hide: parseFloat(c.dataset.hide) }));
+const matchBadge = document.getElementById('match-badge');
+
+// Parallax refs
+const heroContent = document.getElementById('hero-content');
+const sp1 = document.getElementById('sp1');
+const sp2 = document.getElementById('sp2');
+const grid = document.getElementById('grid');
+const al1  = document.getElementById('al1');
+const al2  = document.getElementById('al2');
+const quoteText = document.getElementById('quote-text');
+const ctaField  = document.getElementById('cta-field');
+
+function updateCards(p) {
+  cards.forEach((card, i) => card.classList.toggle('on', p >= zones[i].show && p <= zones[i].hide));
+  matchBadge.classList.toggle('on', p > 0.4 && p < 0.9);
+}
+
+function parallaxHero(sy) {
+  const hh = document.getElementById('hero').offsetHeight;
+  const p  = Math.min(sy / hh, 1);
+  heroContent.style.transform = 'translateY(' + sy * 0.32 + 'px)';
+  heroContent.style.opacity   = Math.max(0, 1 - p * 1.9);
+  sp1.style.transform = 'translateY(' + sy * -0.22 + 'px) translateX(' + sy * 0.06 + 'px)';
+  sp2.style.transform = 'translateY(' + sy * -0.16 + 'px) translateX(' + sy * -0.05 + 'px)';
+  grid.style.transform = 'translateY(' + sy * 0.07 + 'px)';
+  al1.style.transform  = 'translateY(' + sy * -0.12 + 'px)';
+  al2.style.transform  = 'translateY(' + sy * 0.09 + 'px)';
+}
+
+function parallaxSections(sy) {
+  if (quoteText) {
+    const r = document.getElementById('quote').getBoundingClientRect();
+    quoteText.style.transform = 'translateY(' + r.top * 0.07 + 'px)';
+  }
+  if (ctaField) {
+    const r = document.getElementById('cta').getBoundingClientRect();
+    ctaField.style.transform = 'translateY(' + r.top * 0.1 + 'px) scale(1.1)';
+  }
+}
+
+window.addEventListener('scroll', () => {
+  const sy  = window.scrollY;
+  const max = document.body.scrollHeight - window.innerHeight;
+  progBar.style.width = (sy / max * 100) + '%';
+  nav.classList.toggle('pill', sy > 80);
+  parallaxHero(sy);
+  parallaxSections(sy);
+
+  if (!ticking && ready) {
+    requestAnimationFrame(() => {
+      const rect = wrap.getBoundingClientRect();
+      const p  = Math.min(1, Math.max(0, -rect.top / (wrap.offsetHeight - window.innerHeight)));
+      const fi = Math.min(TOTAL - 1, Math.floor(p * TOTAL));
+      if (fi !== curIdx) { curIdx = fi; drawFrame(fi); }
+      updateCards(p);
+      ringFill.style.strokeDashoffset = CIRCUMF - p * CIRCUMF;
+      hudPct.textContent = Math.round(p * 100) + '%';
+      ticking = false;
+    });
+    ticking = true;
+  }
+}, { passive: true });
+
+/* ── MOUSE PARALLAX HERO ── */
+document.getElementById('hero').addEventListener('mousemove', e => {
+  const cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+  const dx = (e.clientX - cx) / cx, dy = (e.clientY - cy) / cy;
+  sp1.style.transform = 'translate(' + dx * 24 + 'px,' + dy * 16 + 'px)';
+  sp2.style.transform = 'translate(' + dx * -18 + 'px,' + dy * -12 + 'px)';
+});
+
+/* ── REVEAL ── */
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.14 });
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .stat-item').forEach(el => revObs.observe(el));
+
+/* ── COUNT-UP ── */
+function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+function countUp(el, target) {
+  const t0 = performance.now();
+  (function tick(now) {
+    const p = Math.min((now - t0) / 1800, 1);
+    el.textContent = Math.floor(easeOutExpo(p) * target);
+    if (p < 1) requestAnimationFrame(tick);
+    else el.textContent = Math.round(target);
+  })(t0);
+}
+let statsDone = false, statsObs;
+statsObs = new IntersectionObserver(entries => {
+  if (!entries[0].isIntersecting || statsDone) return;
+  statsDone = true;
+  [100, 12, 60, 87].forEach((n, i) => setTimeout(() => countUp(document.getElementById('s' + i), n), i * 200));
+}, { threshold: 0.3 });
+statsObs.observe(document.getElementById('stats-band'));
+
+/* ── SQUAD DRAG SCROLL ── */
+const squadWrap = document.getElementById('squad-wrap');
+let isDown = false, startX = 0, scrollLeft = 0;
+squadWrap.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - squadWrap.offsetLeft; scrollLeft = squadWrap.scrollLeft; });
+squadWrap.addEventListener('mouseleave', () => isDown = false);
+squadWrap.addEventListener('mouseup', () => isDown = false);
+squadWrap.addEventListener('mousemove', e => {
+  if (!isDown) return; e.preventDefault();
+  squadWrap.scrollLeft = scrollLeft - (e.pageX - squadWrap.offsetLeft - startX);
+});
+setTimeout(() => {
+  squadWrap.scrollTo({ left: 80, behavior: 'smooth' });
+  setTimeout(() => squadWrap.scrollTo({ left: 0, behavior: 'smooth' }), 700);
+}, 3500);
+
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+/* ── RESULTS STRIP ── */
+(function() {
+  var past = LIONS_MATCHES.filter(function(m) {
+    return m.sH !== null && (m.home === 'Lions FC' || m.away === 'Lions FC');
+  }).sort(function(a, b) { return new Date(b.date) - new Date(a.date); }).slice(0, 8);
+
+  var inner = document.getElementById('results-inner');
+  past.forEach(function(m) {
+    var res = lionsResult(m);
+    var isHome = m.home === 'Lions FC';
+    var teamA = isHome ? m.home : m.away;
+    var teamB = isHome ? m.away : m.home;
+    var cls = res === 'V' ? 'win' : res === 'D' ? 'loss' : 'draw';
+    var d = new Date(m.date);
+    var months = ['jan','fév','mar','avr','mai','jun','jul','aoû','sep','oct','nov','déc'];
+    var dateStr = d.getDate() + ' ' + months[d.getMonth()];
+    var div = document.createElement('div');
+    div.className = 'res-card';
+    div.innerHTML = '<div class="res-comp">' + m.comp + ' — ' + m.round + '</div>'
+      + '<div class="res-teams">'
+      + '<span class="res-team ' + (isHome ? 'lions' : '') + '">' + teamA + '</span>'
+      + '<span class="res-score ' + cls + '">' + m.sH + '—' + m.sA + '</span>'
+      + '<span class="res-team ' + (!isHome ? 'lions' : '') + '">' + teamB + '</span>'
+      + '</div>'
+      + '<div class="res-date">' + dateStr + ' · ' + m.comp + '</div>';
+    inner.appendChild(div);
+  });
+})();
+</script>
+</body>
+</html>
