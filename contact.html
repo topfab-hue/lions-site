@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — Lions FC</title>
+  <style>
+    :root {
+      --navy:#0D1B2A; --navy2:#152235; --gold:#C9A344; --gold2:#E8BE5A;
+      --text:#F0EDE6; --text-2:#7A8A9A; --border:rgba(201,163,68,.12);
+      --font:'Helvetica Neue',Helvetica,Arial,sans-serif;
+      --glass-bg:rgba(14,26,42,.48); --glass-border:rgba(255,255,255,.10);
+      --glass-border-gold:rgba(201,163,68,.22);
+      --glass-blur:blur(36px) saturate(180%) brightness(1.08);
+      --glass-blur-heavy:blur(52px) saturate(200%) brightness(1.06);
+      --glass-spec:inset 0 1px 0 rgba(255,255,255,.14),inset 0 -1px 0 rgba(0,0,0,.12);
+      --glass-spec-gold:inset 0 1px 0 rgba(201,163,68,.18),inset 0 -1px 0 rgba(0,0,0,.1);
+      --glass-shadow:0 8px 40px rgba(0,0,0,.55),0 1px 0 rgba(255,255,255,.07);
+      --glass-shadow-lg:0 20px 70px rgba(0,0,0,.65),0 1px 0 rgba(255,255,255,.08);
+      --glass-radius:18px; --glass-radius-sm:14px; --pill-radius:100px;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--font);background:var(--navy);color:var(--text);overflow-x:hidden;}
+    ::-webkit-scrollbar{width:3px;} ::-webkit-scrollbar-track{background:var(--navy);} ::-webkit-scrollbar-thumb{background:var(--gold);}
+    ::selection{background:rgba(201,163,68,.3);}
+    #scroll-prog{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--gold),var(--gold2));z-index:10000;}
+    #cursor-glow{position:fixed;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(201,163,68,.05) 0%,transparent 70%);pointer-events:none;z-index:0;left:0;top:0;transform:translate(-50%,-50%);}
+
+    /* NAV */
+    #nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:all .5s cubic-bezier(.16,1,.3,1);padding:0;}
+    .nav-inner{max-width:100%;margin:0 auto;padding:22px 48px;display:flex;justify-content:space-between;align-items:center;transition:all .5s cubic-bezier(.16,1,.3,1);position:relative;}
+    #nav.pill{padding:12px 24px;}
+    #nav.pill .nav-inner{max-width:1000px;background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:var(--glass-blur-heavy);-webkit-backdrop-filter:var(--glass-blur-heavy);border-radius:var(--pill-radius);padding:10px 28px;box-shadow:var(--glass-shadow-lg),var(--glass-spec);}
+    #nav.pill .nav-inner::before{content:'';position:absolute;top:0;left:15%;right:15%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);border-radius:99px;}
+    .nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+    .nav-name{font-size:.82rem;font-weight:900;letter-spacing:.25em;text-transform:uppercase;color:var(--text);}
+    .nav-name span{color:var(--gold);}
+    .nav-links{display:flex;align-items:center;gap:36px;}
+    .nav-links a{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text);text-decoration:none;opacity:.45;transition:opacity .2s,color .2s;position:relative;}
+    .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform .3s;}
+    .nav-links a:hover,.nav-links a.active{opacity:1;color:var(--gold);}
+    .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
+    .nav-cta{background:var(--gold)!important;color:var(--navy)!important;padding:9px 22px!important;opacity:1!important;font-weight:800!important;border-radius:var(--pill-radius)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 4px 16px rgba(201,163,68,.3)!important;}
+    .nav-cta::after{display:none!important;}
+    @media(max-width:768px){.nav-links{display:none;}}
+
+    /* HERO */
+    .photo-hero{height:60vh;position:relative;display:flex;align-items:flex-end;overflow:hidden;}
+    .ph-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1920&q=80');background-size:cover;background-position:center top;}
+    .ph-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(13,27,42,1) 0%,rgba(13,27,42,.5) 60%,rgba(13,27,42,.2) 100%);}
+    .ph-content{position:relative;z-index:2;padding:60px 64px;max-width:700px;}
+    .ph-eyebrow{font-size:.52rem;font-weight:700;letter-spacing:7px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+    .ph-eyebrow::before{content:'';width:30px;height:1px;background:var(--gold);opacity:.5;}
+    .photo-hero h1{font-size:clamp(3rem,8vw,6rem);font-weight:900;text-transform:uppercase;letter-spacing:-.04em;line-height:.9;margin-bottom:20px;}
+    .photo-hero h1 em{font-style:normal;color:var(--gold);}
+    .photo-hero p{font-size:.9rem;color:var(--text-2);line-height:1.75;max-width:440px;}
+
+    /* MAIN LAYOUT */
+    .contact-section{padding:80px 64px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+    @media(max-width:900px){.contact-section{grid-template-columns:1fr;padding:60px 24px;gap:40px;}}
+
+    /* FORM */
+    .contact-form-wrap{background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:var(--glass-blur-heavy);-webkit-backdrop-filter:var(--glass-blur-heavy);border-radius:var(--glass-radius);box-shadow:var(--glass-shadow-lg),var(--glass-spec);padding:40px;position:relative;overflow:hidden;}
+    .contact-form-wrap::before{content:'';position:absolute;top:0;left:15%;right:15%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);}
+    .form-title{font-size:.52rem;font-weight:700;letter-spacing:6px;text-transform:uppercase;color:var(--gold);margin-bottom:28px;display:flex;align-items:center;gap:12px;}
+    .form-title::before{content:'';width:24px;height:1px;background:var(--gold);opacity:.5;}
+    .form-group{margin-bottom:20px;}
+    .form-group label{display:block;font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--text-2);margin-bottom:8px;}
+    .form-group input,.form-group select,.form-group textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--glass-border);border-radius:var(--glass-radius-sm);padding:12px 16px;font-family:var(--font);font-size:.85rem;color:var(--text);outline:none;transition:border-color .2s,box-shadow .2s;}
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--glass-border-gold);box-shadow:0 0 0 3px rgba(201,163,68,.08);}
+    .form-group textarea{height:120px;resize:vertical;}
+    .form-group select{appearance:none;cursor:pointer;}
+    .form-group select option{background:var(--navy2);color:var(--text);}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    @media(max-width:600px){.form-row{grid-template-columns:1fr;}}
+    .btn-submit{width:100%;background:var(--gold);color:var(--navy);border:none;border-radius:var(--pill-radius);padding:14px 32px;font-family:var(--font);font-size:.75rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 4px 20px rgba(201,163,68,.35);transition:transform .2s,box-shadow .2s;margin-top:8px;}
+    .btn-submit:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 8px 30px rgba(201,163,68,.45);}
+    .btn-submit:active{transform:translateY(0);}
+
+    /* INFO CARDS */
+    .contact-info{display:flex;flex-direction:column;gap:20px;}
+    .info-card{background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border-radius:var(--glass-radius);box-shadow:var(--glass-shadow),var(--glass-spec);padding:28px 32px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s;}
+    .info-card:hover{transform:translateY(-4px);border-color:var(--glass-border-gold);}
+    .info-card::before{content:'';position:absolute;top:0;left:15%;right:15%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);}
+    .info-icon{font-size:1.6rem;margin-bottom:12px;display:block;}
+    .info-label{font-size:.48rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+    .info-value{font-size:.92rem;font-weight:600;color:var(--text);margin-bottom:4px;}
+    .info-sub{font-size:.78rem;color:var(--text-2);line-height:1.6;}
+
+    /* MAP */
+    .map-section{padding:0 64px 80px;max-width:1200px;margin:0 auto;}
+    @media(max-width:900px){.map-section{padding:0 24px 60px;}}
+    .map-label{font-size:.52rem;font-weight:700;letter-spacing:6px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+    .map-label::before{content:'';width:24px;height:1px;background:var(--gold);opacity:.5;}
+    .map-wrap{border-radius:var(--glass-radius);overflow:hidden;border:1px solid var(--glass-border);box-shadow:var(--glass-shadow-lg);}
+    .map-wrap iframe{width:100%;height:360px;display:block;border:none;filter:invert(90%) hue-rotate(180deg) saturate(0.8);}
+
+    /* FOOTER */
+    footer{background:#050c14;border-top:1px solid var(--border);padding:48px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:32px;}
+    .ft-brand{display:flex;align-items:center;gap:12px;}
+    .ft-name{font-size:.78rem;font-weight:900;letter-spacing:.22em;text-transform:uppercase;}
+    .ft-name span{color:var(--gold);}
+    .ft-links{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;}
+    .ft-links a{font-size:.62rem;color:var(--text-2);text-decoration:none;letter-spacing:2px;text-transform:uppercase;transition:color .2s;}
+    .ft-links a:hover{color:var(--gold);}
+    .ft-copy{font-size:.6rem;color:#2a3a4a;text-align:right;}
+    @media(max-width:768px){footer{grid-template-columns:1fr;text-align:center;}.ft-copy{text-align:center;}}
+
+    .reveal{opacity:0;transform:translateY(32px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+    .reveal.visible{opacity:1;transform:none;}
+  </style>
+</head>
+<body>
+<div id="cursor-glow"></div>
+<div id="scroll-prog"></div>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html"><svg width="30" height="30" viewBox="0 0 100 120" fill="none" stroke="var(--gold)" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;display:inline-block;vertical-align:middle;margin-right:4px;"><path d="M 50 5 L 90 20 L 85 75 C 85 95 60 110 50 115 C 40 110 15 95 15 75 L 10 20 Z" stroke-width="6"/><path d="M 50 5 V 115" stroke-width="2"/><path d="M 50 22 Q 50 30 58 30 Q 50 30 50 38 Q 50 30 42 30 Q 50 30 50 22 Z" fill="var(--gold)" stroke="none"/><path d="M 28 50 V 85 H 44" stroke-width="7"/><path d="M 56 50 V 85 M 56 50 H 74 M 56 68 H 70" stroke-width="7"/></svg><span class="nav-name"><span>Lions</span> FC</span></a>
+    <div class="nav-links">
+      <a href="effectif.html">Effectif</a>
+      <a href="club.html">Club</a>
+      <a href="agenda.html">Agenda</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="billetterie.html" class="nav-cta">Billetterie</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="photo-hero">
+  <div class="ph-bg"></div>
+  <div class="ph-content">
+    <p class="ph-eyebrow">Nous contacter</p>
+    <h1>Parlons <em>Lions.</em></h1>
+    <p>Presse, partenariats, billetterie groupes ou simple question — notre équipe vous répond sous 48h.</p>
+  </div>
+</div>
+
+<!-- CONTACT SECTION -->
+<div class="contact-section">
+
+  <!-- FORM -->
+  <div class="contact-form-wrap reveal">
+    <div class="form-title">Envoyez-nous un message</div>
+    <form onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Prénom</label>
+          <input type="text" placeholder="Jean" required/>
+        </div>
+        <div class="form-group">
+          <label>Nom</label>
+          <input type="text" placeholder="Dupont" required/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="jean.dupont@email.com" required/>
+      </div>
+      <div class="form-group">
+        <label>Sujet</label>
+        <select required>
+          <option value="" disabled selected>Choisir un sujet</option>
+          <option>Presse &amp; Médias</option>
+          <option>Partenariat &amp; Sponsoring</option>
+          <option>Billetterie groupes</option>
+          <option>Académie &amp; Formation</option>
+          <option>Recrutement</option>
+          <option>Autre</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Votre message…" required></textarea>
+      </div>
+      <button class="btn-submit" type="submit">Envoyer le message</button>
+    </form>
+  </div>
+
+  <!-- INFO -->
+  <div class="contact-info">
+    <div class="info-card reveal">
+      <span class="info-icon">🏟️</span>
+      <div class="info-label">Adresse</div>
+      <div class="info-value">Lions Stadium</div>
+      <div class="info-sub">1 Avenue des Champions<br>75016 Paris, France</div>
+    </div>
+    <div class="info-card reveal">
+      <span class="info-icon">📞</span>
+      <div class="info-label">Téléphone</div>
+      <div class="info-value">+33 1 40 00 10 00</div>
+      <div class="info-sub">Lun–Ven, 9h–18h</div>
+    </div>
+    <div class="info-card reveal">
+      <span class="info-icon">✉️</span>
+      <div class="info-label">Email</div>
+      <div class="info-value">contact@lionsfc.fr</div>
+      <div class="info-sub">Réponse sous 48h ouvrées</div>
+    </div>
+    <div class="info-card reveal">
+      <span class="info-icon">🎙️</span>
+      <div class="info-label">Presse</div>
+      <div class="info-value">presse@lionsfc.fr</div>
+      <div class="info-sub">Service communication &amp; accréditations</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAP -->
+<div class="map-section">
+  <div class="map-label">Nous trouver</div>
+  <div class="map-wrap reveal">
+    <iframe
+      src="https://www.openstreetmap.org/export/embed.html?bbox=2.2469%2C48.8530%2C2.2669%2C48.8630&layer=mapnik&marker=48.8580%2C2.2569"
+      allowfullscreen
+      loading="lazy"
+      title="Lions Stadium">
+    </iframe>
+  </div>
+</div>
+
+<footer>
+  <div class="ft-brand"><svg width="34" height="34" viewBox="0 0 100 120" fill="none" stroke="var(--gold)" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;display:inline-block;vertical-align:middle;margin-right:4px;"><path d="M 50 5 L 90 20 L 85 75 C 85 95 60 110 50 115 C 40 110 15 95 15 75 L 10 20 Z" stroke-width="6"/><path d="M 50 5 V 115" stroke-width="2"/><path d="M 50 22 Q 50 30 58 30 Q 50 30 50 38 Q 50 30 42 30 Q 50 30 50 22 Z" fill="var(--gold)" stroke="none"/><path d="M 28 50 V 85 H 44" stroke-width="7"/><path d="M 56 50 V 85 M 56 50 H 74 M 56 68 H 70" stroke-width="7"/></svg><span class="ft-name"><span>Lions</span> FC</span></div>
+  <div class="ft-links">
+    <a href="index.html">Accueil</a>
+    <a href="effectif.html">Effectif</a>
+    <a href="agenda.html">Agenda</a>
+    <a href="contact.html">Contact</a>
+    <a href="billetterie.html">Billetterie</a>
+  </div>
+  <p class="ft-copy">&copy; 2025 Lions FC. Tous droits réservés.</p>
+</footer>
+
+<script>
+var cg = document.getElementById('cursor-glow');
+document.addEventListener('mousemove', function(e){ cg.style.left=e.clientX+'px'; cg.style.top=e.clientY+'px'; });
+window.addEventListener('scroll', function(){
+  document.getElementById('scroll-prog').style.width = (window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
+  document.getElementById('nav').classList.toggle('pill',window.scrollY>80);
+},{passive:true});
+
+var revObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('visible');} });
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+function handleSubmit(e){
+  e.preventDefault();
+  var btn = e.target.querySelector('.btn-submit');
+  btn.textContent = '✓ Message envoyé';
+  btn.style.background = '#2ecc71';
+  btn.disabled = true;
+  setTimeout(function(){ btn.textContent = 'Envoyer le message'; btn.style.background = ''; btn.disabled = false; e.target.reset(); }, 3000);
+}
+</script>
+</body>
+</html>
