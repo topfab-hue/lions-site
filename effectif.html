@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Effectif — Lions FC</title>
+  <style>
+    :root {
+      --navy:#0D1B2A; --navy2:#152235; --gold:#C9A344; --gold2:#E8BE5A;
+      --text:#F0EDE6; --text-2:#7A8A9A; --border:rgba(201,163,68,.12);
+      --font:'Helvetica Neue',Helvetica,Arial,sans-serif;
+      --glass-bg:rgba(14,26,42,.48); --glass-border:rgba(255,255,255,.10);
+      --glass-border-gold:rgba(201,163,68,.22);
+      --glass-blur:blur(36px) saturate(180%) brightness(1.08);
+      --glass-blur-heavy:blur(52px) saturate(200%) brightness(1.06);
+      --glass-spec:inset 0 1px 0 rgba(255,255,255,.14),inset 0 -1px 0 rgba(0,0,0,.12);
+      --glass-spec-gold:inset 0 1px 0 rgba(201,163,68,.18),inset 0 -1px 0 rgba(0,0,0,.1);
+      --glass-shadow:0 8px 40px rgba(0,0,0,.55),0 1px 0 rgba(255,255,255,.07);
+      --glass-shadow-lg:0 20px 70px rgba(0,0,0,.65),0 1px 0 rgba(255,255,255,.08);
+      --glass-radius:18px; --glass-radius-sm:14px; --pill-radius:100px;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--font);background:var(--navy);color:var(--text);overflow-x:hidden;}
+    ::-webkit-scrollbar{width:3px;} ::-webkit-scrollbar-track{background:var(--navy);} ::-webkit-scrollbar-thumb{background:var(--gold);}
+    ::selection{background:rgba(201,163,68,.3);}
+    #scroll-prog{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--gold),var(--gold2));z-index:10000;}
+    #cursor-glow{position:fixed;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(201,163,68,.05) 0%,transparent 70%);pointer-events:none;z-index:0;left:0;top:0;transform:translate(-50%,-50%);}
+
+    #nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:all .5s cubic-bezier(.16,1,.3,1);padding:0;}
+    .nav-inner{max-width:100%;margin:0 auto;padding:22px 48px;display:flex;justify-content:space-between;align-items:center;transition:all .5s cubic-bezier(.16,1,.3,1);position:relative;}
+    #nav.pill{padding:12px 24px;}
+    #nav.pill .nav-inner{max-width:1000px;background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:var(--glass-blur-heavy);-webkit-backdrop-filter:var(--glass-blur-heavy);border-radius:var(--pill-radius);padding:10px 28px;box-shadow:var(--glass-shadow-lg),var(--glass-spec);}
+    #nav.pill .nav-inner::before{content:'';position:absolute;top:0;left:15%;right:15%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);border-radius:99px;}
+    .nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+    .nav-name{font-size:.82rem;font-weight:900;letter-spacing:.25em;text-transform:uppercase;color:var(--text);}
+    .nav-name span{color:var(--gold);}
+    .nav-links{display:flex;align-items:center;gap:36px;}
+    .nav-links a{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text);text-decoration:none;opacity:.45;transition:opacity .2s,color .2s;position:relative;}
+    .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform .3s;}
+    .nav-links a:hover,.nav-links a.active{opacity:1;color:var(--gold);}
+    .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
+    .nav-cta{background:var(--gold)!important;color:var(--navy)!important;padding:9px 22px!important;opacity:1!important;font-weight:800!important;border-radius:var(--pill-radius)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 4px 16px rgba(201,163,68,.3)!important;}
+    .nav-cta::after{display:none!important;}
+    @media(max-width:768px){.nav-links{display:none;}}
+
+    /* PAGE HERO */
+    .page-hero{padding:160px 48px 80px;text-align:center;background:linear-gradient(180deg,#070f18 0%,var(--navy) 100%);position:relative;overflow:hidden;}
+    .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 0%,rgba(201,163,68,.07),transparent);}
+    .ph-eyebrow{font-size:.55rem;font-weight:700;letter-spacing:7px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:flex;align-items:center;justify-content:center;gap:16px;}
+    .ph-eyebrow::before,.ph-eyebrow::after{content:'';flex:1;max-width:50px;height:1px;background:linear-gradient(to right,transparent,var(--gold));opacity:.4;}
+    .ph-eyebrow::after{background:linear-gradient(to left,transparent,var(--gold));}
+    .page-hero h1{font-size:clamp(3rem,8vw,7rem);font-weight:900;text-transform:uppercase;letter-spacing:-.03em;line-height:.9;}
+    .page-hero h1 em{font-style:normal;color:var(--gold);}
+    .page-hero p{font-size:.9rem;color:var(--text-2);margin-top:20px;line-height:1.7;}
+
+    /* STATS STRIP */
+    .squad-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:0 48px;margin-top:-30px;max-width:900px;margin-left:auto;margin-right:auto;position:relative;z-index:2;}
+    .sq-stat{background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border-radius:var(--glass-radius-sm);box-shadow:var(--glass-shadow),var(--glass-spec);padding:20px;text-align:center;position:relative;overflow:hidden;}
+    .sq-stat::before{content:'';position:absolute;top:0;left:20%;right:20%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.16),transparent);}
+    .sq-stat-n{font-size:2.2rem;font-weight:900;color:var(--gold);letter-spacing:-.04em;}
+    .sq-stat-l{font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--text-2);margin-top:4px;}
+    @media(max-width:600px){.squad-stats{grid-template-columns:repeat(2,1fr);padding:0 20px;}}
+
+    /* POSITION FILTERS */
+    .pos-filters{display:flex;gap:8px;flex-wrap:wrap;padding:48px 48px 28px;justify-content:center;}
+    .pos-btn{padding:8px 20px;border-radius:var(--pill-radius);background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);color:var(--text-2);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;font-family:var(--font);cursor:pointer;transition:all .2s;box-shadow:var(--glass-shadow),var(--glass-spec);}
+    .pos-btn.active,.pos-btn:hover{background:rgba(201,163,68,.12);border-color:var(--glass-border-gold);color:var(--gold);box-shadow:var(--glass-shadow),var(--glass-spec-gold);}
+    @media(max-width:768px){.pos-filters{padding:32px 20px 20px;}}
+
+    /* PLAYER GRID */
+    #squad-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:0 48px 80px;max-width:1300px;margin:0 auto;}
+    @media(max-width:1100px){#squad-grid{grid-template-columns:repeat(3,1fr);}}
+    @media(max-width:768px){#squad-grid{grid-template-columns:repeat(2,1fr);padding:0 20px 60px;gap:14px;}}
+    @media(max-width:420px){#squad-grid{grid-template-columns:1fr;}}
+
+    .player-card{background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border-radius:var(--glass-radius);overflow:hidden;position:relative;box-shadow:var(--glass-shadow),var(--glass-spec);transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s,border-color .3s;cursor:pointer;}
+    .player-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:var(--glass-shadow-lg),var(--glass-spec-gold);border-color:var(--glass-border-gold);}
+    .pc-spec{position:absolute;top:0;left:15%;right:15%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);z-index:3;}
+    .pc-photo{width:100%;height:280px;object-fit:cover;object-position:top center;display:block;background:linear-gradient(135deg,var(--navy2),#1a2f4a);transition:transform .5s cubic-bezier(.16,1,.3,1);}
+    .player-card:hover .pc-photo{transform:scale(1.06);}
+    .pc-overlay{position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(to top,rgba(5,12,20,.98) 0%,rgba(13,27,42,.8) 50%,transparent 100%);z-index:2;}
+    .pc-num{position:absolute;top:14px;right:16px;z-index:3;font-size:3.5rem;font-weight:900;color:rgba(201,163,68,.15);letter-spacing:-.05em;line-height:1;}
+    .pc-pos{font-size:.48rem;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;}
+    .pc-name{font-size:.9rem;font-weight:900;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;}
+    .pc-nat{font-size:.9rem;}
+    .pc-stats{display:flex;gap:16px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.06);}
+    .pc-stat{text-align:center;}
+    .pc-stat-n{font-size:1.1rem;font-weight:900;color:var(--gold);display:block;letter-spacing:-.02em;}
+    .pc-stat-l{font-size:.42rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-2);}
+    .pc-gold-bar{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold2));transform:scaleX(0);transition:transform .4s ease;transform-origin:left;z-index:3;}
+    .player-card:hover .pc-gold-bar{transform:scaleX(1);}
+
+    /* STAFF */
+    .staff-section{padding:60px 48px 100px;background:linear-gradient(180deg,var(--navy) 0%,#070f18 100%);}
+    .staff-section h2{font-size:.55rem;font-weight:700;letter-spacing:7px;text-transform:uppercase;color:var(--gold);margin-bottom:40px;display:flex;align-items:center;gap:16px;}
+    .staff-section h2::after{content:'';flex:1;height:1px;background:var(--border);}
+    .staff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;}
+    .staff-card{background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border-radius:var(--glass-radius-sm);box-shadow:var(--glass-shadow),var(--glass-spec);padding:24px;display:flex;align-items:center;gap:16px;position:relative;overflow:hidden;transition:transform .3s;}
+    .staff-card:hover{transform:translateX(4px);}
+    .staff-card::before{content:'';position:absolute;top:0;left:15%;right:15%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent);}
+    .staff-avatar{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid rgba(201,163,68,.3);flex-shrink:0;background:var(--navy2);}
+    .staff-role{font-size:.48rem;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;}
+    .staff-name{font-size:.85rem;font-weight:900;text-transform:uppercase;}
+    .staff-nat{font-size:.75rem;margin-top:3px;}
+    @media(max-width:768px){.staff-grid{grid-template-columns:1fr;}.staff-section{padding:40px 20px 60px;}}
+
+    footer{background:#050c14;border-top:1px solid var(--border);padding:48px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:32px;}
+    .ft-brand{display:flex;align-items:center;gap:12px;}
+    .ft-name{font-size:.78rem;font-weight:900;letter-spacing:.22em;text-transform:uppercase;}
+    .ft-name span{color:var(--gold);}
+    .ft-links{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;}
+    .ft-links a{font-size:.62rem;color:var(--text-2);text-decoration:none;letter-spacing:2px;text-transform:uppercase;transition:color .2s;}
+    .ft-links a:hover{color:var(--gold);}
+    .ft-copy{font-size:.6rem;color:#2a3a4a;text-align:right;}
+    @media(max-width:768px){footer{grid-template-columns:1fr;text-align:center;}.ft-copy{text-align:center;}}
+
+    .reveal{opacity:0;transform:translateY(32px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+    .reveal.visible{opacity:1;transform:none;}
+  </style>
+</head>
+<body>
+<div id="cursor-glow"></div>
+<div id="scroll-prog"></div>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html"><span style="font-size:1.4rem">🦁</span><span class="nav-name"><span>Lions</span> FC</span></a>
+    <div class="nav-links">
+      <a href="effectif.html" class="active">Effectif</a>
+      <a href="club.html">Club</a>
+      <a href="agenda.html">Agenda</a>
+      <a href="billetterie.html" class="nav-cta">Billetterie</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <p class="ph-eyebrow">Saison 2025 — 2026</p>
+  <h1>L'effectif <em>d'élite.</em></h1>
+  <p>18 joueurs. 14 nationalités. Un seul objectif : la victoire.</p>
+</div>
+
+<div class="squad-stats reveal">
+  <div class="sq-stat"><div class="sq-stat-n">18</div><div class="sq-stat-l">Joueurs</div></div>
+  <div class="sq-stat"><div class="sq-stat-n">76</div><div class="sq-stat-l">Buts saison</div></div>
+  <div class="sq-stat"><div class="sq-stat-n">83</div><div class="sq-stat-l">Passes décisives</div></div>
+  <div class="sq-stat"><div class="sq-stat-n">14</div><div class="sq-stat-l">Nationalités</div></div>
+</div>
+
+<div class="pos-filters">
+  <button class="pos-btn active" data-pos="all">Tous</button>
+  <button class="pos-btn" data-pos="Gardien">Gardiens</button>
+  <button class="pos-btn" data-pos="Défenseur">Défenseurs</button>
+  <button class="pos-btn" data-pos="Milieu">Milieux</button>
+  <button class="pos-btn" data-pos="Attaquant">Attaquants</button>
+  <button class="pos-btn" data-pos="Ailier">Ailiers</button>
+</div>
+
+<div id="squad-grid"></div>
+
+<div class="staff-section">
+  <h2>Encadrement technique</h2>
+  <div class="staff-grid">
+    <div class="staff-card reveal">
+      <img class="staff-avatar" src="https://randomuser.me/api/portraits/men/11.jpg" alt="Coach"/>
+      <div><div class="staff-role">Entraîneur principal</div><div class="staff-name">Roberto Anselmi</div><div class="staff-nat">🇮🇹</div></div>
+    </div>
+    <div class="staff-card reveal">
+      <img class="staff-avatar" src="https://randomuser.me/api/portraits/men/14.jpg" alt="Coach"/>
+      <div><div class="staff-role">Entraîneur adjoint</div><div class="staff-name">Philippe Gaillard</div><div class="staff-nat">🇫🇷</div></div>
+    </div>
+    <div class="staff-card reveal">
+      <img class="staff-avatar" src="https://randomuser.me/api/portraits/men/20.jpg" alt="Coach"/>
+      <div><div class="staff-role">Préparateur physique</div><div class="staff-name">Karl Reinhardt</div><div class="staff-nat">🇩🇪</div></div>
+    </div>
+    <div class="staff-card reveal">
+      <img class="staff-avatar" src="https://randomuser.me/api/portraits/men/25.jpg" alt="Coach"/>
+      <div><div class="staff-role">Entraîneur des gardiens</div><div class="staff-name">José Medina</div><div class="staff-nat">🇪🇸</div></div>
+    </div>
+    <div class="staff-card reveal">
+      <img class="staff-avatar" src="https://randomuser.me/api/portraits/men/30.jpg" alt="Coach"/>
+      <div><div class="staff-role">Analyste vidéo</div><div class="staff-name">Thomas Renaud</div><div class="staff-nat">🇫🇷</div></div>
+    </div>
+    <div class="staff-card reveal">
+      <img class="staff-avatar" src="https://randomuser.me/api/portraits/men/16.jpg" alt="Coach"/>
+      <div><div class="staff-role">Médecin du club</div><div class="staff-name">Dr. Antoine Perret</div><div class="staff-nat">🇫🇷</div></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="ft-brand"><span style="font-size:1.6rem">🦁</span><span class="ft-name"><span>Lions</span> FC</span></div>
+  <div class="ft-links">
+    <a href="index.html">Accueil</a><a href="agenda.html">Agenda</a>
+    <a href="club.html">Club</a><a href="billetterie.html">Billetterie</a>
+  </div>
+  <p class="ft-copy">&copy; 2025 Lions FC. Tous droits réservés.</p>
+</footer>
+
+<script src="lions-data.js"></script>
+<script>
+var cg = document.getElementById('cursor-glow');
+document.addEventListener('mousemove', function(e){ cg.style.left=e.clientX+'px'; cg.style.top=e.clientY+'px'; });
+window.addEventListener('scroll', function(){
+  document.getElementById('scroll-prog').style.width = (window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
+  document.getElementById('nav').classList.toggle('pill',window.scrollY>80);
+},{passive:true});
+
+var activePos = 'all';
+function renderSquad() {
+  var grid = document.getElementById('squad-grid');
+  var players = LIONS_SQUAD.filter(function(p){ return activePos==='all' || p.pos.includes(activePos); });
+  players.sort(function(a,b){ return a.num-b.num; });
+  grid.innerHTML = players.map(function(p, i) {
+    return '<div class="player-card reveal" style="transition-delay:'+(i*0.05)+'s">'
+      + '<div class="pc-spec"></div>'
+      + '<div class="pc-num">'+p.num+'</div>'
+      + '<img class="pc-photo" src="'+p.photo+'" alt="'+p.name+'" loading="lazy"/>'
+      + '<div class="pc-overlay">'
+      +   '<div class="pc-pos">'+p.pos+'</div>'
+      +   '<div class="pc-name">'+p.name+'</div>'
+      +   '<div class="pc-nat">'+p.nat+'</div>'
+      +   '<div class="pc-stats">'
+      +     '<div class="pc-stat"><span class="pc-stat-n">'+p.goals+'</span><span class="pc-stat-l">Buts</span></div>'
+      +     '<div class="pc-stat"><span class="pc-stat-n">'+p.assists+'</span><span class="pc-stat-l">Passes D.</span></div>'
+      +   '</div>'
+      + '</div>'
+      + '<div class="pc-gold-bar"></div>'
+      + '</div>';
+  }).join('');
+  observeCards();
+}
+
+function observeCards() {
+  var obs = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); }); },{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+}
+
+document.querySelectorAll('.pos-btn').forEach(function(btn) {
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.pos-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    activePos = btn.dataset.pos;
+    renderSquad();
+  });
+});
+
+renderSquad();
+observeCards();
+</script>
+</body>
+</html>
