@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "lions-site",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server"],
+      "port": 9090,
+      "autoPort": true
+    }
+  ]
+}
