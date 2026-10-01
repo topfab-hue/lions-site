@@ -316,7 +316,7 @@ section.sec{padding:76px 0 6px}
 :is(#lfqv,#lfqv-ov) .panel header{padding:24px 24px 12px;display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
 :is(#lfqv,#lfqv-ov) .panel header h3{font-family:var(--script);font-weight:400;font-size:33.6px}
 :is(#lfqv,#lfqv-ov) .panel header p{color:var(--mut);font-size:13px}
-:is(#lfqv,#lfqv-ov) .panel .pb{overflow:auto;padding:4px 24px 26px;display:grid;gap:12px;align-content:start}
+:is(#lfqv,#lfqv-ov) .panel .pb{flex:1;min-height:0;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;overflow:auto;padding:4px 24px 26px;display:grid;gap:12px;align-content:start}
 :is(#lfqv,#lfqv-ov) .panel .acc{padding:2px 18px}
 :is(#lfqv,#lfqv-ov) .panel details.ac summary{font-size:18.4px;padding:14px 0}
 :is(#lfqv,#lfqv-ov) .mini-t{font-family:var(--script);font-weight:400;font-size:30.4px;margin-top:8px}
@@ -329,7 +329,7 @@ section.sec{padding:76px 0 6px}
 :is(#lfqv,#lfqv-ov) .modal{position:fixed;inset:0;z-index:99995;display:none;place-items:center;padding:16px;background:rgba(43,42,43,.28);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 :is(#lfqv,#lfqv-ov) .modal.on{display:grid;animation:lfqv-fade .4s}
 @keyframes lfqv-fade{from{opacity:0}to{opacity:1}}
-:is(#lfqv,#lfqv-ov) .mbox{max-width:460px;width:100%;padding:32px 30px 28px;border-radius:28px;animation:lfqv-rise .8s var(--ease);background:rgba(255,255,255,.97)}
+:is(#lfqv,#lfqv-ov) .mbox{max-height:calc(100vh - 32px);overflow:auto;overscroll-behavior:contain;max-width:460px;width:100%;padding:32px 30px 28px;border-radius:28px;animation:lfqv-rise .8s var(--ease);background:rgba(255,255,255,.97)}
 :is(#lfqv,#lfqv-ov) .mbox h3{font-family:var(--script);font-weight:400;font-size:38.4px;line-height:1.2}
 :is(#lfqv,#lfqv-ov) .mbox>p{color:var(--mut);margin:2px 0 14px}
 :is(#lfqv,#lfqv-ov) .tp{display:flex;gap:14px;text-align:left;padding:14px 0;border-top:1px solid var(--line)}
@@ -677,9 +677,9 @@ section.sec{padding:76px 0 6px}
   </div>
 </div>
 <div class="scrim" id="scrim"></div>
-<aside class="panel glass" id="panel" aria-label="Aide" aria-hidden="true">
+<aside class="panel glass" id="panel" aria-label="Aide" aria-hidden="true" data-lenis-prevent>
   <header><div><h3>Nous vous aidons</h3><p>Les réponses aux questions les plus courantes.</p></div><button class="pill light xs" id="pclose">Fermer</button></header>
-  <div class="pb">
+  <div class="pb" data-lenis-prevent>
     <input class="search" id="psearch" type="search" placeholder="Cherchez : copier, tag, WooCommerce…" aria-label="Rechercher dans l'aide">
     <div class="acc glass soft" id="pfaq"></div>
     <h3 class="mini-t">Petit lexique</h3>
@@ -688,7 +688,7 @@ section.sec{padding:76px 0 6px}
   </div>
 </aside>
 
-<div class="modal" id="tour" role="dialog" aria-modal="true" aria-labelledby="tourt">
+<div class="modal" id="tour" role="dialog" aria-modal="true" aria-labelledby="tourt" data-lenis-prevent>
   <div class="mbox glass">
     <h3 id="tourt">Bienvenue</h3>
     <p>Trois gestes à connaître et vous êtes prêt·e.</p>
@@ -1150,7 +1150,9 @@ const pfaq=$('#pfaq');
 pfaq.innerHTML=HELP.map(h=>`<details class="ac" data-t="${esc(norm(h[0]+' '+h[1]))}"><summary>${esc(h[0])}</summary><div class="in">${esc(h[1])}</div></details>`).join('');
 $('#pgloss').innerHTML=Object.keys(GLOSS).map(k=>`<span class="gl" tabindex="0" data-g="${k}">${GLOSS[k][0]}</span>`).join('');
 $('#psearch').addEventListener('input',e=>{const q=norm(e.target.value.trim());$$('details',pfaq).forEach(d=>d.style.display=!q||d.dataset.t.includes(q)?'':'none')});
-const panel=$('#panel'),scrim=$('#scrim');let lastF=null;
+const panel=$('#panel'),scrim=$('#scrim');
+/* le site hôte peut avoir un défilement doux (Lenis) : on garde la molette et le tactile dans le panneau */
+[panel,$('#tour')].forEach(el=>{if(!el)return;['wheel','touchmove'].forEach(ev=>el.addEventListener(ev,e=>e.stopPropagation(),{passive:true}))});let lastF=null;
 function openHelp(){lastF=document.activeElement;panel.classList.add('open');scrim.classList.add('on');panel.setAttribute('aria-hidden','false');setTimeout(()=>$('#pclose').focus(),400)}
 function closeHelp(){panel.classList.remove('open');scrim.classList.remove('on');panel.setAttribute('aria-hidden','true');lastF&& lastF.focus&& lastF.focus()}
 $$('[data-help]').forEach(b=>b.onclick=openHelp);$('#pclose').onclick=closeHelp;scrim.onclick=closeHelp;

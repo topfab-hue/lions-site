@@ -22,3 +22,7 @@ Conseils :
 ## Si une partie de la page ne s'affiche pas
 
 WordPress peut transformer certains caractères du code (par exemple `&&` en `&#038;&#038;`) et casser le JavaScript. La version actuelle de `embed.html` est protégée contre ce cas, et le contenu reste visible même si le script échoue. Après toute mise à jour, recollez **tout** le contenu de `embed.html` (en remplaçant l'ancien) et videz le cache du site.
+
+## Défilement doux du site (Lenis)
+
+Le site kezacreation.com utilise la bibliothèque Lenis, qui capte la molette sur toute la page. Le panneau d'aide et la fenêtre de bienvenue portent l'attribut `data-lenis-prevent` pour garder leur propre défilement. Ne pas le retirer.
