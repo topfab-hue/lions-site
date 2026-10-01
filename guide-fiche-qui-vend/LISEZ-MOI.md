@@ -26,3 +26,9 @@ WordPress peut transformer certains caractères du code (par exemple `&&` en `&#
 ## Défilement doux du site (Lenis)
 
 Le site kezacreation.com utilise la bibliothèque Lenis, qui capte la molette sur toute la page. Le panneau d'aide et la fenêtre de bienvenue portent l'attribut `data-lenis-prevent` pour garder leur propre défilement. Ne pas le retirer.
+
+## Atelier : photos, aperçu et note
+
+- Les photos sont lues dans le navigateur de la personne. Rien n'est envoyé sur un serveur. Une version réduite (720 px) est mémorisée sur l'appareil pour retrouver la fiche au retour.
+- La note sur 100 est calculée localement à partir de règles simples (longueur, mots vagues, occasion, matière, destinataire, nombre de mots, FAQ, mots-clés, photos). Elle est indicative.
+- Les règles et les barèmes sont dans `_source/guide.src.html` (fonctions `scoreTitle` et `ficheScore`). Après modification : `python3 _source/build.py`.

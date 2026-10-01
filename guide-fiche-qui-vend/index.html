@@ -123,6 +123,83 @@ h1,:is(#lfqv,#lfqv-ov) h2,:is(#lfqv,#lfqv-ov) h3,:is(#lfqv,#lfqv-ov) h4{color:va
 :is(#lfqv,#lfqv-ov) .toc-dots a.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 @media(max-width:560px){:is(#lfqv,#lfqv-ov) .toc{padding:10px 14px 12px;border-radius:20px}
 :is(#lfqv,#lfqv-ov) .toc-top b{font-size:16px}}
+:is(#lfqv,#lfqv-ov) /* ---------- notes,:is(#lfqv,#lfqv-ov) aperçus,:is(#lfqv,#lfqv-ov) atelier ---------- */
+.tres{margin-top:18px}
+:is(#lfqv,#lfqv-ov) .mini-h{font-family:var(--disp);font-weight:400;font-size:20px;margin:18px 0 8px}
+:is(#lfqv,#lfqv-ov) .sc-card{padding:20px 22px}
+:is(#lfqv,#lfqv-ov) .sc-top{display:flex;gap:20px;align-items:center;margin-bottom:14px}
+:is(#lfqv,#lfqv-ov) .sc-n{display:flex;align-items:baseline;gap:4px;flex:none}
+:is(#lfqv,#lfqv-ov) .sc-n b{font-family:var(--disp);font-weight:400;font-size:57.6px;line-height:1;min-width:1.6em;text-align:right}
+:is(#lfqv,#lfqv-ov) .sc-n small{font-size:13px;color:var(--mut)}
+:is(#lfqv,#lfqv-ov) .sc-top .eyebrow{padding:3px 10px;font-size:9.5px;margin-bottom:4px}
+:is(#lfqv,#lfqv-ov) .sc-top h5{font-family:var(--disp);font-weight:400;font-size:24px;line-height:1.1}
+:is(#lfqv,#lfqv-ov) .sc-top p{font-size:13px;color:var(--mut);line-height:1.5}
+:is(#lfqv,#lfqv-ov) .sc-list{display:grid;gap:11px;margin-top:16px}
+:is(#lfqv,#lfqv-ov) .sc-list.two{grid-template-columns:1fr 1fr;gap:10px 22px}
+:is(#lfqv,#lfqv-ov) .cr-h{display:flex;justify-content:space-between;font-size:12.5px;font-weight:500;margin-bottom:4px}
+:is(#lfqv,#lfqv-ov) .cr-h span:last-child{color:var(--mut);font-variant-numeric:tabular-nums;white-space:nowrap}
+@media(max-width:560px){:is(#lfqv,#lfqv-ov) .sc-list.two{grid-template-columns:1fr}}
+:is(#lfqv,#lfqv-ov) .cr .mini{margin-top:0}
+:is(#lfqv,#lfqv-ov) .cr small{display:block;font-size:12.5px;line-height:1.5;color:var(--mut);margin-top:4px}
+:is(#lfqv,#lfqv-ov) .cr.full .cr-h span:first-child{color:var(--mut)}
+:is(#lfqv,#lfqv-ov) .prio{margin-top:12px}
+:is(#lfqv,#lfqv-ov) .prio ol{margin:0;padding-left:20px;display:grid;gap:6px;font-size:13px;line-height:1.55;color:var(--mut)}
+:is(#lfqv,#lfqv-ov) .prio li b{color:var(--ink)}
+:is(#lfqv,#lfqv-ov) .gg{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 18px}
+:is(#lfqv,#lfqv-ov) .gg-u{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--mut);margin-bottom:4px;overflow:hidden;white-space:nowrap}
+:is(#lfqv,#lfqv-ov) .gg-u i{flex:none;width:24px;height:24px;border-radius:50%;background:var(--badge);display:grid;place-items:center;font-style:normal;font-weight:600;color:var(--ink);font-size:11px}
+:is(#lfqv,#lfqv-ov) .gg-t{font-size:19px;line-height:1.3;color:#1a3d7c;margin-bottom:4px;overflow-wrap:anywhere}
+:is(#lfqv,#lfqv-ov) .gg-d{font-size:13px;line-height:1.55;color:#4d4d4d;overflow-wrap:anywhere}
+:is(#lfqv,#lfqv-ov) .tnote{font-size:12.5px;color:var(--mut);margin-top:8px;line-height:1.55}
+:is(#lfqv,#lfqv-ov) .wrap.wide{width:min(1120px,100% - 40px)}
+:is(#lfqv,#lfqv-ov) .at-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start}
+:is(#lfqv,#lfqv-ov) .at-grid .at-tabs{display:none;grid-column:1/-1;margin:0}
+:is(#lfqv,#lfqv-ov) .at-form{display:grid;gap:14px}
+:is(#lfqv,#lfqv-ov) .at-side{position:sticky;top:120px;max-height:calc(100vh - 250px);overflow:auto;padding:2px 2px 8px;scrollbar-width:thin;display:grid;gap:14px;align-content:start}
+:is(#lfqv,#lfqv-ov) .at-grid.narrow{grid-template-columns:minmax(0,1fr)}
+:is(#lfqv,#lfqv-ov) .at-grid.narrow .at-tabs{display:flex}
+:is(#lfqv,#lfqv-ov) .at-grid.narrow .at-side{position:static;max-height:none;overflow:visible}
+:is(#lfqv,#lfqv-ov) .at-grid.narrow[data-v="write"] .at-side,:is(#lfqv,#lfqv-ov) .at-grid.narrow[data-v="view"] .at-form{display:none}
+:is(#lfqv,#lfqv-ov) .pv-tabs{margin:0}
+:is(#lfqv,#lfqv-ov) .drop{display:block;text-align:center;padding:26px 18px;border:1.5px dashed rgba(43,42,43,.3);border-radius:18px;cursor:pointer;font-size:14px;color:var(--mut);transition:.3s var(--ease);background:rgba(255,255,255,.55)}
+:is(#lfqv,#lfqv-ov) .drop:hover,:is(#lfqv,#lfqv-ov) .drop.over,:is(#lfqv,#lfqv-ov) .drop:focus-visible{border-color:var(--ink);color:var(--ink);background:#fff}
+:is(#lfqv,#lfqv-ov) .thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin-top:12px}
+:is(#lfqv,#lfqv-ov) .thumb{position:relative;margin:0;border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);aspect-ratio:1}
+:is(#lfqv,#lfqv-ov) .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+:is(#lfqv,#lfqv-ov) .thumb .main{position:absolute;left:6px;top:6px;background:var(--ink);color:#fff;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:40px;font-weight:600}
+:is(#lfqv,#lfqv-ov) .thumb figcaption{position:absolute;left:6px;bottom:6px;background:rgba(255,255,255,.9);font-size:10.5px;padding:2px 8px;border-radius:40px;color:var(--mut)}
+:is(#lfqv,#lfqv-ov) .thumb .tb{position:absolute;right:6px;top:6px;display:grid;gap:4px;opacity:0;transition:.25s}
+:is(#lfqv,#lfqv-ov) .thumb:hover .tb,:is(#lfqv,#lfqv-ov) .thumb:focus-within .tb{opacity:1}
+:is(#lfqv,#lfqv-ov) .thumb .tb button{background:rgba(255,255,255,.95);border-radius:40px;font-size:10.5px;font-weight:600;padding:3px 10px;border:1px solid var(--line)}
+:is(#lfqv,#lfqv-ov) .thumb .tb button:hover{background:var(--ink);color:#fff}
+@media(hover:none){:is(#lfqv,#lfqv-ov) .thumb .tb{opacity:1}}
+:is(#lfqv,#lfqv-ov) .pv{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px 20px 8px;font-size:13px;line-height:1.6}
+:is(#lfqv,#lfqv-ov) .pv-bar{display:flex;justify-content:space-between;gap:10px;font-size:11px;color:var(--mut);padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:16px}
+:is(#lfqv,#lfqv-ov) .pv-bar b{color:var(--ink);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+:is(#lfqv,#lfqv-ov) .pv-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+:is(#lfqv,#lfqv-ov) .pv-m{max-width:340px;margin:0 auto;border-radius:30px;border:6px solid #2b2a2b;padding:14px 14px 4px}
+:is(#lfqv,#lfqv-ov) .pv-m .pv-main{grid-template-columns:minmax(0,1fr)}
+:is(#lfqv,#lfqv-ov) .pv-big{aspect-ratio:1;border-radius:14px;overflow:hidden;background:var(--tint);display:grid;place-items:center;text-align:center;padding:10px}
+:is(#lfqv,#lfqv-ov) .pv-big img{width:100%;height:100%;object-fit:cover;display:block}
+:is(#lfqv,#lfqv-ov) .pv-th{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+:is(#lfqv,#lfqv-ov) .pv-th button{width:44px;height:44px;border-radius:10px;overflow:hidden;border:2px solid transparent;padding:0;opacity:.7}
+:is(#lfqv,#lfqv-ov) .pv-th button.on{border-color:var(--ink);opacity:1}
+:is(#lfqv,#lfqv-ov) .pv-th img{width:100%;height:100%;object-fit:cover;display:block}
+:is(#lfqv,#lfqv-ov) .pv-t{font-family:var(--disp);font-weight:400;font-size:21.6px;line-height:1.2;margin:0 0 6px;overflow-wrap:anywhere}
+:is(#lfqv,#lfqv-ov) .pv-p{font-weight:600;font-size:15px;margin:0 0 8px}
+:is(#lfqv,#lfqv-ov) .pv-l{font-family:var(--disp);font-style:italic;font-size:16.8px;line-height:1.4;margin:0 0 8px}
+:is(#lfqv,#lfqv-ov) .pv-s{color:var(--txt);margin-bottom:12px;overflow-wrap:anywhere}
+:is(#lfqv,#lfqv-ov) .pv-btn{pointer-events:none}
+:is(#lfqv,#lfqv-ov) .pv-sec{border-top:1px solid var(--line);margin-top:16px;padding:14px 0 8px}
+:is(#lfqv,#lfqv-ov) .pv-sec h5{font-family:var(--disp);font-weight:400;font-size:19.2px;margin:0 0 6px}
+:is(#lfqv,#lfqv-ov) .pv-sec p{margin:0 0 8px;overflow-wrap:anywhere}
+:is(#lfqv,#lfqv-ov) .pv-sec details{border-bottom:1px solid var(--line);padding:8px 0}
+:is(#lfqv,#lfqv-ov) .pv-sec summary{cursor:pointer;font-weight:500}
+:is(#lfqv,#lfqv-ov) .pv-sec details p{margin:6px 0 0;color:var(--mut)}
+:is(#lfqv,#lfqv-ov) .pv .ph,:is(#lfqv,#lfqv-ov) .gg .ph{color:#a79f93;font-style:italic}
+:is(#lfqv,#lfqv-ov) .pv-g{padding:2px 0}
+@media(max-width:560px){:is(#lfqv,#lfqv-ov) .sc-n b{font-size:48px}
+:is(#lfqv,#lfqv-ov) .pv-main{grid-template-columns:minmax(0,1fr)}}
 :is(#lfqv,#lfqv-ov) /* ---------- sections ---------- */
 section.sec{padding:76px 0 6px}
 :is(#lfqv,#lfqv-ov) .mh{margin-bottom:32px}
@@ -204,7 +281,7 @@ section.sec{padding:76px 0 6px}
 :is(#lfqv,#lfqv-ov) .build h4{font-size:25.6px}
 :is(#lfqv,#lfqv-ov) .build>p{color:var(--mut);margin:4px 0 16px;font-size:14px}
 :is(#lfqv,#lfqv-ov) .bpat{padding:11px 18px;border-radius:40px;margin-bottom:14px;font-size:13px;font-weight:500;border:1px dashed rgba(43,42,43,.25)}
-:is(#lfqv,#lfqv-ov) .fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+:is(#lfqv,#lfqv-ov) .fields{align-items:end;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
 :is(#lfqv,#lfqv-ov) .fields label{display:grid;gap:4px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:600}
 :is(#lfqv,#lfqv-ov) .fields input,:is(#lfqv,#lfqv-ov) .af textarea,:is(#lfqv,#lfqv-ov) .story textarea,:is(#lfqv,#lfqv-ov) .tester textarea,:is(#lfqv,#lfqv-ov) .search{background:#fff;border:1px solid rgba(43,42,43,.14);border-radius:16px;padding:11px 16px;transition:.3s;font-size:14.5px;letter-spacing:0;text-transform:none;width:100%;font-weight:400}
 :is(#lfqv,#lfqv-ov) .fields input:focus,:is(#lfqv,#lfqv-ov) .af textarea:focus,:is(#lfqv,#lfqv-ov) .story textarea:focus,:is(#lfqv,#lfqv-ov) .tester textarea:focus,:is(#lfqv,#lfqv-ov) .search:focus{outline:0;border-color:var(--ink)}
@@ -411,6 +488,7 @@ section.sec{padding:76px 0 6px}
       <a class="cc glass tint rv d2" href="#m3"><small>Module 3</small><b>La méthode storytelling</b><span>Vendre avec les émotions et l'histoire</span></a>
       <a class="cc glass tint rv d3" href="#m4"><small>Module 4</small><b>La checklist de conversion</b><span>Les points à vérifier avant de publier</span></a>
       <a class="cc glass tint rv d4" href="#bonus"><small>Bonus</small><b>3 fiches modèles</b><span>Bijou, bougie, cosmétique</span></a>
+      <a class="cc glass tint rv d4" href="#atelier"><small>Atelier</small><b>Construisez votre fiche</b><span>Photos, aperçu en direct et note sur 100</span></a>
     </div>
   </div>
 </div>
@@ -553,7 +631,9 @@ section.sec{padding:76px 0 6px}
       <div class="prev" id="bprev"><span class="ph">Votre titre apparaîtra ici, en direct</span></div>
       <div class="gauge"><div class="track"><div class="fill" id="gfill"></div></div><div class="ginfo"><b id="gst">0 / 70 caractères</b><span id="gtip">Visez entre 50 et 70</span></div></div>
       <div class="ex" id="bex"></div>
-      <div class="row-c"><button class="pill dark" id="bcopy">Copier mon titre</button><button class="pill light" id="breset">Recommencer</button></div>
+      <div class="tres" id="tscore"></div>
+      <div class="tres" id="tprev"></div>
+      <div class="row-c"><button class="pill dark" id="bcopy">Copier mon titre</button><button class="pill light" id="bsend">Utiliser dans mon atelier</button><button class="pill light" id="breset">Recommencer</button></div>
     </div>
 
     <div class="tester rv" id="testeur">
@@ -640,14 +720,39 @@ section.sec{padding:76px 0 6px}
 
 <!-- ============ ATELIER ============ -->
 <section class="sec" id="atelier" data-spy>
-  <div class="wrap">
+  <div class="wrap wide">
     <div class="mh rv">
       <p class="eyebrow">Atelier</p>
-      <h2>Mon atelier : <em>écrivez votre fiche</em></h2>
-      <p>Remplissez les 6 blocs avec votre propre produit. Chaque case vous dit en direct si vous êtes dans les clous (longueur, nombre de mots…). Quand tout est bon, copiez votre fiche complète et collez-la dans WooCommerce, Shopify, Etsy ou la plateforme de votre choix.</p>
+      <h2>Mon atelier : <em>construisez votre fiche</em></h2>
+      <p>Écrivez votre fiche bloc par bloc, ajoutez vos photos et regardez-la prendre vie à côté, en direct. Une note sur 100 et des conseils précis vous guident jusqu'à une fiche prête à publier.</p>
     </div>
-    <div class="atelier" id="atel"></div>
-    <div class="row-c"><button class="pill dark" id="acopy">Copier ma fiche complète</button><button class="pill light" id="aclear">Vider l'atelier</button></div>
+    <div class="pf rv" data-pf-sel></div>
+    <div class="at-grid" id="atgrid" data-v="write">
+      <div class="pills at-tabs" id="attabs"><button class="on" data-v="write">Écrire</button><button data-v="view">Aperçu et note</button></div>
+      <div class="at-form">
+        <div class="af glass soft">
+          <div class="hd"><span class="bn">0</span><b>Votre produit</b></div>
+          <div class="hint">Ces deux informations servent uniquement à rendre l'aperçu plus réaliste.</div>
+          <div class="fields">
+            <label>Nom ou adresse de votre boutique<input id="atshop" placeholder="Exemple : maboutique.fr" autocomplete="off"></label>
+            <label>Prix<input id="atprice" placeholder="Exemple : 45" autocomplete="off"></label>
+          </div>
+        </div>
+        <div class="atelier" id="atel"></div>
+        <div class="af glass soft" id="phbox">
+          <div class="hd"><span class="bn">P</span><b>Photos</b><span class="stt" id="phstt">aucune photo</span></div>
+          <div class="hint">Visez 4 à 6 photos : le produit entier sur fond clair, des détails, une mise en situation, l'échelle. Vos photos restent sur votre appareil : rien n'est envoyé.</div>
+          <label class="drop" id="drop" tabindex="0"><input type="file" id="phin" accept="image/*" multiple hidden>Glissez vos photos ici ou <u>parcourez vos fichiers</u></label>
+          <div class="thumbs" id="thumbs"></div>
+        </div>
+        <div class="row-c"><button class="pill dark" id="acopy">Copier ma fiche complète</button><button class="pill light" id="aclear">Vider l'atelier</button></div>
+      </div>
+      <aside class="at-side" data-lenis-prevent>
+        <div id="fscore"></div>
+        <div class="pills pv-tabs" id="pvtabs"><button class="on" data-pv="page">Page produit</button><button data-pv="google">Google</button><button data-pv="mobile">Mobile</button></div>
+        <div id="fprev"></div>
+      </aside>
+    </div>
   </div>
 </section>
 
@@ -947,6 +1052,7 @@ function render(){
   f.style.width=Math.min(100,len/p.max*100)+'%';f.classList.toggle('over',len>p.max);
   $('#gst').textContent=`${len} / ${p.max} caractères`;
   $('#gtip').textContent=len>p.max?(pf==='etsy'?'Trop long : Etsy coupe après 140 caractères':`Un peu long : Google risque de couper votre titre (visez ${p.min} à ${p.max})`):len>=p.min?'Parfait, la longueur est idéale':len>=p.min*.65?'Presque : ajoutez l\'occasion ou la cible':`Continuez : visez ${p.min} à ${p.max} caractères`;
+  titleExtras();
 }
 $('#bcopy').onclick=function(){if(!pat)return toast('Choisissez d\'abord une structure.');const r=result();if(!r)return toast('Remplissez au moins une case.');copy(r,this)};
 $('#breset').onclick=()=>{vals={};$$('input',bf).forEach(i=>i.value='');render()};
@@ -955,23 +1061,77 @@ $('#breset').onclick=()=>{vals={};$$('input',bf).forEach(i=>i.value='');render()
 const BAN=['joli','jolie','beau','belle','magnifique','superbe','unique','exceptionnel','exceptionnelle','qualite superieure','meilleur','meilleure','parfait','parfaite','incroyable'];
 const OCC=['cadeau','anniversaire','noel','mariage','quotidien','naissance','fete','saint-valentin','saint valentin','temoin','invite','rentree','detente','bapteme','enterrement','vie de jeune fille','relaxation','rituel','hiver','ete'];
 const MAT=['argent','or ','dore','laiton','cuir','laine','lin','coton','soie','cire','soja','ceramique','gres','terre','verre','bois','acier','perle','pierre','bio','argile','satin','velours','papier','resine','crochet','tricot','aloe','argan','karite','vitamine'];
-function test(){
-  const raw=$('#ttxt').value,t=norm(raw),len=raw.trim().length,box=$('#tchecks'),bn=$('#tban'),p=P();
-  if(!raw.trim()){box.innerHTML='';bn.innerHTML='';return}
+/* ---------- notation et aperçus ---------- */
+const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const MATW=MAT.map(w=>w.trim());
+const TARGETW=['femme','femmes','homme','hommes','enfant','enfants','bebe','bebes','maman','papa','mere','pere','copine','copain','ami','amie','soeur','frere','mariee','temoin','demoiselle','couple','ado','fille','garcon','mamie','papi','collegue','invites','lui','elle','peau','cheveux','mariage'];
+const VAGUEW=['joli','jolie','beau','belle','magnifique','superbe','unique','exceptionnel','parfait','incroyable','super','nouveau','nouvelle'];
+const hasW=(t,list)=>list.some(w=>new RegExp('(^|[^a-z])'+w+'s?([^a-z]|$)').test(t));
+const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+function verdict(n){return n>=85?['Excellent','Prêt à être publié.']:n>=70?['Bon','Quelques réglages et ce sera excellent.']:n>=50?['À améliorer','Suivez les conseils ci-dessous.']:['À retravailler','Reprenez les bases : produit, matière, occasion, destinataire.']}
+function scoreTitle(raw){
+  const r=raw.trim();if(!r)return null;
+  const p=P(),t=norm(r),len=r.length,ws=t.split(/[^a-z0-9]+/).filter(Boolean),items=[];
+  let pts,tip='';
+  if(len>=p.min&& len<=p.max)pts=25;
+  else if(p.min>len){pts=Math.round(25*(len/p.min)*.85);tip=`Trop court (${len} caractères) : visez ${p.min} à ${p.max}. Il en manque ${p.min-len}.`}
+  else{pts=Math.round(25-(len-p.max)*1.3);tip=`Trop long de ${len-p.max} caractères : il sera coupé dans les résultats.`}
+  items.push({n:'Longueur',pts:clamp(pts,0,25),max:25,tip});
+  const vague=VAGUEW.includes(ws[0]||'');
+  items.push({n:'Début du titre',pts:vague?0:10,max:10,tip:vague?'Commencez par le type de produit (bague, bougie…), pas par un adjectif.':''});
   const found=BAN.filter(w=>new RegExp('(^|[^a-z])'+w+'([^a-z]|$)').test(t));
-  const first=t.trim().split(/\s+/)[0];
-  const hasOcc=OCC.some(w=>t.includes(w)),hasMat=MAT.some(w=>(' '+t+' ').includes(w.trim()===w?' '+w:w));
-  const vague=BAN.slice(0,4).includes(first);
-  const rows=[
-   [len>=p.min&& len<=p.max,`Longueur : <b>${len}</b> caractères (conseillé : ${p.min} à ${p.max})`,p.min>len?'Trop court : les titres courts sont moins bien référencés.':'Trop long : il risque d\'être coupé dans les résultats.'],
-   [hasOcc,'Une occasion ou un usage est présent','Ajoutez par exemple « Cadeau anniversaire » ou « Usage quotidien ».'],
-   [hasMat,'Un matériau est mentionné','Précisez la matière principale (argent, céramique, cire de soja…).'],
-   [!vague,'Le titre ne commence pas par un adjectif vague','Commencez plutôt par le type de produit (bague, bougie…).'],
-   [found.length===0,found.length?`${found.length} mot(s) à bannir détecté(s)`:'Aucun mot à bannir','Remplacez-les par des mots concrets.']];
-  box.innerHTML=rows.map(r=>`<div class="chk glass soft ${r[0]?'ok':'ko'}"><span class="s">${r[0]?'Ok':'À revoir'}</span><div>${r[1]}${(!r[0]&& r[2])?`<small>${r[2]}</small>`:''}</div></div>`).join('');
+  items.push({n:'Mots vagues',pts:found.length?clamp(15-found.length*8,0,15):15,max:15,tip:found.length?`Retirez : ${found.join(', ')}. Remplacez-les par des mots concrets.`:''});
+  const hasOcc=hasW(t,OCC);
+  items.push({n:'Occasion ou usage',pts:hasOcc?15:0,max:15,tip:hasOcc?'':'Ajoutez une occasion ou un usage : cadeau anniversaire, quotidien, mariage…'});
+  const hasMat=hasW(t,MATW);
+  items.push({n:'Matière',pts:hasMat?15:0,max:15,tip:hasMat?'':'Précisez la matière principale (argent, céramique, cire de soja…).'});
+  const hasT=hasW(t,TARGETW)||(' '+t+' ').includes(' pour ');
+  items.push({n:'Destinataire',pts:hasT?10:0,max:10,tip:hasT?'':'Dites à qui il s\'adresse : femme, maman, bébé, couple…'});
+  let lp=10,lt='';
+  const cnts={};ws.filter(w=>w.length>2).forEach(w=>{cnts[w]=(cnts[w]||0)+1});
+  const rep=Object.keys(cnts).filter(w=>cnts[w]>2);
+  if(r.length>6&& r===r.toUpperCase()){lp-=5;lt='Évitez les majuscules partout.'}
+  if(rep.length){lp-=5;lt=(lt?lt+' ':'')+`Le mot « ${rep[0]} » est répété trop souvent.`}
+  if(4>ws.length){lp-=5;lt=(lt?lt+' ':'')+'Ajoutez quelques mots pour décrire précisément le produit.'}
+  items.push({n:'Lisibilité',pts:clamp(lp,0,10),max:10,tip:lt});
+  return{score:items.reduce((a,i)=>a+i.pts,0),items};
+}
+function scoreCard(res,label,compact){
+  if(!res)return '';
+  const v=verdict(res.score);
+  return `<div class="sc-card glass soft"><div class="sc-top"><div class="sc-n"><b data-count="${res.score}">${res.score}</b><small>/ 100</small></div><div><span class="eyebrow">${label||'Note'}</span><h5>${v[0]}</h5><p>${v[1]}</p></div></div><div class="track"><div class="fill" style="width:${res.score}%"></div></div><div class="sc-list${compact?' two':''}">${res.items.map(i=>`<div class="cr${i.pts>=i.max?' full':''}"><div class="cr-h"><span>${i.n}</span><span>${i.pts} / ${i.max}</span></div><div class="mini"><i style="width:${i.pts/i.max*100}%"></i></div>${(i.tip&& !compact)?`<small>${esc(i.tip)}</small>`:''}</div>`).join('')}</div></div>`;
+}
+function paint(el,html){
+  const prev=+(el.dataset.prev||0);el.innerHTML=html;
+  const b=el.querySelector('[data-count]');if(!b)return;
+  const to=+b.dataset.count;el.dataset.prev=to;
+  if(reduceMotion||prev===to)return;
+  const t0=performance.now();
+  const step=t=>{const k=Math.min(1,(t-t0)/600);b.textContent=Math.round(prev+(to-prev)*(1-Math.pow(1-k,3)));if(1>k)requestAnimationFrame(step)};
+  requestAnimationFrame(step);
+}
+const slug=t=>norm(t).replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,42);
+const cut=(t,n)=>t.length>n?t.slice(0,n-1).trimEnd()+'…':t;
+function googleSnippet(title,desc){
+  const shop=(typeof atmeta!=='undefined'&& atmeta.shop.trim())||'votreboutique.fr';
+  const t=title.trim(),short=cut(t,60);
+  return `<div class="gg"><div class="gg-u"><i>${esc(shop.charAt(0).toUpperCase())}</i><span>${esc(shop)} › produit › ${esc(slug(t)||'votre-produit')}</span></div><div class="gg-t">${esc(short)}</div><div class="gg-d">${desc?esc(cut(desc.trim().replace(/\s+/g,' '),155)):'<span class="ph">La description courte de votre fiche s\'affichera ici.</span>'}</div></div><p class="tnote">${t.length>60?`Google coupe en général les titres vers 60 caractères : le vôtre sera affiché « ${esc(short)} ». Mettez les mots les plus importants au début.`:'Votre titre s\'affichera en entier dans Google.'}</p>`;
+}
+function test(){
+  const raw=$('#ttxt').value,box=$('#tchecks'),bn=$('#tban');
+  if(!raw.trim()){box.innerHTML='';bn.innerHTML='';return}
+  paint(box,scoreCard(scoreTitle(raw),'Note du titre')+`<h5 class="mini-h">Ce que ça donne dans Google</h5>`+googleSnippet(raw,''));
+  const t=norm(raw),found=BAN.filter(w=>new RegExp('(^|[^a-z])'+w+'([^a-z]|$)').test(t));
   bn.innerHTML=found.map(w=>`<span>${esc(w)}</span>`).join('');
 }
 $('#ttxt').addEventListener('input',test);
+function titleExtras(){
+  const r=pat?result():'',sc=$('#tscore'),pv=$('#tprev');
+  if(!r){sc.innerHTML='';pv.innerHTML='';return}
+  paint(sc,scoreCard(scoreTitle(r),'Note de votre titre'));
+  pv.innerHTML='<h5 class="mini-h">Ce que ça donne dans Google</h5>'+googleSnippet(r,'');
+}
+$('#bsend').onclick=()=>{const r=pat?result():'';if(!r)return toast('Construisez d\'abord un titre.');ad[0]=r;store.set('atelier',ad);atSyncFields();toast('Titre envoyé dans votre atelier.');$('#atelier').scrollIntoView({behavior:'smooth'})};
 
 /* leviers */
 const LEV=[
@@ -1091,12 +1251,15 @@ const makeAT=()=>{const p=P();return [
  ['Titre SEO',`Type de produit, matériau, usage, cible. ${p.min} à ${p.max} caractères.`,'chars',p.min,p.max],
  ['Accroche','Une scène, une émotion. 1 à 2 phrases (bloc 2).','sent',1,2],
  ['Description courte','Pour qui, quand, pourquoi. 50 à 80 mots.','words',50,80],
- ['Description longue','Histoire, fabrication, cible, détails pratiques. 150 à 250 mots.','words',150,250],
+ ['Description longue','Histoire, fabrication, cible, détails pratiques. 150 à 250 mots. Séparez les paragraphes par une ligne vide.','words',150,250],
  ['FAQ produit','Écrivez vos questions (avec un « ? ») puis les réponses. Minimum 4 questions.','q',4,99],
  ['Mots-clés et tags',pf==='etsy'?'13 tags, un par ligne ou séparés par des virgules.':'5 à 13 mots-clés ou étiquettes, un par ligne ou séparés par des virgules.','tags',p.tmin,p.tmax]]};
 let AT=makeAT();
 let ad=store.get('atelier',AT.map(()=>''));
-$('#atel').innerHTML=AT.map((a,i)=>`<div class="af glass soft rv" data-a="${i}"><div class="hd"><span class="bn">${i+1}</span><b>${a[0]}</b><span class="stt">à remplir</span></div><div class="hint">${a[1]}</div><textarea rows="${i===3?7:i===0?2:i===1||i===5?3:4}" aria-label="${a[0]}" placeholder="Écrivez ici"></textarea><div class="mini"><i></i></div></div>`).join('');
+let atmeta=store.get('atmeta',{shop:'',price:''});
+let photos=store.get('photos',[]);
+let pvMode='page',pvSel=0;
+$('#atel').innerHTML=AT.map((a,i)=>`<div class="af glass soft" data-a="${i}"><div class="hd"><span class="bn">${i+1}</span><b>${a[0]}</b><span class="stt">à remplir</span></div><div class="hint">${a[1]}</div><textarea rows="${i===3?7:i===0?2:i===1||i===5?3:4}" aria-label="${a[0]}" placeholder="Écrivez ici"></textarea><div class="mini"><i></i></div></div>`).join('');
 const cnt=(t,k)=>k==='chars'?t.trim().length:k==='words'?words(t):k==='sent'?(t.trim().match(/[^.!?…]+[.!?…]+|[^.!?…]+$/g)||[]).filter(s=>s.trim()).length:k==='q'?(t.match(/\?/g)||[]).length:t.split(/[\n,]+/).filter(s=>s.trim()).length;
 const unit={chars:'caractères',words:'mots',sent:'phrase(s)',q:'question(s)',tags:'mot(s)-clé(s)'};
 const okAt=i=>{const a=AT[i],v=ad[i]||'',n=cnt(v,a[2]);return !!v.trim()&& n>=a[3]&& n<=a[4]};
@@ -1107,12 +1270,144 @@ function aUpdate(i){
   s.textContent=txt;s.classList.toggle('ok',okAt(i));
   $('.mini i',el).style.width=(v.trim()?Math.min(100,n/a[3]*100):0)+'%';
 }
-let atDone=false;
-const checkAt=()=>{const all=AT.every((_,i)=>okAt(i));if(all&& !atDone)toast('Votre fiche est complète, vous pouvez la copier.');atDone=all};
-$$('#atel textarea').forEach((t,i)=>{t.value=ad[i]||'';t.addEventListener('input',()=>{ad[i]=t.value;store.set('atelier',ad);aUpdate(i);checkAt()})});
+function atSyncFields(){
+  $$('#atel textarea').forEach((t,i)=>{t.value=ad[i]||'';aUpdate(i)});
+  $('#atshop').value=atmeta.shop;$('#atprice').value=atmeta.price;
+  schedulePreview();
+}
+let atDone=false,pvTimer=0;
+const checkAt=()=>{const all=AT.every((_,i)=>okAt(i));if(all&& !atDone)toast('Tous les blocs sont dans les clous : regardez la note à côté.');atDone=all};
+$$('#atel textarea').forEach((t,i)=>{t.addEventListener('input',()=>{ad[i]=t.value;store.set('atelier',ad);aUpdate(i);checkAt();schedulePreview()})});
+$('#atshop').addEventListener('input',e=>{atmeta.shop=e.target.value;store.set('atmeta',atmeta);schedulePreview()});
+$('#atprice').addEventListener('input',e=>{atmeta.price=e.target.value;store.set('atmeta',atmeta);schedulePreview()});
+
+/* photos */
+function readPhoto(f){return new Promise((res,rej)=>{
+  const url=URL.createObjectURL(f),im=new Image();
+  im.onload=()=>{
+    const W=im.naturalWidth,H=im.naturalHeight,k=Math.min(1,720/Math.max(W,H));
+    const c=document.createElement('canvas');c.width=Math.round(W*k);c.height=Math.round(H*k);
+    c.getContext('2d').drawImage(im,0,0,c.width,c.height);
+    const sm=document.createElement('canvas');sm.width=sm.height=24;
+    const sx=sm.getContext('2d');sx.drawImage(im,0,0,24,24);
+    const d=sx.getImageData(0,0,24,24).data;let tot=0,ct=0,cn=0;
+    for(let y=0;24>y;y++)for(let x=0;24>x;x++){const i=(y*24+x)*4,l=(.2126*d[i]+.7152*d[i+1]+.0722*d[i+2])/255;tot+=l;if((4>y||y>19)&& (4>x||x>19)){ct+=l;cn++}}
+    URL.revokeObjectURL(url);
+    res({d:c.toDataURL('image/jpeg',.74),w:W,h:H,l:tot/576,c:ct/cn});
+  };
+  im.onerror=()=>{URL.revokeObjectURL(url);rej()};
+  im.src=url;
+})}
+async function addFiles(files){
+  const list=[...files].filter(f=>/^image\//.test(f.type)),room=10-photos.length;
+  if(!list.length)return toast('Choisissez des images (JPG, PNG ou WebP).');
+  if(list.length>room)toast('10 photos au maximum.');
+  let bad=0;
+  for(const f of list.slice(0,room)){try{photos.push(await readPhoto(f))}catch(e){bad++}}
+  if(bad)toast(bad+' image(s) non lue(s) : utilisez JPG, PNG ou WebP.');
+  savePhotos();renderThumbs();schedulePreview();
+}
+function savePhotos(){store.set('photos',photos)}
+function renderThumbs(){
+  $('#phstt').textContent=photos.length?`${photos.length} photo${photos.length>1?'s':''}`:'aucune photo';
+  $('#phstt').classList.toggle('ok',photos.length>=4);
+  $('#thumbs').innerHTML=photos.map((ph,i)=>`<figure class="thumb"><img src="${ph.d}" alt="Photo ${i+1}">${i===0?'<span class="main">Principale</span>':''}<figcaption>${ph.w} × ${ph.h}</figcaption><div class="tb">${i>0?`<button type="button" data-mk="${i}">Principale</button>`:''}<button type="button" data-rm="${i}">Retirer</button></div></figure>`).join('');
+}
+$('#thumbs').addEventListener('click',e=>{
+  const mk=e.target.closest('[data-mk]'),rm=e.target.closest('[data-rm]');
+  if(mk){const i=+mk.dataset.mk;photos.unshift(photos.splice(i,1)[0]);pvSel=0}
+  else if(rm){photos.splice(+rm.dataset.rm,1);pvSel=0}
+  else return;
+  savePhotos();renderThumbs();schedulePreview();
+});
+$('#phin').addEventListener('change',e=>{addFiles(e.target.files);e.target.value=''});
+const drop=$('#drop');
+['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('over')}));
+['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('over')}));
+drop.addEventListener('drop',e=>{if(e.dataTransfer&& e.dataTransfer.files)addFiles(e.dataTransfer.files)});
+drop.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();$('#phin').click()}});
+
+/* note globale de la fiche */
+function parseFaq(t){const out=[];t.split(/\n+/).forEach(raw=>{const l=raw.trim();if(!l)return;const i=l.indexOf('?');if(i>=0)out.push({q:l.slice(0,i+1).trim(),a:l.slice(i+1).trim()});else if(out.length){const c=out[out.length-1];c.a+=(c.a?' ':'')+l}});return out}
+const tagList=t=>t.split(/[\n,]+/).map(x=>x.trim()).filter(Boolean);
+function ficheScore(){
+  const p=P(),items=[];
+  const ts=scoreTitle(ad[0]||'');
+  items.push({n:'Titre',pts:ts?Math.round(ts.score*.25):0,max:25,tip:ts?(ts.items.filter(i=>i.tip).sort((x,y)=>(y.max-y.pts)-(x.max-x.pts))[0]||{tip:''}).tip:'Écrivez votre titre (étape 2 ou bloc 1).'});
+  // accroche
+  {const v=(ad[1]||'').trim(),t=norm(v);let pt=0,tip='';
+   if(!v)tip='Écrivez une accroche : une scène ou une émotion en 1 à 2 phrases.';
+   else{const n=cnt(v,'sent');pt+=n>=1&& 2>=n?4:2;if(n>2)tip='Gardez 1 à 2 phrases.';
+     pt+=(v.length>=50&& 240>=v.length)?3:1;if(50>v.length)tip='Un peu courte : donnez envie de lire la suite.';else if(v.length>240)tip='Un peu longue : gardez l\'essentiel.';
+     const cue=/(imagin|vous|votre|soir|matin|moment|odeur|douceur|lumiere|chaleur|sentir|ressent|dimanche|quand)/.test(t);pt+=cue?3:0;if(!cue&& !tip)tip='Faites ressentir quelque chose : une scène, une sensation, un moment.'}
+   items.push({n:'Accroche',pts:pt,max:10,tip})}
+  // courte
+  {const v=(ad[2]||'').trim(),t=norm(v),w=words(v);let pt=0,tip='';
+   if(!v)tip='Écrivez 50 à 80 mots : pour qui, dans quel moment, pourquoi.';
+   else{pt+=(w>=50&& 80>=w)?9:(w>=35&& 100>=w)?6:3;if(50>w)tip=`${w} mots : visez 50 à 80.`;else if(w>80)tip=`${w} mots : visez 50 à 80.`;
+     const tg=(' '+t+' ').includes(' pour ')||hasW(t,TARGETW);pt+=tg?3:0;if(!tg&& !tip)tip='Dites pour qui est ce produit (« pour les femmes qui… »).';
+     const us=hasW(t,OCC)||/(quand|chaque|matin|soir|moment|quotidien)/.test(t);pt+=us?3:0;if(!us&& !tip)tip='Précisez dans quel moment on l\'utilise.'}
+   items.push({n:'Description courte',pts:pt,max:15,tip})}
+  // longue
+  {const v=(ad[3]||'').trim(),t=norm(v),w=words(v);let pt=0,tip='';
+   if(!v)tip='Racontez : histoire, fabrication, cible, détails pratiques (150 à 250 mots).';
+   else{pt+=(w>=150&& 250>=w)?10:(w>=110&& 300>=w)?6:3;if(150>w)tip=`${w} mots : visez 150 à 250.`;else if(w>250)tip=`${w} mots : visez 150 à 250.`;
+     const par=v.split(/\n\s*\n/).filter(x=>x.trim()).length;pt+=par>=3?4:par===2?2:0;if(3>par&& !tip)tip='Découpez en 3 ou 4 paragraphes (séparés par une ligne vide).';
+     const st=/(j'ai|mon atelier|je |ma |nee|est nee|inspir|histoire|depuis)/.test(t);pt+=st?3:0;if(!st&& !tip)tip='Racontez l\'origine du produit : pourquoi vous l\'avez créé.';
+     const pr=/(cm|mm|dimension|entretien|livraison|matiere|poids|lavable|contenu|ml|garantie)/.test(t);pt+=pr?3:0;if(!pr&& !tip)tip='Ajoutez les détails pratiques : dimensions, matière, entretien, livraison.'}
+   items.push({n:'Description longue',pts:pt,max:20,tip})}
+  // FAQ
+  {const f=parseFaq(ad[4]||''),q=f.length,ans=f.filter(x=>x.a).length;let pt=Math.min(10,Math.round(q*2.5)),tip='';
+   if(!q)tip='Ajoutez au moins 4 questions avec leurs réponses (livraison, qualité, retours…).';
+   else{if(q>4||q===4)tip='';else tip=`${q} question${q>1?'s':''} : visez au moins 4.`;if(q>ans){pt=Math.max(0,pt-3);tip='Chaque question doit avoir sa réponse.'}}
+   items.push({n:'FAQ',pts:pt,max:10,tip})}
+  // mots-clés
+  {const tg=tagList(ad[5]||''),n=tg.length;let pt=0,tip='';
+   if(!n)tip=pf==='etsy'?'Ajoutez vos 13 tags.':'Ajoutez 5 à 13 mots-clés précis.';
+   else{pt+=(n>=p.tmin&& p.tmax>=n)?6:Math.round(6*Math.min(n,p.tmin)/p.tmin);if(p.tmin>n)tip=pf==='etsy'?`${n} tag${n>1?'s':''} sur 13 : utilisez-les tous.`:`${n} mot${n>1?'s':''}-clé${n>1?'s':''} : visez au moins ${p.tmin}.`;else if(n>p.tmax)tip=`Gardez ${p.tmax} mots-clés au maximum.`;
+     const multi=tg.filter(x=>x.split(/\s+/).length>=2).length/n;pt+=Math.round(4*Math.min(1,multi/.7));if(.7>multi&& !tip)tip='Utilisez des phrases de 2 à 4 mots plutôt que des mots seuls.'}
+   items.push({n:'Mots-clés',pts:pt,max:10,tip})}
+  // photos
+  {const n=photos.length;let pt=0,tip='';
+   if(!n)tip='Ajoutez au moins une photo nette, sur fond clair.';
+   else{pt+=Math.round(5*Math.min(n,5)/5);if(5>n)tip=`${n} photo${n>1?'s':''} : visez 5 ou plus (entier, détails, en situation, échelle).`;
+     const m=Math.min(photos[0].w,photos[0].h);pt+=m>=1000?3:m>=600?1.5:0;if(1000>m)tip=`La photo principale est petite (${photos[0].w} × ${photos[0].h}) : visez au moins 1000 px de côté.`;
+     const good=photos[0].c>=.62&& photos[0].l>=.35&& .92>=photos[0].l;pt+=good?2:1;if(!good&& !tip)tip='Pour la photo principale, préférez un fond clair et une lumière naturelle.'}
+   items.push({n:'Photos',pts:Math.round(pt),max:10,tip})}
+  return{score:items.reduce((a,i)=>a+i.pts,0),items};
+}
+
+/* aperçu de la fiche */
+const price=t=>/^\d+([.,]\d+)?$/.test(t.trim())?t.trim().replace('.',',')+' €':t.trim();
+const paras=t=>t.trim().split(/\n\s*\n/).filter(x=>x.trim()).map(x=>`<p>${esc(x.trim()).replace(/\n/g,'<br>')}</p>`).join('');
+const ph=t=>`<span class="ph">${t}</span>`;
+function pageHTML(mobile){
+  const t=(ad[0]||'').trim(),l=(ad[1]||'').trim(),c=(ad[2]||'').trim(),lg=(ad[3]||'').trim(),f=parseFaq(ad[4]||''),tg=tagList(ad[5]||''),pr=price(atmeta.price||''),shop=atmeta.shop.trim()||'votreboutique.fr';
+  const sel=Math.min(pvSel,Math.max(0,photos.length-1));
+  const gal=photos.length?`<div class="pv-big"><img src="${photos[sel].d}" alt=""></div>${photos.length>1?`<div class="pv-th">${photos.map((x,i)=>`<button type="button" data-sel="${i}" class="${i===sel?'on':''}"><img src="${x.d}" alt="Photo ${i+1}"></button>`).join('')}</div>`:''}`:`<div class="pv-big empty">${ph('Votre photo principale s\'affichera ici')}</div>`;
+  return `<div class="pv${mobile?' pv-m':''}"><div class="pv-bar"><b>${esc(shop)}</b><span>Accueil › Boutique</span></div><div class="pv-main"><div class="pv-gal">${gal}</div><div class="pv-info"><h4 class="pv-t">${t?esc(t):ph('Le titre de votre produit')}</h4>${pr?`<p class="pv-p">${esc(pr)}</p>`:''}<p class="pv-l">${l?esc(l):ph('Votre accroche donnera envie de lire la suite.')}</p><div class="pv-s">${c?esc(c):ph('Votre description courte apparaîtra ici.')}</div><span class="pill dark sm pv-btn">Ajouter au panier</span></div></div><div class="pv-sec"><h5>Description</h5>${lg?paras(lg):ph('Votre description longue apparaîtra ici.')}</div><div class="pv-sec"><h5>Questions fréquentes</h5>${f.length?f.map(x=>`<details><summary>${esc(x.q)}</summary><p>${x.a?esc(x.a):ph('Réponse à écrire')}</p></details>`).join(''):ph('Votre FAQ apparaîtra ici.')}</div><div class="pv-sec"><h5>${pf==='woo'?'Étiquettes':'Mots-clés'}</h5>${tg.length?`<div class="tg">${tg.map(x=>`<span>${esc(x)}</span>`).join('')}</div>`:ph('Vos mots-clés apparaîtront ici.')}</div></div>`;
+}
+function renderPreview(){
+  const res=ficheScore();
+  paint($('#fscore'),scoreCard(res,'Note de votre fiche',true)+`<div class="prio">${(()=>{const top=res.items.filter(i=>i.tip).sort((a,b)=>(b.max-b.pts)-(a.max-a.pts)).slice(0,3);return top.length?`<h5 class="mini-h">À améliorer en priorité</h5><ol>${top.map(i=>`<li><b>${i.n} :</b> ${esc(i.tip)}</li>`).join('')}</ol>`:'<h5 class="mini-h">Aucun point à corriger. Bravo !</h5>'})()}</div>`);
+  const box=$('#fprev');
+  if(pvMode==='google')box.innerHTML=`<div class="pv-g">${googleSnippet(ad[0]||'',ad[2]||ad[1]||'')}</div>`;
+  else box.innerHTML=pageHTML(pvMode==='mobile');
+  $$('#pvtabs button').forEach(b=>b.classList.toggle('on',b.dataset.pv===pvMode));
+  if(res.score>=85&& !renderPreview.said){renderPreview.said=true;toast('Votre fiche dépasse 85 sur 100 : elle est prête à être publiée.')}
+}
+function schedulePreview(now){clearTimeout(pvTimer);if(now)renderPreview();else pvTimer=setTimeout(renderPreview,140)}
+$('#pvtabs').addEventListener('click',e=>{const b=e.target.closest('[data-pv]');if(!b)return;pvMode=b.dataset.pv;renderPreview()});
+$('#fprev').addEventListener('click',e=>{const b=e.target.closest('[data-sel]');if(!b)return;pvSel=+b.dataset.sel;renderPreview()});
+/* disposition : deux colonnes si la place le permet, sinon onglets */
+const atg=$('#atgrid');
+new ResizeObserver(()=>atg.classList.toggle('narrow',900>atg.getBoundingClientRect().width)).observe(atg);
+$('#attabs').addEventListener('click',e=>{const b=e.target.closest('[data-v]');if(!b)return;atg.dataset.v=b.dataset.v;$$('#attabs button').forEach(x=>x.classList.toggle('on',x===b));if(b.dataset.v==='view')atg.scrollIntoView({behavior:'smooth',block:'start'})});
+
 $('#acopy').onclick=function(){if(ad.every(x=>!x.trim()))return toast('Remplissez d\'abord quelques blocs.');
   copy(`TITRE\n${ad[0]}\n\n${ad[1]}\n\n${ad[2]}\n\n${ad[3]}\n\nFAQ\n${ad[4]}\n\nMOTS-CLÉS\n${ad[5]}`.replace(/\n{3,}/g,'\n\n'),this)};
-$('#aclear').onclick=()=>{if(!confirm('Vider tout votre atelier ?'))return;ad=AT.map(()=>'');store.set('atelier',ad);$$('#atel textarea').forEach((t,i)=>{t.value='';aUpdate(i)});atDone=false};
+$('#aclear').onclick=()=>{if(!confirm('Vider tout votre atelier, photos comprises ?'))return;ad=AT.map(()=>'');atmeta={shop:'',price:''};photos=[];pvSel=0;store.set('atelier',ad);store.set('atmeta',atmeta);savePhotos();renderThumbs();atSyncFields();atDone=false};
+renderThumbs();atSyncFields();
 
 /* applique le choix de plateforme partout */
 function applyPF(){
@@ -1123,7 +1418,7 @@ function applyPF(){
   $$('[data-pf="tagsshort"]').forEach(n=>n.textContent=p.tags);
   $('#bnote').textContent=pf==='etsy'?'Titres longs au format Etsy (140 caractères maximum) et 13 tags.':`Titres courts adaptés à votre boutique (${p.min} à ${p.max} caractères). Choisissez Etsy ci-dessus pour voir les versions longues.`;
   renderBlocs();render();test();ckBuild();
-  AT=makeAT();$$('#atel .hint').forEach((h,i)=>h.textContent=AT[i][1]);AT.forEach((_,i)=>aUpdate(i));atDone=AT.every((_,i)=>okAt(i));
+  AT=makeAT();$$('#atel .hint').forEach((h,i)=>h.textContent=AT[i][1]);AT.forEach((_,i)=>aUpdate(i));atDone=AT.every((_,i)=>okAt(i));schedulePreview(true);
   showF(curF.id);
 }
 
