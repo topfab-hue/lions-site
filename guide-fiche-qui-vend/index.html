@@ -90,8 +90,6 @@ h1,:is(#lfqv,#lfqv-ov) h2,:is(#lfqv,#lfqv-ov) h3,:is(#lfqv,#lfqv-ov) h4{color:va
 :is(#lfqv,#lfqv-ov) .eyebrow{display:inline-block;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);font-weight:600;background:var(--badge);padding:6px 14px;border-radius:40px}
 :is(#lfqv,#lfqv-ov) p.t{max-width:none;margin:0 0 14px}
 :is(#lfqv,#lfqv-ov) .it{font-style:italic}
-:is(#lfqv,#lfqv-ov) .rv{opacity:0;transform:translateY(16px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
-:is(#lfqv,#lfqv-ov) .rv.in{opacity:1;transform:none}
 :is(#lfqv,#lfqv-ov) .d1{transition-delay:.08s}
 :is(#lfqv,#lfqv-ov) .d2{transition-delay:.16s}
 :is(#lfqv,#lfqv-ov) .d3{transition-delay:.24s}
@@ -363,6 +361,8 @@ section.sec{padding:76px 0 6px}
 #lfqv.embed{background:transparent}
 #lfqv.embed .nav,#lfqv.embed .drawer,#lfqv.embed .prog{display:none!important}
 #lfqv.embed .hero{padding-top:56px}
+#lfqv.js .rv{opacity:0;transform:translateY(16px);transition:opacity .9s cubic-bezier(.22,.8,.24,1),transform .9s cubic-bezier(.22,.8,.24,1)}
+#lfqv.js .rv.in{opacity:1;transform:none}
 #lfqv-ov.standalone .toc{display:none}
 #lfqv-ov .fab{transition:bottom .5s cubic-bezier(.22,.8,.24,1),transform .35s,box-shadow .35s}
 #lfqv-ov.has-toc .toast{bottom:132px}
@@ -706,10 +706,10 @@ section.sec{padding:76px 0 6px}
 (()=>{
 'use strict';
 const ROOT=document.getElementById('lfqv'),OV=document.getElementById('lfqv-ov');
-if(OV&&OV.parentNode!==document.body)document.body.appendChild(OV);
-const $=(s,r)=>r?r.querySelector(s):(ROOT.querySelector(s)||(OV&&OV.querySelector(s)));
+if(OV&& OV.parentNode!==document.body)document.body.appendChild(OV);
+const $=(s,r)=>r?r.querySelector(s):(ROOT.querySelector(s)||(OV&& OV.querySelector(s)));
 const $$=(s,r)=>r?[...r.querySelectorAll(s)]:[...ROOT.querySelectorAll(s),...(OV?OV.querySelectorAll(s):[])];
-[ROOT,OV].filter(Boolean).forEach(h=>h.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const id=a.getAttribute('href').slice(1);const t=id&&ROOT.querySelector('#'+id);if(!t)return;e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}));
+[ROOT,OV].filter(Boolean).forEach(h=>h.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const id=a.getAttribute('href').slice(1);const t=id&& ROOT.querySelector('#'+id);if(!t)return;e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}));
 const store={get(k,d){try{const v=localStorage.getItem('lfqv:'+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem('lfqv:'+k,JSON.stringify(v))}catch(e){}}};
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
@@ -723,20 +723,21 @@ async function copy(text,btn){
     try{ok=document.execCommand('copy')}catch(_){}a.remove();
   }
   toast(ok?'Copié. Vous pouvez coller où vous voulez.':'Copie impossible : sélectionnez le texte à la main.');
-  if(ok&&btn){const o=btn.innerHTML;btn.classList.add('copied');btn.textContent='Copié';setTimeout(()=>{btn.classList.remove('copied');btn.innerHTML=o},1600)}
+  if(ok&& btn){const o=btn.innerHTML;btn.classList.add('copied');btn.textContent='Copié';setTimeout(()=>{btn.classList.remove('copied');btn.innerHTML=o},1600)}
 }
 
 /* halo de verre qui suit le curseur */
-document.addEventListener('pointermove',e=>{const g=e.target.closest&&e.target.closest('.glass');if(!g)return;const r=g.getBoundingClientRect();g.style.setProperty('--mx',(e.clientX-r.left)+'px');g.style.setProperty('--my',(e.clientY-r.top)+'px')},{passive:true});
+document.addEventListener('pointermove',e=>{const g=e.target.closest&& e.target.closest('.glass');if(!g)return;const r=g.getBoundingClientRect();g.style.setProperty('--mx',(e.clientX-r.left)+'px');g.style.setProperty('--my',(e.clientY-r.top)+'px')},{passive:true});
 
 /* apparition douce */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
 const observeRv=(root=document)=>$$('.rv:not(.in)',root).forEach(el=>io.observe(el));
+ROOT.classList.add('js');
 observeRv();
 
 /* progression et navigation */
 const bar=$('#bar');
-const onScroll=()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight||1)*100)+'%';const r=ROOT.getBoundingClientRect(),p=Math.min(1,Math.max(0,-r.top/Math.max(1,r.height-innerHeight)));const f=$('#tocfill');if(f){f.style.width=(p*100)+'%';$('#tocpct').textContent=Math.round(p*100)+'%'}const bi=$('#bienvenue'),tc=$('#toc');if(tc&&bi){const on=bi.getBoundingClientRect().top<innerHeight*.7&&r.bottom>innerHeight*.5;tc.classList.toggle('show',on);if(OV)OV.classList.toggle('has-toc',on)}};
+const onScroll=()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight||1)*100)+'%';const r=ROOT.getBoundingClientRect(),p=Math.min(1,Math.max(0,-r.top/Math.max(1,r.height-innerHeight)));const f=$('#tocfill');if(f){f.style.width=(p*100)+'%';$('#tocpct').textContent=Math.round(p*100)+'%'}const bi=$('#bienvenue'),tc=$('#toc');if(tc&& bi){const on=bi.getBoundingClientRect().top<innerHeight*.7&& r.bottom>innerHeight*.5;tc.classList.toggle('show',on);if(OV)OV.classList.toggle('has-toc',on)}};
 addEventListener('scroll',onScroll,{passive:true});onScroll();
 const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){$$('#navl a,.toc-dots a').forEach(a=>a.classList.toggle('on',a.dataset.s===e.target.id));const cur=$('.toc-dots a.on');$('#toclabel').textContent=cur?cur.dataset.t:'La Fiche Qui Vend'}}),{rootMargin:'-45% 0px -50% 0px'});
 $$('[data-spy]').forEach(s=>spy.observe(s));
@@ -784,7 +785,7 @@ function showTip(el){
 const hideTip=()=>tip.classList.remove('on');
 document.addEventListener('mouseover',e=>{const g=e.target.closest('.gl');if(g)showTip(g)});
 document.addEventListener('mouseout',e=>{if(e.target.closest('.gl'))hideTip()});
-document.addEventListener('focusin',e=>{const g=e.target.closest&&e.target.closest('.gl');if(g)showTip(g)});
+document.addEventListener('focusin',e=>{const g=e.target.closest&& e.target.closest('.gl');if(g)showTip(g)});
 document.addEventListener('focusout',hideTip);
 document.addEventListener('click',e=>{const g=e.target.closest('.gl');if(g){showTip(g);setTimeout(hideTip,4500)}else hideTip()});
 addEventListener('scroll',hideTip,{passive:true});
@@ -808,7 +809,7 @@ $$('[data-ba]').forEach(ba=>{
   const set=v=>{ba.dataset.s=v;body.dataset.l=v==='avant'?'Avant':'Après';btns.forEach(b=>{const on=b.dataset.v===v;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});place()};
   btns.forEach(b=>b.onclick=()=>set(b.dataset.v));
   set('avant');addEventListener('resize',place);new ResizeObserver(place).observe(sw);
-  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(place);
+  if(document.fonts&& document.fonts.ready)document.fonts.ready.then(place);
 });
 
 /* FAQ */
@@ -936,7 +937,7 @@ function load(s){
   $('#bpat').textContent=pat;$('#bex').innerHTML=`Exemple : <b>${esc(s[1])}</b>`;
   bf.innerHTML=keys.map((k,i)=>`<label>${esc(k)}<input data-k="${i}" placeholder="Votre texte" autocomplete="off"></label>`).join('');
   $$('input',bf).forEach(inp=>inp.oninput=()=>{vals[keys[+inp.dataset.k]]=inp.value;render()});
-  render();setTimeout(()=>{const f=$('input',bf);f&&f.focus({preventScroll:true})},500);
+  render();setTimeout(()=>{const f=$('input',bf);f&& f.focus({preventScroll:true})},500);
 }
 function result(){return pat.replace(/\[([^\]]+)\]/g,(m,k)=>(vals[k]||'').trim()).replace(/\s+,/g,',').replace(/(,\s*)+/g,', ').replace(/\s{2,}/g,' ').replace(/^[\s,]+|[\s,]+$/g,'')}
 function render(){
@@ -962,12 +963,12 @@ function test(){
   const hasOcc=OCC.some(w=>t.includes(w)),hasMat=MAT.some(w=>(' '+t+' ').includes(w.trim()===w?' '+w:w));
   const vague=BAN.slice(0,4).includes(first);
   const rows=[
-   [len>=p.min&&len<=p.max,`Longueur : <b>${len}</b> caractères (conseillé : ${p.min} à ${p.max})`,len<p.min?'Trop court : les titres courts sont moins bien référencés.':'Trop long : il risque d\'être coupé dans les résultats.'],
+   [len>=p.min&& len<=p.max,`Longueur : <b>${len}</b> caractères (conseillé : ${p.min} à ${p.max})`,len<p.min?'Trop court : les titres courts sont moins bien référencés.':'Trop long : il risque d\'être coupé dans les résultats.'],
    [hasOcc,'Une occasion ou un usage est présent','Ajoutez par exemple « Cadeau anniversaire » ou « Usage quotidien ».'],
    [hasMat,'Un matériau est mentionné','Précisez la matière principale (argent, céramique, cire de soja…).'],
    [!vague,'Le titre ne commence pas par un adjectif vague','Commencez plutôt par le type de produit (bague, bougie…).'],
    [found.length===0,found.length?`${found.length} mot(s) à bannir détecté(s)`:'Aucun mot à bannir','Remplacez-les par des mots concrets.']];
-  box.innerHTML=rows.map(r=>`<div class="chk glass soft ${r[0]?'ok':'ko'}"><span class="s">${r[0]?'Ok':'À revoir'}</span><div>${r[1]}${(!r[0]&&r[2])?`<small>${r[2]}</small>`:''}</div></div>`).join('');
+  box.innerHTML=rows.map(r=>`<div class="chk glass soft ${r[0]?'ok':'ko'}"><span class="s">${r[0]?'Ok':'À revoir'}</span><div>${r[1]}${(!r[0]&& r[2])?`<small>${r[2]}</small>`:''}</div></div>`).join('');
   bn.innerHTML=found.map(w=>`<span>${esc(w)}</span>`).join('');
 }
 $('#ttxt').addEventListener('input',test);
@@ -1021,7 +1022,7 @@ function ckRender(){
   $('#ckp').textContent=pct===100?'Bravo, tous les points sont cochés.':n?`Encore ${CKN-n} à vérifier.`:'Cochez chaque point que vous avez vérifié.';
   D.forEach((g,gi)=>{const off=D.slice(0,gi).reduce((a,x)=>a+x[1].length,0);const el=$(`[data-gc="${gi}"]`);if(el)el.textContent=`${g[1].filter((_,i)=>ck.includes(off+i)).length} sur ${g[1].length}`});
   $$('#ckgroups input').forEach(i=>i.checked=ck.includes(+i.dataset.i));
-  const s=$('[data-step="4"]');s&&s.classList.toggle('done',pct===100);
+  const s=$('[data-step="4"]');s&& s.classList.toggle('done',pct===100);
 }
 $('#ckgroups').addEventListener('change',e=>{
   const i=+e.target.dataset.i;if(isNaN(i))return;
@@ -1083,7 +1084,7 @@ fiche.addEventListener('click',e=>{
   const k=b.dataset.k;
   copy(k==='all'?fullText(curF):k==='titre'?ftitle(curF):k==='faq'?curF.faq.map(q=>q[0]+'\n'+q[1]).join('\n\n'):k==='tags'?curF.tags.split(' · ').join(', '):curF[k],b);
 });
-fiche.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-tag]')){e.preventDefault();e.target.click()}});
+fiche.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&& e.target.matches('[data-tag]')){e.preventDefault();e.target.click()}});
 
 /* atelier */
 const makeAT=()=>{const p=P();return [
@@ -1098,7 +1099,7 @@ let ad=store.get('atelier',AT.map(()=>''));
 $('#atel').innerHTML=AT.map((a,i)=>`<div class="af glass soft rv" data-a="${i}"><div class="hd"><span class="bn">${i+1}</span><b>${a[0]}</b><span class="stt">à remplir</span></div><div class="hint">${a[1]}</div><textarea rows="${i===3?7:i===0?2:i===1||i===5?3:4}" aria-label="${a[0]}" placeholder="Écrivez ici"></textarea><div class="mini"><i></i></div></div>`).join('');
 const cnt=(t,k)=>k==='chars'?t.trim().length:k==='words'?words(t):k==='sent'?(t.trim().match(/[^.!?…]+[.!?…]+|[^.!?…]+$/g)||[]).filter(s=>s.trim()).length:k==='q'?(t.match(/\?/g)||[]).length:t.split(/[\n,]+/).filter(s=>s.trim()).length;
 const unit={chars:'caractères',words:'mots',sent:'phrase(s)',q:'question(s)',tags:'mot(s)-clé(s)'};
-const okAt=i=>{const a=AT[i],v=ad[i]||'',n=cnt(v,a[2]);return !!v.trim()&&n>=a[3]&&n<=a[4]};
+const okAt=i=>{const a=AT[i],v=ad[i]||'',n=cnt(v,a[2]);return !!v.trim()&& n>=a[3]&& n<=a[4]};
 function aUpdate(i){
   const a=AT[i],el=$(`[data-a="${i}"]`),v=ad[i]||'',n=cnt(v,a[2]),s=$('.stt',el);
   let txt='à remplir';
@@ -1107,7 +1108,7 @@ function aUpdate(i){
   $('.mini i',el).style.width=(v.trim()?Math.min(100,n/a[3]*100):0)+'%';
 }
 let atDone=false;
-const checkAt=()=>{const all=AT.every((_,i)=>okAt(i));if(all&&!atDone)toast('Votre fiche est complète, vous pouvez la copier.');atDone=all};
+const checkAt=()=>{const all=AT.every((_,i)=>okAt(i));if(all&& !atDone)toast('Votre fiche est complète, vous pouvez la copier.');atDone=all};
 $$('#atel textarea').forEach((t,i)=>{t.value=ad[i]||'';t.addEventListener('input',()=>{ad[i]=t.value;store.set('atelier',ad);aUpdate(i);checkAt()})});
 $('#acopy').onclick=function(){if(ad.every(x=>!x.trim()))return toast('Remplissez d\'abord quelques blocs.');
   copy(`TITRE\n${ad[0]}\n\n${ad[1]}\n\n${ad[2]}\n\n${ad[3]}\n\nFAQ\n${ad[4]}\n\nMOTS-CLÉS\n${ad[5]}`.replace(/\n{3,}/g,'\n\n'),this)};
@@ -1128,9 +1129,9 @@ function applyPF(){
 
 /* étapes lues */
 const seen=new Set(store.get('seen',[]));
-const mod=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const n={m1:1,m2:2,m3:3,bonus:5}[e.target.id];if(n){seen.add(n);store.set('seen',[...seen]);const s=$(`[data-step="${n}"]`);s&&s.classList.add('done')}}}),{threshold:.5});
-['m1','m2','m3','bonus'].forEach(id=>{const el=$('#'+id);el&&mod.observe(el)});
-seen.forEach(n=>{const s=$(`[data-step="${n}"]`);s&&s.classList.add('done')});
+const mod=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const n={m1:1,m2:2,m3:3,bonus:5}[e.target.id];if(n){seen.add(n);store.set('seen',[...seen]);const s=$(`[data-step="${n}"]`);s&& s.classList.add('done')}}}),{threshold:.5});
+['m1','m2','m3','bonus'].forEach(id=>{const el=$('#'+id);el&& mod.observe(el)});
+seen.forEach(n=>{const s=$(`[data-step="${n}"]`);s&& s.classList.add('done')});
 
 /* aide */
 const HELP=[
@@ -1151,7 +1152,7 @@ $('#pgloss').innerHTML=Object.keys(GLOSS).map(k=>`<span class="gl" tabindex="0" 
 $('#psearch').addEventListener('input',e=>{const q=norm(e.target.value.trim());$$('details',pfaq).forEach(d=>d.style.display=!q||d.dataset.t.includes(q)?'':'none')});
 const panel=$('#panel'),scrim=$('#scrim');let lastF=null;
 function openHelp(){lastF=document.activeElement;panel.classList.add('open');scrim.classList.add('on');panel.setAttribute('aria-hidden','false');setTimeout(()=>$('#pclose').focus(),400)}
-function closeHelp(){panel.classList.remove('open');scrim.classList.remove('on');panel.setAttribute('aria-hidden','true');lastF&&lastF.focus&&lastF.focus()}
+function closeHelp(){panel.classList.remove('open');scrim.classList.remove('on');panel.setAttribute('aria-hidden','true');lastF&& lastF.focus&& lastF.focus()}
 $$('[data-help]').forEach(b=>b.onclick=openHelp);$('#pclose').onclick=closeHelp;scrim.onclick=closeHelp;
 const tour=$('#tour');
 function closeTour(){tour.classList.remove('on');store.set('toured',1)}

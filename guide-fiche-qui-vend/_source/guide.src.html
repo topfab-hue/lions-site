@@ -89,8 +89,6 @@ h3.sc{font-family:var(--script);font-weight:400;font-size:2.1rem;line-height:1.2
 p.t{max-width:none;margin:0 0 14px}
 .it{font-style:italic}
 
-.rv{opacity:0;transform:translateY(16px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
-.rv.in{opacity:1;transform:none}
 .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
 
 /* ---------- accueil ---------- */
@@ -722,6 +720,7 @@ document.addEventListener('pointermove',e=>{const g=e.target.closest&&e.target.c
 /* apparition douce */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
 const observeRv=(root=document)=>$$('.rv:not(.in)',root).forEach(el=>io.observe(el));
+ROOT.classList.add('js');
 observeRv();
 
 /* progression et navigation */

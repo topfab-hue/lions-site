@@ -18,3 +18,7 @@ Conseils :
 - `embed.html` : version à coller dans YOOtheme.
 - `index.html` : version autonome (une page complète), avec les polices dans `fonts/`.
 - `_source/guide.src.html` + `_source/build.py` : source unique. Après une modification de la source, lancer `python3 _source/build.py` regénère `index.html` et `embed.html`.
+
+## Si une partie de la page ne s'affiche pas
+
+WordPress peut transformer certains caractères du code (par exemple `&&` en `&#038;&#038;`) et casser le JavaScript. La version actuelle de `embed.html` est protégée contre ce cas, et le contenu reste visible même si le script échoue. Après toute mise à jour, recollez **tout** le contenu de `embed.html` (en remplaçant l'ancien) et videz le cache du site.

@@ -79,6 +79,8 @@ extra="""
 #lfqv.embed{background:transparent}
 #lfqv.embed .nav,#lfqv.embed .drawer,#lfqv.embed .prog{display:none!important}
 #lfqv.embed .hero{padding-top:56px}
+#lfqv.js .rv{opacity:0;transform:translateY(16px);transition:opacity .9s cubic-bezier(.22,.8,.24,1),transform .9s cubic-bezier(.22,.8,.24,1)}
+#lfqv.js .rv.in{opacity:1;transform:none}
 #lfqv-ov.standalone .toc{display:none}
 #lfqv-ov .fab{transition:bottom .5s cubic-bezier(.22,.8,.24,1),transform .35s,box-shadow .35s}
 #lfqv-ov.has-toc .toast{bottom:132px}
@@ -92,6 +94,8 @@ body_main,body_ov=body[:SPLIT],body[SPLIT:]
 # JS : tout est limité au conteneur, jamais au document entier
 js=js.replace("const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];",
 "const ROOT=document.getElementById('lfqv'),OV=document.getElementById('lfqv-ov');\nif(OV&&OV.parentNode!==document.body)document.body.appendChild(OV);\nconst $=(s,r)=>r?r.querySelector(s):(ROOT.querySelector(s)||(OV&&OV.querySelector(s)));\nconst $$=(s,r)=>r?[...r.querySelectorAll(s)]:[...ROOT.querySelectorAll(s),...(OV?OV.querySelectorAll(s):[])];\n[ROOT,OV].filter(Boolean).forEach(h=>h.addEventListener('click',e=>{const a=e.target.closest('a[href^=\"#\"]');if(!a)return;const id=a.getAttribute('href').slice(1);const t=id&&ROOT.querySelector('#'+id);if(!t)return;e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}));",1)
+js=js.replace('&&','&& ')
+assert '&&' not in js.replace('&& ','')
 assert 'const ROOT' in js
 
 FA_LOCAL="""@font-face{font-family:'HVOliveandFigs';src:url('fonts/HVOliveandFigs-Regular.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
