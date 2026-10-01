@@ -3,497 +3,426 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>La Fiche Qui Vend — Le Guide Interactif</title>
+<title>La Fiche Qui Vend | Le guide interactif KezaCréation</title>
 <meta name="description" content="Le kit complet pour écrire des fiches produits qui convertissent (Etsy, WooCommerce, Shopify) : template en 6 blocs, générateur de titres, storytelling, checklist et modèles.">
-<meta name="theme-color" content="#C07A5A">
+<meta name="theme-color" content="#F2EDE5">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
 :root{
-  --terra:#C07A5A; --terra-d:#A9623F; --ink:#2B2220; --ink-2:#5A4B45; --muted:#8A7468;
-  --cream:#FBF5EE; --paper:#FFFDF9; --sand:#F1E3D4; --line:#E8D8C8;
-  --gold:#C9A96E; --sage:#7A9A7E; --olive:#6B7A52; --teal:#6B8A8A; --brown:#7B6A55; --plum:#7B6B8A;
-  --bad:#A33F3F; --bad-bg:#FDEEEC; --good:#4F7A58; --good-bg:#EAF4EC;
-  --m1:#C07A5A; --m2:#7B6A55; --m3:#5F7F6E; --m4:#6B7A52; --m5:#B8924E;
-  --r:18px; --shadow:0 1px 2px rgba(60,35,20,.06),0 8px 28px rgba(60,35,20,.08);
-  --shadow-lg:0 2px 4px rgba(60,35,20,.06),0 24px 60px rgba(60,35,20,.16);
-  --serif:'Fraunces',Georgia,'Times New Roman',serif; --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
-  --ease:cubic-bezier(.2,.8,.2,1);
+  --bg:#F2EDE5; --ink:#2B2A2B; --txt:#2C2C2C; --mut:#7C777A; --wine:#661D1D;
+  --line:rgba(43,42,43,.14);
+  --disp:'Cormorant Garamond','Cormorant',Georgia,'Times New Roman',serif;
+  --script:'Pinyon Script','Snell Roundhand','Apple Chancery',cursive;
+  --sans:'Montserrat',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --ease:cubic-bezier(.22,.8,.24,1);
+  --glass:linear-gradient(140deg,rgba(255,255,255,.72),rgba(255,255,255,.34));
+  --glass-soft:linear-gradient(140deg,rgba(255,255,255,.5),rgba(255,255,255,.22));
 }
 *{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
-body{font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.65;font-size:17px;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;z-index:-1;background:
- radial-gradient(900px 500px at 90% -5%,rgba(192,122,90,.14),transparent 60%),
- radial-gradient(700px 500px at -10% 40%,rgba(201,169,110,.12),transparent 60%),
- radial-gradient(700px 500px at 100% 90%,rgba(122,154,126,.12),transparent 60%)}
-img,svg{max-width:100%}
-button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:110px;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);font-size:15.5px;line-height:1.75;color:var(--txt);background:var(--bg);overflow-x:hidden}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 textarea,input{font:inherit;color:inherit}
-a{color:var(--terra-d)}
-:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:8px}
-h1,h2,h3,h4{font-family:var(--serif);line-height:1.15;letter-spacing:-.01em}
-.wrap{width:min(1080px,100% - 32px);margin-inline:auto}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+a{color:var(--ink)}
+b,strong{font-weight:600;color:var(--ink)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:12px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.wrap{width:min(960px,100% - 40px);margin-inline:auto}
 
-/* ---------- topbar ---------- */
-.top{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(251,245,238,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(232,216,200,.7)}
-.top-in{display:flex;align-items:center;gap:12px;height:62px}
-.brand{white-space:nowrap;font-family:var(--serif);font-weight:800;font-size:1.05rem;display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
-.brand i{width:30px;height:30px;border-radius:10px;background:var(--terra);display:grid;place-items:center;color:#fff;font-style:normal;font-size:.95rem}
-.top nav{margin-left:auto;display:flex;gap:2px}
-.top nav a{white-space:nowrap;font-size:.85rem;font-weight:600;color:var(--ink-2);text-decoration:none;padding:8px 12px;border-radius:99px;transition:.25s}
-.top nav a:hover{background:var(--sand)}
-.top nav a.on{background:var(--ink);color:#fff}
-.help-btn{white-space:nowrap;margin-left:8px;display:flex;align-items:center;gap:8px;background:var(--ink);color:#fff;border-radius:99px;padding:9px 16px;font-weight:600;font-size:.88rem;transition:.25s var(--ease)}
-.help-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
-.burger{display:none;width:42px;height:42px;border-radius:12px;background:var(--sand);place-items:center}
-.bar{position:absolute;left:0;bottom:-1px;height:3px;width:0;background:linear-gradient(90deg,var(--terra),var(--gold));border-radius:0 3px 3px 0;transition:width .15s linear}
-@media(max-width:1100px){.top nav{display:none}.burger{display:grid;margin-left:0}.help-btn{margin-left:auto}.help-btn span{display:none}.help-btn{padding:11px}}
-.drawer{position:fixed;inset:62px 0 0 0;z-index:49;background:var(--cream);padding:20px 16px;display:none;flex-direction:column;gap:6px;overflow:auto}
-.drawer.open{display:flex;animation:fade .25s}
-.drawer a{padding:16px 18px;border-radius:16px;background:var(--paper);border:1px solid var(--line);text-decoration:none;color:var(--ink);font-weight:600;display:flex;gap:12px;align-items:center}
-.drawer a b{width:28px;height:28px;border-radius:9px;background:var(--terra);color:#fff;display:grid;place-items:center;font-size:.8rem}
+/* ---------- fond doux ---------- */
+.bg{position:fixed;inset:-10%;z-index:-1;pointer-events:none;
+  background:
+   radial-gradient(40% 36% at 14% 12%,rgba(232,205,190,.85),transparent 70%),
+   radial-gradient(34% 34% at 88% 22%,rgba(236,222,196,.9),transparent 70%),
+   radial-gradient(38% 38% at 78% 82%,rgba(224,196,190,.7),transparent 70%),
+   radial-gradient(34% 34% at 8% 78%,rgba(214,201,182,.7),transparent 70%),
+   var(--bg);
+  animation:drift 38s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(-2%,2%,0) scale(1.06)}}
 
-/* ---------- side dots ---------- */
-.dots{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:14px}
-.dots a{position:relative;width:11px;height:11px;border-radius:50%;background:var(--line);border:2px solid var(--cream);transition:.3s var(--ease)}
-.dots a.on{background:var(--terra);transform:scale(1.5)}
-.dots a::after{content:attr(data-l);position:absolute;right:22px;top:50%;transform:translateY(-50%) translateX(6px);background:var(--ink);color:#fff;font-size:.75rem;padding:4px 10px;border-radius:8px;white-space:nowrap;opacity:0;pointer-events:none;transition:.25s}
-.dots a:hover::after{opacity:1;transform:translateY(-50%)}
-@media(max-width:1250px){.dots{display:none}}
+/* ---------- liquid glass ---------- */
+.glass{position:relative;isolation:isolate;background:var(--glass);
+  -webkit-backdrop-filter:blur(22px) saturate(1.7);backdrop-filter:blur(22px) saturate(1.7);
+  border:1px solid rgba(255,255,255,.75);border-radius:28px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(43,42,43,.05),inset 0 0 24px rgba(255,255,255,.25),0 14px 44px rgba(60,40,30,.08)}
+.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:-1;
+  background:radial-gradient(260px circle at var(--mx,20%) var(--my,0%),rgba(255,255,255,.65),transparent 65%);opacity:.7;transition:opacity .4s}
+.glass.soft{background:var(--glass-soft);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 6px 24px rgba(60,40,30,.05)}
+.glass.pad{padding:clamp(22px,4vw,40px)}
+
+/* ---------- boutons ---------- */
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 26px;border-radius:40px;font-size:14px;font-weight:500;text-decoration:none;white-space:nowrap;transition:transform .35s var(--ease),box-shadow .35s,background .3s;position:relative;isolation:isolate}
+.pill:hover{transform:translateY(-2px)}
+.pill.dark{color:#fff;background:linear-gradient(180deg,#434143,#232123);border:1px solid rgba(255,255,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 10px 24px rgba(43,42,43,.22)}
+.pill.dark:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 14px 30px rgba(43,42,43,.3)}
+.pill.light{background:var(--glass);-webkit-backdrop-filter:blur(16px) saturate(1.6);backdrop-filter:blur(16px) saturate(1.6);border:1px solid rgba(255,255,255,.85);box-shadow:inset 0 1px 0 #fff,0 6px 20px rgba(60,40,30,.07);color:var(--ink)}
+.pill.light:hover{background:linear-gradient(140deg,rgba(255,255,255,.95),rgba(255,255,255,.55))}
+.pill.line{border:1px solid var(--ink);color:var(--ink)}
+.pill.line:hover{background:var(--ink);color:#fff}
+.pill.sm{padding:8px 18px;font-size:13px}
+.pill.xs{padding:5px 14px;font-size:12px}
+.pill.copied{background:var(--ink)!important;color:#fff!important}
+
+/* ---------- menu flottant ---------- */
+.prog{position:fixed;inset:0 0 auto 0;height:2px;z-index:70}
+.prog i{display:block;height:100%;width:0;background:var(--ink);transition:width .12s linear}
+.nav{position:fixed;z-index:60;top:16px;left:50%;transform:translateX(-50%);width:min(1060px,100% - 28px);height:64px;border-radius:40px;display:flex;align-items:center;gap:8px;padding:0 10px 0 28px}
+.wm{font-family:var(--disp);font-size:1.5rem;font-weight:400;text-decoration:none;color:var(--ink);letter-spacing:.01em;white-space:nowrap}
+.wm i{font-weight:300}
+.nav nav{display:flex;gap:2px;margin:0 auto}
+.nav nav a{font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:9px 13px;position:relative;white-space:nowrap;color:var(--ink)}
+.nav nav a::after{content:"";position:absolute;left:13px;right:13px;bottom:4px;height:1px;background:var(--ink);transform:scaleX(0);transition:transform .4s var(--ease)}
+.nav nav a:hover::after,.nav nav a.on::after{transform:scaleX(1)}
+.menu{display:none;padding:8px 16px;font-size:13px;margin-left:auto}
+@media(max-width:1060px){.nav nav{display:none}.menu{display:inline-flex}.nav{padding-left:22px}}
+.drawer{position:fixed;inset:92px 14px auto 14px;z-index:59;border-radius:28px;padding:10px;display:none;flex-direction:column}
+.drawer.open{display:flex;animation:rise .35s var(--ease)}
+.drawer a{padding:15px 20px;text-decoration:none;border-bottom:1px solid var(--line);font-family:var(--disp);font-size:1.35rem}
+.drawer a:last-child{border:0}
+
+/* ---------- titres ---------- */
+h1,h2,h3,h4{font-family:var(--disp);font-weight:300;color:var(--ink);line-height:1.1;letter-spacing:-.01em}
+h2{font-size:clamp(2.3rem,6.4vw,4rem)}
+h2 em,h1 em{font-style:italic}
+.script{font-family:var(--script);font-weight:400;letter-spacing:0;line-height:1.2}
+h3.sc{font-family:var(--script);font-weight:400;font-size:clamp(2rem,4.6vw,2.8rem);margin:64px 0 14px;line-height:1.25;text-align:center}
+.eyebrow{font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);font-weight:500}
+.eyebrow.c{text-align:center}
+p.t{max-width:720px;margin:0 auto 16px;text-align:center}
+p.t.l{margin-left:0;text-align:left}
+.it{font-style:italic;font-weight:300}
+
+/* révélation douce */
+.rv{opacity:0;transform:translateY(22px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
 /* ---------- hero ---------- */
-.hero{position:relative;padding:150px 0 90px;overflow:hidden;color:#fff;background:linear-gradient(135deg,#C07A5A 0%,#B06647 55%,#8E4E36 100%)}
-.hero::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:60px;background:var(--cream);clip-path:ellipse(60% 100% at 50% 100%)}
-.blob{position:absolute;border-radius:50%;filter:blur(2px);opacity:.5;animation:float 12s ease-in-out infinite}
-.blob.a{width:340px;height:340px;right:-80px;top:-60px;background:radial-gradient(circle at 30% 30%,#E5A98A,transparent 70%)}
-.blob.b{width:260px;height:260px;left:-70px;bottom:20px;background:radial-gradient(circle at 60% 40%,#C9A96E,transparent 70%);animation-delay:-4s}
-.blob.c{width:120px;height:120px;left:46%;top:90px;background:radial-gradient(circle,#fff6,transparent 70%);animation-delay:-8s}
-.hero .wrap{position:relative;text-align:center}
-.eyebrow{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);padding:7px 16px;border-radius:99px;font-size:.85rem;font-weight:600;letter-spacing:.02em;backdrop-filter:blur(6px)}
-.hero h1{font-size:clamp(2.8rem,8vw,5.6rem);font-weight:800;margin:22px 0 14px;line-height:1.02}
-.hero h1 em{font-style:italic;font-weight:500;color:#FFE7C7;position:relative;white-space:nowrap}
-.hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.14em;background:rgba(255,231,199,.45);border-radius:9px;transform-origin:left;animation:draw 1.2s .6s var(--ease) both}
-.hero p.lead{font-size:clamp(1.05rem,2.2vw,1.35rem);max-width:640px;margin:0 auto;color:#FFEDE0}
-.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:26px}
-.chip{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);padding:6px 14px;border-radius:99px;font-size:.84rem;font-weight:500}
-.hero .chips.alt .chip{background:rgba(0,0,0,.14)}
-.cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:36px}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:99px;font-weight:700;text-decoration:none;transition:.3s var(--ease);font-size:1rem}
-.btn.light{background:#fff;color:var(--terra-d);box-shadow:0 10px 30px rgba(0,0,0,.2)}
-.btn.light:hover{transform:translateY(-3px) scale(1.02)}
-.btn.ghost{border:2px solid rgba(255,255,255,.5);color:#fff}
-.btn.ghost:hover{background:rgba(255,255,255,.14)}
-.btn.dark{background:var(--ink);color:#fff}
-.btn.dark:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
-.btn.sm{padding:9px 16px;font-size:.88rem}
-.btn.line{border:2px solid var(--line);background:var(--paper)}
-.btn.line:hover{border-color:var(--terra)}
-.contents{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:56px;text-align:left}
-.cc{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:18px;padding:18px;text-decoration:none;color:#fff;transition:.35s var(--ease);backdrop-filter:blur(8px)}
-.cc:hover{transform:translateY(-6px);background:rgba(255,255,255,.2)}
-.cc small{display:inline-block;background:#fff;color:var(--terra-d);font-weight:700;font-size:.68rem;letter-spacing:.08em;padding:3px 10px;border-radius:99px}
-.cc b{display:block;font-family:var(--serif);font-size:1.15rem;margin:10px 0 2px;line-height:1.2}
-.cc span{font-size:.88rem;color:#FFE3D2}
+.hero{min-height:100svh;display:flex;align-items:center;padding:150px 0 70px;text-align:center}
+.hero .eyebrow{margin-bottom:26px;animation:rise 1.2s .1s var(--ease) both}
+.hero h1{font-size:clamp(3.6rem,13vw,9rem);line-height:.95;font-weight:300}
+.hero h1 span.ln{display:block;animation:rise 1.4s var(--ease) both}
+.hero h1 span.ln:nth-child(2){animation-delay:.18s}
+.hero h1 .i{font-style:italic}
+.hero .lead{max-width:560px;margin:30px auto 0;font-size:15.5px;animation:rise 1.4s .4s var(--ease) both}
+.hero .sub{margin-top:14px;color:var(--mut);font-size:13px;animation:rise 1.4s .5s var(--ease) both}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:36px;animation:rise 1.4s .6s var(--ease) both}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:64px;text-align:left}
+.cc{display:block;text-decoration:none;padding:22px 22px 24px;border-radius:26px;transition:transform .5s var(--ease)}
+.cc:hover{transform:translateY(-6px)}
+.cc small{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);font-weight:500}
+.cc b{display:block;font-family:var(--disp);font-weight:400;font-size:1.45rem;line-height:1.15;margin:10px 0 6px}
+.cc span{font-size:12.5px;line-height:1.5;color:var(--mut);display:block}
 
-/* ---------- section scaffolding ---------- */
-section.sec{padding:80px 0 20px}
-.mod-head{--c:var(--terra);border-radius:26px;overflow:hidden;background:var(--paper);box-shadow:var(--shadow);border:1px solid var(--line);margin-bottom:34px}
-.mod-tag{background:var(--c);color:#fff;font-weight:700;letter-spacing:.14em;font-size:.76rem;padding:12px 28px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.mod-body{padding:32px 28px 30px;display:grid;gap:12px;background:linear-gradient(180deg,#fff7ef,var(--paper))}
-.mod-body h2{font-size:clamp(1.9rem,5vw,3.1rem);font-weight:800}
-.mod-body p{color:var(--ink-2);max-width:760px;font-size:1.06rem}
-.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
-.pill{display:inline-flex;gap:6px;align-items:center;background:var(--sand);padding:5px 12px;border-radius:99px;font-size:.82rem;font-weight:600;color:var(--ink-2)}
-h3.h{font-size:clamp(1.4rem,3vw,1.9rem);color:var(--c,var(--terra-d));margin:42px 0 12px}
-p.t{max-width:780px;color:var(--ink-2);margin-bottom:14px}
-p.t b,li b{color:var(--ink)}
-.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:24px;box-shadow:var(--shadow)}
+/* ---------- sections ---------- */
+section.sec{padding:110px 0 10px}
+.mh{text-align:center;margin-bottom:46px}
+.mh h2{margin:16px 0 20px}
+.mh p{max-width:660px;margin:0 auto}
+.mh .meta{margin-top:18px;font-size:12.5px;color:var(--mut)}
 
-/* callouts */
-.call{--c:var(--terra);display:flex;gap:16px;padding:20px 22px;border-radius:16px;background:color-mix(in srgb,var(--c) 11%,#fff);border-left:5px solid var(--c);margin:22px 0}
-.call .ic{flex:none;width:38px;height:38px;border-radius:12px;background:var(--c);color:#fff;display:grid;place-items:center;font-size:1.1rem}
-.call b.ti{display:block;color:var(--c);font-weight:700;margin-bottom:3px;filter:brightness(.8)}
-.call p{color:var(--ink);font-size:.98rem}
-.call.warn{--c:var(--bad)} .call.ok{--c:var(--good)} .call.gold{--c:var(--gold)}
+/* notes (callouts) */
+.note{margin:30px 0;padding:28px 32px;border-radius:26px;text-align:center}
+.note .script{font-size:2.1rem;display:block;margin-bottom:6px;color:var(--ink)}
+.note p{max-width:640px;margin:0 auto}
+.note.warn{border-color:rgba(102,29,29,.35)}
+.note.warn .script{color:var(--wine)}
+.note.warn p b{color:var(--wine)}
 
-/* reveal */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
-.rv.in{opacity:1;transform:none}
-.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}.rv.d5{transition-delay:.4s}
+/* étapes */
+.steps{display:grid;gap:12px}
+.step{display:flex;align-items:center;gap:22px;padding:20px 28px;border-radius:999px;text-decoration:none;color:var(--txt);transition:transform .5s var(--ease)}
+.step:hover{transform:translateX(6px)}
+.step .n{flex:none;font-family:var(--disp);font-size:2.6rem;font-weight:300;line-height:1;width:42px;text-align:center;font-style:italic}
+.step b{display:block;font-weight:600}
+.step span.d{display:block;font-size:13.5px;color:var(--mut);line-height:1.55}
+.step .st{margin-left:auto;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);opacity:0;transition:.4s;white-space:nowrap}
+.step.done .st{opacity:1}
+@media(max-width:620px){.step{border-radius:28px;padding:18px 20px;gap:14px}.step .st{display:none}}
 
-/* ---------- glossary ---------- */
-.gl{border-bottom:2px dotted var(--terra);cursor:help;font-weight:600;color:inherit;text-decoration:none}
-.gl:hover,.gl:focus{background:rgba(192,122,90,.14)}
-.tip{position:fixed;z-index:90;max-width:300px;background:var(--ink);color:#fff;padding:14px 16px;border-radius:14px;font-size:.9rem;line-height:1.5;box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;transform:translateY(6px);transition:.2s}
-.tip.on{opacity:1;transform:none}
-.tip b{display:block;color:var(--gold);margin-bottom:2px;font-family:var(--serif);font-size:1rem}
+/* aperçu des blocs */
+.bgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px;margin:26px 0}
+.bcard{display:block;text-decoration:none;padding:26px 28px;border-radius:26px;transition:transform .5s var(--ease),background .4s,color .4s}
+.bcard:hover{transform:translateY(-5px)}
+.bcard .num{font-family:var(--disp);font-style:italic;font-weight:300;font-size:3.4rem;line-height:1;display:block;margin-bottom:10px}
+.bcard b{display:block;font-family:var(--disp);font-weight:400;font-size:1.55rem;line-height:1.15}
+.bcard small{display:block;font-size:13px;color:var(--mut);margin:4px 0 10px;line-height:1.5}
+.bcard em{font-style:normal;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500}
+.bcard.plain{cursor:default}
+.bcard.plain:hover{transform:none}
 
-/* ---------- welcome steps ---------- */
-.steps{display:grid;gap:12px;counter-reset:s}
-.step{display:flex;gap:18px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px 20px;text-decoration:none;color:var(--ink);transition:.35s var(--ease);position:relative;overflow:hidden}
-.step:hover{transform:translateX(6px);box-shadow:var(--shadow)}
-.step .n{flex:none;width:44px;height:44px;border-radius:14px;background:var(--c);color:#fff;font-family:var(--serif);font-weight:800;font-size:1.3rem;display:grid;place-items:center}
-.step b{display:block;font-size:1.04rem}
-.step span{color:var(--ink-2);font-size:.95rem}
-.step .go{margin-left:auto;align-self:center;color:var(--muted);transition:.3s}
-.step:hover .go{transform:translateX(4px);color:var(--c)}
-.step.done::after{content:"✓ Fait";position:absolute;right:16px;top:12px;font-size:.75rem;font-weight:700;color:var(--good);background:var(--good-bg);padding:2px 10px;border-radius:99px}
+.bloc{margin-top:96px}
+.bloc>header{text-align:center;margin-bottom:22px}
+.bloc>header .eyebrow{display:block;margin-bottom:6px}
+.bloc>header h3{font-family:var(--script);font-weight:400;font-size:clamp(2.4rem,6vw,3.6rem);line-height:1.2}
+.bnum{font-family:var(--disp);font-style:italic;font-weight:300;font-size:clamp(5rem,14vw,8rem);line-height:.8;display:block;color:rgba(43,42,43,.12)}
+.formula{font-family:var(--disp);font-size:clamp(1.25rem,3.4vw,1.8rem);text-align:center;font-style:italic;font-weight:400;line-height:1.35}
 
-/* ---------- blocs overview ---------- */
-.bgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin:20px 0 10px}
-.bcard{display:flex;gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px;text-decoration:none;color:var(--ink);transition:.35s var(--ease);position:relative;overflow:hidden}
-.bcard::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:var(--terra);transform:scaleY(0);transform-origin:top;transition:.4s var(--ease)}
-.bcard:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-.bcard:hover::before{transform:none}
-.bcard .num{flex:none;font-family:var(--serif);font-size:2.6rem;font-weight:800;color:var(--terra);line-height:1;opacity:.9}
-.bcard b{display:block;font-size:1.05rem}
-.bcard small{display:block;color:var(--ink-2);font-size:.9rem;margin:2px 0 8px;line-height:1.4}
-.bcard em{font-style:normal;background:var(--sand);padding:3px 10px;border-radius:99px;font-size:.78rem;font-weight:700;color:var(--terra-d)}
-
-.bloc{margin-top:54px}
-.bloc>header{display:flex;gap:16px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
-.bloc>header .big{font-family:var(--serif);font-weight:800;font-size:3.4rem;line-height:.9;color:transparent;-webkit-text-stroke:2px var(--terra)}
-.bloc>header h3{font-size:clamp(1.4rem,3.4vw,2rem);color:var(--terra-d)}
-.bloc>header small{display:block;font-family:var(--sans);color:var(--muted);font-size:.85rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
-
-/* avant / apres */
-.ba{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--shadow);margin:18px 0}
-.ba-sw{display:inline-flex;background:var(--sand);padding:4px;border-radius:99px;position:relative;margin-bottom:14px}
-.ba-sw button{position:relative;z-index:1;padding:8px 20px;border-radius:99px;font-weight:700;font-size:.9rem;color:var(--ink-2);transition:color .3s}
-.ba-sw button.on{color:#fff}
-.ba-sw i{position:absolute;top:4px;left:4px;height:calc(100% - 8px);border-radius:99px;background:var(--bad);transition:.4s var(--ease)}
-.ba[data-s="apres"] .ba-sw i{background:var(--good)}
-.ba-body{border-radius:14px;padding:18px 20px;font-style:italic;font-size:1.04rem;min-height:84px;position:relative;transition:background .4s}
-.ba[data-s="avant"] .ba-body{background:var(--bad-bg);color:#7a2f2f}
-.ba[data-s="apres"] .ba-body{background:var(--good-bg);color:#2f4a36}
-.ba-body p{display:none;animation:swap .5s var(--ease)}
+/* avant / après */
+.ba{margin:28px 0;text-align:center}
+.seg{display:inline-flex;position:relative;padding:4px;border-radius:40px;margin-bottom:16px}
+.seg button{position:relative;z-index:2;padding:9px 26px;border-radius:40px;font-size:13.5px;font-weight:500;transition:color .3s;color:var(--ink)}
+.seg button.on{color:#fff}
+.seg i{position:absolute;z-index:1;top:4px;left:4px;height:calc(100% - 8px);border-radius:40px;background:linear-gradient(180deg,#434143,#232123);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 6px 16px rgba(43,42,43,.25);transition:transform .5s var(--ease),width .5s var(--ease)}
+.ba-body{text-align:left;padding:26px 30px;border-radius:26px;min-height:96px}
+.ba-body p{display:none;font-family:var(--disp);font-size:clamp(1.25rem,3vw,1.5rem);line-height:1.45;font-style:italic;animation:swap .6s var(--ease)}
+.ba-body::after{content:attr(data-l);display:block;margin-top:14px;font-family:var(--sans);font-style:normal;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--mut)}
 .ba[data-s="avant"] .av,.ba[data-s="apres"] .ap{display:block}
-.ba-hint{font-size:.8rem;color:var(--muted);margin-top:10px;display:flex;gap:6px;align-items:center}
-.ba[data-s="avant"] .ba-hint{animation:nudge 2s infinite}
-.ba.compare .ba-body{display:none}
-.cmp{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:640px){.cmp{grid-template-columns:1fr}}
+.ba[data-s="avant"] .ba-body p{color:var(--mut)}
+.ba .hint{margin-top:12px;font-size:12.5px;color:var(--mut)}
+.ba[data-s="apres"] .hint{opacity:0}
+@keyframes swap{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
-/* tables */
-.tbl{width:100%;border-collapse:separate;border-spacing:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--paper);font-size:.95rem}
-.tbl th{background:var(--terra);color:#fff;text-align:left;padding:12px 16px;font-size:.78rem;letter-spacing:.08em}
-.tbl td{padding:12px 16px;border-top:1px solid var(--line)}
-.tbl tr:nth-child(even) td{background:#FCF6EE}
-.scroll-x{overflow-x:auto;border-radius:16px}
+/* faq */
+.pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:14px 0 18px}
+.pills button{padding:10px 22px;border-radius:40px;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;transition:.35s var(--ease);background:var(--glass-soft);border:1px solid rgba(255,255,255,.85);box-shadow:inset 0 1px 0 #fff;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.pills button:hover{transform:translateY(-2px)}
+.pills button.on{background:linear-gradient(180deg,#434143,#232123);color:#fff;border-color:rgba(255,255,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 8px 20px rgba(43,42,43,.22)}
+.fq{padding:22px 30px;border-radius:26px;min-height:96px}
+.fq ul{list-style:none;padding:0;display:grid}
+.fq li{padding:11px 0;border-bottom:1px solid var(--line);animation:swap .5s var(--ease) both;font-family:var(--disp);font-size:1.3rem;font-weight:400}
+.fq li:last-child{border:0}
 
-/* faq chips */
-.fcats{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
-.fcat{padding:10px 18px;border-radius:99px;border:2px solid var(--line);background:var(--paper);font-weight:700;font-size:.85rem;letter-spacing:.04em;transition:.3s var(--ease);color:var(--ink-2)}
-.fcat:hover{border-color:var(--terra)}
-.fcat.on{background:var(--terra);border-color:var(--terra);color:#fff;transform:scale(1.04)}
-.fq{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 20px;min-height:90px}
-.fq ul{list-style:none;padding:0;display:grid;gap:8px}
-.fq li{display:flex;gap:10px;align-items:flex-start;animation:swap .5s var(--ease) both}
-.fq li::before{content:"?";flex:none;width:24px;height:24px;border-radius:50%;background:var(--sand);color:var(--terra-d);font-weight:800;display:grid;place-items:center;font-size:.8rem;margin-top:2px}
+/* tags avant/après */
+.tcmp{display:grid;gap:10px;margin:22px 0}
+.tr{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tr div{padding:14px 22px;border-radius:40px;font-size:14px;text-align:center}
+.tr .x{color:var(--mut);text-decoration:line-through;text-decoration-color:rgba(43,42,43,.35);border:1px dashed var(--line)}
+.tr .v{font-weight:500;color:var(--ink);background:var(--glass);border:1px solid rgba(255,255,255,.85);box-shadow:inset 0 1px 0 #fff;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.tr.hd div{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;border:0;background:none;box-shadow:none;text-decoration:none;color:var(--mut);padding:4px}
+@media(max-width:560px){.tr div{font-size:12.5px;padding:12px 12px}}
 
-/* tags compare */
-.tcmp{display:grid;gap:8px;margin:14px 0}
-.tr{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.tr div{padding:11px 16px;border-radius:12px;font-size:.93rem;display:flex;gap:10px;align-items:center}
-.tr .x{background:var(--bad-bg);color:#7a2f2f;text-decoration:line-through;text-decoration-color:rgba(163,63,63,.5)}
-.tr .v{background:var(--good-bg);color:#2f4a36;font-weight:600}
-.tr .x::before{content:"✕";font-weight:800;color:var(--bad);text-decoration:none;display:inline-block}
-.tr .v::before{content:"✓";font-weight:800;color:var(--good)}
-.tr.hd div{font-size:.74rem;letter-spacing:.08em;font-weight:700;color:#fff;text-decoration:none}
-.tr.hd .x{background:var(--bad)}.tr.hd .v{background:var(--sage)}
-.tr.hd .x::before,.tr.hd .v::before{content:""}
-@media(max-width:560px){.tr div{font-size:.85rem;padding:9px 11px}}
-
-/* ---------- generator ---------- */
-.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 10px;scrollbar-width:thin}
-.tab{flex:none;padding:11px 18px;border-radius:14px;font-weight:700;font-size:.9rem;background:var(--paper);border:2px solid var(--line);color:var(--ink-2);transition:.3s var(--ease);display:flex;gap:8px;align-items:center}
-.tab:hover{transform:translateY(-2px)}
-.tab.on{background:var(--tc);border-color:var(--tc);color:#fff;box-shadow:0 8px 20px color-mix(in srgb,var(--tc) 40%,transparent)}
-.tab em{font-style:normal;font-size:.74rem;background:rgba(0,0,0,.14);border-radius:99px;padding:1px 8px}
-.slist{display:grid;gap:8px;margin-top:10px}
-.srow{display:flex;gap:12px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--tc);border-radius:14px;padding:12px 14px 12px 18px;animation:swap .45s var(--ease) both;transition:.3s var(--ease)}
-.srow:hover{transform:translateX(4px);box-shadow:var(--shadow)}
+/* générateur */
+.nt{display:flex;gap:8px;overflow-x:auto;padding:6px 4px 14px;justify-content:center;flex-wrap:wrap}
+.nt button{padding:10px 20px;border-radius:40px;font-size:13px;font-weight:500;transition:.35s var(--ease);background:var(--glass-soft);border:1px solid rgba(255,255,255,.85);box-shadow:inset 0 1px 0 #fff;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.nt button small{opacity:.55;margin-left:6px;font-size:11.5px}
+.nt button:hover{transform:translateY(-2px)}
+.nt button.on{background:linear-gradient(180deg,#434143,#232123);color:#fff;border-color:rgba(255,255,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 8px 20px rgba(43,42,43,.22)}
+.slist{margin-top:10px;border-radius:28px;padding:8px 26px}
+.srow{display:flex;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line);animation:swap .5s var(--ease) both}
+.srow:last-child{border:0}
 .srow .tx{flex:1;min-width:0}
-.srow .tx b{display:block;font-size:.97rem;overflow-wrap:anywhere}
-.srow .tx i{display:block;color:var(--muted);font-size:.86rem;overflow-wrap:anywhere}
+.srow .tx b{display:block;font-size:14px;overflow-wrap:anywhere}
+.srow .tx i{display:block;color:var(--mut);font-size:13.5px;overflow-wrap:anywhere;font-family:var(--disp);font-size:1.15rem;font-weight:400}
 .srow .act{display:flex;gap:6px;flex:none}
-@media(max-width:600px){.srow{flex-direction:column;align-items:stretch}.srow .act{justify-content:flex-end}}
-.ibtn{display:inline-flex;gap:6px;align-items:center;padding:8px 14px;border-radius:99px;background:var(--sand);font-weight:700;font-size:.82rem;transition:.25s}
-.ibtn:hover{background:var(--ink);color:#fff}
-.ibtn.pri{background:var(--ink);color:#fff}
-.ibtn.pri:hover{background:var(--terra)}
-.ibtn.copied{background:var(--good);color:#fff}
-.build{background:var(--ink);color:#fff;border-radius:24px;padding:28px;margin-top:30px;position:relative;overflow:hidden;box-shadow:var(--shadow-lg)}
-.build::before{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,.35),transparent 70%)}
-.build h4{font-size:1.5rem;position:relative}
-.build>p{color:#d9c9bd;font-size:.95rem;margin:4px 0 16px;position:relative}
-.bpat{font-weight:700;color:var(--gold);background:rgba(255,255,255,.07);padding:10px 14px;border-radius:12px;margin-bottom:14px;font-size:.95rem;position:relative}
-.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;position:relative}
-.fields label{display:grid;gap:4px;font-size:.78rem;color:#d9c9bd;font-weight:600}
-.fields input{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:12px;padding:11px 14px;color:#fff;font-size:.95rem;transition:.25s}
-.fields input::placeholder{color:rgba(255,255,255,.4)}
-.fields input:focus{outline:0;border-color:var(--gold);background:rgba(255,255,255,.16)}
-.prev{position:relative;margin-top:18px;background:#fff;color:var(--ink);border-radius:16px;padding:18px 20px;font-weight:600;font-size:1.08rem;min-height:70px;overflow-wrap:anywhere}
-.prev .ph{color:#b8a69a;font-weight:500}
-.prev mark{background:#FFE7C7;border-radius:5px;padding:0 3px;color:var(--ink)}
-.gauge{position:relative;margin-top:14px;display:grid;gap:8px}
-.gauge .track{height:12px;background:rgba(255,255,255,.14);border-radius:99px;position:relative;overflow:hidden}
-.gauge .fill{height:100%;width:0;border-radius:99px;background:var(--bad);transition:width .4s var(--ease),background .3s}
-.gauge .zone{position:absolute;top:0;bottom:0;left:57.14%;right:0;border-left:2px dashed rgba(255,255,255,.6);background:rgba(122,154,126,.25);pointer-events:none}
-.gauge .info{display:flex;justify-content:space-between;gap:10px;font-size:.88rem;flex-wrap:wrap}
-.gauge .st{font-weight:700}
-.ex{position:relative;margin-top:10px;font-size:.88rem;color:#d9c9bd}
-.ex b{color:#fff}
+@media(max-width:620px){.slist{padding:6px 18px}.srow{flex-direction:column;align-items:stretch;gap:10px}.srow .act{justify-content:flex-start}}
 
-.tester{margin-top:36px}
-.tester textarea{width:100%;min-height:96px;border-radius:16px;border:2px solid var(--line);background:var(--paper);padding:14px 16px;resize:vertical;transition:.25s}
-.tester textarea:focus{outline:0;border-color:var(--terra);box-shadow:0 0 0 4px rgba(192,122,90,.15)}
-.checks{display:grid;gap:8px;margin-top:12px}
-.chk{display:flex;gap:12px;align-items:flex-start;padding:11px 14px;border-radius:12px;background:var(--paper);border:1px solid var(--line);font-size:.94rem;transition:.3s}
-.chk .s{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:.8rem;font-weight:800;background:var(--line);color:var(--muted);transition:.3s}
-.chk.ok{background:var(--good-bg);border-color:#cfe5d3}.chk.ok .s{background:var(--good);color:#fff}
-.chk.ko{background:var(--bad-bg);border-color:#f0cfca}.chk.ko .s{background:var(--bad);color:#fff}
-.ban{margin-top:6px}
-.ban span{display:inline-block;background:var(--bad-bg);color:var(--bad);border:1px solid #f0cfca;padding:3px 12px;border-radius:99px;font-size:.85rem;font-weight:600;margin:3px 4px 3px 0;text-decoration:line-through}
+.build{margin-top:44px;padding:clamp(24px,4vw,40px);border-radius:32px}
+.build h4{font-size:clamp(1.8rem,4vw,2.4rem);text-align:center;font-weight:300}
+.build>p{text-align:center;color:var(--mut);margin:6px 0 20px;font-size:14px}
+.bpat{text-align:center;font-weight:500;padding:12px 18px;border-radius:40px;margin-bottom:16px;font-size:13.5px;border:1px dashed rgba(43,42,43,.3)}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.fields label{display:grid;gap:4px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);font-weight:500}
+.fields input,.af textarea,.story textarea,.tester textarea,.search{background:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.95);box-shadow:inset 0 1px 2px rgba(43,42,43,.06),0 1px 0 rgba(255,255,255,.8);border-radius:20px;padding:12px 18px;transition:.3s;font-size:15px;letter-spacing:0;text-transform:none;width:100%}
+.fields input:focus,.af textarea:focus,.story textarea:focus,.tester textarea:focus,.search:focus{outline:0;border-color:var(--ink);background:#fff}
+.prev{margin-top:20px;padding:24px 26px;border-radius:24px;background:rgba(255,255,255,.75);border:1px solid #fff;font-family:var(--disp);font-size:clamp(1.4rem,3.2vw,1.8rem);line-height:1.3;min-height:84px;text-align:center;overflow-wrap:anywhere;font-weight:500}
+.prev .ph{color:#b5aeb0;font-weight:400;font-style:italic}
+.prev mark{background:none;color:var(--ink);border-bottom:1px solid var(--ink)}
+.gauge{margin-top:18px}
+.track{height:4px;background:rgba(43,42,43,.12);border-radius:9px;position:relative;overflow:hidden}
+.fill{height:100%;width:0;border-radius:9px;background:var(--ink);transition:width .5s var(--ease),background .3s}
+.fill.over{background:var(--wine)}
+.ginfo{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:12.5px;margin-top:10px;color:var(--mut)}
+.ginfo b{color:var(--ink)}
+.ex{margin-top:10px;text-align:center;font-size:13.5px;color:var(--mut)}
+.row-c{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
 
-/* ---------- levers ---------- */
-.lev{display:grid;gap:12px}
-.lv{--c:var(--terra);background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.35s var(--ease)}
-.lv:hover{box-shadow:var(--shadow)}
-.lv>button{display:flex;gap:16px;align-items:center;width:100%;text-align:left;padding:16px 18px}
-.lv .n{flex:none;width:46px;height:46px;border-radius:14px;background:var(--c);color:#fff;font-family:var(--serif);font-weight:800;font-size:1.3rem;display:grid;place-items:center}
-.lv b{display:block;font-family:var(--serif);font-size:1.2rem;color:var(--c);filter:brightness(.85)}
-.lv small{color:var(--ink-2);font-size:.92rem;line-height:1.4;display:block}
-.lv .chev{margin-left:auto;flex:none;transition:.4s var(--ease);color:var(--muted)}
-.lv.open .chev{transform:rotate(180deg)}
-.lv .more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
+.tester{margin-top:20px}
+.tester textarea{min-height:92px;resize:vertical;border-radius:24px}
+.checks{display:grid;gap:8px;margin-top:14px}
+.chk{display:flex;gap:16px;align-items:center;padding:14px 22px;border-radius:999px;font-size:14px}
+.chk .s{flex:none;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;width:84px;text-align:center;padding:5px 0;border-radius:40px;border:1px solid var(--line);color:var(--mut)}
+.chk.ok .s{background:var(--ink);color:#fff;border-color:var(--ink)}
+.chk.ko .s{color:var(--wine);border-color:rgba(102,29,29,.5)}
+.chk small{display:block;color:var(--mut);font-size:12.5px;line-height:1.5}
+@media(max-width:560px){.chk{border-radius:24px;padding:12px 16px;gap:12px}.chk .s{width:74px;font-size:9.5px}}
+.ban{margin-top:10px;text-align:center}
+.ban span{display:inline-block;color:var(--wine);border:1px solid rgba(102,29,29,.4);padding:3px 14px;border-radius:40px;font-size:13px;margin:3px;text-decoration:line-through}
+
+/* leviers + accordéons */
+.lev,.acc{display:grid;gap:0;border-radius:28px;padding:6px 28px}
+.lv{border-bottom:1px solid var(--line)}
+.lv:last-child{border:0}
+.lv>button{display:flex;gap:22px;align-items:center;width:100%;text-align:left;padding:22px 0}
+.lv .n{flex:none;font-family:var(--disp);font-style:italic;font-weight:300;font-size:2.8rem;line-height:1;width:44px;text-align:center}
+.lv b{display:block;font-family:var(--disp);font-weight:400;font-size:1.7rem;line-height:1.1}
+.lv small{display:block;color:var(--mut);font-size:13.5px;line-height:1.5;margin-top:3px}
+.pm{margin-left:auto;flex:none;font-size:1.7rem;font-weight:300;line-height:1;transition:transform .5s var(--ease);color:var(--mut)}
+.lv.open .pm{transform:rotate(45deg)}
+.lv .more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
 .lv.open .more{grid-template-rows:1fr}
 .lv .more>div{overflow:hidden}
-.lv blockquote{margin:0 18px 18px 80px;padding:14px 18px;border-radius:14px;background:color-mix(in srgb,var(--c) 11%,#fff);border-left:4px solid var(--c);font-style:italic;font-family:var(--serif);font-size:1.08rem}
-@media(max-width:560px){.lv blockquote{margin-left:18px}}
-
-.acc{display:grid;gap:10px}
-details.ac{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:0 18px;transition:.3s}
-details.ac[open]{box-shadow:var(--shadow);border-color:var(--terra)}
-details.ac summary{cursor:pointer;list-style:none;padding:16px 0;font-weight:700;color:var(--terra-d);display:flex;justify-content:space-between;gap:12px;align-items:center}
+.lv blockquote{margin:0 0 22px 66px;font-family:var(--disp);font-style:italic;font-size:1.45rem;line-height:1.4}
+@media(max-width:560px){.lv blockquote{margin-left:0}.lv>button{gap:14px}}
+details.ac{border-bottom:1px solid var(--line)}
+details.ac:last-child{border:0}
+details.ac summary{cursor:pointer;list-style:none;padding:20px 0;font-family:var(--disp);font-size:1.5rem;display:flex;justify-content:space-between;gap:12px;align-items:center}
 details.ac summary::-webkit-details-marker{display:none}
-details.ac summary::after{content:"+";font-size:1.5rem;line-height:1;transition:.3s;color:var(--muted)}
+details.ac summary::after{content:"+";font-family:var(--sans);font-weight:300;font-size:1.6rem;color:var(--mut);transition:transform .5s var(--ease)}
 details.ac[open] summary::after{transform:rotate(45deg)}
-details.ac .in{padding:0 0 16px;color:var(--ink-2);animation:swap .4s var(--ease)}
+details.ac .in{padding:0 0 22px;color:var(--txt);animation:swap .5s var(--ease)}
 
-.story{display:grid;gap:14px;margin-top:10px}
-.story .q{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px 18px;transition:.3s}
-.story .q:focus-within{border-color:var(--c);box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 18%,transparent)}
-.story label{display:flex;gap:12px;align-items:flex-start;font-weight:600;margin-bottom:10px}
-.story label b{flex:none;width:30px;height:30px;border-radius:10px;background:var(--c);color:#fff;display:grid;place-items:center;font-size:.9rem}
-.story label small{display:block;font-weight:400;color:var(--muted)}
-.story textarea{width:100%;min-height:70px;border:0;border-bottom:2px dashed var(--line);background:transparent;padding:6px 2px;resize:vertical}
-.story textarea:focus{outline:0;border-color:var(--c)}
-.out{margin-top:16px;white-space:pre-wrap;background:var(--sand);padding:20px;border-radius:16px;font-family:var(--serif);font-size:1.05rem;display:none;animation:swap .5s var(--ease)}
+.story{display:grid;gap:14px}
+.story .q{padding:22px 28px;border-radius:26px}
+.story label{display:flex;gap:18px;align-items:flex-start;margin-bottom:10px;font-weight:600;color:var(--ink)}
+.story label .nn{flex:none;font-family:var(--disp);font-style:italic;font-weight:300;font-size:2.2rem;line-height:1;width:30px}
+.story label small{display:block;font-weight:400;color:var(--mut);font-size:13px}
+.story textarea{min-height:76px;resize:vertical}
+.out{margin-top:18px;white-space:pre-wrap;padding:26px 30px;border-radius:26px;font-family:var(--disp);font-size:1.3rem;line-height:1.5;display:none;animation:swap .6s var(--ease)}
 .out.show{display:block}
 
-/* ---------- checklist ---------- */
-.ck-top{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;background:var(--ink);color:#fff;border-radius:24px;padding:24px 28px;margin-bottom:18px;position:sticky;top:74px;z-index:10;box-shadow:var(--shadow-lg)}
-@media(max-width:560px){.ck-top{grid-template-columns:auto 1fr;gap:16px;padding:16px;position:static}}
-.ring{position:relative;width:110px;height:110px}
-@media(max-width:560px){.ring{width:78px;height:78px}}
-.ring svg{transform:rotate(-90deg);width:100%;height:100%}
-.ring circle{fill:none;stroke-width:10;stroke-linecap:round}
-.ring .bg{stroke:rgba(255,255,255,.14)}
-.ring .fg{stroke:var(--gold);stroke-dasharray:289;stroke-dashoffset:289;transition:stroke-dashoffset .7s var(--ease),stroke .3s}
-.ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-size:1.5rem}
-.ck-top h4{font-size:1.25rem}
-.ck-top p{color:#d9c9bd;font-size:.92rem}
-.ck-top .row{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
-.ck-top .ibtn{background:rgba(255,255,255,.12);color:#fff}
-.ck-top .ibtn:hover{background:#fff;color:var(--ink)}
-.ckg{margin-top:16px;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--paper)}
-.ckg>h4{background:var(--m4);color:#fff;font-family:var(--sans);font-size:.85rem;letter-spacing:.1em;padding:12px 20px;display:flex;justify-content:space-between}
-.ckg label{display:flex;gap:14px;align-items:flex-start;padding:14px 20px;border-top:1px solid var(--line);cursor:pointer;transition:.25s}
-.ckg h4+label{border-top:0}
-.ckg label:hover{background:#FCF6EE}
+/* checklist */
+.ckh{padding:32px;border-radius:32px;text-align:center;margin-bottom:18px}
+.ckh .big{font-family:var(--disp);font-weight:300;font-size:clamp(3.4rem,10vw,5.4rem);line-height:1}
+.ckh .big small{font-size:.45em;color:var(--mut)}
+.ckh h4{font-size:1.6rem;margin:8px 0 2px;font-weight:400}
+.ckh p{color:var(--mut);font-size:14px}
+.ckh .track{max-width:380px;margin:18px auto}
+.ckg{margin-top:14px;border-radius:28px;padding:10px 28px 8px}
+.ckg>h4{display:flex;justify-content:space-between;align-items:baseline;padding:18px 0 8px;font-family:var(--script);font-weight:400;font-size:2.2rem}
+.ckg>h4 span:last-child{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--mut)}
+.ckg label{display:flex;gap:18px;align-items:flex-start;padding:16px 0;border-top:1px solid var(--line);cursor:pointer}
 .ckg input{position:absolute;opacity:0}
-.box{flex:none;width:28px;height:28px;border-radius:9px;border:2.5px solid var(--line);display:grid;place-items:center;transition:.3s var(--ease);background:#fff;margin-top:1px}
-.box svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:24;stroke-dashoffset:24;transition:.35s .05s var(--ease)}
-.ckg input:checked+.box{background:var(--m4);border-color:var(--m4);transform:scale(1.1)}
-.ckg input:checked+.box svg{stroke-dashoffset:0}
-.ckg input:focus-visible+.box{outline:3px solid var(--gold);outline-offset:3px}
-.ckg label span b{display:block;font-weight:600;transition:.3s}
-.ckg label span i{color:var(--muted);font-size:.88rem}
-.ckg input:checked~span b{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(107,122,82,.6)}
-.ckg .help{margin-left:auto;flex:none}
+.box{flex:none;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--ink);background:rgba(255,255,255,.6);position:relative;transition:.4s var(--ease);margin-top:2px}
+.box::after{content:"";position:absolute;left:8px;top:4px;width:6px;height:11px;border:solid #fff;border-width:0 1.8px 1.8px 0;transform:rotate(45deg) scale(0);transition:transform .35s .05s var(--ease)}
+.ckg input:checked+.box{background:var(--ink)}
+.ckg input:checked+.box::after{transform:rotate(45deg) scale(1)}
+.ckg input:focus-visible+.box{outline:2px solid var(--ink);outline-offset:3px}
+.ckg label b{display:block;font-weight:500;transition:.3s}
+.ckg label i{font-style:normal;color:var(--mut);font-size:13px}
+.ckg input:checked~span b{color:var(--mut);text-decoration:line-through;text-decoration-color:rgba(43,42,43,.35)}
 
-/* ---------- bonus ---------- */
-.fiche{background:var(--paper);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow);animation:swap .5s var(--ease)}
-.fiche>header{background:linear-gradient(120deg,var(--terra),var(--terra-d));color:#fff;padding:20px 24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
-.fiche>header h4{font-size:1.2rem;letter-spacing:.02em}
-.fiche>header .ibtn{background:#fff;color:var(--terra-d)}
-.fiche>header .ibtn:hover{background:var(--ink);color:#fff}
-.fs{padding:18px 24px;border-top:1px solid var(--line);display:grid;gap:6px;position:relative}
-.fs:nth-child(even){background:#FCF6EE}
-.fs .lb{display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:.72rem;font-weight:700;letter-spacing:.1em;color:var(--terra-d);text-transform:uppercase}
-.fs .lb .ibtn{padding:4px 12px;font-size:.76rem;letter-spacing:0;text-transform:none}
+/* fiches modèles */
+.fiche{border-radius:32px;overflow:hidden;animation:swap .6s var(--ease)}
+.fiche>header{padding:30px 34px 22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}
+.fiche>header h4{font-family:var(--script);font-weight:400;font-size:clamp(2rem,4.4vw,2.8rem);line-height:1.2}
+.fs{padding:22px 34px;border-top:1px solid var(--line)}
+.fs .lb{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:8px}
 .fs p{overflow-wrap:anywhere}
-.fs .qa b{display:block;margin-top:8px}
-.fs .qa span{color:var(--ink-2)}
-.tg{display:flex;flex-wrap:wrap;gap:7px}
-.tg span{background:#fff;border:1px solid var(--line);padding:5px 12px;border-radius:99px;font-size:.86rem;font-weight:500;cursor:pointer;transition:.25s}
-.tg span:hover{background:var(--terra);color:#fff;border-color:var(--terra);transform:translateY(-2px)}
-.tg span.copied{background:var(--good);color:#fff;border-color:var(--good)}
-.cnt{font-weight:600;letter-spacing:0;text-transform:none;color:var(--muted)}
+.cnt{color:var(--mut);letter-spacing:.14em}
+.qa b{display:block;margin-top:10px}
+.qa span{color:var(--txt)}
+.tg{display:flex;flex-wrap:wrap;gap:8px}
+.tg span{padding:6px 16px;border-radius:40px;font-size:13px;cursor:pointer;transition:.35s var(--ease);background:rgba(255,255,255,.65);border:1px solid #fff;box-shadow:inset 0 1px 0 #fff}
+.tg span:hover{transform:translateY(-2px);background:var(--ink);color:#fff}
+.tg span.copied{background:var(--ink);color:#fff}
+@media(max-width:560px){.fiche>header,.fs{padding-left:22px;padding-right:22px}}
 
-/* ---------- atelier ---------- */
-.atelier{display:grid;gap:14px;margin-top:10px}
-.af{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px 20px;transition:.3s}
-.af:focus-within{border-color:var(--m5);box-shadow:0 0 0 4px rgba(184,146,78,.18)}
-.af .hd{display:flex;gap:12px;align-items:center;margin-bottom:6px;flex-wrap:wrap}
-.af .hd b{font-family:var(--serif);font-size:1.15rem}
-.af .hd .bn{width:30px;height:30px;border-radius:10px;background:var(--m5);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.9rem}
-.af .hd .stt{margin-left:auto;font-size:.78rem;font-weight:700;padding:3px 12px;border-radius:99px;background:var(--sand);color:var(--ink-2);transition:.3s}
-.af .hd .stt.ok{background:var(--good);color:#fff}
-.af .hd .stt.mid{background:#FCE9C7;color:#8a5e00}
-.af .hint{font-size:.88rem;color:var(--muted);margin-bottom:8px}
-.af textarea{width:100%;border:2px solid var(--line);border-radius:12px;padding:12px 14px;min-height:60px;resize:vertical;background:#fff;transition:.25s}
-.af textarea:focus{outline:0;border-color:var(--m5)}
-.af .mini{height:6px;border-radius:9px;background:var(--sand);margin-top:8px;overflow:hidden}
-.af .mini i{display:block;height:100%;width:0;background:var(--m5);border-radius:9px;transition:.4s var(--ease)}
-.af.okk .mini i{background:var(--good)}
+/* atelier */
+.atelier{display:grid;gap:14px}
+.af{padding:24px 28px;border-radius:28px}
+.af .hd{display:flex;gap:16px;align-items:baseline;flex-wrap:wrap}
+.af .hd .bn{font-family:var(--disp);font-style:italic;font-size:2.4rem;font-weight:300;line-height:1}
+.af .hd b{font-family:var(--disp);font-weight:400;font-size:1.7rem}
+.af .hd .stt{margin-left:auto;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);transition:.3s}
+.af .hd .stt.ok{color:var(--ink);font-weight:600}
+.af .hint{color:var(--mut);font-size:13.5px;margin:2px 0 10px}
+.af textarea{min-height:60px;resize:vertical}
+.mini{height:3px;background:rgba(43,42,43,.1);border-radius:9px;margin-top:12px;overflow:hidden}
+.mini i{display:block;height:100%;width:0;background:var(--ink);transition:width .5s var(--ease)}
 
-/* ---------- finale ---------- */
-.finale{margin:70px 0 0;text-align:center;padding:70px 20px 90px;background:linear-gradient(135deg,#E9D3BC,#F4E3D1);position:relative;overflow:hidden}
-.finale h2{font-size:clamp(2rem,6vw,3.6rem);margin-bottom:12px}
-.finale p{max-width:620px;margin:0 auto 26px;color:var(--ink-2);font-size:1.1rem}
-.finale .big{font-size:4rem;display:inline-block;animation:bob 2.4s ease-in-out infinite}
-footer.ft{background:var(--ink);color:#cdbcae;text-align:center;padding:26px 16px;font-size:.88rem}
-footer.ft b{color:var(--gold)}
+/* finale + pied */
+.finale{text-align:center;padding:130px 0 120px}
+.finale h2{margin:6px 0 20px}
+.finale p{max-width:560px;margin:0 auto 30px}
+footer.ft{padding:34px 20px;text-align:center;font-size:12.5px;color:var(--mut)}
+footer.ft a{color:var(--ink)}
 
-/* ---------- help panel ---------- */
-.fab{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;align-items:center;gap:10px;background:var(--terra);color:#fff;border-radius:99px;padding:14px 20px 14px 16px;font-weight:700;box-shadow:0 10px 30px rgba(169,98,63,.5);transition:.3s var(--ease)}
-.fab:hover{transform:translateY(-3px) scale(1.03)}
-.fab::before{content:"";position:absolute;inset:0;border-radius:inherit;border:2px solid var(--terra);animation:ping 2.6s infinite}
-.fab svg{width:22px;height:22px}
-@media(max-width:560px){.fab span{display:none}.fab{padding:15px}}
-.panel{position:fixed;z-index:95;right:0;top:0;bottom:0;width:min(440px,100%);background:var(--cream);box-shadow:var(--shadow-lg);transform:translateX(105%);transition:transform .5s var(--ease);display:flex;flex-direction:column}
-.panel.open{transform:none}
-.scrim{position:fixed;inset:0;z-index:94;background:rgba(43,34,32,.45);opacity:0;pointer-events:none;transition:.4s;backdrop-filter:blur(2px)}
+/* aide */
+.fab{position:fixed;right:20px;bottom:20px;z-index:55}
+@media(max-width:560px){.fab{right:14px;bottom:14px}}
+.scrim{position:fixed;inset:0;z-index:80;background:rgba(43,42,43,.28);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:.5s}
 .scrim.on{opacity:1;pointer-events:auto}
-.panel header{padding:22px 22px 16px;background:var(--ink);color:#fff;display:flex;gap:12px;align-items:flex-start}
-.panel header h3{font-size:1.5rem}
-.panel header p{color:#d9c9bd;font-size:.9rem;margin-top:2px}
-.panel header button{margin-left:auto;width:38px;height:38px;border-radius:12px;background:rgba(255,255,255,.14);font-size:1.2rem;flex:none}
-.panel .pb{overflow:auto;padding:18px 18px 40px;display:grid;gap:10px;align-content:start}
-.panel .search{width:100%;padding:13px 16px;border-radius:14px;border:2px solid var(--line);background:#fff}
-.panel .search:focus{outline:0;border-color:var(--terra)}
-.panel .gloss{display:flex;flex-wrap:wrap;gap:6px}
+.panel{position:fixed;z-index:90;top:12px;right:12px;bottom:12px;width:min(440px,100% - 24px);border-radius:32px;transform:translateX(112%);transition:transform .7s var(--ease);display:flex;flex-direction:column;background:linear-gradient(150deg,rgba(255,255,255,.88),rgba(250,244,238,.72))}
+.panel.open{transform:none}
+.panel header{padding:28px 28px 14px;display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.panel header h3{font-family:var(--script);font-weight:400;font-size:2.6rem;line-height:1.1}
+.panel header p{color:var(--mut);font-size:13.5px}
+.panel .pb{overflow:auto;padding:6px 28px 30px;display:grid;gap:12px;align-content:start}
+.panel .acc{padding:4px 22px;border-radius:24px}
+.panel details.ac summary{font-size:1.25rem;padding:16px 0}
+.gloss{display:flex;flex-wrap:wrap;gap:8px}
 
-/* ---------- tour ---------- */
-.modal{position:fixed;inset:0;z-index:100;display:none;place-items:center;padding:16px;background:rgba(43,34,32,.6);backdrop-filter:blur(6px)}
-.modal.on{display:grid;animation:fade .3s}
-.mbox{background:var(--cream);border-radius:28px;max-width:520px;width:100%;overflow:hidden;box-shadow:var(--shadow-lg);animation:pop .6s var(--ease)}
-.mbox .mh{background:linear-gradient(135deg,var(--terra),var(--terra-d));color:#fff;padding:30px 28px 26px}
-.mbox .mh h3{font-size:1.9rem}
-.mbox .mh p{color:#ffe7d9;margin-top:4px}
-.mbox .mb{padding:22px 28px 26px;display:grid;gap:14px}
-.mbox .tp{display:flex;gap:14px;align-items:flex-start}
-.mbox .tp i{flex:none;width:42px;height:42px;border-radius:13px;background:var(--sand);display:grid;place-items:center;font-style:normal;font-size:1.2rem}
-.mbox .tp b{display:block}
-.mbox .tp span{color:var(--ink-2);font-size:.93rem}
+/* glossaire */
+.gl{border-bottom:1px dotted var(--ink);cursor:help;font-weight:500;color:inherit}
+.gl:hover,.gl:focus{background:rgba(255,255,255,.7)}
+.tip{position:fixed;z-index:120;max-width:300px;padding:16px 20px;border-radius:22px;font-size:13.5px;line-height:1.6;opacity:0;pointer-events:none;transform:translateY(6px);transition:.25s;background:linear-gradient(150deg,rgba(255,255,255,.92),rgba(246,238,230,.82))}
+.tip.on{opacity:1;transform:none}
+.tip b{display:block;font-family:var(--disp);font-size:1.3rem;font-weight:500;margin-bottom:2px}
 
-/* confetti + toast */
-#conf{position:fixed;inset:0;z-index:120;pointer-events:none}
-.toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,30px);background:var(--ink);color:#fff;padding:11px 20px;border-radius:99px;font-weight:600;font-size:.92rem;z-index:130;opacity:0;pointer-events:none;transition:.4s var(--ease);box-shadow:var(--shadow-lg)}
+/* visite guidée */
+.modal{position:fixed;inset:0;z-index:110;display:none;place-items:center;padding:16px;background:rgba(43,42,43,.3);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.modal.on{display:grid;animation:fade .4s}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.mbox{max-width:500px;width:100%;padding:38px 36px 34px;border-radius:36px;text-align:center;animation:rise .8s var(--ease);background:linear-gradient(150deg,rgba(255,255,255,.9),rgba(248,241,234,.78))}
+.mbox h3{font-family:var(--script);font-weight:400;font-size:3rem;line-height:1.15}
+.mbox>p{color:var(--mut);margin-bottom:18px}
+.tp{display:flex;gap:18px;text-align:left;padding:16px 0;border-top:1px solid var(--line)}
+.tp i{flex:none;font-family:var(--disp);font-size:2.2rem;font-weight:300;line-height:1;width:26px}
+.tp b{display:block}
+.tp span{font-size:13.5px;color:var(--mut);line-height:1.55;display:block}
+.mbox .pill{margin-top:18px}
+.toast{position:fixed;left:50%;bottom:84px;transform:translate(-50%,24px);z-index:130;padding:12px 24px;border-radius:40px;font-size:13.5px;font-weight:500;opacity:0;pointer-events:none;transition:.5s var(--ease);color:#fff;background:linear-gradient(180deg,#434143,#232123);box-shadow:0 14px 34px rgba(43,42,43,.3)}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 
-/* keyframes */
-@keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(16px,-26px) scale(1.06)}}
-@keyframes draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-@keyframes fade{from{opacity:0}to{opacity:1}}
-@keyframes swap{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
-@keyframes ping{0%{transform:scale(1);opacity:.7}70%,100%{transform:scale(1.5);opacity:0}}
-@keyframes pop{from{opacity:0;transform:scale(.88) translateY(20px)}to{opacity:1;transform:none}}
-@keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-12px) rotate(4deg)}}
-
-@media(max-width:560px){body{font-size:16px}.mod-body{padding:24px 20px}.hero{padding-top:120px}.card{padding:18px}.build{padding:20px}}
+@media(max-width:560px){body{font-size:15px}section.sec{padding-top:84px}.hero{padding-top:130px}.glass.pad{padding:22px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.glass,.pill.light,.tip,.panel,.mbox{background:rgba(255,255,255,.88)}}
 
-/* print */
 @media print{
-  .top,.dots,.fab,.panel,.scrim,.modal,.drawer,#conf,.toast,.hero .cta,.act,.ibtn,.ba-sw,.ba-hint{display:none!important}
-  body{background:#fff;font-size:12pt}body::before{display:none}
+  .bg,.nav,.prog,.drawer,.fab,.panel,.scrim,.modal,.toast,.cta,.pill,.seg,.hint{display:none!important}
+  body{background:#fff;font-size:11.5pt}
+  .glass{background:#fff!important;box-shadow:none!important;border:1px solid #bbb!important;backdrop-filter:none!important}
   .rv{opacity:1!important;transform:none!important}
-  .hero{padding:30px 0;color:#000;background:#fff}.hero::after{display:none}.hero h1 em{color:#C07A5A}.hero p.lead{color:#333}.cc{border-color:#ccc;color:#000}.cc span{color:#555}.chip{border-color:#ccc;color:#333}
-  section.sec{padding-top:30px;break-inside:auto}.card,.bloc,.fiche,.ckg,.lv{break-inside:avoid}
-  .ba .ba-body{display:block!important}.ba .ba-body p{display:block!important}
-  .lv .more{grid-template-rows:1fr!important}
-  .ck-top{position:static;color:#000;background:#fff;box-shadow:none;border:1px solid #ccc}
-  .ck-top p{color:#333}
+  .hero{min-height:0;padding:30px 0}
+  .ba-body p{display:block!important}.lv .more{grid-template-rows:1fr!important}
+  .glass,.bloc,.fiche,.ckg{break-inside:avoid}
 }
 </style>
 </head>
 <body>
+<div class="bg" aria-hidden="true"></div>
+<div class="prog"><i id="bar"></i></div>
 
-<!-- ============ TOP BAR ============ -->
-<header class="top" id="top">
-  <div class="wrap top-in">
-    <a class="brand" href="#accueil"><i>✦</i>La Fiche Qui Vend</a>
-    <nav id="nav" aria-label="Navigation principale">
-      <a href="#bienvenue" data-s="bienvenue">Bienvenue</a>
-      <a href="#m1" data-s="m1">1 · Template</a>
-      <a href="#m2" data-s="m2">2 · Titres</a>
-      <a href="#m3" data-s="m3">3 · Histoire</a>
-      <a href="#m4" data-s="m4">4 · Checklist</a>
-      <a href="#bonus" data-s="bonus">Bonus</a>
-      <a href="#atelier" data-s="atelier">Atelier</a>
-    </nav>
-    <button class="help-btn" data-help aria-label="Ouvrir l'aide"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.5-3 4.5M12 17.5v.01"/></svg><span>Besoin d'aide ?</span></button>
-    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-  </div>
-  <div class="bar" id="bar"></div>
+<header class="nav glass" id="top">
+  <a class="wm" href="#accueil">Keza<i>Création</i></a>
+  <nav id="navl" aria-label="Navigation principale">
+    <a href="#bienvenue" data-s="bienvenue">Bienvenue</a>
+    <a href="#m1" data-s="m1">Template</a>
+    <a href="#m2" data-s="m2">Titres</a>
+    <a href="#m3" data-s="m3">Storytelling</a>
+    <a href="#m4" data-s="m4">Checklist</a>
+    <a href="#bonus" data-s="bonus">Modèles</a>
+    <a href="#atelier" data-s="atelier">Atelier</a>
+  </nav>
+  <button class="pill dark sm" data-help>Aide</button>
+  <button class="pill light sm menu" id="burger" aria-expanded="false">Menu</button>
 </header>
-<div class="drawer" id="drawer">
-  <a href="#bienvenue"><b>★</b>Bienvenue — par où commencer</a>
-  <a href="#m1"><b>1</b>Le Template en 6 blocs</a>
-  <a href="#m2"><b>2</b>Le Générateur de titres</a>
-  <a href="#m3"><b>3</b>La Méthode Storytelling</a>
-  <a href="#m4"><b>4</b>La Checklist de conversion</a>
-  <a href="#bonus"><b>+</b>Bonus : 3 fiches modèles</a>
-  <a href="#atelier"><b>✎</b>Mon atelier : écrire ma fiche</a>
-</div>
-<div class="dots" id="dots" aria-hidden="true">
-  <a href="#accueil" data-l="Accueil" data-s="accueil"></a>
-  <a href="#bienvenue" data-l="Bienvenue" data-s="bienvenue"></a>
-  <a href="#m1" data-l="Module 1" data-s="m1"></a>
-  <a href="#m2" data-l="Module 2" data-s="m2"></a>
-  <a href="#m3" data-l="Module 3" data-s="m3"></a>
-  <a href="#m4" data-l="Module 4" data-s="m4"></a>
-  <a href="#bonus" data-l="Bonus" data-s="bonus"></a>
-  <a href="#atelier" data-l="Mon atelier" data-s="atelier"></a>
+<div class="drawer glass" id="drawer">
+  <a href="#bienvenue">Bienvenue</a><a href="#m1">1. Le template en 6 blocs</a><a href="#m2">2. Le générateur de titres</a><a href="#m3">3. La méthode storytelling</a><a href="#m4">4. La checklist</a><a href="#bonus">Les 3 fiches modèles</a><a href="#atelier">Mon atelier</a>
 </div>
 
 <main>
-<!-- ============ HERO ============ -->
+<!-- ============ ACCUEIL ============ -->
 <div class="hero" id="accueil" data-spy>
-  <span class="blob a"></span><span class="blob b"></span><span class="blob c"></span>
   <div class="wrap">
-    <span class="eyebrow">✦ Le kit complet · 100 % interactif</span>
-    <h1>La Fiche<br><em>Qui Vend</em></h1>
-    <p class="lead">Le kit complet pour des fiches produits qui convertissent. Pas de jargon, pas de blabla : des modèles à copier, des outils à essayer et des réponses à chaque question.</p>
-    <div class="chips"><span class="chip">Etsy</span><span class="chip">WooCommerce</span><span class="chip">Shopify</span></div>
-    <div class="chips alt"><span class="chip">Bijoux</span><span class="chip">Bougies</span><span class="chip">Cosmétiques</span><span class="chip">Papeterie</span><span class="chip">Céramique</span><span class="chip">Textile</span></div>
+    <p class="eyebrow">KezaCréation présente</p>
+    <h1><span class="ln"><span class="i">L</span>a <span class="i">F</span>iche</span><span class="ln"><span class="i">Q</span>ui <span class="i">V</span>end</span></h1>
+    <p class="lead">Le kit complet pour écrire des fiches produits qui donnent envie d'acheter. Sans jargon : des modèles à copier, des outils à essayer et une aide à chaque étape.</p>
+    <p class="sub">Etsy, WooCommerce, Shopify. Bijoux, bougies, cosmétiques, papeterie, céramique, textile.</p>
     <div class="cta">
-      <a class="btn light" href="#bienvenue">Commencer le guide <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
-      <button class="btn ghost" data-help>Je suis un peu perdue, aide-moi</button>
+      <a class="pill dark" href="#bienvenue">Commencer le guide</a>
+      <button class="pill light" data-help>Je suis un peu perdue</button>
     </div>
-    <div class="contents">
-      <a class="cc rv" href="#m1"><small>MODULE 1</small><b>Le Template Fiche en 6 Blocs</b><span>La structure complète et remplissable</span></a>
-      <a class="cc rv d1" href="#m2"><small>MODULE 2</small><b>Le Générateur de Titres</b><span>80 structures de titres SEO par niche</span></a>
-      <a class="cc rv d2" href="#m3"><small>MODULE 3</small><b>La Méthode Storytelling</b><span>Vendre avec les émotions et l'histoire</span></a>
-      <a class="cc rv d3" href="#m4"><small>MODULE 4</small><b>La Checklist de Conversion</b><span>Les points à vérifier avant publication</span></a>
-      <a class="cc rv d4" href="#bonus"><small>BONUS</small><b>3 Fiches Modèles Complètes</b><span>Bijou · Bougie · Cosmétique</span></a>
+    <div class="cgrid">
+      <a class="cc glass rv" href="#m1"><small>Module 1</small><b>Le template fiche en 6 blocs</b><span>La structure complète et remplissable</span></a>
+      <a class="cc glass rv d1" href="#m2"><small>Module 2</small><b>Le générateur de titres</b><span>80 structures de titres SEO par niche</span></a>
+      <a class="cc glass rv d2" href="#m3"><small>Module 3</small><b>La méthode storytelling</b><span>Vendre avec les émotions et l'histoire</span></a>
+      <a class="cc glass rv d3" href="#m4"><small>Module 4</small><b>La checklist de conversion</b><span>Les points à vérifier avant de publier</span></a>
+      <a class="cc glass rv d4" href="#bonus"><small>Bonus</small><b>3 fiches modèles</b><span>Bijou, bougie, cosmétique</span></a>
     </div>
   </div>
 </div>
@@ -501,124 +430,110 @@ footer.ft b{color:var(--gold)}
 <!-- ============ BIENVENUE ============ -->
 <section class="sec" id="bienvenue" data-spy>
   <div class="wrap">
-    <div class="mod-head rv" style="--c:#2B2220">
-      <div class="mod-tag"><span>BIENVENUE</span><span>Lecture : 2 min</span></div>
-      <div class="mod-body">
-        <h2>Avant de commencer — lis ceci</h2>
-        <p>Ce kit a été créé pour une seule chose : t'aider à transformer tes fiches produits en véritables machines à vendre. Pas en t'apprenant à « mieux écrire » de façon abstraite, mais en te donnant une structure, des exemples concrets et des formules directement applicables à tes produits.</p>
-      </div>
+    <div class="mh rv">
+      <p class="eyebrow">Bienvenue</p>
+      <h2>Avant de commencer, <em>lis ceci</em></h2>
+      <p>Ce kit a été créé pour une seule chose : t'aider à transformer tes fiches produits en véritables machines à vendre. Pas en t'apprenant à « mieux écrire » de façon abstraite, mais en te donnant une structure, des exemples concrets et des formules directement applicables à tes produits.</p>
     </div>
+    <div class="glass pad rv"><p class="t" style="margin:0"><b>Le problème que ce kit résout :</b> la plupart des créatrices <i>décrivent</i> leur produit au lieu de le <i>vendre</i>. Elles disent <b>ce que c'est</b>, mais pas <b>pourquoi</b> on devrait l'acheter, <b>pour qui</b> c'est fait, <b>quand</b> on le porte, et <b>comment</b> ça va changer quelque chose. Ce sont ces détails qui font la différence entre 0 vente et 10 ventes par semaine.</p></div>
 
-    <div class="card rv">
-      <p class="t" style="margin:0"><b>Le problème que ce kit résout :</b> la plupart des créatrices <i>décrivent</i> leur produit au lieu de le <i>vendre</i>. Elles disent <b>CE QUE</b> c'est, mais pas <b>POURQUOI</b> on devrait l'acheter, <b>POUR QUI</b> c'est fait, <b>QUAND</b> on le porte, et <b>COMMENT</b> ça va changer quelque chose. Ce sont ces détails qui font la différence entre 0 vente et 10 ventes par semaine.</p>
-    </div>
-
-    <h3 class="h" style="--c:var(--ink)">Comment utiliser ce kit <small style="font-family:var(--sans);font-size:.9rem;color:var(--muted);font-weight:500">— clique sur une étape pour y aller</small></h3>
+    <h3 class="sc rv">Comment utiliser ce kit</h3>
+    <p class="t rv" style="color:var(--mut);margin-top:-6px">Touche une étape pour y aller directement.</p>
     <div class="steps" id="steps">
-      <a class="step rv" href="#m1" style="--c:var(--m1)" data-step="1"><span class="n">1</span><div><b>Commence par le Module 1</b><span>Il te donne la structure complète. Lis-le entièrement avant de toucher à quoi que ce soit.</span></div><span class="go">→</span></a>
-      <a class="step rv d1" href="#m2" style="--c:var(--m2)" data-step="2"><span class="n">2</span><div><b>Utilise le Module 2</b><span>Pour améliorer tes titres immédiatement. C'est là que la plupart des ventes se perdent.</span></div><span class="go">→</span></a>
-      <a class="step rv d2" href="#m3" style="--c:var(--m3)" data-step="3"><span class="n">3</span><div><b>Lis le Module 3 attentivement</b><span>Le storytelling est l'arme secrète des meilleures boutiques. Il transforme un produit ordinaire en objet désirable.</span></div><span class="go">→</span></a>
-      <a class="step rv d3" href="#m4" style="--c:var(--m4)" data-step="4"><span class="n">4</span><div><b>Passe la checklist du Module 4</b><span>Avant chaque publication, vérifie tous les points. Sans exception.</span></div><span class="go">→</span></a>
-      <a class="step rv d4" href="#bonus" style="--c:var(--m5)" data-step="5"><span class="n">5</span><div><b>Inspire-toi des modèles Bonus</b><span>Utilise les 3 fiches complètes comme référence. Copie la structure, pas le texte.</span></div><span class="go">→</span></a>
+      <a class="step glass soft rv" href="#m1" data-step="1"><span class="n">1</span><div><b>Commence par le Module 1</b><span class="d">Il te donne la structure complète. Lis-le entièrement avant de toucher à quoi que ce soit.</span></div><span class="st">Lu</span></a>
+      <a class="step glass soft rv d1" href="#m2" data-step="2"><span class="n">2</span><div><b>Utilise le Module 2</b><span class="d">Pour améliorer tes titres immédiatement. C'est là que la plupart des ventes se perdent.</span></div><span class="st">Lu</span></a>
+      <a class="step glass soft rv d2" href="#m3" data-step="3"><span class="n">3</span><div><b>Lis le Module 3 attentivement</b><span class="d">Le storytelling est l'arme secrète des meilleures boutiques. Il transforme un produit ordinaire en objet désirable.</span></div><span class="st">Lu</span></a>
+      <a class="step glass soft rv d3" href="#m4" data-step="4"><span class="n">4</span><div><b>Passe la checklist du Module 4</b><span class="d">Avant chaque publication, vérifie tous les points. Sans exception.</span></div><span class="st">Terminée</span></a>
+      <a class="step glass soft rv d4" href="#bonus" data-step="5"><span class="n">5</span><div><b>Inspire-toi des modèles bonus</b><span class="d">Utilise les 3 fiches complètes comme référence. Copie la structure, pas le texte.</span></div><span class="st">Lu</span></a>
     </div>
 
-    <div class="call gold rv"><div class="ic">◆</div><div><b class="ti">Un conseil avant tout</b><p>N'essaie pas d'améliorer toutes tes fiches en une fois. Commence par tes <b>3 meilleures références</b>, celles qui ont déjà du trafic. Mesure l'impact sur 2 semaines, puis passe aux suivantes. <b>La régularité bat la perfection.</b></p></div></div>
-
-    <div class="call rv" style="--c:var(--teal)"><div class="ic">💡</div><div><b class="ti">Tu n'es pas à l'aise avec l'informatique ? Aucun souci.</b><p>Dans ce guide, les mots <span class="gl" tabindex="0" data-g="seo">soulignés en pointillés</span> t'expliquent leur sens quand tu passes dessus ou que tu les touches. Le bouton <b>« Besoin d'aide ? »</b> (en haut et en bas à droite) répond aux questions les plus fréquentes. Et ta progression est <b>sauvegardée automatiquement</b> sur cet appareil.</p></div></div>
+    <div class="note glass rv"><span class="script">Un conseil avant tout</span><p>N'essaie pas d'améliorer toutes tes fiches en une fois. Commence par tes <b>3 meilleures références</b>, celles qui ont déjà du trafic. Mesure l'impact sur 2 semaines, puis passe aux suivantes. <b>La régularité bat la perfection.</b></p></div>
+    <div class="note glass soft rv"><span class="script">L'informatique n'est pas ton fort ? Aucun souci</span><p>Les mots <span class="gl" tabindex="0" data-g="seo">soulignés en pointillés</span> s'expliquent quand tu passes dessus ou que tu les touches. Le bouton <b>Aide</b> répond aux questions les plus fréquentes. Et ta progression est <b>sauvegardée automatiquement</b> sur cet appareil.</p></div>
   </div>
 </section>
 
 <!-- ============ MODULE 1 ============ -->
 <section class="sec" id="m1" data-spy>
   <div class="wrap">
-    <div class="mod-head rv" style="--c:var(--m1)">
-      <div class="mod-tag"><span>MODULE 1</span><span>Lecture : 8 min</span></div>
-      <div class="mod-body">
-        <h2>Le Template Fiche en 6 Blocs</h2>
-        <p>Une fiche produit qui vend n'est pas du texte écrit au hasard. C'est une structure précise de 6 blocs qui guide l'acheteur depuis la découverte jusqu'à la décision d'achat. Voici la structure exacte à reproduire pour chacun de tes produits.</p>
-        <div class="meta"><span class="pill">📋 6 blocs</span><span class="pill">🎯 Avant / Après interactifs</span><span class="pill">✍️ Exemples concrets</span></div>
-      </div>
+    <div class="mh rv">
+      <p class="eyebrow">Module 1</p>
+      <h2>Le template fiche <em>en 6 blocs</em></h2>
+      <p>Une fiche produit qui vend n'est pas du texte écrit au hasard. C'est une structure précise de 6 blocs qui guide l'acheteuse depuis la découverte jusqu'à la décision d'achat. Voici la structure exacte à reproduire pour chacun de tes produits.</p>
+      <p class="meta">Lecture : 8 minutes</p>
     </div>
-
-    <p class="t rv"><b>Clique sur un bloc</b> pour aller directement à son explication :</p>
+    <p class="t rv" style="color:var(--mut)">Touche un bloc pour aller à son explication.</p>
     <div class="bgrid" id="bgrid"></div>
 
-    <!-- BLOC 1 -->
     <article class="bloc rv" id="b1">
-      <header><span class="big">1</span><div><small>Bloc 1 · 80-140 caractères</small><h3>Le Titre SEO</h3></div></header>
-      <p class="t">C'est la première chose qu'Etsy et Google lisent. Un mauvais titre = personne ne trouve ton produit. La structure qui fonctionne :</p>
-      <div class="card" style="padding:16px 20px"><p style="font-weight:700;font-size:1.05rem"><span style="color:var(--terra-d)">[Type de produit]</span> + <span style="color:var(--m2)">[Matériau/Style]</span> + <span style="color:var(--m3)">[Usage/Occasion]</span> + <span style="color:var(--m4)">[Cible/Bénéficiaire]</span></p></div>
+      <header><span class="bnum">1</span><h3>Le titre SEO</h3><span class="eyebrow">80 à 140 caractères</span></header>
+      <p class="t">C'est la première chose qu'Etsy et Google lisent. Un mauvais titre, et personne ne trouve ton produit. La structure qui fonctionne :</p>
+      <div class="glass soft pad" style="padding-block:22px"><p class="formula">[Type de produit] + [Matériau ou style] + [Usage ou occasion] + [Cible ou bénéficiaire]</p></div>
       <div class="ba" data-ba data-s="avant">
-        <div class="ba-sw" role="group" aria-label="Avant ou après"><i></i><button class="on" data-v="avant">✕ Avant</button><button data-v="apres">✓ Après</button></div>
-        <div class="ba-body"><p class="av">Bague argent fait main</p><p class="ap">Bague Fleur Argent Sterling — Bijou Bohème Femme, Cadeau Noël, Anneau Floral Délicat</p></div>
-        <div class="ba-hint">👆 Clique sur « Après » pour voir la différence</div>
+        <div class="seg glass soft"><i></i><button class="on" data-v="avant">Avant</button><button data-v="apres">Après</button></div>
+        <div class="ba-body glass soft"><p class="av">Bague argent fait main</p><p class="ap">Bague Fleur Argent Sterling, Bijou Bohème Femme, Cadeau Noël, Anneau Floral Délicat</p></div>
+        <p class="hint">Touche « Après » pour voir la différence.</p>
       </div>
-      <div class="call rv"><div class="ic">◆</div><div><b class="ti">Règles d'or du titre</b><p>Ne jamais commencer par « joli » ou « beau ». Ne jamais mettre ton nom de boutique dans le titre. Toujours inclure l'occasion ou l'usage (« cadeau », « anniversaire », « quotidien »). Pense à <b>comment ta cliente cherche</b>, pas à comment toi tu décris.</p></div></div>
-      <p class="t">👉 Tu peux <a href="#m2">essayer le générateur de titres</a> et le <a href="#testeur">testeur de titre</a> dans le Module 2.</p>
+      <div class="note glass"><span class="script">Règles d'or du titre</span><p>Ne jamais commencer par « joli » ou « beau ». Ne jamais mettre le nom de ta boutique dans le titre. Toujours inclure l'occasion ou l'usage (« cadeau », « anniversaire », « quotidien »). Pense à <b>comment ta cliente cherche</b>, pas à comment toi tu décris.</p></div>
+      <p class="t">Tu peux essayer le <a href="#m2">générateur de titres</a> et le <a href="#testeur">testeur de titre</a> dans le Module 2.</p>
     </article>
 
-    <!-- BLOC 2 -->
     <article class="bloc rv" id="b2">
-      <header><span class="big">2</span><div><small>Bloc 2 · 1-2 phrases</small><h3>L'Accroche Émotionnelle</h3></div></header>
-      <p class="t">C'est la première phrase de ta description. Elle doit créer une <b>image mentale</b> ou une <b>émotion</b> dans les 3 premières secondes. Elle ne décrit pas l'objet — elle décrit ce qu'il fait ressentir ou le moment dans lequel il s'inscrit.</p>
+      <header><span class="bnum">2</span><h3>L'accroche émotionnelle</h3><span class="eyebrow">1 à 2 phrases</span></header>
+      <p class="t">C'est la première phrase de ta description. Elle doit créer une <b>image mentale</b> ou une <b>émotion</b> dans les 3 premières secondes. Elle ne décrit pas l'objet : elle décrit ce qu'il fait ressentir, ou le moment dans lequel il s'inscrit.</p>
       <div class="ba" data-ba data-s="avant">
-        <div class="ba-sw"><i></i><button class="on" data-v="avant">✕ Avant</button><button data-v="apres">✓ Après</button></div>
-        <div class="ba-body"><p class="av">Bougie à la vanille, 200 g, faite à la main.</p><p class="ap">Fermez les yeux. Imaginez rentrer chez vous un soir d'hiver, et sentir cette odeur chaude de vanille et bois qui envahit doucement la pièce. C'est ça, cette bougie.</p></div>
-        <div class="ba-hint">👆 Clique sur « Après »</div>
+        <div class="seg glass soft"><i></i><button class="on" data-v="avant">Avant</button><button data-v="apres">Après</button></div>
+        <div class="ba-body glass soft"><p class="av">Bougie à la vanille, 200 g, faite à la main.</p><p class="ap">Fermez les yeux. Imaginez rentrer chez vous un soir d'hiver, et sentir cette odeur chaude de vanille et de bois qui envahit doucement la pièce. C'est ça, cette bougie.</p></div>
+        <p class="hint">Touche « Après » pour voir la différence.</p>
       </div>
-      <div class="call rv"><div class="ic">◆</div><div><b class="ti">Les 3 structures d'accroche qui marchent</b><p><b>1. La scène :</b> « Imaginez… » / « Un dimanche matin… » / « Ce moment où… »<br><b>2. La promesse :</b> « La pièce qui transformera votre… »<br><b>3. La provocation douce :</b> « Vous ne trouverez pas ça ailleurs. »</p></div></div>
+      <div class="note glass"><span class="script">Les 3 structures d'accroche qui marchent</span><p><b>1. La scène :</b> « Imaginez… », « Un dimanche matin… », « Ce moment où… »<br><b>2. La promesse :</b> « La pièce qui transformera votre… »<br><b>3. La provocation douce :</b> « Vous ne trouverez pas ça ailleurs. »</p></div>
     </article>
 
-    <!-- BLOC 3 -->
     <article class="bloc rv" id="b3">
-      <header><span class="big">3</span><div><small>Bloc 3 · 50-80 mots</small><h3>La Description Courte</h3></div></header>
-      <p class="t"><b>Bénéfice + Usage + Moment.</b> 50 à 80 mots maximum. Elle répond à : <b>POUR QUI</b> c'est fait, <b>DANS QUEL MOMENT</b> on l'utilise, et <b>POURQUOI</b> c'est le bon choix. Elle est concrète, spécifique, et parle directement à ta cliente cible.</p>
+      <header><span class="bnum">3</span><h3>La description courte</h3><span class="eyebrow">50 à 80 mots</span></header>
+      <p class="t"><b>Bénéfice, usage, moment.</b> 50 à 80 mots maximum. Elle répond à : <b>pour qui</b> c'est fait, <b>dans quel moment</b> on l'utilise, et <b>pourquoi</b> c'est le bon choix. Elle est concrète, spécifique, et parle directement à ta cliente cible.</p>
       <div class="ba" data-ba data-s="avant">
-        <div class="ba-sw"><i></i><button class="on" data-v="avant">✕ Avant</button><button data-v="apres">✓ Après</button></div>
-        <div class="ba-body"><p class="av">Crème visage aux huiles essentielles naturelles. Convient aux peaux sensibles. Contient aloe vera et huile d'argan. Faite en France.</p><p class="ap">Pour les femmes qui veulent une routine simple et efficace, sans ingrédient chimique. Cette crème s'applique en 30 secondes chaque matin et laisse la peau douce toute la journée. Parfaite pour les peaux réactives ou les personnes qui débutent en cosmétique naturel.</p></div>
-        <div class="ba-hint">👆 Clique sur « Après »</div>
+        <div class="seg glass soft"><i></i><button class="on" data-v="avant">Avant</button><button data-v="apres">Après</button></div>
+        <div class="ba-body glass soft"><p class="av">Crème visage aux huiles essentielles naturelles. Convient aux peaux sensibles. Contient aloe vera et huile d'argan. Faite en France.</p><p class="ap">Pour les femmes qui veulent une routine simple et efficace, sans ingrédient chimique. Cette crème s'applique en 30 secondes chaque matin et laisse la peau douce toute la journée. Parfaite pour les peaux réactives ou les personnes qui débutent en cosmétique naturelle.</p></div>
+        <p class="hint">Touche « Après » pour voir la différence.</p>
       </div>
     </article>
 
-    <!-- BLOC 4 -->
     <article class="bloc rv" id="b4">
-      <header><span class="big">4</span><div><small>Bloc 4 · 150-250 mots</small><h3>La Description Longue</h3></div></header>
-      <p class="t"><b>Storytelling + Rassurant + Vendeur.</b> C'est le cœur émotionnel de ta fiche. Elle doit répondre à 4 questions :</p>
+      <header><span class="bnum">4</span><h3>La description longue</h3><span class="eyebrow">150 à 250 mots</span></header>
+      <p class="t"><b>Storytelling, réassurance, vente.</b> C'est le cœur émotionnel de ta fiche. Elle doit répondre à 4 questions :</p>
       <div class="bgrid" style="margin-top:0">
-        <div class="bcard" style="cursor:default"><span class="num" style="font-size:1.8rem">①</span><div><b>Comment c'est fait ?</b><small>Le geste artisan</small></div></div>
-        <div class="bcard" style="cursor:default"><span class="num" style="font-size:1.8rem">②</span><div><b>Pourquoi tu l'as créé ?</b><small>L'histoire</small></div></div>
-        <div class="bcard" style="cursor:default"><span class="num" style="font-size:1.8rem">③</span><div><b>Qui ça va rendre heureuse ?</b><small>La cible</small></div></div>
-        <div class="bcard" style="cursor:default"><span class="num" style="font-size:1.8rem">④</span><div><b>Que ressent-on ?</b><small>Quand on le reçoit ou l'utilise : l'émotion</small></div></div>
+        <div class="bcard glass soft plain"><span class="num" style="font-size:2.4rem">1</span><b>Comment c'est fait ?</b><small>Le geste artisan</small></div>
+        <div class="bcard glass soft plain"><span class="num" style="font-size:2.4rem">2</span><b>Pourquoi l'as-tu créé ?</b><small>L'histoire</small></div>
+        <div class="bcard glass soft plain"><span class="num" style="font-size:2.4rem">3</span><b>Qui cela va-t-il rendre heureuse ?</b><small>La cible</small></div>
+        <div class="bcard glass soft plain"><span class="num" style="font-size:2.4rem">4</span><b>Que ressent-on ?</b><small>Quand on le reçoit ou l'utilise : l'émotion</small></div>
       </div>
-      <div class="call rv"><div class="ic">◆</div><div><b class="ti">Structure recommandée pour la description longue</b><p><b>Paragraphe 1 :</b> l'histoire ou l'inspiration de la pièce (2-3 phrases)<br><b>Paragraphe 2 :</b> le processus de création, les matériaux, le soin apporté (2-3 phrases)<br><b>Paragraphe 3 :</b> pour qui c'est fait, dans quel moment, quel effet (2-3 phrases)<br><b>Paragraphe 4 :</b> les détails pratiques (dimensions, matière, entretien, livraison)</p></div></div>
+      <div class="note glass"><span class="script">La structure recommandée</span><p><b>Paragraphe 1 :</b> l'histoire ou l'inspiration de la pièce (2 à 3 phrases)<br><b>Paragraphe 2 :</b> le processus de création, les matériaux, le soin apporté (2 à 3 phrases)<br><b>Paragraphe 3 :</b> pour qui c'est fait, dans quel moment, quel effet (2 à 3 phrases)<br><b>Paragraphe 4 :</b> les détails pratiques (dimensions, matière, entretien, livraison)</p></div>
       <div class="ba" data-ba data-s="avant">
-        <div class="ba-sw"><i></i><button class="on" data-v="avant">✕ Avant</button><button data-v="apres">✓ Après</button></div>
-        <div class="ba-body"><p class="av">Céramique faite à la main. Dimensions 12 cm. Cuisson four. Livraison 5-7 jours.</p><p class="ap">Cette tasse est née d'une envie simple : créer quelque chose qui donne envie de ralentir. Elle est tournée à la main dans mon atelier en Bretagne, avec de l'argile locale. Chaque pièce est unique — les petites variations de couleur sont la signature de l'artisan. Elle est parfaite pour les personnes qui aiment commencer leur journée avec un vrai moment à elles. Robuste, lave-vaisselle, et assez grande pour un thé généreux.</p></div>
-        <div class="ba-hint">👆 Clique sur « Après »</div>
+        <div class="seg glass soft"><i></i><button class="on" data-v="avant">Avant</button><button data-v="apres">Après</button></div>
+        <div class="ba-body glass soft"><p class="av">Céramique faite à la main. Dimensions 12 cm. Cuisson four. Livraison 5 à 7 jours.</p><p class="ap">Cette tasse est née d'une envie simple : créer quelque chose qui donne envie de ralentir. Elle est tournée à la main dans mon atelier en Bretagne, avec de l'argile locale. Chaque pièce est unique : les petites variations de couleur sont la signature de l'artisan. Elle est parfaite pour les personnes qui aiment commencer leur journée avec un vrai moment à elles. Robuste, passe au lave-vaisselle, et assez grande pour un thé généreux.</p></div>
+        <p class="hint">Touche « Après » pour voir la différence.</p>
       </div>
     </article>
 
-    <!-- BLOC 5 -->
     <article class="bloc rv" id="b5">
-      <header><span class="big">5</span><div><small>Bloc 5 · 3-5 questions</small><h3>La FAQ Produit</h3></div></header>
-      <p class="t">La <span class="gl" tabindex="0" data-g="faq">FAQ</span> est ton outil <b>anti-abandon</b>. Un acheteur qui a une question non répondue ne te contacte pas — il part. Inclus <b>minimum 4 questions</b>. Voici les incontournables par catégorie (clique pour les voir) :</p>
-      <div class="fcats" id="fcats" role="tablist"></div>
-      <div class="fq" id="fq"></div>
+      <header><span class="bnum">5</span><h3>La FAQ produit</h3><span class="eyebrow">3 à 5 questions</span></header>
+      <p class="t">La <span class="gl" tabindex="0" data-g="faq">FAQ</span> est ton outil <b>anti-abandon</b>. Une acheteuse qui a une question sans réponse ne te contacte pas : elle part. Inclus <b>minimum 4 questions</b>. Voici les incontournables par catégorie :</p>
+      <div class="pills" id="fcats" role="tablist"></div>
+      <div class="fq glass soft" id="fq"></div>
     </article>
 
-    <!-- BLOC 6 -->
     <article class="bloc rv" id="b6">
-      <header><span class="big">6</span><div><small>Bloc 6 · 13 tags max</small><h3>Tags et Mots-clés</h3></div></header>
-      <p class="t">Etsy permet <b>13 <span class="gl" tabindex="0" data-g="tag">tags</span></b> par fiche. Chaque tag peut contenir plusieurs mots. Règles : utilise des <b>phrases longues</b> (pas des mots seuls), pense à <b>l'usage et l'occasion</b>, pense aux <b>destinataires</b> (« cadeau femme », « cadeau maman »), et varie les formulations.</p>
+      <header><span class="bnum">6</span><h3>Tags et mots-clés</h3><span class="eyebrow">13 tags maximum</span></header>
+      <p class="t">Etsy permet <b>13 <span class="gl" tabindex="0" data-g="tag">tags</span></b> par fiche. Chaque tag peut contenir plusieurs mots. Les règles : utilise des <b>phrases longues</b> (pas des mots seuls), pense à <b>l'usage et à l'occasion</b>, pense aux <b>destinataires</b> (« cadeau femme », « cadeau maman »), et varie les formulations.</p>
       <div class="tcmp">
-        <div class="tr hd"><div class="x">Tags génériques (à éviter)</div><div class="v">Tags efficaces (à utiliser)</div></div>
+        <div class="tr hd"><div>À éviter</div><div>À utiliser</div></div>
         <div class="tr rv"><div class="x">bijou</div><div class="v">bague argent femme minimaliste</div></div>
         <div class="tr rv d1"><div class="x">boucles</div><div class="v">boucles oreilles perle naturelle mariage</div></div>
         <div class="tr rv d2"><div class="x">collier</div><div class="v">collier doré géométrique cadeau anniversaire</div></div>
         <div class="tr rv d3"><div class="x">fait main</div><div class="v">bijou fait main france artisan</div></div>
         <div class="tr rv d4"><div class="x">cadeau</div><div class="v">idée cadeau femme 30 ans original</div></div>
       </div>
-      <div class="call ok rv"><div class="ic">🔍</div><div><b class="ti">Astuce : la recherche de mots-clés gratuite</b><p>Va sur Etsy, tape le début d'un <span class="gl" tabindex="0" data-g="motcle">mot-clé</span> dans la barre de recherche et observe les <b>suggestions automatiques</b>. Ce sont les vraies recherches des acheteurs. Note-les et utilise-les dans tes tags et tes titres.</p></div></div>
+      <div class="note glass"><span class="script">Astuce : la recherche de mots-clés gratuite</span><p>Va sur Etsy, tape le début d'un <span class="gl" tabindex="0" data-g="motcle">mot-clé</span> dans la barre de recherche et observe les <b>suggestions automatiques</b>. Ce sont les vraies recherches des acheteuses. Note-les et utilise-les dans tes tags et tes titres.</p></div>
     </article>
   </div>
 </section>
@@ -626,171 +541,159 @@ footer.ft b{color:var(--gold)}
 <!-- ============ MODULE 2 ============ -->
 <section class="sec" id="m2" data-spy>
   <div class="wrap">
-    <div class="mod-head rv" style="--c:var(--m2)">
-      <div class="mod-tag"><span>MODULE 2</span><span>Outil interactif</span></div>
-      <div class="mod-body">
-        <h2>Le Générateur de Titres Etsy</h2>
-        <p>Voici <b id="nstruct">80</b> structures de titres testées et efficaces, organisées par niche. Le principe : remplace les parties entre crochets [ ] par tes informations. Combine 2-3 structures pour créer ton titre final (max 140 caractères).</p>
-        <div class="meta"><span class="pill">🧩 Choisis ta niche</span><span class="pill">✍️ Remplis les cases</span><span class="pill">📋 Copie ton titre</span></div>
-      </div>
+    <div class="mh rv">
+      <p class="eyebrow">Module 2</p>
+      <h2>Le générateur <em>de titres Etsy</em></h2>
+      <p>Voici <b id="nstruct">80</b> structures de titres testées et efficaces, organisées par niche. Le principe : remplace les parties entre crochets [ ] par tes informations. Combine 2 ou 3 structures pour créer ton titre final (140 caractères maximum).</p>
     </div>
+    <div class="note glass rv"><span class="script">La formule universelle à retenir</span><p class="formula">[Produit spécifique] + [Matériau ou style] + [Usage ou occasion] + [Destinataire]</p></div>
 
-    <div class="call gold rv"><div class="ic">◆</div><div><b class="ti">Formule universelle à retenir</b><p style="font-weight:700">[Produit spécifique] + [Matériau ou Style] + [Usage ou Occasion] + [Destinataire]</p></div></div>
+    <h3 class="sc rv">Étape 1 : choisis ta niche</h3>
+    <div class="nt" id="ntabs" role="tablist"></div>
+    <div class="slist glass soft" id="slist"></div>
 
-    <h3 class="h" style="--c:var(--m2)">Étape 1 — Choisis ta niche</h3>
-    <div class="tabs" id="ntabs" role="tablist"></div>
-    <div class="slist" id="slist"></div>
-
-    <div class="build rv" id="build">
-      <h4>Étape 2 — Construis ton titre</h4>
-      <p>Clique sur « Utiliser » à côté d'une structure ci-dessus : les cases à remplir apparaissent ici.</p>
-      <div class="bpat" id="bpat">👆 Choisis d'abord une structure dans la liste</div>
+    <div class="build glass rv" id="build">
+      <h4>Étape 2 : construis ton titre</h4>
+      <p>Touche « Utiliser » à côté d'une structure ci-dessus : les cases à remplir apparaissent ici.</p>
+      <div class="bpat" id="bpat">Choisis d'abord une structure dans la liste</div>
       <div class="fields" id="bfields"></div>
-      <div class="prev" id="bprev"><span class="ph">Ton titre apparaîtra ici, en direct…</span></div>
-      <div class="gauge">
-        <div class="track"><div class="fill" id="gfill"></div><div class="zone"></div></div>
-        <div class="info"><span class="st" id="gst">0 / 140 caractères</span><span id="gtip" style="color:#d9c9bd">Vise entre 80 et 140</span></div>
-      </div>
+      <div class="prev" id="bprev"><span class="ph">Ton titre apparaîtra ici, en direct</span></div>
+      <div class="gauge"><div class="track"><div class="fill" id="gfill"></div></div><div class="ginfo"><b id="gst">0 / 140 caractères</b><span id="gtip">Vise entre 80 et 140</span></div></div>
       <div class="ex" id="bex"></div>
-      <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;position:relative"><button class="ibtn pri" id="bcopy" style="background:var(--gold);color:var(--ink)">📋 Copier mon titre</button><button class="ibtn" id="breset" style="background:rgba(255,255,255,.12);color:#fff">↺ Recommencer</button></div>
+      <div class="row-c"><button class="pill dark" id="bcopy">Copier mon titre</button><button class="pill light" id="breset">Recommencer</button></div>
     </div>
 
     <div class="tester rv" id="testeur">
-      <h3 class="h" style="--c:var(--m2)">Étape 3 — Teste n'importe quel titre</h3>
-      <p class="t">Colle ici le titre d'une fiche existante (ou celui que tu viens de créer) : l'outil vérifie les règles d'or <b>automatiquement</b>.</p>
-      <textarea id="ttxt" placeholder="Ex : Joli collier doré pour femme" aria-label="Titre à tester"></textarea>
+      <h3 class="sc">Étape 3 : teste n'importe quel titre</h3>
+      <p class="t">Colle ici le titre d'une fiche existante (ou celui que tu viens de créer). L'outil vérifie les règles d'or <b>automatiquement</b>.</p>
+      <textarea id="ttxt" placeholder="Exemple : Joli collier doré pour femme" aria-label="Titre à tester"></textarea>
       <div class="checks" id="tchecks"></div>
       <div class="ban" id="tban"></div>
     </div>
 
-    <div class="call warn rv"><div class="ic">🚫</div><div><b class="ti">Les mots à BANNIR de tes titres</b><p><b>Joli · Beau · Magnifique · Superbe · Unique · Exceptionnel · Qualité supérieure · Meilleur · Parfait · Incroyable.</b> Ces adjectifs ne sont jamais tapés dans une barre de recherche et n'apportent aucune information à l'<span class="gl" tabindex="0" data-g="algo">algorithme</span> Etsy. Remplace-les par des mots concrets (matériau, usage, cible, occasion).</p></div></div>
+    <div class="note glass warn rv"><span class="script">Les mots à bannir de tes titres</span><p><b>Joli, beau, magnifique, superbe, unique, exceptionnel, qualité supérieure, meilleur, parfait, incroyable.</b> Ces adjectifs ne sont jamais tapés dans une barre de recherche et n'apportent aucune information à l'<span class="gl" tabindex="0" data-g="algo">algorithme</span> d'Etsy. Remplace-les par des mots concrets : matériau, usage, cible, occasion.</p></div>
   </div>
 </section>
 
 <!-- ============ MODULE 3 ============ -->
 <section class="sec" id="m3" data-spy>
   <div class="wrap">
-    <div class="mod-head rv" style="--c:var(--m3)">
-      <div class="mod-tag"><span>MODULE 3</span><span>Lecture : 6 min · Exercice inclus</span></div>
-      <div class="mod-body">
-        <h2>La Méthode Storytelling Créatrice</h2>
-        <p>Le <span class="gl" tabindex="0" data-g="story">storytelling</span>, c'est l'arme secrète des boutiques qui vendent bien plus que les autres avec les mêmes produits. Ce n'est pas inventer une histoire. C'est raconter la <b>vraie</b> histoire de façon à ce qu'elle donne envie d'acheter.</p>
-      </div>
+    <div class="mh rv">
+      <p class="eyebrow">Module 3</p>
+      <h2>La méthode <em>storytelling</em> créatrice</h2>
+      <p>Le <span class="gl" tabindex="0" data-g="story">storytelling</span>, c'est l'arme secrète des boutiques qui vendent bien plus que les autres avec les mêmes produits. Ce n'est pas inventer une histoire. C'est raconter la <b>vraie</b> histoire de façon à ce qu'elle donne envie d'acheter.</p>
+      <p class="meta">Lecture : 6 minutes, exercice inclus</p>
     </div>
 
-    <h3 class="h" style="--c:var(--m3)">Pourquoi le storytelling change tout</h3>
+    <h3 class="sc rv" style="margin-top:0">Pourquoi le storytelling change tout</h3>
     <p class="t rv">Les études en neurosciences le montrent : nous prenons nos décisions d'achat avec nos <b>émotions</b>, et nous les justifions ensuite avec la <b>logique</b>. Une fiche qui ne décrit que des caractéristiques s'adresse uniquement au cerveau rationnel. Une fiche avec du storytelling active les deux. Résultat annoncé : un taux de <span class="gl" tabindex="0" data-g="conv">conversion</span> jusqu'à 3 fois supérieur.</p>
 
-    <h3 class="h" style="--c:var(--m3)">Les 5 Leviers Émotionnels <small style="font-family:var(--sans);font-size:.85rem;color:var(--muted);font-weight:500">— clique pour voir l'exemple</small></h3>
-    <div class="lev" id="lev"></div>
+    <h3 class="sc rv">Les 5 leviers émotionnels</h3>
+    <p class="t rv" style="color:var(--mut);margin-top:-6px">Touche un levier pour voir l'exemple.</p>
+    <div class="lev glass soft rv" id="lev"></div>
 
-    <h3 class="h" style="--c:var(--m3)">Comment intégrer le storytelling dans chaque bloc</h3>
-    <div class="acc rv">
-      <details class="ac"><summary>Dans le TITRE</summary><div class="in">Non applicable directement — mais pense à l'occasion (Noël, anniversaire, mariage) qui crée un contexte émotionnel immédiat.</div></details>
-      <details class="ac" open><summary>Dans l'ACCROCHE (Bloc 2)</summary><div class="in">C'est le lieu principal du storytelling. Une scène, un moment, une sensation. Écris en 1-2 phrases comme si tu ouvrais un court-métrage.</div></details>
-      <details class="ac"><summary>Dans la DESCRIPTION COURTE (Bloc 3)</summary><div class="in">Intègre l'usage spécifique et la cible. Pas « pour tout le monde » — mais « pour la femme qui… ». La spécificité crée l'identification.</div></details>
-      <details class="ac"><summary>Dans la DESCRIPTION LONGUE (Bloc 4)</summary><div class="in">Raconte l'origine du produit. Comment l'idée est née. Quel problème tu voulais résoudre. Ce que tu ressens quand tu le crées. Les gens n'achètent pas un produit — ils achètent une histoire et une artisane.</div></details>
-      <details class="ac"><summary>Dans la FAQ (Bloc 5)</summary><div class="in">Humanise tes réponses. Pas « Livraison 5-7 jours » mais « Je prépare chaque commande avec soin dans mon atelier et expédie sous 2-3 jours ouvrés. »</div></details>
+    <h3 class="sc rv">Intégrer le storytelling dans chaque bloc</h3>
+    <div class="acc glass soft rv">
+      <details class="ac"><summary>Dans le titre</summary><div class="in">Non applicable directement, mais pense à l'occasion (Noël, anniversaire, mariage) qui crée un contexte émotionnel immédiat.</div></details>
+      <details class="ac" open><summary>Dans l'accroche (bloc 2)</summary><div class="in">C'est le lieu principal du storytelling. Une scène, un moment, une sensation. Écris en 1 ou 2 phrases, comme si tu ouvrais un court-métrage.</div></details>
+      <details class="ac"><summary>Dans la description courte (bloc 3)</summary><div class="in">Intègre l'usage spécifique et la cible. Pas « pour tout le monde », mais « pour la femme qui… ». La spécificité crée l'identification.</div></details>
+      <details class="ac"><summary>Dans la description longue (bloc 4)</summary><div class="in">Raconte l'origine du produit. Comment l'idée est née. Quel problème tu voulais résoudre. Ce que tu ressens quand tu le crées. Les gens n'achètent pas un produit : ils achètent une histoire et une artisane.</div></details>
+      <details class="ac"><summary>Dans la FAQ (bloc 5)</summary><div class="in">Humanise tes réponses. Pas « Livraison 5 à 7 jours » mais « Je prépare chaque commande avec soin dans mon atelier et j'expédie sous 2 à 3 jours ouvrés. »</div></details>
     </div>
 
-    <h3 class="h" style="--c:var(--m3)">Exercice pratique : trouve ton histoire</h3>
-    <p class="t rv">Réponds à ces 5 questions pour chaque produit. Tes réponses contiennent ton storytelling. <b>Écris comme tu parlerais à une amie</b> — il n'y a pas de mauvaise réponse. Tout est sauvegardé automatiquement.</p>
-    <div class="story" id="story" style="--c:var(--m3)"></div>
-    <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn dark sm" id="sbuild">✨ Assembler mon histoire</button><button class="btn line sm" id="sclear">Tout effacer</button></div>
-    <div class="out" id="sout"></div>
+    <h3 class="sc rv">Exercice : trouve ton histoire</h3>
+    <p class="t rv">Réponds à ces 5 questions pour chaque produit. Tes réponses contiennent ton storytelling. <b>Écris comme tu parlerais à une amie</b> : il n'y a pas de mauvaise réponse. Tout est sauvegardé automatiquement.</p>
+    <div class="story" id="story"></div>
+    <div class="row-c"><button class="pill dark" id="sbuild">Assembler mon histoire</button><button class="pill light" id="sclear">Tout effacer</button></div>
+    <div class="out glass" id="sout"></div>
   </div>
 </section>
 
 <!-- ============ MODULE 4 ============ -->
 <section class="sec" id="m4" data-spy>
   <div class="wrap">
-    <div class="mod-head rv" style="--c:var(--m4)">
-      <div class="mod-tag"><span>MODULE 4</span><span>Checklist interactive</span></div>
-      <div class="mod-body">
-        <h2>La Checklist de Conversion</h2>
-        <p>Avant de publier ou mettre à jour une fiche, parcours ces points. Un seul point manquant peut diviser ton taux de conversion par deux. Coche au fur et à mesure : tout est sauvegardé. Quand tu as fini une fiche, clique sur « Nouvelle fiche » pour recommencer.</p>
-      </div>
+    <div class="mh rv">
+      <p class="eyebrow">Module 4</p>
+      <h2>La checklist <em>de conversion</em></h2>
+      <p>Avant de publier ou de mettre à jour une fiche, parcours ces points. Un seul point manquant peut diviser ton taux de conversion par deux. Coche au fur et à mesure : tout est sauvegardé. Une fois la fiche terminée, touche « Nouvelle fiche » pour recommencer.</p>
     </div>
-    <div class="ck-top rv" id="cktop">
-      <div class="ring"><svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="46"/><circle class="fg" id="ckfg" cx="50" cy="50" r="46"/></svg><b id="ckpct">0%</b></div>
-      <div><h4 id="ckt">Ta fiche est en cours…</h4><p id="ckp">Coche chaque point que tu as vérifié.</p><div class="row"><button class="ibtn" id="ckreset">↺ Nouvelle fiche</button><button class="ibtn" onclick="window.print()">🖨 Imprimer</button></div></div>
+    <div class="ckh glass rv" id="cktop">
+      <div class="big"><span id="ckn">0</span> <small>/ <span id="cktot">13</span></small></div>
+      <h4 id="ckt">Ta fiche est en cours</h4>
+      <p id="ckp">Coche chaque point que tu as vérifié.</p>
+      <div class="track"><div class="fill" id="ckfill"></div></div>
+      <div class="row-c" style="margin-top:6px"><button class="pill light sm" id="ckreset">Nouvelle fiche</button><button class="pill light sm" onclick="window.print()">Imprimer</button></div>
     </div>
     <div id="ckgroups"></div>
-    <div class="call ok rv"><div class="ic">🌱</div><div><b class="ti">Méthode de mise à jour progressive</b><p>Ne refais pas tout d'un coup. Chaque semaine, prends tes <b>3 fiches avec le moins de vues</b> et applique cette checklist. Après 2 semaines, mesure l'évolution du trafic et des favoris. Continue ainsi jusqu'à avoir optimisé l'ensemble de ta boutique.</p></div></div>
+    <div class="note glass soft rv"><span class="script">La mise à jour progressive</span><p>Ne refais pas tout d'un coup. Chaque semaine, prends tes <b>3 fiches les moins vues</b> et applique cette checklist. Après 2 semaines, mesure l'évolution du trafic et des favoris. Continue ainsi jusqu'à avoir optimisé toute ta boutique.</p></div>
   </div>
 </section>
 
 <!-- ============ BONUS ============ -->
 <section class="sec" id="bonus" data-spy>
   <div class="wrap">
-    <div class="mod-head rv" style="--c:var(--m5)">
-      <div class="mod-tag"><span>BONUS</span><span>Prêtes à copier</span></div>
-      <div class="mod-body">
-        <h2>3 Fiches Modèles Complètes</h2>
-        <p>Ces 3 fiches sont des exemples complets, prêts à l'emploi. Utilise-les comme référence de structure et de ton. <b>Ne les copie pas mot pour mot</b> — adapte-les à ta voix, tes produits et ton histoire.</p>
-      </div>
+    <div class="mh rv">
+      <p class="eyebrow">Bonus</p>
+      <h2>3 fiches modèles <em>complètes</em></h2>
+      <p>Ces 3 fiches sont des exemples complets, prêts à l'emploi. Utilise-les comme référence de structure et de ton. <b>Ne les copie pas mot pour mot</b> : adapte-les à ta voix, à tes produits et à ton histoire.</p>
     </div>
-    <div class="tabs" id="btabs" role="tablist"></div>
+    <div class="nt" id="btabs" role="tablist"></div>
     <div id="fiche"></div>
-    <p class="t" style="margin-top:12px">💡 Astuce : clique sur un <b>tag</b> pour le copier seul, ou sur « Copier » pour récupérer un bloc.</p>
+    <p class="t" style="margin-top:18px;color:var(--mut)">Touche un tag pour le copier seul, ou « Copier » pour récupérer un bloc.</p>
   </div>
 </section>
 
 <!-- ============ ATELIER ============ -->
 <section class="sec" id="atelier" data-spy>
   <div class="wrap">
-    <div class="mod-head rv" style="--c:#8E6B2E">
-      <div class="mod-tag"><span>ATELIER</span><span>Ton espace pour écrire</span></div>
-      <div class="mod-body">
-        <h2>Mon atelier : écris ta fiche pas à pas</h2>
-        <p>Remplis les 6 blocs ci-dessous avec ton propre produit. Chaque case te dit en direct si tu es dans les clous (longueur, nombre de mots…). Quand tout est au vert, copie ta fiche complète et colle-la dans Etsy, WooCommerce ou Shopify.</p>
-      </div>
+    <div class="mh rv">
+      <p class="eyebrow">Atelier</p>
+      <h2>Mon atelier : <em>écris ta fiche</em></h2>
+      <p>Remplis les 6 blocs avec ton propre produit. Chaque case te dit en direct si tu es dans les clous (longueur, nombre de mots…). Quand tout est bon, copie ta fiche complète et colle-la dans Etsy, WooCommerce ou Shopify.</p>
     </div>
     <div class="atelier" id="atel"></div>
-    <div style="margin-top:18px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn dark" id="acopy">📋 Copier ma fiche complète</button><button class="btn line" id="aclear">Vider l'atelier</button></div>
+    <div class="row-c"><button class="pill dark" id="acopy">Copier ma fiche complète</button><button class="pill light" id="aclear">Vider l'atelier</button></div>
   </div>
 </section>
 
-<!-- ============ FINALE ============ -->
 <div class="finale" id="finale">
-  <span class="big">🎉</span>
-  <h2 class="rv">Félicitations !</h2>
-  <p class="rv"><b>Tu as maintenant tous les outils</b> pour transformer chacune de tes fiches en machine à vendre. Applique la méthode progressivement, mesure les résultats, et fais confiance au processus. <b>Bonne vente !</b></p>
-  <button class="btn dark rv" id="party">🎊 Fêter ça</button>
+  <div class="wrap">
+    <p class="eyebrow rv">Pour finir</p>
+    <h2 class="rv">Félicitations !</h2>
+    <p class="rv">Tu as maintenant tous les outils pour transformer chacune de tes fiches en machine à vendre. Applique la méthode progressivement, mesure les résultats, et fais confiance au processus. <b>Bonne vente !</b></p>
+    <a class="pill dark rv" href="#accueil">Revenir au début</a>
+  </div>
 </div>
 </main>
 
-<footer class="ft"><b>La Fiche Qui Vend</b> — KezaCreation · <a style="color:var(--gold)" href="https://keza-creation.com">keza-creation.com</a></footer>
+<footer class="ft">La Fiche Qui Vend, un guide <a href="https://www.kezacreation.com">KezaCréation</a></footer>
 
-<!-- ============ HELP ============ -->
-<button class="fab" data-help aria-label="Ouvrir l'aide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.5-3 4.5M12 17.5v.01"/></svg><span>Besoin d'aide ?</span></button>
+<button class="pill dark fab" data-help>Besoin d'aide ?</button>
 <div class="scrim" id="scrim"></div>
-<aside class="panel" id="panel" aria-label="Aide" aria-hidden="true">
-  <header><div><h3>On t'aide 💛</h3><p>Les réponses aux questions les plus courantes.</p></div><button id="pclose" aria-label="Fermer l'aide">✕</button></header>
+<aside class="panel glass" id="panel" aria-label="Aide" aria-hidden="true">
+  <header><div><h3>On t'aide</h3><p>Les réponses aux questions les plus courantes.</p></div><button class="pill light xs" id="pclose">Fermer</button></header>
   <div class="pb">
-    <input class="search" id="psearch" type="search" placeholder="Cherche… (copier, tag, Shopify)" aria-label="Rechercher dans l'aide">
-    <div class="acc" id="pfaq"></div>
-    <h4 style="margin-top:14px;font-size:1.15rem">Petit lexique</h4>
+    <input class="search" id="psearch" type="search" placeholder="Cherche : copier, tag, Shopify…" aria-label="Rechercher dans l'aide">
+    <div class="acc glass soft" id="pfaq"></div>
+    <h3 class="script" style="font-size:2rem;margin-top:10px;font-family:var(--script);font-weight:400">Petit lexique</h3>
     <div class="gloss" id="pgloss"></div>
-    <button class="btn line sm" id="tourbtn" style="margin-top:10px;justify-self:start">▶ Revoir la visite guidée</button>
+    <button class="pill line sm" id="tourbtn" style="justify-self:start;margin-top:8px">Revoir la visite guidée</button>
   </div>
 </aside>
 
 <div class="modal" id="tour" role="dialog" aria-modal="true" aria-labelledby="tourt">
-  <div class="mbox">
-    <div class="mh"><h3 id="tourt">Bienvenue ! 👋</h3><p>3 gestes à connaître et tu es prête.</p></div>
-    <div class="mb">
-      <div class="tp"><i>👇</i><div><b>Fais défiler la page</b><span>Le guide se lit de haut en bas. Une barre de progression en haut de l'écran te montre où tu en es.</span></div></div>
-      <div class="tp"><i>👆</i><div><b>Clique, touche, essaie</b><span>Boutons « Avant / Après », cases à cocher, générateur de titres… Tout est fait pour être essayé.</span></div></div>
-      <div class="tp"><i>💛</i><div><b>Un doute ? Le bouton « ? »</b><span>Il est toujours en bas à droite. Les mots soulignés en pointillés s'expliquent aussi d'un simple clic.</span></div></div>
-      <button class="btn dark" id="tourok" style="justify-content:center">C'est parti !</button>
-    </div>
+  <div class="mbox glass">
+    <h3 id="tourt">Bienvenue</h3>
+    <p>Trois gestes à connaître et tu es prête.</p>
+    <div class="tp"><i>1</i><div><b>Fais défiler la page</b><span>Le guide se lit de haut en bas. Une fine ligne en haut de l'écran te montre où tu en es.</span></div></div>
+    <div class="tp"><i>2</i><div><b>Touche, clique, essaie</b><span>Boutons « Avant » et « Après », cases à cocher, générateur de titres : tout est fait pour être essayé.</span></div></div>
+    <div class="tp"><i>3</i><div><b>Un doute ? Le bouton Aide</b><span>Il est toujours là, en bas à droite. Les mots soulignés en pointillés s'expliquent aussi d'un simple clic.</span></div></div>
+    <button class="pill dark" id="tourok">C'est parti</button>
   </div>
 </div>
 
-<div class="tip" id="tip" role="tooltip"></div>
+<div class="tip glass" id="tip" role="tooltip"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<canvas id="conf"></canvas>
 
 <script>
 (()=>{
@@ -801,39 +704,36 @@ const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'
 const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
 const words=s=>(s.trim().match(/\S+/g)||[]).length;
 
-/* toast + copy */
-let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2200)}
-async function copy(text,btn,label){
+let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2400)}
+async function copy(text,btn){
   let ok=false;
   try{await navigator.clipboard.writeText(text);ok=true}catch(e){
     const a=document.createElement('textarea');a.value=text;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();
     try{ok=document.execCommand('copy')}catch(_){}a.remove();
   }
-  toast(ok?'✓ Copié ! Tu peux coller où tu veux.':'Copie impossible — sélectionne le texte à la main.');
-  if(ok&&btn){const o=btn.innerHTML;btn.classList.add('copied');btn.innerHTML='✓ Copié';setTimeout(()=>{btn.classList.remove('copied');btn.innerHTML=o},1600)}
+  toast(ok?'Copié. Tu peux coller où tu veux.':'Copie impossible : sélectionne le texte à la main.');
+  if(ok&&btn){const o=btn.innerHTML;btn.classList.add('copied');btn.textContent='Copié';setTimeout(()=>{btn.classList.remove('copied');btn.innerHTML=o},1600)}
 }
 
-/* ---------- reveal ---------- */
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+/* halo de verre qui suit le curseur */
+document.addEventListener('pointermove',e=>{const g=e.target.closest&&e.target.closest('.glass');if(!g)return;const r=g.getBoundingClientRect();g.style.setProperty('--mx',(e.clientX-r.left)+'px');g.style.setProperty('--my',(e.clientY-r.top)+'px')},{passive:true});
+
+/* apparition douce */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
 const observeRv=(root=document)=>$$('.rv:not(.in)',root).forEach(el=>io.observe(el));
 observeRv();
 
-/* ---------- progress + spy ---------- */
+/* progression et navigation */
 const bar=$('#bar');
-const onScroll=()=>{const h=document.documentElement;const p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);bar.style.width=(p*100)+'%'};
+const onScroll=()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight||1)*100)+'%'};
 addEventListener('scroll',onScroll,{passive:true});onScroll();
-const spyEls=$$('[data-spy]');
-const spy=new IntersectionObserver(es=>es.forEach(e=>{
-  if(e.isIntersecting){const id=e.target.id;$$('[data-s]').forEach(a=>{if(a.tagName==='A')a.classList.toggle('on',a.dataset.s===id)})}
-}),{rootMargin:'-45% 0px -50% 0px'});
-spyEls.forEach(s=>spy.observe(s));
-
-/* burger */
+const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){$$('#navl a').forEach(a=>a.classList.toggle('on',a.dataset.s===e.target.id))}}),{rootMargin:'-45% 0px -50% 0px'});
+$$('[data-spy]').forEach(s=>spy.observe(s));
 const drawer=$('#drawer'),burger=$('#burger');
-burger.onclick=()=>{const o=drawer.classList.toggle('open');burger.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':''};
-$$('a',drawer).forEach(a=>a.addEventListener('click',()=>{drawer.classList.remove('open');burger.setAttribute('aria-expanded',false);document.body.style.overflow=''}));
+burger.onclick=()=>{const o=drawer.classList.toggle('open');burger.setAttribute('aria-expanded',o);burger.textContent=o?'Fermer':'Menu'};
+$$('a',drawer).forEach(a=>a.addEventListener('click',()=>{drawer.classList.remove('open');burger.setAttribute('aria-expanded',false);burger.textContent='Menu'}));
 
-/* ---------- glossary ---------- */
+/* glossaire */
 const GLOSS={
  seo:['SEO','L\'ensemble des réglages qui aident ta fiche à apparaître en premier quand quelqu\'un cherche sur Etsy ou Google. En pratique : utiliser les mots que tes clientes tapent vraiment.'],
  tag:['Tag','Un mot-clé ou une courte phrase que tu ajoutes à ta fiche pour qu\'elle apparaisse dans les recherches. Etsy t\'en laisse 13.'],
@@ -852,8 +752,8 @@ function showTip(el){
   const g=GLOSS[el.dataset.g];if(!g)return;
   tip.innerHTML=`<b>${g[0]}</b>${g[1]}`;tip.classList.add('on');
   const r=el.getBoundingClientRect(),tw=tip.offsetWidth,th=tip.offsetHeight;
-  let x=Math.min(Math.max(8,r.left+r.width/2-tw/2),innerWidth-tw-8),y=r.top-th-10;
-  if(y<70)y=r.bottom+10;tip.style.left=x+'px';tip.style.top=y+'px';
+  let x=Math.min(Math.max(8,r.left+r.width/2-tw/2),innerWidth-tw-8),y=r.top-th-12;
+  if(y<90)y=r.bottom+12;tip.style.left=x+'px';tip.style.top=y+'px';
 }
 const hideTip=()=>tip.classList.remove('on');
 document.addEventListener('mouseover',e=>{const g=e.target.closest('.gl');if(g)showTip(g)});
@@ -863,135 +763,134 @@ document.addEventListener('focusout',hideTip);
 document.addEventListener('click',e=>{const g=e.target.closest('.gl');if(g){showTip(g);setTimeout(hideTip,4500)}else hideTip()});
 addEventListener('scroll',hideTip,{passive:true});
 
-/* ---------- blocs overview ---------- */
+/* aperçu des blocs */
 const BLOCS=[
- ['1','Titre SEO','Être trouvé sur Etsy / Google','80-140 car.'],
- ['2','Accroche','Stopper le scroll, créer l\'envie','1-2 phrases'],
- ['3','Description courte','Convaincre rapidement','50-80 mots'],
- ['4','Description longue','Raconter, rassurer, vendre','150-250 mots'],
- ['5','FAQ produit','Lever les objections','3-5 questions'],
- ['6','Tags & mots-clés','Être trouvé dans les recherches','13 tags max']];
-$('#bgrid').innerHTML=BLOCS.map((b,i)=>`<a class="bcard rv d${i%3}" href="#b${b[0]}"><span class="num">${b[0]}</span><div><b>${b[1]}</b><small>Rôle : ${b[2]}</small><em>${b[3]}</em></div></a>`).join('');
+ ['1','Titre SEO','Être trouvé sur Etsy et Google','80 à 140 caractères'],
+ ['2','Accroche','Stopper le scroll, créer l\'envie','1 à 2 phrases'],
+ ['3','Description courte','Convaincre rapidement','50 à 80 mots'],
+ ['4','Description longue','Raconter, rassurer, vendre','150 à 250 mots'],
+ ['5','FAQ produit','Lever les objections','3 à 5 questions'],
+ ['6','Tags et mots-clés','Être trouvé dans les recherches','13 tags maximum']];
+$('#bgrid').innerHTML=BLOCS.map((b,i)=>`<a class="bcard glass soft rv d${i%3}" href="#b${b[0]}"><span class="num">${b[0]}</span><b>${b[1]}</b><small>Rôle : ${b[2]}</small><em>${b[3]}</em></a>`).join('');
 
-/* ---------- avant/apres ---------- */
+/* avant / après */
 $$('[data-ba]').forEach(ba=>{
-  const sw=$('.ba-sw',ba),ind=$('i',sw),btns=$$('button',sw);
+  const sw=$('.seg',ba),ind=$('i',sw),btns=$$('button',sw),body=$('.ba-body',ba);
   const place=()=>{const on=$('.on',sw);ind.style.width=on.offsetWidth+'px';ind.style.transform=`translateX(${on.offsetLeft-4}px)`};
-  const set=v=>{ba.dataset.s=v;btns.forEach(b=>{const on=b.dataset.v===v;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});place()};
+  const set=v=>{ba.dataset.s=v;body.dataset.l=v==='avant'?'Avant':'Après';btns.forEach(b=>{const on=b.dataset.v===v;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});place()};
   btns.forEach(b=>b.onclick=()=>set(b.dataset.v));
-  set('avant');addEventListener('resize',place);
-  new ResizeObserver(place).observe(sw);
+  set('avant');addEventListener('resize',place);new ResizeObserver(place).observe(sw);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(place);
 });
 
-/* ---------- FAQ cats ---------- */
+/* FAQ */
 const FAQC={
- 'LIVRAISON':['Dans combien de temps est-il expédié ?','Est-il livré avec suivi ?','Livrez-vous à l\'international ?'],
- 'QUALITÉ':['Quelle est la matière exacte ?','Est-ce solide / durable ?','Y a-t-il une garantie ?'],
- 'PERSONNALISATION':['Puis-je l\'avoir en telle couleur / taille ?','Faites-vous des commandes personnalisées ?'],
- 'UTILISATION':['Comment l\'entretenir ?','Comment le porter / l\'utiliser ?','Est-ce adapté pour offrir ?'],
- 'RETOURS':['Puis-je le retourner ?','Que faire s\'il arrive abîmé ?']};
+ 'Livraison':['Dans combien de temps est-il expédié ?','Est-il livré avec suivi ?','Livrez-vous à l\'international ?'],
+ 'Qualité':['Quelle est la matière exacte ?','Est-ce solide et durable ?','Y a-t-il une garantie ?'],
+ 'Personnalisation':['Puis-je l\'avoir dans telle couleur ou telle taille ?','Faites-vous des commandes personnalisées ?'],
+ 'Utilisation':['Comment l\'entretenir ?','Comment le porter ou l\'utiliser ?','Est-ce adapté pour offrir ?'],
+ 'Retours':['Puis-je le retourner ?','Que faire s\'il arrive abîmé ?']};
 const fc=$('#fcats'),fq=$('#fq');
-Object.keys(FAQC).forEach((k,i)=>{const b=document.createElement('button');b.className='fcat';b.textContent=k;b.setAttribute('role','tab');b.onclick=()=>pick(k);fc.appendChild(b)});
-function pick(k){$$('.fcat',fc).forEach(b=>{const on=b.textContent===k;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});fq.innerHTML='<ul>'+FAQC[k].map((q,i)=>`<li style="animation-delay:${i*70}ms">${esc(q)}</li>`).join('')+'</ul>'}
-pick('LIVRAISON');
+Object.keys(FAQC).forEach(k=>{const b=document.createElement('button');b.textContent=k;b.setAttribute('role','tab');b.onclick=()=>pick(k);fc.appendChild(b)});
+function pick(k){$$('button',fc).forEach(b=>{const on=b.textContent===k;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});fq.innerHTML='<ul>'+FAQC[k].map((q,i)=>`<li style="animation-delay:${i*70}ms">${esc(q)}</li>`).join('')+'</ul>'}
+pick('Livraison');
 
-/* ---------- niches / titles ---------- */
+/* niches et titres */
 const NICHES=[
- {id:'bijoux',n:'Bijoux & Accessoires',ic:'💍',c:'#C07A5A',s:[
+ {id:'bijoux',n:'Bijoux & Accessoires',c:'#C07A5A',s:[
   ['[Type bague/collier/bracelet] [Matériau] [Style] Femme','Bague Argent Sterling Minimaliste Femme'],
-  ['[Bijou] [Pierre naturelle] [Couleur] — Cadeau [Occasion]','Collier Labradorite Bleue — Cadeau Anniversaire Femme'],
-  ['Bijou [Artisan/Origine] — [Style] pour [Cible]','Bijou Fait Main Bretagne — Bohème pour Femme Libre'],
-  ['[Bijou] Personnalisé [Prénom/Initiale] — [Usage/Moment]','Bracelet Personnalisé Prénom Or — Cadeau Naissance'],
-  ['Parure [Matériau] [Style] — [Ensemble pièces]','Parure Argent Géométrique — Collier Boucles Oreilles Assorties'],
-  ['[Bijou] [Couleur] [Matière] — [Occasion] [Cible]','Boucles Turquoise Argent — Mariage Demoiselle d\'Honneur'],
-  ['[Bijou] [Motif/Thème] Délicat — [Ambiance/Style]','Collier Feuille Dorée Délicat — Bijou Nature Minimaliste'],
-  ['[Bijou] [Matière noble] — Fait Main France [Saison]','Anneau Or 14k — Fait Main France Cadeau Noël'],
-  ['[Bijou] [Matière] Empilable — [Style] [Cible]','Bague Or Rempli Empilable — Minimaliste Femme Active'],
-  ['[Bijou] Coordonnées [Matière] — [Occasion]','Collier Coordonnées GPS Argent — Cadeau Mariage Couple'],
-  ['[Bijou] Signe Astro [Matière] — [Cadeau]','Collier Signe Astrologique Argent — Cadeau Anniversaire Copine'],
-  ['[Bijou] Perle [Type] [Style] — [Occasion]','Boucles Perle d\'Eau Douce Dorées — Cadeau Témoin Mariage'],
-  ['[Bijou] Hypoallergénique [Matière] — [Cible/Besoin]','Créoles Acier Inoxydable Hypoallergéniques — Oreilles Sensibles'],
-  ['[Bijou] Famille [Matière] — [Message]','Bracelet Maman Prénoms Enfants Argent — Cadeau Fête des Mères'],
-  ['[Bijou] Homme [Matière] [Style] — [Occasion]','Bracelet Cuir Homme Minimaliste — Cadeau Saint-Valentin Lui']]},
- {id:'bougies',n:'Bougies & Parfums d\'ambiance',ic:'🕯️',c:'#8B7355',s:[
-  ['Bougie [Parfum principal] [Ambiance] — [Occasion/Moment]','Bougie Vanille Caramel Cosy — Cadeau Hiver'],
-  ['Bougie Artisanale [Cire] [Parfum] [Taille]g — [Usage]','Bougie Artisanale Cire Soja Lavande 200g — Relaxation'],
-  ['[Type bougie] [Parfum] — [Émotion/Effet] Maison','Bougie Soja Santal — Parfum Cocooning Maison'],
-  ['Bougie [Parfum] [Taille/Durée] — [Bénéfice/Promesse]','Bougie Ambre Bois 40h — Chaleur et Sérénité'],
-  ['Lot [Nombre] Bougies [Thème] — [Cadeau/Occasion]','Lot 3 Bougies Nature — Coffret Cadeau Fête des Mères'],
-  ['Bougie [Parfum] Vegan — [Label/Origine] France','Bougie Rose Bergamote Vegan — Artisanale France'],
+  ['[Bijou] [Pierre naturelle] [Couleur], Cadeau [Occasion]','Collier Labradorite Bleue, Cadeau Anniversaire Femme'],
+  ['Bijou [Artisan/Origine], [Style] pour [Cible]','Bijou Fait Main Bretagne, Bohème pour Femme Libre'],
+  ['[Bijou] Personnalisé [Prénom/Initiale], [Usage/Moment]','Bracelet Personnalisé Prénom Or, Cadeau Naissance'],
+  ['Parure [Matériau] [Style], [Ensemble pièces]','Parure Argent Géométrique, Collier Boucles Oreilles Assorties'],
+  ['[Bijou] [Couleur] [Matière], [Occasion] [Cible]','Boucles Turquoise Argent, Mariage Demoiselle d\'Honneur'],
+  ['[Bijou] [Motif/Thème] Délicat, [Ambiance/Style]','Collier Feuille Dorée Délicat, Bijou Nature Minimaliste'],
+  ['[Bijou] [Matière noble], Fait Main France [Saison]','Anneau Or 14k, Fait Main France Cadeau Noël'],
+  ['[Bijou] [Matière] Empilable, [Style] [Cible]','Bague Or Rempli Empilable, Minimaliste Femme Active'],
+  ['[Bijou] Coordonnées [Matière], [Occasion]','Collier Coordonnées GPS Argent, Cadeau Mariage Couple'],
+  ['[Bijou] Signe Astro [Matière], [Cadeau]','Collier Signe Astrologique Argent, Cadeau Anniversaire Copine'],
+  ['[Bijou] Perle [Type] [Style], [Occasion]','Boucles Perle d\'Eau Douce Dorées, Cadeau Témoin Mariage'],
+  ['[Bijou] Hypoallergénique [Matière], [Cible/Besoin]','Créoles Acier Inoxydable Hypoallergéniques, Oreilles Sensibles'],
+  ['[Bijou] Famille [Matière], [Message]','Bracelet Maman Prénoms Enfants Argent, Cadeau Fête des Mères'],
+  ['[Bijou] Homme [Matière] [Style], [Occasion]','Bracelet Cuir Homme Minimaliste, Cadeau Saint-Valentin Lui']]},
+ {id:'bougies',n:'Bougies & Parfums d\'ambiance',c:'#8B7355',s:[
+  ['Bougie [Parfum principal] [Ambiance], [Occasion/Moment]','Bougie Vanille Caramel Cosy, Cadeau Hiver'],
+  ['Bougie Artisanale [Cire] [Parfum] [Taille]g, [Usage]','Bougie Artisanale Cire Soja Lavande 200g, Relaxation'],
+  ['[Type bougie] [Parfum], [Émotion/Effet] Maison','Bougie Soja Santal, Parfum Cocooning Maison'],
+  ['Bougie [Parfum] [Taille/Durée], [Bénéfice/Promesse]','Bougie Ambre Bois 40h, Chaleur et Sérénité'],
+  ['Lot [Nombre] Bougies [Thème], [Cadeau/Occasion]','Lot 3 Bougies Nature, Coffret Cadeau Fête des Mères'],
+  ['Bougie [Parfum] Vegan, [Label/Origine] France','Bougie Rose Bergamote Vegan, Artisanale France'],
   ['[Contenant original] Bougie [Parfum] Réutilisable','Pot Terrazzo Bougie Jasmin Réutilisable Fait Main'],
-  ['Bougie [Parfum] [Format] — [Moment de la journée]','Bougie Thé Blanc Pot Verre — Rituel Soirée Détente'],
-  ['Bougie [Thème/Lieu] [Cire] — [Souvenir/Émotion]','Bougie Forêt Bretonne Cire Colza — Souvenir de Vacances'],
-  ['Bougie Personnalisée [Élément] — [Occasion]','Bougie Personnalisée Prénom Étiquette — Cadeau Invités Mariage'],
-  ['Fondants [Parfum] — [Usage]','Fondants Parfumés Vanille Coco — Diffuseur Cosy Maison'],
-  ['Bougie [Parfum] Grand Format [Poids] — [Pièce]','Bougie Figuier Grand Format 300g — Salon Chaleureux'],
-  ['Coffret Bougie [Parfum] + [Accessoire] — [Cadeau]','Coffret Bougie Lavande + Éteignoir — Cadeau Pendaison de Crémaillère'],
-  ['Bougie Parfumée [Saison/Fête] [Parfum] — [Ambiance]','Bougie Parfumée Noël Cannelle Orange — Ambiance Chalet']]},
- {id:'cosmetiques',n:'Cosmétiques & Soins naturels',ic:'🌿',c:'#7A9A7E',s:[
-  ['[Soin] [Ingrédient vedette] [Peau cible] — [Bénéfice]','Sérum Vitamine C Peau Terne — Éclat Naturel Visage'],
-  ['[Soin] Naturel [Ingrédients] — Sans [Ingrédients chimiques]','Crème Visage Aloé Vera Argan — Sans Paraben Sulfate'],
-  ['[Type produit] [Usage/Moment] — [Effet/Promesse]','Huile Corps Après-Soleil — Peau Douce et Hydratée'],
-  ['Routine [Étape] [Type peau] — Kit [Nombre pièces]','Routine Soir Peau Sèche — Kit 3 Soins Naturels'],
-  ['[Soin] [Label] Fait Main — [Cible] [Occasion]','Masque Argile Bio Fait Main — Peau Grasse Cadeau'],
-  ['[Produit] [Parfum/Senteur] — [Moment/Rituel]','Beurre Corps Coco Vanille — Soin du Matin Rituel'],
-  ['Coffret [Occasion] Soins [Thème] — [Nombre pièces]','Coffret Noël Soins Visage Naturels — 4 Produits'],
-  ['Savon [Fabrication] [Ingrédient] — [Type de peau]','Savon Saponifié à Froid Karité — Peau Sèche'],
-  ['Baume [Zone] [Ingrédient] — [Bénéfice]','Baume Lèvres Miel Beurre de Cacao — Lèvres Gercées'],
-  ['Huile [Usage] [Ingrédient] — [Cible]','Huile Cheveux Ricin Argan — Pointes Sèches'],
-  ['Gommage [Zone] [Ingrédient] — [Effet]','Gommage Corps Café Sucre — Peau Satinée'],
-  ['Déodorant [Format] Naturel — [Promesse]','Déodorant Solide Naturel Sans Aluminium — Zéro Déchet'],
-  ['Huile de Massage [Parfum] — [Moment]','Huile de Massage Ylang Ylang — Soirée Détente Duo'],
-  ['Brume [Parfum] — [Usage]','Brume Oreiller Lavande Camomille — Sommeil Apaisé']]},
- {id:'papeterie',n:'Papeterie & Décoration',ic:'✉️',c:'#6B8A8A',s:[
-  ['[Type papeterie] [Style/Esthétique] — [Usage/Occasion]','Affiche Aquarelle Botanique — Décoration Chambre Bébé'],
-  ['Carte [Occasion] [Style illustré] — [Message/Sentiment]','Carte Anniversaire Illustration Florale — Message Doux'],
-  ['[Produit] Personnalisé [Type personnalisation] — [Cadeau]','Agenda Personnalisé Prénom — Cadeau Rentrée Original'],
-  ['Print [Thème] [Format] — Décoration [Pièce de la maison]','Print Vintage Botanique A4 — Décoration Bureau Salon'],
-  ['[Planner/Carnet] [Thème] — [Bénéfice/Organisation]','Planner Quotidien Minimaliste — Organisation Semaine'],
-  ['Lot [Nombre] [Type carte] [Occasion] — [Style]','Lot 10 Cartes Voeux Fleurs Aquarelle — Style Élégant'],
-  ['Stickers [Thème] [Format] — [Usage]','Stickers Plantes Vinyle Imperméable — Décoration Gourde'],
-  ['Faire-part [Occasion] [Style] — [Format]','Faire-part Naissance Aquarelle — Modèle Numérique Imprimable'],
-  ['Marque-page [Matière/Style] — [Cible]','Marque-page Laiton Doré — Cadeau Lectrice'],
-  ['Carnet [Format] [Couverture] — [Usage]','Carnet A5 Pointillé Couverture Lin — Bullet Journal'],
-  ['Affiche [Thème] [Format] — [Pièce]','Affiche Carte du Ciel Personnalisée A3 — Décoration Salon'],
-  ['Kit [Activité] [Thème] — [Cible]','Kit Scrapbooking Vintage — Débutante Créative'],
-  ['Calendrier [Type] [Style] — [Cible]','Calendrier Mural Perpétuel Illustré — Famille Organisée']]},
- {id:'ceramique',n:'Céramique & Poterie',ic:'🏺',c:'#9C7452',s:[
-  ['[Pièce céramique] [Style/Technique] — [Usage]','Bol Céramique Raku Texturé — Petit-Déjeuner'],
-  ['[Pièce] Fait Main [Origine] — [Qualité/Soin]','Mug Poterie Fait Main Bretagne — Cuisson Haute Température'],
-  ['Service [Thème/Couleur] [Nombre pièces] — [Style table]','Service Dîner Terre Grès 4 Pièces — Table Rustique'],
-  ['[Pièce] [Forme/Motif] — [Matière] Artisanal [Usage]','Vase Organique Grès Blanc Artisanal Fleurs Séchées'],
-  ['[Pièce] [Technique] Émaillé [Couleur] — [Sentiment/Ambiance]','Tasse Émaillée Terracotta Tournée Main — Chaleur Cosy'],
-  ['Mug [Technique] [Contenance] — [Moment]','Mug Grès Émaillé 350ml — Café du Matin'],
-  ['Assiette [Forme] [Couleur] — [Style table]','Assiette Plate Bleu Ocre Faite Main — Table Méditerranéenne'],
-  ['Cache-pot [Matière] [Taille] — [Plante]','Cache-pot Terre Cuite 15cm — Plante Succulente'],
-  ['Vide-poche [Style] — [Pièce]','Vide-poche Céramique Organique — Entrée Maison'],
-  ['Bol [Origine/Style] — [Rituel]','Bol à Matcha Grès Artisanal — Rituel Thé'],
-  ['Plat [Usage] [Matière] — [Cuisine/Four]','Plat à Four Grès Rustique — Gratin Convivial'],
-  ['Pièce Unique [Technique] — [Collection/Série]','Pièce Unique Raku Turquoise — Série Limitée Atelier']]},
- {id:'textile',n:'Textile & Accessoires mode',ic:'🧶',c:'#7B6B8A',s:[
-  ['[Vêtement/Accessoire] [Matière] [Style] — [Usage/Occasion]','Foulard Soie Imprimé Floral — Tenue Bureau Été'],
-  ['[Pièce] [Technique/Fabrication] — [Cible/Style de vie]','Tote Bag Crochet Naturel — Femme Boho Plage'],
-  ['[Accessoire] [Couleur] [Matière] — [Saison/Moment]','Bonnet Laine Mérinos Camel — Hiver Cosy Cadeau'],
-  ['[Pièce] Personnalisée [Type] — [Occasion/Cadeau]','Tote Bag Personnalisé Broderie — Cadeau Enterrement Vie Fille'],
-  ['[Textile] [Technique] Fait Main — [Origine/Label]','Plaid Tricot Chunky Laine Naturelle — Fait Main France'],
-  ['Écharpe [Matière] [Motif] — [Saison]','Écharpe Laine Mérinos Chevrons — Cadeau Hiver Femme'],
-  ['Trousse [Matière] [Taille] — [Usage]','Trousse Lin Naturel Zippée — Maquillage Voyage'],
-  ['Housse de Coussin [Matière] [Taille] — [Pièce]','Housse de Coussin Lin 40x40 Brodée — Canapé Salon'],
-  ['Doudou [Matière] Personnalisé — [Naissance/Bébé]','Doudou Coton Bio Personnalisé — Cadeau Naissance'],
-  ['Chouchou [Matière] [Style] — [Occasion]','Chouchou Satin Rétro — Cadeau Copine'],
-  ['Bonnet [Matière] [Détail] — [Cible]','Bonnet Satin Anti-Frisottis — Cheveux Bouclés'],
-  ['Sac [Type] [Matière] [Couleur] — [Style de vie]','Sac Cabas Toile Épaisse Moutarde — Marché Courses']]}
+  ['Bougie [Parfum] [Format], [Moment de la journée]','Bougie Thé Blanc Pot Verre, Rituel Soirée Détente'],
+  ['Bougie [Thème/Lieu] [Cire], [Souvenir/Émotion]','Bougie Forêt Bretonne Cire Colza, Souvenir de Vacances'],
+  ['Bougie Personnalisée [Élément], [Occasion]','Bougie Personnalisée Prénom Étiquette, Cadeau Invités Mariage'],
+  ['Fondants [Parfum], [Usage]','Fondants Parfumés Vanille Coco, Diffuseur Cosy Maison'],
+  ['Bougie [Parfum] Grand Format [Poids], [Pièce]','Bougie Figuier Grand Format 300g, Salon Chaleureux'],
+  ['Coffret Bougie [Parfum] + [Accessoire], [Cadeau]','Coffret Bougie Lavande + Éteignoir, Cadeau Pendaison de Crémaillère'],
+  ['Bougie Parfumée [Saison/Fête] [Parfum], [Ambiance]','Bougie Parfumée Noël Cannelle Orange, Ambiance Chalet']]},
+ {id:'cosmetiques',n:'Cosmétiques & Soins naturels',c:'#7A9A7E',s:[
+  ['[Soin] [Ingrédient vedette] [Peau cible], [Bénéfice]','Sérum Vitamine C Peau Terne, Éclat Naturel Visage'],
+  ['[Soin] Naturel [Ingrédients], Sans [Ingrédients chimiques]','Crème Visage Aloé Vera Argan, Sans Paraben Sulfate'],
+  ['[Type produit] [Usage/Moment], [Effet/Promesse]','Huile Corps Après-Soleil, Peau Douce et Hydratée'],
+  ['Routine [Étape] [Type peau], Kit [Nombre pièces]','Routine Soir Peau Sèche, Kit 3 Soins Naturels'],
+  ['[Soin] [Label] Fait Main, [Cible] [Occasion]','Masque Argile Bio Fait Main, Peau Grasse Cadeau'],
+  ['[Produit] [Parfum/Senteur], [Moment/Rituel]','Beurre Corps Coco Vanille, Soin du Matin Rituel'],
+  ['Coffret [Occasion] Soins [Thème], [Nombre pièces]','Coffret Noël Soins Visage Naturels, 4 Produits'],
+  ['Savon [Fabrication] [Ingrédient], [Type de peau]','Savon Saponifié à Froid Karité, Peau Sèche'],
+  ['Baume [Zone] [Ingrédient], [Bénéfice]','Baume Lèvres Miel Beurre de Cacao, Lèvres Gercées'],
+  ['Huile [Usage] [Ingrédient], [Cible]','Huile Cheveux Ricin Argan, Pointes Sèches'],
+  ['Gommage [Zone] [Ingrédient], [Effet]','Gommage Corps Café Sucre, Peau Satinée'],
+  ['Déodorant [Format] Naturel, [Promesse]','Déodorant Solide Naturel Sans Aluminium, Zéro Déchet'],
+  ['Huile de Massage [Parfum], [Moment]','Huile de Massage Ylang Ylang, Soirée Détente Duo'],
+  ['Brume [Parfum], [Usage]','Brume Oreiller Lavande Camomille, Sommeil Apaisé']]},
+ {id:'papeterie',n:'Papeterie & Décoration',c:'#6B8A8A',s:[
+  ['[Type papeterie] [Style/Esthétique], [Usage/Occasion]','Affiche Aquarelle Botanique, Décoration Chambre Bébé'],
+  ['Carte [Occasion] [Style illustré], [Message/Sentiment]','Carte Anniversaire Illustration Florale, Message Doux'],
+  ['[Produit] Personnalisé [Type personnalisation], [Cadeau]','Agenda Personnalisé Prénom, Cadeau Rentrée Original'],
+  ['Print [Thème] [Format], Décoration [Pièce de la maison]','Print Vintage Botanique A4, Décoration Bureau Salon'],
+  ['[Planner/Carnet] [Thème], [Bénéfice/Organisation]','Planner Quotidien Minimaliste, Organisation Semaine'],
+  ['Lot [Nombre] [Type carte] [Occasion], [Style]','Lot 10 Cartes Voeux Fleurs Aquarelle, Style Élégant'],
+  ['Stickers [Thème] [Format], [Usage]','Stickers Plantes Vinyle Imperméable, Décoration Gourde'],
+  ['Faire-part [Occasion] [Style], [Format]','Faire-part Naissance Aquarelle, Modèle Numérique Imprimable'],
+  ['Marque-page [Matière/Style], [Cible]','Marque-page Laiton Doré, Cadeau Lectrice'],
+  ['Carnet [Format] [Couverture], [Usage]','Carnet A5 Pointillé Couverture Lin, Bullet Journal'],
+  ['Affiche [Thème] [Format], [Pièce]','Affiche Carte du Ciel Personnalisée A3, Décoration Salon'],
+  ['Kit [Activité] [Thème], [Cible]','Kit Scrapbooking Vintage, Débutante Créative'],
+  ['Calendrier [Type] [Style], [Cible]','Calendrier Mural Perpétuel Illustré, Famille Organisée']]},
+ {id:'ceramique',n:'Céramique & Poterie',c:'#9C7452',s:[
+  ['[Pièce céramique] [Style/Technique], [Usage]','Bol Céramique Raku Texturé, Petit-Déjeuner'],
+  ['[Pièce] Fait Main [Origine], [Qualité/Soin]','Mug Poterie Fait Main Bretagne, Cuisson Haute Température'],
+  ['Service [Thème/Couleur] [Nombre pièces], [Style table]','Service Dîner Terre Grès 4 Pièces, Table Rustique'],
+  ['[Pièce] [Forme/Motif], [Matière] Artisanal [Usage]','Vase Organique Grès Blanc Artisanal Fleurs Séchées'],
+  ['[Pièce] [Technique] Émaillé [Couleur], [Sentiment/Ambiance]','Tasse Émaillée Terracotta Tournée Main, Chaleur Cosy'],
+  ['Mug [Technique] [Contenance], [Moment]','Mug Grès Émaillé 350ml, Café du Matin'],
+  ['Assiette [Forme] [Couleur], [Style table]','Assiette Plate Bleu Ocre Faite Main, Table Méditerranéenne'],
+  ['Cache-pot [Matière] [Taille], [Plante]','Cache-pot Terre Cuite 15cm, Plante Succulente'],
+  ['Vide-poche [Style], [Pièce]','Vide-poche Céramique Organique, Entrée Maison'],
+  ['Bol [Origine/Style], [Rituel]','Bol à Matcha Grès Artisanal, Rituel Thé'],
+  ['Plat [Usage] [Matière], [Cuisine/Four]','Plat à Four Grès Rustique, Gratin Convivial'],
+  ['Pièce Unique [Technique], [Collection/Série]','Pièce Unique Raku Turquoise, Série Limitée Atelier']]},
+ {id:'textile',n:'Textile & Accessoires mode',c:'#7B6B8A',s:[
+  ['[Vêtement/Accessoire] [Matière] [Style], [Usage/Occasion]','Foulard Soie Imprimé Floral, Tenue Bureau Été'],
+  ['[Pièce] [Technique/Fabrication], [Cible/Style de vie]','Tote Bag Crochet Naturel, Femme Boho Plage'],
+  ['[Accessoire] [Couleur] [Matière], [Saison/Moment]','Bonnet Laine Mérinos Camel, Hiver Cosy Cadeau'],
+  ['[Pièce] Personnalisée [Type], [Occasion/Cadeau]','Tote Bag Personnalisé Broderie, Cadeau Enterrement Vie Fille'],
+  ['[Textile] [Technique] Fait Main, [Origine/Label]','Plaid Tricot Chunky Laine Naturelle, Fait Main France'],
+  ['Écharpe [Matière] [Motif], [Saison]','Écharpe Laine Mérinos Chevrons, Cadeau Hiver Femme'],
+  ['Trousse [Matière] [Taille], [Usage]','Trousse Lin Naturel Zippée, Maquillage Voyage'],
+  ['Housse de Coussin [Matière] [Taille], [Pièce]','Housse de Coussin Lin 40x40 Brodée, Canapé Salon'],
+  ['Doudou [Matière] Personnalisé, [Naissance/Bébé]','Doudou Coton Bio Personnalisé, Cadeau Naissance'],
+  ['Chouchou [Matière] [Style], [Occasion]','Chouchou Satin Rétro, Cadeau Copine'],
+  ['Bonnet [Matière] [Détail], [Cible]','Bonnet Satin Anti-Frisottis, Cheveux Bouclés'],
+  ['Sac [Type] [Matière] [Couleur], [Style de vie]','Sac Cabas Toile Épaisse Moutarde, Marché Courses']]}
 ];
 $('#nstruct').textContent=NICHES.reduce((a,n)=>a+n.s.length,0);
 const ntabs=$('#ntabs'),slist=$('#slist');let curN='bijoux';
-NICHES.forEach(n=>{const b=document.createElement('button');b.className='tab';b.style.setProperty('--tc',n.c);b.dataset.id=n.id;b.setAttribute('role','tab');b.innerHTML=`<span>${n.ic}</span>${n.n}<em>${n.s.length}</em>`;b.onclick=()=>showN(n.id);ntabs.appendChild(b)});
+NICHES.forEach(n=>{const b=document.createElement('button');b.dataset.id=n.id;b.setAttribute('role','tab');b.innerHTML=`${n.n}<small>${n.s.length}</small>`;b.onclick=()=>showN(n.id);ntabs.appendChild(b)});
 function showN(id){
   curN=id;const n=NICHES.find(x=>x.id===id);
-  $$('.tab',ntabs).forEach(b=>{const on=b.dataset.id===id;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});
-  slist.style.setProperty('--tc',n.c);
-  slist.innerHTML=n.s.map((s,i)=>`<div class="srow" style="animation-delay:${i*35}ms"><div class="tx"><b>${esc(s[0])}</b><i>Ex : ${esc(s[1])}</i></div><div class="act"><button class="ibtn" data-cp="${i}" aria-label="Copier la structure">📋</button><button class="ibtn pri" data-use="${i}">Utiliser →</button></div></div>`).join('');
+  $$('button',ntabs).forEach(b=>{const on=b.dataset.id===id;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});
+  slist.innerHTML=n.s.map((s,i)=>`<div class="srow" style="animation-delay:${i*35}ms"><div class="tx"><b>${esc(s[0])}</b><i>Ex : ${esc(s[1])}</i></div><div class="act"><button class="pill light xs" data-cp="${i}">Copier</button><button class="pill dark xs" data-use="${i}">Utiliser</button></div></div>`).join('');
 }
 slist.addEventListener('click',e=>{
   const u=e.target.closest('[data-use]'),c=e.target.closest('[data-cp]');
@@ -1001,34 +900,29 @@ slist.addEventListener('click',e=>{
 });
 showN('bijoux');
 
-/* builder */
+/* constructeur de titre */
 let pat='',keys=[],vals={};
 const bf=$('#bfields'),bprev=$('#bprev');
 function load(s){
   pat=s[0];keys=[...new Set([...pat.matchAll(/\[([^\]]+)\]/g)].map(m=>m[1]))];vals={};
   $('#bpat').textContent=pat;$('#bex').innerHTML=`Exemple : <b>${esc(s[1])}</b>`;
-  bf.innerHTML=keys.map((k,i)=>`<label>${esc(k)}<input data-k="${i}" placeholder="Ex : …" autocomplete="off"></label>`).join('');
+  bf.innerHTML=keys.map((k,i)=>`<label>${esc(k)}<input data-k="${i}" placeholder="Ton texte" autocomplete="off"></label>`).join('');
   $$('input',bf).forEach(inp=>inp.oninput=()=>{vals[keys[+inp.dataset.k]]=inp.value;render()});
   render();setTimeout(()=>{const f=$('input',bf);f&&f.focus({preventScroll:true})},500);
 }
-function result(){return pat.replace(/\[([^\]]+)\]/g,(m,k)=>(vals[k]||'').trim()).replace(/\s+—\s*$/,'').replace(/\s{2,}/g,' ').replace(/^\s*—\s*/,'').trim()}
+function result(){return pat.replace(/\[([^\]]+)\]/g,(m,k)=>(vals[k]||'').trim()).replace(/\s+,/g,',').replace(/(,\s*)+/g,', ').replace(/\s{2,}/g,' ').replace(/^[\s,]+|[\s,]+$/g,'')}
 function render(){
-  if(!pat){return}
-  const html=esc(pat).replace(/\[([^\]]+)\]/g,(m,k)=>{const v=(vals[k.replace(/&#39;/g,"'")]||'').trim();return v?`<mark>${esc(v)}</mark>`:`<span class="ph">${m}</span>`});
-  bprev.innerHTML=html;
-  const r=result(),len=r.length,f=$('#gfill'),st=$('#gst'),gt=$('#gtip');
-  f.style.width=Math.min(100,len/140*100)+'%';
-  st.textContent=`${len} / 140 caractères`;
-  let c='var(--bad)',m='Continue à remplir : vise au moins 80 caractères';
-  if(len>140){c='var(--bad)';m='Trop long ! Etsy coupe après 140 caractères — raccourcis'}
-  else if(len>=80){c='#8DC59A';m='Parfait ✓ ta longueur est idéale'}
-  else if(len>=50){c='#E3A44C';m='Presque ! Ajoute l\'occasion ou la cible'}
-  f.style.background=c;gt.textContent=m;
+  if(!pat)return;
+  bprev.innerHTML=esc(pat).replace(/\[([^\]]+)\]/g,(m,k)=>{const v=(vals[k.replace(/&#39;/g,"'")]||'').trim();return v?`<mark>${esc(v)}</mark>`:`<span class="ph">${m}</span>`});
+  const len=result().length,f=$('#gfill');
+  f.style.width=Math.min(100,len/140*100)+'%';f.classList.toggle('over',len>140);
+  $('#gst').textContent=`${len} / 140 caractères`;
+  $('#gtip').textContent=len>140?'Trop long : Etsy coupe après 140 caractères':len>=80?'Parfait, ta longueur est idéale':len>=50?'Presque : ajoute l\'occasion ou la cible':'Continue : vise au moins 80 caractères';
 }
-$('#bcopy').onclick=function(){if(!pat)return toast('Choisis d\'abord une structure ☝️');const r=result();if(!r)return toast('Remplis au moins une case 🙂');copy(r,this)};
+$('#bcopy').onclick=function(){if(!pat)return toast('Choisis d\'abord une structure.');const r=result();if(!r)return toast('Remplis au moins une case.');copy(r,this)};
 $('#breset').onclick=()=>{vals={};$$('input',bf).forEach(i=>i.value='');render()};
 
-/* tester */
+/* testeur */
 const BAN=['joli','jolie','beau','belle','magnifique','superbe','unique','exceptionnel','exceptionnelle','qualite superieure','meilleur','meilleure','parfait','parfaite','incroyable'];
 const OCC=['cadeau','anniversaire','noel','mariage','quotidien','naissance','fete','saint-valentin','saint valentin','temoin','invite','rentree','detente','bapteme','enterrement','vie de jeune fille','relaxation','rituel','hiver','ete'];
 const MAT=['argent','or ','dore','laiton','cuir','laine','lin','coton','soie','cire','soja','ceramique','gres','terre','verre','bois','acier','perle','pierre','bio','argile','satin','velours','papier','resine','crochet','tricot','aloe','argan','karite','vitamine'];
@@ -1038,116 +932,114 @@ function test(){
   const found=BAN.filter(w=>new RegExp('(^|[^a-z])'+w+'([^a-z]|$)').test(t));
   const first=t.trim().split(/\s+/)[0];
   const hasOcc=OCC.some(w=>t.includes(w)),hasMat=MAT.some(w=>(' '+t+' ').includes(w.trim()===w?' '+w:w));
+  const vague=BAN.slice(0,4).includes(first);
   const rows=[
    [len>=80&&len<=140,`Longueur : <b>${len}</b> caractères (idéal : 80 à 140)`,len<80?'Trop court : les titres courts sont moins bien référencés.':len>140?'Trop long : il sera coupé.':''],
-   [hasOcc,'Une occasion ou un usage est présent (cadeau, anniversaire, quotidien…)',hasOcc?'':'Ajoute par exemple « Cadeau Anniversaire » ou « Usage Quotidien ».'],
-   [hasMat,'Un matériau est mentionné (argent, céramique, cire de soja…)',hasMat?'':'Précise la matière principale.'],
-   [!BAN.slice(0,4).includes(first),'Ne commence pas par un adjectif vague',BAN.slice(0,4).includes(first)?'Commence plutôt par le type de produit (Bague, Bougie…).':''],
-   [found.length===0,found.length?`${found.length} mot(s) à bannir détecté(s)`:'Aucun mot à bannir',found.length?'Remplace-les par des mots concrets.':'']];
-  box.innerHTML=rows.map(r=>`<div class="chk ${r[0]?'ok':'ko'}"><span class="s">${r[0]?'✓':'✕'}</span><div>${r[1]}${r[2]?`<br><small style="color:var(--ink-2)">${r[2]}</small>`:''}</div></div>`).join('');
-  bn.innerHTML=found.length?found.map(w=>`<span>${esc(w)}</span>`).join(''):'';
+   [hasOcc,'Une occasion ou un usage est présent','Ajoute par exemple « Cadeau anniversaire » ou « Usage quotidien ».'],
+   [hasMat,'Un matériau est mentionné','Précise la matière principale (argent, céramique, cire de soja…).'],
+   [!vague,'Le titre ne commence pas par un adjectif vague','Commence plutôt par le type de produit (bague, bougie…).'],
+   [found.length===0,found.length?`${found.length} mot(s) à bannir détecté(s)`:'Aucun mot à bannir','Remplace-les par des mots concrets.']];
+  box.innerHTML=rows.map(r=>`<div class="chk glass soft ${r[0]?'ok':'ko'}"><span class="s">${r[0]?'Ok':'À revoir'}</span><div>${r[1]}${(!r[0]&&r[2])?`<small>${r[2]}</small>`:''}</div></div>`).join('');
+  bn.innerHTML=found.map(w=>`<span>${esc(w)}</span>`).join('');
 }
 $('#ttxt').addEventListener('input',test);
 
-/* ---------- levers ---------- */
+/* leviers */
 const LEV=[
- ['L\'Appartenance','Donner le sentiment que ce produit est fait « pour quelqu\'un comme moi ».','« Pour les femmes qui préfèrent les choses vraies aux choses parfaites. »','#C07A5A'],
- ['La Nostalgie','Éveiller un souvenir, une sensation connue et aimée.','« Cette bougie sent exactement la maison de votre enfance un dimanche matin. »','#8B7355'],
- ['Le Statut','Faire sentir que le produit élève, distingue, valorise.','« Une pièce qui se remarque sans avoir besoin d\'être remarquée. »','#7B6A55'],
- ['La Sécurité','Rassurer, garantir que c\'est le bon choix, sans risque.','« Chaque bijou quitte mon atelier après un contrôle qualité personnel. Toujours. »','#7A9A7E'],
- ['La Transformation','Promettre un avant/après, un changement de feeling ou de situation.','« Vous ne portez pas juste un collier. Vous commencez chaque journée avec quelque chose qui vient de vous. »','#6B8A8A']];
-$('#lev').innerHTML=LEV.map((l,i)=>`<div class="lv rv d${i}" style="--c:${l[3]}"><button aria-expanded="false"><span class="n">${i+1}</span><span><b>${l[0]}</b><small>${l[1]}</small></span><svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button><div class="more"><div><blockquote>${l[2]}</blockquote></div></div></div>`).join('');
+ ['L\'appartenance','Donner le sentiment que ce produit est fait « pour quelqu\'un comme moi ».','« Pour les femmes qui préfèrent les choses vraies aux choses parfaites. »'],
+ ['La nostalgie','Éveiller un souvenir, une sensation connue et aimée.','« Cette bougie sent exactement la maison de votre enfance un dimanche matin. »'],
+ ['Le statut','Faire sentir que le produit élève, distingue, valorise.','« Une pièce qui se remarque sans avoir besoin d\'être remarquée. »'],
+ ['La sécurité','Rassurer, garantir que c\'est le bon choix, sans risque.','« Chaque bijou quitte mon atelier après un contrôle qualité personnel. Toujours. »'],
+ ['La transformation','Promettre un avant et un après, un changement de sensation ou de situation.','« Vous ne portez pas juste un collier. Vous commencez chaque journée avec quelque chose qui vient de vous. »']];
+$('#lev').innerHTML=LEV.map((l,i)=>`<div class="lv"><button aria-expanded="false"><span class="n">${i+1}</span><span><b>${l[0]}</b><small>${l[1]}</small></span><span class="pm">+</span></button><div class="more"><div><blockquote>${l[2]}</blockquote></div></div></div>`).join('');
 $$('.lv>button').forEach(b=>b.onclick=()=>{const p=b.parentElement,o=p.classList.toggle('open');b.setAttribute('aria-expanded',o)});
-observeRv($('#lev'));
 
-/* ---------- story exercise ---------- */
+/* exercice storytelling */
 const SQ=[
- ['Pourquoi as-tu créé CE produit en particulier ?','Pas « parce que ça vend » — la vraie raison.','Pourquoi'],
- ['Quel problème, besoin ou envie t\'a donné l\'idée de le faire ?','Un manque, une frustration, une inspiration…','Le déclic'],
- ['Quel soin particulier apportes-tu dans sa fabrication que personne ne voit ?','Un geste, un contrôle, un choix de matière…','Le soin'],
- ['À quel moment précis de la vie d\'une personne ce produit est-il parfait ?','Un dimanche matin, un anniversaire, un retour à la maison…','Le moment'],
- ['Comment la personne qui le reçoit ou l\'utilise va-t-elle se sentir ?','Un mot, une émotion, une sensation.','L\'émotion']];
+ ['Pourquoi as-tu créé CE produit en particulier ?','Pas « parce que ça vend » : la vraie raison.'],
+ ['Quel problème, besoin ou envie t\'a donné l\'idée de le faire ?','Un manque, une frustration, une inspiration…'],
+ ['Quel soin particulier apportes-tu à sa fabrication, que personne ne voit ?','Un geste, un contrôle, un choix de matière…'],
+ ['À quel moment précis de la vie d\'une personne ce produit est-il parfait ?','Un dimanche matin, un anniversaire, un retour à la maison…'],
+ ['Comment la personne qui le reçoit ou l\'utilise va-t-elle se sentir ?','Un mot, une émotion, une sensation.']];
+const SL=['Pourquoi','Le déclic','Le soin','Le moment','L\'émotion'];
 let sd=store.get('story',['','','','','']);
-$('#story').innerHTML=SQ.map((q,i)=>`<div class="q rv"><label for="sq${i}"><b>${i+1}</b><span>${q[0]}<small>${q[1]}</small></span></label><textarea id="sq${i}" data-i="${i}" placeholder="Écris ici, comme tu parlerais à une amie…"></textarea></div>`).join('');
+$('#story').innerHTML=SQ.map((q,i)=>`<div class="q glass soft rv"><label for="sq${i}"><span class="nn">${i+1}</span><span>${q[0]}<small>${q[1]}</small></span></label><textarea id="sq${i}" data-i="${i}" placeholder="Écris ici, comme tu parlerais à une amie"></textarea></div>`).join('');
 $$('#story textarea').forEach(t=>{t.value=sd[+t.dataset.i]||'';t.addEventListener('input',()=>{sd[+t.dataset.i]=t.value;store.set('story',sd)})});
-observeRv($('#story'));
 $('#sbuild').onclick=()=>{
-  const o=$('#sout');if(sd.every(x=>!x.trim())){toast('Réponds d\'abord à une question 🙂');return}
-  const parts=[['Pourquoi',0],['Le déclic',1],['Le soin',2],['Le moment',3],['L\'émotion',4]].filter(p=>sd[p[1]].trim()).map(p=>`• ${p[0]} : ${sd[p[1]].trim()}`);
-  o.textContent='Voici la matière première de ta description longue :\n\n'+parts.join('\n\n')+'\n\n→ Réécris ces idées en 2-3 phrases par paragraphe (voir Bloc 4).';
+  const o=$('#sout');if(sd.every(x=>!x.trim()))return toast('Réponds d\'abord à une question.');
+  const parts=SL.map((l,i)=>sd[i].trim()?`${l} : ${sd[i].trim()}`:'').filter(Boolean);
+  o.textContent='Voici la matière première de ta description longue :\n\n'+parts.join('\n\n')+'\n\nIl ne te reste qu\'à réécrire ces idées en 2 ou 3 phrases par paragraphe (voir le bloc 4).';
   o.classList.add('show');o.scrollIntoView({behavior:'smooth',block:'nearest'});
 };
 $('#sclear').onclick=()=>{if(!confirm('Effacer toutes tes réponses ?'))return;sd=['','','','',''];store.set('story',sd);$$('#story textarea').forEach(t=>t.value='');$('#sout').classList.remove('show')};
 
-/* ---------- checklist ---------- */
+/* checklist */
 const CK=[
- ['TITRE',[['Mon titre dépasse 80 caractères','Les titres courts sont moins bien référencés'],['J\'ai inclus au moins une occasion ou un usage spécifique','Cadeau, anniversaire, quotidien, mariage…'],['Je n\'ai pas commencé par un adjectif vague (joli, beau, unique)','Commence par le type de produit'],['J\'ai inclus le matériau principal','Argent, céramique, coton bio, cire soja…']]],
- ['PHOTO PRINCIPALE',[['La photo principale montre le produit sur fond clair ou en contexte','Pas sur fond sombre ou fouillis'],['On voit clairement le produit en entier, sans coupure','Pas de recadrage trop serré'],['La luminosité est naturelle et flatteuse','Évite le flash direct']]],
- ['DESCRIPTION',[['Mon accroche (première phrase) crée une émotion ou une image','Test : est-ce que ça donne envie de lire la suite ?'],['J\'ai mentionné pour qui ce produit est parfait','La spécificité crée l\'identification'],['J\'ai inclus tous les détails pratiques','Dimensions, matière, entretien, délai, conditionnement']]],
- ['FAQ & TAGS',[['J\'ai au moins 4 questions/réponses dans ma FAQ','Livraison, qualité, personnalisation, retours'],['J\'utilise les 13 tags disponibles avec des phrases longues','Pas des mots seuls'],['Au moins 3 tags mentionnent un cadeau ou une occasion','Cadeau, anniversaire, Noël, mariage…']]]];
-const CKN=CK.reduce((a,g)=>a+g[1].length,0);
-let ck=store.get('ck',[]);let ckDone=false;
-$('#ckgroups').innerHTML=CK.map((g,gi)=>{let off=CK.slice(0,gi).reduce((a,x)=>a+x[1].length,0);return `<div class="ckg rv"><h4><span>${g[0]}</span><span data-gc="${gi}"></span></h4>${g[1].map((it,i)=>`<label><input type="checkbox" data-i="${off+i}"><span class="box"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span><b>${it[0]}</b><i>${it[1]}</i></span></label>`).join('')}</div>`}).join('');
-observeRv($('#ckgroups'));
+ ['Titre',[['Mon titre dépasse 80 caractères','Les titres courts sont moins bien référencés'],['J\'ai inclus au moins une occasion ou un usage spécifique','Cadeau, anniversaire, quotidien, mariage…'],['Je n\'ai pas commencé par un adjectif vague (joli, beau, unique)','Commence par le type de produit'],['J\'ai inclus le matériau principal','Argent, céramique, coton bio, cire de soja…']]],
+ ['Photo principale',[['La photo principale montre le produit sur fond clair ou en contexte','Pas sur fond sombre ou encombré'],['On voit clairement le produit en entier, sans coupure','Pas de recadrage trop serré'],['La luminosité est naturelle et flatteuse','Évite le flash direct']]],
+ ['Description',[['Mon accroche (première phrase) crée une émotion ou une image','Test : est-ce que ça donne envie de lire la suite ?'],['J\'ai mentionné pour qui ce produit est parfait','La spécificité crée l\'identification'],['J\'ai inclus tous les détails pratiques','Dimensions, matière, entretien, délai, conditionnement']]],
+ ['FAQ et tags',[['J\'ai au moins 4 questions et réponses dans ma FAQ','Livraison, qualité, personnalisation, retours'],['J\'utilise les 13 tags disponibles, avec des phrases longues','Pas des mots seuls'],['Au moins 3 tags mentionnent un cadeau ou une occasion','Cadeau, anniversaire, Noël, mariage…']]]];
+const CKN=CK.reduce((a,g)=>a+g[1].length,0);$('#cktot').textContent=CKN;
+let ck=store.get('ck',[]);
+$('#ckgroups').innerHTML=CK.map((g,gi)=>{const off=CK.slice(0,gi).reduce((a,x)=>a+x[1].length,0);return `<div class="ckg glass soft rv"><h4><span>${g[0]}</span><span data-gc="${gi}"></span></h4>${g[1].map((it,i)=>`<label><input type="checkbox" data-i="${off+i}"><span class="box"></span><span><b>${it[0]}</b><i>${it[1]}</i></span></label>`).join('')}</div>`}).join('');
 function ckRender(){
   const n=ck.length,pct=Math.round(n/CKN*100);
-  $('#ckfg').style.strokeDashoffset=289-289*pct/100;$('#ckpct').textContent=pct+'%';
-  $('#ckfg').style.stroke=pct===100?'#8DC59A':'var(--gold)';
-  $('#ckt').textContent=pct===100?'Ta fiche est prête à être publiée ! 🎉':n?`${n} point${n>1?'s':''} sur ${CKN} validé${n>1?'s':''}`:'Ta fiche est en cours…';
-  $('#ckp').textContent=pct===100?'Bravo, tous les points sont cochés. Tu peux publier !':n?`Plus que ${CKN-n} à vérifier.`:'Coche chaque point que tu as vérifié.';
-  CK.forEach((g,gi)=>{let off=CK.slice(0,gi).reduce((a,x)=>a+x[1].length,0);const c=g[1].filter((_,i)=>ck.includes(off+i)).length;$(`[data-gc="${gi}"]`).textContent=`${c} / ${g[1].length}`});
+  $('#ckn').textContent=n;$('#ckfill').style.width=pct+'%';
+  $('#ckt').textContent=pct===100?'Ta fiche est prête à être publiée':n?`${n} point${n>1?'s':''} validé${n>1?'s':''}`:'Ta fiche est en cours';
+  $('#ckp').textContent=pct===100?'Bravo, tous les points sont cochés.':n?`Encore ${CKN-n} à vérifier.`:'Coche chaque point que tu as vérifié.';
+  CK.forEach((g,gi)=>{const off=CK.slice(0,gi).reduce((a,x)=>a+x[1].length,0);$(`[data-gc="${gi}"]`).textContent=`${g[1].filter((_,i)=>ck.includes(off+i)).length} sur ${g[1].length}`});
   $$('#ckgroups input').forEach(i=>i.checked=ck.includes(+i.dataset.i));
   const s=$('[data-step="4"]');s&&s.classList.toggle('done',pct===100);
 }
 $('#ckgroups').addEventListener('change',e=>{
   const i=+e.target.dataset.i;if(isNaN(i))return;
   ck=e.target.checked?[...new Set([...ck,i])]:ck.filter(x=>x!==i);store.set('ck',ck);ckRender();
-  if(ck.length===CKN){confetti();toast('🎉 Fiche validée !')}
+  if(ck.length===CKN)toast('Fiche validée, tu peux publier.');
 });
-$('#ckreset').onclick=()=>{ck=[];store.set('ck',ck);ckRender();toast('Nouvelle fiche : checklist remise à zéro')};
+$('#ckreset').onclick=()=>{ck=[];store.set('ck',ck);ckRender();toast('Checklist remise à zéro.')};
 ckRender();
 
-/* ---------- bonus ---------- */
+/* fiches modèles */
 const FICHES=[
- {id:'bijou',n:'Bijou',ic:'💍',c:'#C07A5A',h:'FICHE MODÈLE — BIJOU — BAGUE FLEUR ARGENT STERLING',
-  titre:'Bague Fleur Argent Sterling 925 Femme — Bijou Botanique Minimaliste, Cadeau Anniversaire, Anneau Délicat',
+ {id:'bijou',n:'Bijou',c:'#C07A5A',h:'Bague fleur argent sterling',
+  titre:'Bague Fleur Argent Sterling 925 Femme, Bijou Botanique Minimaliste, Cadeau Anniversaire, Anneau Délicat',
   accroche:'Il y a des pièces qu\'on met le matin et qu\'on oublie pas de sortir le soir. Celle-ci en fait partie. Une fleur sculptée à la main, en argent 925, qui capte la lumière sans chercher à se faire remarquer.',
   courte:'Pour les femmes qui aiment les bijoux qui racontent quelque chose sans avoir besoin de le crier. Cette bague se porte seule pour un look épuré, ou empilée pour plus de caractère. Elle convient à toutes les morphologies de doigts et passe du quotidien au dîner en deux secondes.',
-  longue:'Cette bague est née d\'une promenade en forêt au printemps. J\'ai voulu capturer ce moment précis où une fleur sauvage s\'impose dans le fouillis vert — discrète mais impossible à ignorer. Elle est sculptée à la cire perdue dans mon atelier parisien, puis coulée en argent sterling 925. Chaque pièce est finement poncée à la main pour obtenir cette surface satinée qui ne ressemble à aucun bijou industriel. Elle est parfaite offerte à une femme qui collectionne les petites choses belles, ou à soi-même le jour où on décide de s\'offrir quelque chose qui dure. Une bague comme celle-ci, ça ne se démode pas. Elle vieillira avec vous.',
-  details:'Matériau : argent sterling 925 hallmarqué · Finition : satinée · Tailles disponibles : 48 à 60 (indiquez votre taille en note de commande) · Poids : environ 2,8 g · Entretien : éviter contact prolongé avec l\'eau et les parfums · Livraison : écrin cadeau inclus · Expédition : 2-3 jours ouvrés',
+  longue:'Cette bague est née d\'une promenade en forêt au printemps. J\'ai voulu capturer ce moment précis où une fleur sauvage s\'impose dans le fouillis vert : discrète mais impossible à ignorer. Elle est sculptée à la cire perdue dans mon atelier parisien, puis coulée en argent sterling 925. Chaque pièce est finement poncée à la main pour obtenir cette surface satinée qui ne ressemble à aucun bijou industriel. Elle est parfaite offerte à une femme qui collectionne les petites choses belles, ou à soi-même le jour où on décide de s\'offrir quelque chose qui dure. Une bague comme celle-ci, ça ne se démode pas. Elle vieillira avec vous.',
+  details:'Matériau : argent sterling 925 hallmarqué · Finition : satinée · Tailles disponibles : 48 à 60 (indiquez votre taille en note de commande) · Poids : environ 2,8 g · Entretien : éviter contact prolongé avec l\'eau et les parfums · Livraison : écrin cadeau inclus · Expédition : 2 à 3 jours ouvrés',
   faq:[['Puis-je avoir ma taille exacte ?','Oui, indiquez votre tour de doigt en mm dans la note de commande.'],['Est-ce de l\'argent massif ?','Oui, argent 925 hallmarqué, pas de placage.'],['Livrez-vous à l\'étranger ?','Oui, Europe et monde entier avec suivi.'],['Peut-elle être personnalisée ?','Je peux graver une initiale au dos, contactez-moi avant commande.']],
   tags:'bague argent 925 femme · bague fleur delicat · bijou botanique minimaliste · cadeau anniversaire femme · bague fait main france · bijou argent sterling · anneau floral empilable · cadeau noel femme bijou · bague artisanale paris · bijou nature femme · bague fantaisie argent · cadeau femme original · bague quotidien elegant'},
- {id:'bougie',n:'Bougie',ic:'🕯️',c:'#8B7355',h:'FICHE MODÈLE — BOUGIE — SOJA AMBRE & BOIS DE SANTAL',
-  titre:'Bougie Soja Ambre Santal 180g 45h — Parfum Cocooning Hiver, Cadeau Femme, Artisanale France',
+ {id:'bougie',n:'Bougie',c:'#8B7355',h:'Bougie soja, ambre et bois de santal',
+  titre:'Bougie Soja Ambre Santal 180g 45h, Parfum Cocooning Hiver, Cadeau Femme, Artisanale France',
   accroche:'Certaines odeurs ont le pouvoir de changer l\'atmosphère d\'une pièce en quelques minutes. L\'ambre doux, le santal chaud, une note de vanille en fond. C\'est ce que vous allumez quand la journée a été longue et que vous avez besoin que ça sente bon chez vous.',
   courte:'Pour ceux qui croient que l\'ambiance d\'une maison commence par ce qu\'on sent. Cette bougie brûle pendant 45 heures, sans suie ni résidus. Parfaite pour le salon, la salle de bain ou offerte dans un joli emballage kraft.',
-  longue:'Je fabrique ces bougies dans mon atelier lyonnais depuis 6 ans. Chaque formule a été testée des dizaines de fois pour trouver l\'équilibre exact : une fragrance qui reste présente sans être écrasante, une combustion lente et propre, et un visuel qu\'on a envie de laisser visible même éteint. La cire de soja est choisie pour sa combustion propre et sa provenance européenne. Les huiles essentielles sont sourcées auprès de producteurs que je connais personnellement. Chaque pot est coulé, étiqueté et contrôlé à la main. Cette bougie est parfaite pour les soirées d\'automne et d\'hiver, les rituels de décompression du soir, ou glissée dans un sac pour une livraison de qualité. Elle est livrée dans un pot en verre réutilisable — beauté et zéro déchet.',
+  longue:'Je fabrique ces bougies dans mon atelier lyonnais depuis 6 ans. Chaque formule a été testée des dizaines de fois pour trouver l\'équilibre exact : une fragrance qui reste présente sans être écrasante, une combustion lente et propre, et un visuel qu\'on a envie de laisser visible même éteint. La cire de soja est choisie pour sa combustion propre et sa provenance européenne. Les huiles essentielles sont sourcées auprès de producteurs que je connais personnellement. Chaque pot est coulé, étiqueté et contrôlé à la main. Cette bougie est parfaite pour les soirées d\'automne et d\'hiver, les rituels de décompression du soir, ou glissée dans un sac pour une livraison de qualité. Elle est livrée dans un pot en verre réutilisable, beauté et zéro déchet.',
   details:'Contenu : 180 g de cire soja · Durée : environ 45 heures · Parfum : ambre, santal, vanille · Cire : 100 % soja européenne · Mèche : coton naturel sans plomb · Conditionnement : pot verre réutilisable + couvercle bois · Livraison : boîte kraft avec papier de soie · Expédition : 48 h ouvrées',
-  faq:[['Comment maximiser la durée de vie ?','Laissez brûler 2 h lors de la première utilisation pour créer un lac complet.'],['La cire est-elle vegan ?','Oui, cire de soja 100 % d\'origine végétale.'],['Peut-on réutiliser le pot ?','Absolument, il est fait pour ça — retirez les résidus de cire avec de l\'eau chaude.'],['Livrez-vous en coffret cadeau ?','Oui, ajoutez la note cadeau en option lors de la commande.']],
+  faq:[['Comment maximiser la durée de vie ?','Laissez brûler 2 h lors de la première utilisation pour créer un lac complet.'],['La cire est-elle vegan ?','Oui, cire de soja 100 % d\'origine végétale.'],['Peut-on réutiliser le pot ?','Absolument, il est fait pour ça, retirez les résidus de cire avec de l\'eau chaude.'],['Livrez-vous en coffret cadeau ?','Oui, ajoutez la note cadeau en option lors de la commande.']],
   tags:'bougie soja artisanale · bougie ambre santal · cadeau femme cocooning · bougie parfumee france · bougie hiver chaleur · decoration maison parfum · bougie cire soja naturelle · cadeau noel original · bougie fait main lyon · parfum ambiance salon · bougie longue duree 45h · cadeau anniversaire femme · bougie vegan sans paraben'},
- {id:'cosmetique',n:'Cosmétique',ic:'🌿',c:'#7A9A7E',h:'FICHE MODÈLE — COSMÉTIQUE — SÉRUM ÉCLAT VITAMINE C NATUREL',
-  titre:'Sérum Visage Vitamine C Naturel — Éclat Peau Terne, Soin Anti-Taches, Fait Main France, Cosmétique Bio',
+ {id:'cosmetique',n:'Cosmétique',c:'#7A9A7E',h:'Sérum éclat vitamine C naturel',
+  titre:'Sérum Visage Vitamine C Naturel, Éclat Peau Terne, Soin Anti-Taches, Fait Main France, Cosmétique Bio',
   accroche:'Ce sérum a été créé un matin où je regardais mon reflet après une semaine chargée et où je me suis dit que ma peau méritait mieux. Pas un produit miracle. Un soin simple, concentré, et vraiment efficace.',
   courte:'Pour les femmes qui veulent une peau plus lumineuse sans passer par des formules chimiques ou des budgets impossibles. Ce sérum s\'applique en 30 secondes, matin ou soir, et les résultats sont visibles après 2 à 3 semaines d\'utilisation régulière. Formulé pour peaux ternes, stressées ou avec les premières traces du temps.',
-  longue:'Cette formule a été développée sur deux ans. J\'ai commencé par ma propre peau — réactive, stressée par les écrans et un rythme de vie pas toujours raisonnable. J\'avais besoin de quelque chose qui fonctionne vraiment, pas d\'un sérum marketing. Le résultat : une base d\'aloé vera biologique, de la vitamine C stable (ascorbyl glucoside), de l\'acide hyaluronique basse et haute molécule, et de l\'extrait de curcuma pour l\'éclat. Sans parfum synthétique, sans colorant, sans conservateur agressif. Il convient aux peaux normales à grasses, mixtes, et aux peaux sensibles qui tolèrent mal les formules conventionnelles. Il peut être utilisé seul ou avant votre crème habituelle.',
-  details:'Volume : 30 ml · Application : 3-5 gouttes sur peau propre · Fréquence : matin ou soir · Texture : sérum fluide, absorption rapide · Conservation : 12 mois (6 mois après ouverture) · Conditionnement : flacon pompe verre ambré · Formule : sans paraben, sans silicone, vegan · Fabrication : France · Expédition : 2-3 jours ouvrés en enveloppe rembourrée',
-  faq:[['Convient-il aux peaux très sensibles ?','Testez sur une petite zone les 2 premiers jours. Si aucune réaction au bout de 48 h, il est adapté.'],['Peut-on l\'utiliser enceinte ?','Consultez votre médecin — la vitamine C topique est généralement tolérée mais chaque grossesse est différente.'],['Combien de temps dure un flacon ?','Avec une utilisation quotidienne, comptez 6 à 8 semaines.'],['Est-il compatible avec d\'autres soins ?','Oui, appliquez-le toujours en premier sur peau sèche propre.']],
+  longue:'Cette formule a été développée sur deux ans. J\'ai commencé par ma propre peau (réactive, stressée par les écrans et un rythme de vie pas toujours raisonnable. J\'avais besoin de quelque chose qui fonctionne vraiment, pas d\'un sérum marketing. Le résultat : une base d\'aloé vera biologique, de la vitamine C stable (ascorbyl glucoside), de l\'acide hyaluronique basse et haute molécule, et de l\'extrait de curcuma pour l\'éclat. Sans parfum synthétique, sans colorant, sans conservateur agressif. Il convient aux peaux normales à grasses, mixtes, et aux peaux sensibles qui tolèrent mal les formules conventionnelles. Il peut être utilisé seul ou avant votre crème habituelle.',
+  details:'Volume : 30 ml · Application : 3 à 5 gouttes sur peau propre · Fréquence : matin ou soir · Texture : sérum fluide, absorption rapide · Conservation : 12 mois (6 mois après ouverture) · Conditionnement : flacon pompe verre ambré · Formule : sans paraben, sans silicone, vegan · Fabrication : France · Expédition : 2 à 3 jours ouvrés en enveloppe rembourrée',
+  faq:[['Convient-il aux peaux très sensibles ?','Testez sur une petite zone les 2 premiers jours. Si aucune réaction au bout de 48 h, il est adapté.'],['Peut-on l\'utiliser enceinte ?','Consultez votre médecin, la vitamine C topique est généralement tolérée mais chaque grossesse est différente.'],['Combien de temps dure un flacon ?','Avec une utilisation quotidienne, comptez 6 à 8 semaines.'],['Est-il compatible avec d\'autres soins ?','Oui, appliquez-le toujours en premier sur peau sèche propre.']],
   tags:'serum vitamine c naturel · soin eclat peau terne · cosmetique bio fait main · serum anti taches visage · soin peau naturelle france · serum aloe vera acide hyaluronique · cadeau soin beaute naturel · routine beaute naturelle · serum vegan sans paraben · soin visage artisanal · cosmetique clean beauty · cadeau femme soin visage · serum eclat maison'}
 ];
 const btabs=$('#btabs'),fiche=$('#fiche');
-FICHES.forEach(f=>{const b=document.createElement('button');b.className='tab';b.style.setProperty('--tc','#B8924E');b.dataset.id=f.id;b.setAttribute('role','tab');b.innerHTML=`<span>${f.ic}</span>${f.n}`;b.onclick=()=>showF(f.id);btabs.appendChild(b)});
+FICHES.forEach(f=>{const b=document.createElement('button');b.dataset.id=f.id;b.setAttribute('role','tab');b.textContent=f.n;b.onclick=()=>showF(f.id);btabs.appendChild(b)});
 const fullText=f=>[`TITRE\n${f.titre}`,`ACCROCHE\n${f.accroche}`,`DESCRIPTION COURTE\n${f.courte}`,`DESCRIPTION LONGUE\n${f.longue}`,`DÉTAILS PRATIQUES\n${f.details}`,`FAQ\n${f.faq.map(q=>q[0]+'\n'+q[1]).join('\n\n')}`,`TAGS\n${f.tags.split(' · ').join(', ')}`].join('\n\n');
 let curF=null;
 function showF(id){
   const f=FICHES.find(x=>x.id===id);curF=f;
-  $$('.tab',btabs).forEach(b=>{const on=b.dataset.id===id;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});
+  $$('button',btabs).forEach(b=>{const on=b.dataset.id===id;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});
   const tg=f.tags.split(' · ');
-  const sec=(lb,k,body,cnt)=>`<div class="fs"><div class="lb"><span>${lb}${cnt?` <span class="cnt">· ${cnt}</span>`:''}</span><button class="ibtn" data-k="${k}">📋 Copier</button></div>${body}</div>`;
-  fiche.innerHTML=`<div class="fiche"><header style="background:linear-gradient(120deg,${f.c},color-mix(in srgb,${f.c} 70%,#000))"><h4>${f.h}</h4><button class="ibtn" data-k="all">📋 Copier toute la fiche</button></header>`+
-   sec('Titre Etsy','titre',`<p><b>${esc(f.titre)}</b></p>`,f.titre.length+' car.')+
-   sec('Accroche (Bloc 2)','accroche',`<p>${esc(f.accroche)}</p>`)+
-   sec('Description courte (Bloc 3)','courte',`<p>${esc(f.courte)}</p>`,words(f.courte)+' mots')+
-   sec('Description longue (Bloc 4)','longue',`<p>${esc(f.longue)}</p>`,words(f.longue)+' mots')+
+  const sec=(lb,k,body,cnt)=>`<div class="fs"><div class="lb"><span class="eyebrow">${lb}${cnt?` <span class="cnt">&nbsp;${cnt}</span>`:''}</span><button class="pill light xs" data-k="${k}">Copier</button></div>${body}</div>`;
+  fiche.innerHTML=`<div class="fiche glass"><header><h4>${esc(f.h)}</h4><button class="pill dark sm" data-k="all">Copier toute la fiche</button></header>`+
+   sec('Titre Etsy','titre',`<p><b>${esc(f.titre)}</b></p>`,f.titre.length+' caractères')+
+   sec('Accroche (bloc 2)','accroche',`<p>${esc(f.accroche)}</p>`)+
+   sec('Description courte (bloc 3)','courte',`<p>${esc(f.courte)}</p>`,words(f.courte)+' mots')+
+   sec('Description longue (bloc 4)','longue',`<p>${esc(f.longue)}</p>`,words(f.longue)+' mots')+
    sec('Détails pratiques','details',`<p>${esc(f.details)}</p>`)+
    sec('FAQ','faq',`<div class="qa">${f.faq.map(q=>`<b>${esc(q[0])}</b><span>${esc(q[1])}</span>`).join('')}</div>`)+
    sec('Tags','tags',`<div class="tg">${tg.map(t=>`<span tabindex="0" role="button" data-tag="${esc(t)}">${esc(t)}</span>`).join('')}</div>`,tg.length+' tags')+`</div>`;
@@ -1161,55 +1053,52 @@ fiche.addEventListener('click',e=>{
 fiche.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-tag]')){e.preventDefault();e.target.click()}});
 showF('bijou');
 
-/* ---------- atelier ---------- */
+/* atelier */
 const AT=[
- ['Titre SEO','Type de produit + matériau + usage + cible. Entre 80 et 140 caractères.',1,'chars',80,140],
- ['Accroche','Une scène, une émotion. 1 à 2 phrases (Bloc 2).',2,'sent',1,2],
- ['Description courte','Pour qui, quand, pourquoi. 50 à 80 mots.',3,'words',50,80],
- ['Description longue','Histoire, fabrication, cible, détails pratiques. 150 à 250 mots.',4,'words',150,250],
- ['FAQ produit','Écris tes questions (avec « ? ») puis les réponses. Minimum 4 questions.',5,'q',4,6],
- ['Tags','13 tags maximum, un par ligne ou séparés par des virgules.',6,'tags',13,13]];
+ ['Titre SEO','Type de produit, matériau, usage, cible. Entre 80 et 140 caractères.','chars',80,140],
+ ['Accroche','Une scène, une émotion. 1 à 2 phrases (bloc 2).','sent',1,2],
+ ['Description courte','Pour qui, quand, pourquoi. 50 à 80 mots.','words',50,80],
+ ['Description longue','Histoire, fabrication, cible, détails pratiques. 150 à 250 mots.','words',150,250],
+ ['FAQ produit','Écris tes questions (avec un « ? ») puis les réponses. Minimum 4 questions.','q',4,99],
+ ['Tags','13 tags maximum, un par ligne ou séparés par des virgules.','tags',13,13]];
 let ad=store.get('atelier',AT.map(()=>''));
-$('#atel').innerHTML=AT.map((a,i)=>`<div class="af rv" data-a="${i}"><div class="hd"><span class="bn">${a[2]}</span><b>${a[0]}</b><span class="stt">à remplir</span></div><div class="hint">${a[1]}</div><textarea rows="${i===3?7:i===0?2:i===1||i===5?3:4}" aria-label="${a[0]}" placeholder="Écris ici…"></textarea><div class="mini"><i></i></div></div>`).join('');
+$('#atel').innerHTML=AT.map((a,i)=>`<div class="af glass soft rv" data-a="${i}"><div class="hd"><span class="bn">${i+1}</span><b>${a[0]}</b><span class="stt">à remplir</span></div><div class="hint">${a[1]}</div><textarea rows="${i===3?7:i===0?2:i===1||i===5?3:4}" aria-label="${a[0]}" placeholder="Écris ici"></textarea><div class="mini"><i></i></div></div>`).join('');
 const cnt=(t,k)=>k==='chars'?t.trim().length:k==='words'?words(t):k==='sent'?(t.trim().match(/[^.!?…]+[.!?…]+|[^.!?…]+$/g)||[]).filter(s=>s.trim()).length:k==='q'?(t.match(/\?/g)||[]).length:t.split(/[\n,]+/).filter(s=>s.trim()).length;
-const unit={chars:'car.',words:'mots',sent:'phrase(s)',q:'question(s)',tags:'tag(s)'};
+const unit={chars:'caractères',words:'mots',sent:'phrase(s)',q:'question(s)',tags:'tag(s)'};
+const okAt=i=>{const a=AT[i],v=ad[i]||'',n=cnt(v,a[2]);return !!v.trim()&&n>=a[3]&&n<=a[4]};
 function aUpdate(i){
-  const a=AT[i],el=$(`[data-a="${i}"]`),v=ad[i]||'',n=cnt(v,a[3]);
-  let st='ok',cls='ok',txt;
-  const lo=a[4],hi=a[5];
-  if(!v.trim()){st='mid';cls='';txt='à remplir'}
-  else if(n<lo){cls='mid';txt=`${n} ${unit[a[3]]} · encore ${lo-n}`}
-  else if(a[3]==='q'?false:n>hi){cls='mid';txt=`${n} ${unit[a[3]]} · ${n-hi} de trop`}
-  else{cls='ok';txt=`${n} ${unit[a[3]]} ✓`}
-  const s=$('.stt',el);s.textContent=txt;s.className='stt '+(v.trim()?cls:'');
-  el.classList.toggle('okk',cls==='ok'&&!!v.trim());
-  $('.mini i',el).style.width=(v.trim()?Math.min(100,n/lo*100):0)+'%';
+  const a=AT[i],el=$(`[data-a="${i}"]`),v=ad[i]||'',n=cnt(v,a[2]),s=$('.stt',el);
+  let txt='à remplir';
+  if(v.trim()){txt=n<a[3]?`${n} ${unit[a[2]]}, encore ${a[3]-n}`:n>a[4]?`${n} ${unit[a[2]]}, ${n-a[4]} de trop`:`${n} ${unit[a[2]]}, parfait`}
+  s.textContent=txt;s.classList.toggle('ok',okAt(i));
+  $('.mini i',el).style.width=(v.trim()?Math.min(100,n/a[3]*100):0)+'%';
 }
-$$('#atel textarea').forEach((t,i)=>{t.value=ad[i]||'';aUpdate(i);t.addEventListener('input',()=>{ad[i]=t.value;store.set('atelier',ad);aUpdate(i);checkAt()})});
-observeRv($('#atel'));
 let atDone=false;
-function checkAt(){const all=AT.every((a,i)=>{const n=cnt(ad[i]||'',a[3]);return (ad[i]||'').trim()&&n>=a[4]&&(a[3]==='q'||n<=a[5])});if(all&&!atDone){atDone=true;confetti();toast('🎉 Ta fiche est complète !')}if(!all)atDone=false;const s=$('[data-step="5"]');}
-checkAt();
-$('#acopy').onclick=function(){if(ad.every(x=>!x.trim()))return toast('Remplis d\'abord quelques blocs ✍️');
+const checkAt=()=>{const all=AT.every((_,i)=>okAt(i));if(all&&!atDone)toast('Ta fiche est complète, tu peux la copier.');atDone=all};
+$$('#atel textarea').forEach((t,i)=>{t.value=ad[i]||'';aUpdate(i);t.addEventListener('input',()=>{ad[i]=t.value;store.set('atelier',ad);aUpdate(i);checkAt()})});
+atDone=AT.every((_,i)=>okAt(i));
+$('#acopy').onclick=function(){if(ad.every(x=>!x.trim()))return toast('Remplis d\'abord quelques blocs.');
   copy(`TITRE\n${ad[0]}\n\n${ad[1]}\n\n${ad[2]}\n\n${ad[3]}\n\nFAQ\n${ad[4]}\n\nTAGS\n${ad[5]}`.replace(/\n{3,}/g,'\n\n'),this)};
 $('#aclear').onclick=()=>{if(!confirm('Vider tout ton atelier ?'))return;ad=AT.map(()=>'');store.set('atelier',ad);$$('#atel textarea').forEach((t,i)=>{t.value='';aUpdate(i)});atDone=false};
 
-/* ---------- steps "done" for module visited ---------- */
+observeRv();
+
+/* étapes lues */
 const seen=new Set(store.get('seen',[]));
-const mod=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const n={m1:1,m2:2,m3:3,bonus:5}[e.target.id];if(n){seen.add(n);store.set('seen',[...seen]);const s=$(`[data-step="${n}"]`);s&&s.classList.add('done')}}}),{threshold:.6});
+const mod=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const n={m1:1,m2:2,m3:3,bonus:5}[e.target.id];if(n){seen.add(n);store.set('seen',[...seen]);const s=$(`[data-step="${n}"]`);s&&s.classList.add('done')}}}),{threshold:.5});
 ['m1','m2','m3','bonus'].forEach(id=>{const el=$('#'+id);el&&mod.observe(el)});
 seen.forEach(n=>{const s=$(`[data-step="${n}"]`);s&&s.classList.add('done')});
 
-/* ---------- help panel ---------- */
+/* aide */
 const HELP=[
  ['Je ne sais pas par où commencer…','Pas de panique ! Suis simplement les étapes 1 à 5 de la section « Bienvenue ». Commence par le Module 1, puis passe au suivant quand tu te sens prête. Tu peux aussi aller directement dans « Mon atelier » pour écrire une fiche pas à pas.'],
- ['Comment copier un texte ?','Clique sur le bouton « 📋 Copier » à côté du texte. Le message « Copié ! » apparaît. Ensuite, va dans ta boutique, clique dans la case voulue et fais « coller » : Ctrl+V sur ordinateur, ou appui long puis « Coller » sur téléphone.'],
+ ['Comment copier un texte ?','Clique sur le bouton « Copier » à côté du texte. Le message « Copié ! » apparaît. Ensuite, va dans ta boutique, clique dans la case voulue et fais « coller » : Ctrl+V sur ordinateur, ou appui long puis « Coller » sur téléphone.'],
  ['Qu\'est-ce qu\'un tag ?','C\'est un mot-clé que tu ajoutes à ta fiche pour qu\'elle apparaisse dans les recherches. Sur Etsy, tu peux en mettre 13. Privilégie des phrases (« bague argent femme minimaliste ») plutôt qu\'un mot seul (« bague »).'],
  ['À quoi sert le « SEO » ?','Le SEO regroupe tout ce qui aide ta fiche à être trouvée quand quelqu\'un cherche sur Etsy ou Google. Concrètement : mets dans ton titre et tes tags les mots que tes clientes tapent vraiment.'],
  ['Où trouver les mots que mes clientes tapent ?','Sur Etsy, tape le début d\'un mot dans la barre de recherche : les suggestions qui s\'affichent sont de vraies recherches. Note-les et utilise-les dans tes titres et tes tags.'],
  ['Je n\'ai pas Etsy, ce guide me sert quand même ?','Oui. Le guide parle d\'Etsy, WooCommerce et Shopify. La structure en 6 blocs, le storytelling et la checklist s\'appliquent partout. Seule la case « tags » change de nom selon la plateforme : cherche « mots-clés » ou « tags » dans les réglages de ton produit.'],
  ['Ma progression est-elle sauvegardée ?','Oui, automatiquement, sur cet appareil et ce navigateur : cases cochées, réponses de l\'exercice et texte de l\'atelier. Attention : si tu vides les données du navigateur ou changes d\'appareil, tu repars de zéro. Pense à copier tes textes importants.'],
- ['Comment enregistrer ou imprimer ce guide ?','Clique sur « Imprimer » (dans la checklist) ou fais Ctrl+P (Cmd+P sur Mac), puis choisis « Enregistrer au format PDF » comme imprimante. Le guide s\'affiche alors en version simple, sans boutons.'],
+ ['Comment enregistrer ou imprimer ce guide ?','Touche « Imprimer » (dans la checklist) ou fais Ctrl+P (Cmd+P sur Mac), puis choisis « Enregistrer au format PDF » comme imprimante. Le guide s\'affiche alors en version simple, sans boutons.'],
  ['Mon titre est rouge / trop long, que faire ?','Etsy accepte jusqu\'à 140 caractères. Retire d\'abord les mots vagues (joli, beau, parfait…), puis garde l\'essentiel : produit + matière + occasion + cible. Utilise le testeur du Module 2 pour vérifier.'],
  ['Je dois tout refaire d\'un coup ?','Surtout pas. Prends tes 3 fiches les plus vues, applique la méthode, attends 2 semaines, mesure, puis passe aux suivantes. La régularité bat la perfection.'],
  ['Rien ne s\'affiche / un bouton ne répond pas','Recharge la page (touche F5 ou geste vers le bas sur téléphone). Vérifie que JavaScript est activé et utilise un navigateur récent (Chrome, Safari, Firefox, Edge).']];
@@ -1218,37 +1107,16 @@ pfaq.innerHTML=HELP.map(h=>`<details class="ac" data-t="${esc(norm(h[0]+' '+h[1]
 $('#pgloss').innerHTML=Object.keys(GLOSS).map(k=>`<span class="gl" tabindex="0" data-g="${k}">${GLOSS[k][0]}</span>`).join('');
 $('#psearch').addEventListener('input',e=>{const q=norm(e.target.value.trim());$$('details',pfaq).forEach(d=>d.style.display=!q||d.dataset.t.includes(q)?'':'none')});
 const panel=$('#panel'),scrim=$('#scrim');let lastF=null;
-function openHelp(){lastF=document.activeElement;panel.classList.add('open');scrim.classList.add('on');panel.setAttribute('aria-hidden','false');setTimeout(()=>$('#pclose').focus(),300)}
+function openHelp(){lastF=document.activeElement;panel.classList.add('open');scrim.classList.add('on');panel.setAttribute('aria-hidden','false');setTimeout(()=>$('#pclose').focus(),400)}
 function closeHelp(){panel.classList.remove('open');scrim.classList.remove('on');panel.setAttribute('aria-hidden','true');lastF&&lastF.focus&&lastF.focus()}
 $$('[data-help]').forEach(b=>b.onclick=openHelp);$('#pclose').onclick=closeHelp;scrim.onclick=closeHelp;
-addEventListener('keydown',e=>{if(e.key==='Escape'){closeHelp();closeTour()}});
-
-/* tour */
 const tour=$('#tour');
 function closeTour(){tour.classList.remove('on');store.set('toured',1)}
+addEventListener('keydown',e=>{if(e.key==='Escape'){closeHelp();closeTour()}});
 $('#tourok').onclick=closeTour;
-$('#tourbtn').onclick=()=>{closeHelp();setTimeout(()=>tour.classList.add('on'),300)};
-if(!store.get('toured',0))setTimeout(()=>tour.classList.add('on'),700);
+$('#tourbtn').onclick=()=>{closeHelp();setTimeout(()=>tour.classList.add('on'),400)};
+if(!store.get('toured',0))setTimeout(()=>tour.classList.add('on'),900);
 tour.addEventListener('click',e=>{if(e.target===tour)closeTour()});
-
-/* ---------- confetti ---------- */
-const cv=$('#conf'),cx=cv.getContext('2d');let parts=[],raf=0;
-function sz(){cv.width=innerWidth*devicePixelRatio;cv.height=innerHeight*devicePixelRatio}sz();addEventListener('resize',sz);
-function confetti(){
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  const cols=['#C07A5A','#C9A96E','#7A9A7E','#6B8A8A','#E5A98A','#FFF3E0','#7B6B8A'],d=devicePixelRatio;
-  for(let i=0;i<160;i++)parts.push({x:cv.width/2+(Math.random()-.5)*cv.width*.3,y:cv.height*.55,vx:(Math.random()-.5)*20*d,vy:(-Math.random()*20-6)*d,w:(6+Math.random()*7)*d,h:(4+Math.random()*6)*d,r:Math.random()*6,vr:(Math.random()-.5)*.4,c:cols[i%cols.length],l:0});
-  if(!raf)raf=requestAnimationFrame(tick);
-}
-function tick(){
-  cx.clearRect(0,0,cv.width,cv.height);
-  parts.forEach(p=>{p.vy+=.5*devicePixelRatio;p.x+=p.vx;p.y+=p.vy;p.vx*=.99;p.r+=p.vr;p.l++;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;cx.globalAlpha=Math.max(0,1-p.l/150);cx.fillRect(-p.w/2,-p.h/2,p.w,p.h);cx.restore()});
-  parts=parts.filter(p=>p.l<150&&p.y<cv.height+50);
-  if(parts.length)raf=requestAnimationFrame(tick);else{raf=0;cx.clearRect(0,0,cv.width,cv.height)}
-}
-$('#party').onclick=confetti;
-new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting&&!sessionStorageSafe()){confetti();}}),{threshold:.7}).observe($('#finale'));
-function sessionStorageSafe(){try{if(sessionStorage.getItem('lfqv-party'))return true;sessionStorage.setItem('lfqv-party','1');return false}catch(e){return true}}
 })();
 </script>
 </body>
