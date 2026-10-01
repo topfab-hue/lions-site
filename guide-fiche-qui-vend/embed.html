@@ -101,7 +101,8 @@ h1,:is(#lfqv,#lfqv-ov) h2,:is(#lfqv,#lfqv-ov) h3,:is(#lfqv,#lfqv-ov) h4{color:va
 :is(#lfqv,#lfqv-ov) .cc small{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);font-weight:600}
 :is(#lfqv,#lfqv-ov) .cc b{display:block;font-family:var(--disp);font-weight:400;font-size:20px;line-height:1.3;margin:6px 0 4px}
 :is(#lfqv,#lfqv-ov) .cc span{font-size:13px;line-height:1.55;color:var(--mut);display:block}
-:is(#lfqv,#lfqv-ov) .toc{display:none;position:sticky;top:var(--lfqv-top,108px);z-index:40;width:min(740px,100% - 40px);margin:0 auto;padding:12px 20px 14px;border-radius:20px;background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line);box-shadow:0 8px 24px rgba(43,42,43,.05)}
+:is(#lfqv,#lfqv-ov) .toc{position:fixed;z-index:99960;left:50%;bottom:calc(14px + env(safe-area-inset-bottom,0px));width:min(740px,100% - 28px);padding:12px 20px 14px;border-radius:22px;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);border:1px solid var(--line);box-shadow:inset 0 1px 0 #fff,0 10px 34px rgba(43,42,43,.12);opacity:0;pointer-events:none;transform:translate(-50%,24px);transition:opacity .5s var(--ease),transform .6s var(--ease)}
+:is(#lfqv,#lfqv-ov) .toc.show{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
 :is(#lfqv,#lfqv-ov) .toc-top{display:flex;align-items:center;gap:14px}
 :is(#lfqv,#lfqv-ov) .toc-top b{font-family:var(--disp);font-weight:400;font-size:17.6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:55%}
 :is(#lfqv,#lfqv-ov) .toc .track{flex:1;min-width:30px}
@@ -110,7 +111,7 @@ h1,:is(#lfqv,#lfqv-ov) h2,:is(#lfqv,#lfqv-ov) h3,:is(#lfqv,#lfqv-ov) h4{color:va
 :is(#lfqv,#lfqv-ov) .toc-dots a{width:26px;height:26px;border-radius:50%;border:1px solid rgba(43,42,43,.25);display:grid;place-items:center;font-size:11.5px;font-weight:600;text-decoration:none;background:#fff;transition:.3s var(--ease)}
 :is(#lfqv,#lfqv-ov) .toc-dots a:hover{border-color:var(--ink)}
 :is(#lfqv,#lfqv-ov) .toc-dots a.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-@media(max-width:560px){:is(#lfqv,#lfqv-ov) .toc{padding:10px 14px 12px}
+@media(max-width:560px){:is(#lfqv,#lfqv-ov) .toc{padding:10px 14px 12px;border-radius:20px}
 :is(#lfqv,#lfqv-ov) .toc-top b{font-size:16px}}
 :is(#lfqv,#lfqv-ov) /* ---------- sections ---------- */
 section.sec{padding:76px 0 6px}
@@ -350,10 +351,11 @@ section.sec{padding:76px 0 6px}
 #lfqv.embed{background:transparent}
 #lfqv.embed .nav,#lfqv.embed .drawer,#lfqv.embed .prog{display:none!important}
 #lfqv.embed .hero{padding-top:56px}
-#lfqv{--lfqv-top:108px}
-#lfqv.embed .toc{display:block}
-#lfqv.embed [id]{scroll-margin-top:210px}
-@media(max-width:960px){#lfqv{--lfqv-top:84px}#lfqv.embed [id]{scroll-margin-top:180px}}
+#lfqv-ov.standalone .toc{display:none}
+#lfqv-ov .fab{transition:bottom .5s cubic-bezier(.22,.8,.24,1),transform .35s,box-shadow .35s}
+#lfqv-ov.has-toc .toast{bottom:132px}
+@media(max-width:1180px){#lfqv-ov.has-toc .fab{bottom:118px}}
+#lfqv.embed [id]{scroll-margin-top:130px}
 
 </style>
 <div id="lfqv" class="embed">
@@ -396,19 +398,6 @@ section.sec{padding:76px 0 6px}
       <a class="cc glass tint rv d3" href="#m4"><small>Module 4</small><b>La checklist de conversion</b><span>Les points à vérifier avant de publier</span></a>
       <a class="cc glass tint rv d4" href="#bonus"><small>Bonus</small><b>3 fiches modèles</b><span>Bijou, bougie, cosmétique</span></a>
     </div>
-  </div>
-</div>
-
-<!-- ============ SOMMAIRE (intégration) ============ -->
-<div class="toc" id="toc" aria-label="Sommaire du guide">
-  <div class="toc-top"><b id="toclabel">La Fiche Qui Vend</b><div class="track"><div class="fill" id="tocfill"></div></div><span id="tocpct">0%</span></div>
-  <div class="toc-dots">
-    <a href="#m1" data-s="m1" data-t="Le template en 6 blocs" title="Le template en 6 blocs">1</a>
-    <a href="#m2" data-s="m2" data-t="Le générateur de titres" title="Le générateur de titres">2</a>
-    <a href="#m3" data-s="m3" data-t="La méthode storytelling" title="La méthode storytelling">3</a>
-    <a href="#m4" data-s="m4" data-t="La checklist" title="La checklist">4</a>
-    <a href="#bonus" data-s="bonus" data-t="Les fiches modèles" title="Les fiches modèles">B</a>
-    <a href="#atelier" data-s="atelier" data-t="Mon atelier" title="Mon atelier">A</a>
   </div>
 </div>
 
@@ -661,7 +650,18 @@ section.sec{padding:76px 0 6px}
 <footer class="ft">La Fiche Qui Vend, un guide <a href="https://www.kezacreation.com">KezaCréation</a></footer>
 
 </div>
-<div id="lfqv-ov"><button class="pill dark fab" data-help>Besoin d'aide ?</button>
+<div id="lfqv-ov" class="embed"><button class="pill dark fab" data-help>Besoin d'aide ?</button>
+<div class="toc" id="toc" aria-label="Sommaire du guide">
+  <div class="toc-top"><b id="toclabel">La Fiche Qui Vend</b><div class="track"><div class="fill" id="tocfill"></div></div><span id="tocpct">0%</span></div>
+  <div class="toc-dots">
+    <a href="#m1" data-s="m1" data-t="Le template en 6 blocs" title="Le template en 6 blocs">1</a>
+    <a href="#m2" data-s="m2" data-t="Le générateur de titres" title="Le générateur de titres">2</a>
+    <a href="#m3" data-s="m3" data-t="La méthode storytelling" title="La méthode storytelling">3</a>
+    <a href="#m4" data-s="m4" data-t="La checklist" title="La checklist">4</a>
+    <a href="#bonus" data-s="bonus" data-t="Les fiches modèles" title="Les fiches modèles">B</a>
+    <a href="#atelier" data-s="atelier" data-t="Mon atelier" title="Mon atelier">A</a>
+  </div>
+</div>
 <div class="scrim" id="scrim"></div>
 <aside class="panel glass" id="panel" aria-label="Aide" aria-hidden="true">
   <header><div><h3>Nous vous aidons</h3><p>Les réponses aux questions les plus courantes.</p></div><button class="pill light xs" id="pclose">Fermer</button></header>
@@ -695,7 +695,7 @@ const ROOT=document.getElementById('lfqv'),OV=document.getElementById('lfqv-ov')
 if(OV&&OV.parentNode!==document.body)document.body.appendChild(OV);
 const $=(s,r)=>r?r.querySelector(s):(ROOT.querySelector(s)||(OV&&OV.querySelector(s)));
 const $$=(s,r)=>r?[...r.querySelectorAll(s)]:[...ROOT.querySelectorAll(s),...(OV?OV.querySelectorAll(s):[])];
-ROOT.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const id=a.getAttribute('href').slice(1);const t=id&&ROOT.querySelector('#'+id);if(!t)return;e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})});
+[ROOT,OV].filter(Boolean).forEach(h=>h.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const id=a.getAttribute('href').slice(1);const t=id&&ROOT.querySelector('#'+id);if(!t)return;e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}));
 const store={get(k,d){try{const v=localStorage.getItem('lfqv:'+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem('lfqv:'+k,JSON.stringify(v))}catch(e){}}};
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
@@ -722,7 +722,7 @@ observeRv();
 
 /* progression et navigation */
 const bar=$('#bar');
-const onScroll=()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight||1)*100)+'%';const r=ROOT.getBoundingClientRect(),p=Math.min(1,Math.max(0,-r.top/Math.max(1,r.height-innerHeight)));const f=$('#tocfill');if(f){f.style.width=(p*100)+'%';$('#tocpct').textContent=Math.round(p*100)+'%'}};
+const onScroll=()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight||1)*100)+'%';const r=ROOT.getBoundingClientRect(),p=Math.min(1,Math.max(0,-r.top/Math.max(1,r.height-innerHeight)));const f=$('#tocfill');if(f){f.style.width=(p*100)+'%';$('#tocpct').textContent=Math.round(p*100)+'%'}const bi=$('#bienvenue'),tc=$('#toc');if(tc&&bi){const on=bi.getBoundingClientRect().top<innerHeight*.7&&r.bottom>innerHeight*.5;tc.classList.toggle('show',on);if(OV)OV.classList.toggle('has-toc',on)}};
 addEventListener('scroll',onScroll,{passive:true});onScroll();
 const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){$$('#navl a,.toc-dots a').forEach(a=>a.classList.toggle('on',a.dataset.s===e.target.id));const cur=$('.toc-dots a.on');$('#toclabel').textContent=cur?cur.dataset.t:'La Fiche Qui Vend'}}),{rootMargin:'-45% 0px -50% 0px'});
 $$('[data-spy]').forEach(s=>spy.observe(s));
