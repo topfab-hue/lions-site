@@ -79,6 +79,10 @@ extra="""
 #lfqv.embed{background:transparent}
 #lfqv.embed .nav,#lfqv.embed .drawer,#lfqv.embed .prog{display:none!important}
 #lfqv.embed .hero{padding-top:56px}
+#lfqv{--lfqv-top:108px}
+#lfqv.embed .toc{display:block}
+#lfqv.embed [id]{scroll-margin-top:210px}
+@media(max-width:960px){#lfqv{--lfqv-top:84px}#lfqv.embed [id]{scroll-margin-top:180px}}
 """
 scoped+=extra
 
