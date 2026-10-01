@@ -115,6 +115,9 @@ h1,:is(#lfqv,#lfqv-ov) h2,:is(#lfqv,#lfqv-ov) h3,:is(#lfqv,#lfqv-ov) h4{color:va
 .tres{margin-top:18px}
 :is(#lfqv,#lfqv-ov) .mini-h{font-family:var(--disp);font-weight:400;font-size:20px;margin:18px 0 8px}
 :is(#lfqv,#lfqv-ov) .sc-card{padding:20px 22px}
+:is(#lfqv,#lfqv-ov) .sc-slim{padding:14px 20px 16px}
+:is(#lfqv,#lfqv-ov) .sc-slim .sc-top{margin-bottom:10px}
+:is(#lfqv,#lfqv-ov) .sc-slim .sc-n b{font-size:44.8px}
 :is(#lfqv,#lfqv-ov) .sc-top{display:flex;gap:20px;align-items:center;margin-bottom:14px}
 :is(#lfqv,#lfqv-ov) .sc-n{display:flex;align-items:baseline;gap:4px;flex:none}
 :is(#lfqv,#lfqv-ov) .sc-n b{font-family:var(--disp);font-weight:400;font-size:57.6px;line-height:1;min-width:1.6em;text-align:right}
@@ -737,6 +740,7 @@ section.sec{padding:76px 0 6px}
         <div id="fscore"></div>
         <div class="pills pv-tabs" id="pvtabs"><button class="on" data-pv="page">Page produit</button><button data-pv="google">Google</button><button data-pv="mobile">Mobile</button></div>
         <div id="fprev"></div>
+        <div id="fdetail"></div>
       </aside>
     </div>
   </div>
@@ -1082,10 +1086,11 @@ function scoreTitle(raw){
   items.push({n:'Lisibilité',pts:clamp(lp,0,10),max:10,tip:lt});
   return{score:items.reduce((a,i)=>a+i.pts,0),items};
 }
+const scTop=(res,label)=>{const v=verdict(res.score);return `<div class="sc-top"><div class="sc-n"><b data-count="${res.score}">${res.score}</b><small>/ 100</small></div><div><span class="eyebrow">${label||'Note'}</span><h5>${v[0]}</h5><p>${v[1]}</p></div></div><div class="track"><div class="fill" style="width:${res.score}%"></div></div>`};
+const scList=(res,compact)=>`<div class="sc-list${compact?' two':''}">${res.items.map(i=>`<div class="cr${i.pts>=i.max?' full':''}"><div class="cr-h"><span>${i.n}</span><span>${i.pts} / ${i.max}</span></div><div class="mini"><i style="width:${i.pts/i.max*100}%"></i></div>${(i.tip&& !compact)?`<small>${esc(i.tip)}</small>`:''}</div>`).join('')}</div>`;
 function scoreCard(res,label,compact){
   if(!res)return '';
-  const v=verdict(res.score);
-  return `<div class="sc-card glass soft"><div class="sc-top"><div class="sc-n"><b data-count="${res.score}">${res.score}</b><small>/ 100</small></div><div><span class="eyebrow">${label||'Note'}</span><h5>${v[0]}</h5><p>${v[1]}</p></div></div><div class="track"><div class="fill" style="width:${res.score}%"></div></div><div class="sc-list${compact?' two':''}">${res.items.map(i=>`<div class="cr${i.pts>=i.max?' full':''}"><div class="cr-h"><span>${i.n}</span><span>${i.pts} / ${i.max}</span></div><div class="mini"><i style="width:${i.pts/i.max*100}%"></i></div>${(i.tip&& !compact)?`<small>${esc(i.tip)}</small>`:''}</div>`).join('')}</div></div>`;
+  return `<div class="sc-card glass soft">${scTop(res,label)}${scList(res,compact)}</div>`;
 }
 function paint(el,html){
   const prev=+(el.dataset.prev||0);el.innerHTML=html;
@@ -1375,7 +1380,9 @@ function pageHTML(mobile){
 }
 function renderPreview(){
   const res=ficheScore();
-  paint($('#fscore'),scoreCard(res,'Note de votre fiche',true)+`<div class="prio">${(()=>{const top=res.items.filter(i=>i.tip).sort((a,b)=>(b.max-b.pts)-(a.max-a.pts)).slice(0,3);return top.length?`<h5 class="mini-h">À améliorer en priorité</h5><ol>${top.map(i=>`<li><b>${i.n} :</b> ${esc(i.tip)}</li>`).join('')}</ol>`:'<h5 class="mini-h">Aucun point à corriger. Bravo !</h5>'})()}</div>`);
+  paint($('#fscore'),`<div class="sc-card glass soft sc-slim">${scTop(res,'Note de votre fiche')}</div>`);
+  const top=res.items.filter(i=>i.tip).sort((a,b)=>(b.max-b.pts)-(a.max-a.pts)).slice(0,3);
+  $('#fdetail').innerHTML=`<div class="sc-card glass soft">${scList(res,true)}</div><div class="prio">${top.length?`<h5 class="mini-h">À améliorer en priorité</h5><ol>${top.map(i=>`<li><b>${i.n} :</b> ${esc(i.tip)}</li>`).join('')}</ol>`:'<h5 class="mini-h">Aucun point à corriger. Bravo !</h5>'}</div>`;
   const box=$('#fprev');
   if(pvMode==='google')box.innerHTML=`<div class="pv-g">${googleSnippet(ad[0]||'',ad[2]||ad[1]||'')}</div>`;
   else box.innerHTML=pageHTML(pvMode==='mobile');
