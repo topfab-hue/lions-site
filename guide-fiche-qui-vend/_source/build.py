@@ -96,6 +96,17 @@ js=js.replace("const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[.
 "const ROOT=document.getElementById('lfqv'),OV=document.getElementById('lfqv-ov');\nif(OV&&OV.parentNode!==document.body)document.body.appendChild(OV);\nconst $=(s,r)=>r?r.querySelector(s):(ROOT.querySelector(s)||(OV&&OV.querySelector(s)));\nconst $$=(s,r)=>r?[...r.querySelectorAll(s)]:[...ROOT.querySelectorAll(s),...(OV?OV.querySelectorAll(s):[])];\n[ROOT,OV].filter(Boolean).forEach(h=>h.addEventListener('click',e=>{const a=e.target.closest('a[href^=\"#\"]');if(!a)return;const id=a.getAttribute('href').slice(1);const t=id&&ROOT.querySelector('#'+id);if(!t)return;e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}));",1)
 js=js.replace('&&','&& ')
 assert '&&' not in js.replace('&& ','')
+
+# --- garde-fou WordPress : un '&' hors entité valide à l'intérieur d'un faux "tag" <...> serait réécrit en &#038;
+import re as _re
+def _risky(t):
+    out=[]
+    for m in _re.finditer(r"<[A-Za-z/!][^<>]*>",t):
+        for a in _re.finditer(r"&(?!(amp|lt|gt|quot|nbsp|#39|#038);)",m.group(0)):
+            out.append(m.group(0)[:80]);break
+    return out
+_r=_risky(js)
+assert not _r,'Risque WordPress (& dans un faux tag) : %s'%_r[:3]
 assert 'const ROOT' in js
 
 FA_LOCAL="""@font-face{font-family:'HVOliveandFigs';src:url('fonts/HVOliveandFigs-Regular.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}

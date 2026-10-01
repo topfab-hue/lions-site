@@ -725,7 +725,7 @@ observeRv();
 
 /* progression et navigation */
 const bar=$('#bar');
-const onScroll=()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight||1)*100)+'%';const r=ROOT.getBoundingClientRect(),p=Math.min(1,Math.max(0,-r.top/Math.max(1,r.height-innerHeight)));const f=$('#tocfill');if(f){f.style.width=(p*100)+'%';$('#tocpct').textContent=Math.round(p*100)+'%'}const bi=$('#bienvenue'),tc=$('#toc');if(tc&&bi){const on=bi.getBoundingClientRect().top<innerHeight*.7&&r.bottom>innerHeight*.5;tc.classList.toggle('show',on);if(OV)OV.classList.toggle('has-toc',on)}};
+const onScroll=()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight||1)*100)+'%';const r=ROOT.getBoundingClientRect(),p=Math.min(1,Math.max(0,-r.top/Math.max(1,r.height-innerHeight)));const f=$('#tocfill');if(f){f.style.width=(p*100)+'%';$('#tocpct').textContent=Math.round(p*100)+'%'}const bi=$('#bienvenue'),tc=$('#toc');if(tc&&bi){const on=innerHeight*.7>bi.getBoundingClientRect().top?r.bottom>innerHeight*.5:false;tc.classList.toggle('show',on);if(OV)OV.classList.toggle('has-toc',on)}};
 addEventListener('scroll',onScroll,{passive:true});onScroll();
 const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){$$('#navl a,.toc-dots a').forEach(a=>a.classList.toggle('on',a.dataset.s===e.target.id));const cur=$('.toc-dots a.on');$('#toclabel').textContent=cur?cur.dataset.t:'La Fiche Qui Vend'}}),{rootMargin:'-45% 0px -50% 0px'});
 $$('[data-spy]').forEach(s=>spy.observe(s));
@@ -951,7 +951,7 @@ function test(){
   const hasOcc=OCC.some(w=>t.includes(w)),hasMat=MAT.some(w=>(' '+t+' ').includes(w.trim()===w?' '+w:w));
   const vague=BAN.slice(0,4).includes(first);
   const rows=[
-   [len>=p.min&&len<=p.max,`Longueur : <b>${len}</b> caractères (conseillé : ${p.min} à ${p.max})`,len<p.min?'Trop court : les titres courts sont moins bien référencés.':'Trop long : il risque d\'être coupé dans les résultats.'],
+   [len>=p.min&&len<=p.max,`Longueur : <b>${len}</b> caractères (conseillé : ${p.min} à ${p.max})`,p.min>len?'Trop court : les titres courts sont moins bien référencés.':'Trop long : il risque d\'être coupé dans les résultats.'],
    [hasOcc,'Une occasion ou un usage est présent','Ajoutez par exemple « Cadeau anniversaire » ou « Usage quotidien ».'],
    [hasMat,'Un matériau est mentionné','Précisez la matière principale (argent, céramique, cire de soja…).'],
    [!vague,'Le titre ne commence pas par un adjectif vague','Commencez plutôt par le type de produit (bague, bougie…).'],
@@ -1091,7 +1091,7 @@ const okAt=i=>{const a=AT[i],v=ad[i]||'',n=cnt(v,a[2]);return !!v.trim()&&n>=a[3
 function aUpdate(i){
   const a=AT[i],el=$(`[data-a="${i}"]`),v=ad[i]||'',n=cnt(v,a[2]),s=$('.stt',el);
   let txt='à remplir';
-  if(v.trim()){txt=n<a[3]?`${n} ${unit[a[2]]}, encore ${a[3]-n}`:n>a[4]?`${n} ${unit[a[2]]}, ${n-a[4]} de trop`:`${n} ${unit[a[2]]}, parfait`}
+  if(v.trim()){txt=a[3]>n?`${n} ${unit[a[2]]}, encore ${a[3]-n}`:n>a[4]?`${n} ${unit[a[2]]}, ${n-a[4]} de trop`:`${n} ${unit[a[2]]}, parfait`}
   s.textContent=txt;s.classList.toggle('ok',okAt(i));
   $('.mini i',el).style.width=(v.trim()?Math.min(100,n/a[3]*100):0)+'%';
 }
