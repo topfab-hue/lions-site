@@ -79,7 +79,7 @@ extra="""
 #lfqv.embed{background:transparent}
 #lfqv.embed .nav,#lfqv.embed .drawer,#lfqv.embed .prog{display:none!important}
 #lfqv.embed .hero{padding-top:56px}
-#lfqv.js .rv{opacity:0;transform:translateY(16px);transition:opacity .9s cubic-bezier(.22,.8,.24,1),transform .9s cubic-bezier(.22,.8,.24,1)}
+#lfqv.js .rv{opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.22,.8,.24,1),transform 1s var(--spring)}
 #lfqv.js .rv.in{opacity:1;transform:none}
 #lfqv-ov.standalone .toc{display:none}
 #lfqv-ov .fab{transition:bottom .5s cubic-bezier(.22,.8,.24,1),transform .35s,box-shadow .35s}

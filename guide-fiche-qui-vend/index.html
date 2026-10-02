@@ -500,6 +500,33 @@ section.sec{padding:76px 0 6px}
 :is(#lfqv,#lfqv-ov) .pill.dark,:is(#lfqv,#lfqv-ov) .fab{forced-color-adjust:none;background:ButtonFace;color:ButtonText;border:2px solid ButtonText}
 :is(#lfqv,#lfqv-ov) .glass,:is(#lfqv,#lfqv-ov) .nav,:is(#lfqv,#lfqv-ov) .drawer,:is(#lfqv,#lfqv-ov) .panel,:is(#lfqv,#lfqv-ov) .toc,:is(#lfqv,#lfqv-ov) .mbox{background:Canvas;border:1px solid CanvasText}
 :is(#lfqv,#lfqv-ov) .xp-bar i.done,:is(#lfqv,#lfqv-ov) .xp-bar i.cur{background:Highlight}}
+:is(#lfqv,#lfqv-ov) /* ---------- micro-animations : ressort,:is(#lfqv,#lfqv-ov) rebond,:is(#lfqv,#lfqv-ov) élastique ---------- */
+:root{--spring:cubic-bezier(.34,1.56,.64,1)}
+@supports(animation-timing-function:linear(0,1)){:is(#lfqv,#lfqv-ov){--spring:linear(0,.0036,.0141 2.2%,.0562 4.5%,.2103 9.1%,.4455 13.6%,.6781 18.2%,.8667 22.7%,.9985 27.3%,1.0713 31.8%,1.0968 36.4%,1.0809 40.9%,1.0494 45.5%,1.0175 50%,1.0005 54.5%,.9958 59.1%,.9984 63.6%,1.0007 72.7%,1)}}
+@keyframes lfqv-pop{0%{transform:scale(.92)}55%{transform:scale(1.07)}100%{transform:scale(1)}}
+@keyframes lfqv-popin{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:none}}
+@keyframes lfqv-stepin{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes lfqv-seg{from{transform:scaleX(.15)}to{transform:none}}
+:is(#lfqv,#lfqv-ov) .pill,:is(#lfqv,#lfqv-ov) .chip,:is(#lfqv,#lfqv-ov) .pills button,:is(#lfqv,#lfqv-ov) .nt button,:is(#lfqv,#lfqv-ov) .tgb,:is(#lfqv,#lfqv-ov) .seg button{transition:transform .5s var(--spring),box-shadow .35s,background .3s,color .3s,border-color .3s}
+:is(#lfqv,#lfqv-ov) .pill:active,:is(#lfqv,#lfqv-ov) .chip:active,:is(#lfqv,#lfqv-ov) .pills button:active,:is(#lfqv,#lfqv-ov) .nt button:active,:is(#lfqv,#lfqv-ov) .tgb:active,:is(#lfqv,#lfqv-ov) .seg button:active{transform:scale(.94);transition-duration:.12s}
+:is(#lfqv,#lfqv-ov) .cc,:is(#lfqv,#lfqv-ov) .bcard,:is(#lfqv,#lfqv-ov) .step{transition:transform .6s var(--spring)}
+:is(#lfqv,#lfqv-ov) .cc:active,:is(#lfqv,#lfqv-ov) .bcard:active,:is(#lfqv,#lfqv-ov) .step:active{transform:scale(.97);transition-duration:.12s}
+:is(#lfqv,#lfqv-ov) .chip.on,:is(#lfqv,#lfqv-ov) .pills button.on,:is(#lfqv,#lfqv-ov) .nt button.on{animation:lfqv-pop .5s var(--ease)}
+:is(#lfqv,#lfqv-ov) .fb.ok{animation:lfqv-pop .45s var(--ease)}
+:is(#lfqv,#lfqv-ov) .ckg input:checked+.box{animation:lfqv-pop .45s var(--ease)}
+:is(#lfqv,#lfqv-ov) .thumb:last-child{animation:lfqv-popin .55s var(--spring) both}
+:is(#lfqv,#lfqv-ov) .drop{transition:transform .5s var(--spring),border-color .3s,background .3s,color .3s}
+:is(#lfqv,#lfqv-ov) .drop.over{transform:scale(1.025)}
+:is(#lfqv,#lfqv-ov) .seg i{transition:transform .6s var(--spring),width .6s var(--spring)}
+:is(#lfqv,#lfqv-ov) .fill,:is(#lfqv,#lfqv-ov) .mini i{transition:width .8s var(--spring),background .3s}
+:is(#lfqv,#lfqv-ov) .panel{transition:transform .8s var(--spring)}
+:is(#lfqv,#lfqv-ov) .mbox{animation:lfqv-popin .6s var(--spring) both}
+:is(#lfqv,#lfqv-ov) .toast{transition:opacity .3s,transform .6s var(--spring)}
+:is(#lfqv,#lfqv-ov) #xp.xp-go h3,:is(#lfqv,#lfqv-ov) #xp.xp-go .why,:is(#lfqv,#lfqv-ov) #xp.xp-go .xp-body,:is(#lfqv,#lfqv-ov) #xp.xp-go .xp-nav{animation:lfqv-stepin .6s var(--spring) both}
+:is(#lfqv,#lfqv-ov) #xp.xp-go .why{animation-delay:.04s}
+:is(#lfqv,#lfqv-ov) #xp.xp-go .xp-body{animation-delay:.08s}
+:is(#lfqv,#lfqv-ov) #xp.xp-go .xp-nav{animation-delay:.12s}
+:is(#lfqv,#lfqv-ov) .xp-bar i.cur{transform-origin:left;animation:lfqv-seg .6s var(--spring)}
 @media(prefers-reduced-motion:reduce){:is(#lfqv,#lfqv-ov) *,:is(#lfqv,#lfqv-ov) *::before,:is(#lfqv,#lfqv-ov) *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 :is(#lfqv,#lfqv-ov) .rv{opacity:1;transform:none}}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){:is(#lfqv,#lfqv-ov) .glass,:is(#lfqv,#lfqv-ov) .tip,:is(#lfqv,#lfqv-ov) .panel,:is(#lfqv,#lfqv-ov) .mbox{background:rgba(255,255,255,.95)}}
@@ -517,7 +544,7 @@ section.sec{padding:76px 0 6px}
 #lfqv.embed{background:transparent}
 #lfqv.embed .nav,#lfqv.embed .drawer,#lfqv.embed .prog{display:none!important}
 #lfqv.embed .hero{padding-top:56px}
-#lfqv.js .rv{opacity:0;transform:translateY(16px);transition:opacity .9s cubic-bezier(.22,.8,.24,1),transform .9s cubic-bezier(.22,.8,.24,1)}
+#lfqv.js .rv{opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.22,.8,.24,1),transform 1s var(--spring)}
 #lfqv.js .rv.in{opacity:1;transform:none}
 #lfqv-ov.standalone .toc{display:none}
 #lfqv-ov .fab{transition:bottom .5s cubic-bezier(.22,.8,.24,1),transform .35s,box-shadow .35s}
@@ -1273,7 +1300,7 @@ function paint(el,html){
   const to=+b.dataset.count;el.dataset.prev=to;
   if(reduceMotion()||prev===to)return;
   const t0=performance.now();
-  const step=t=>{const k=Math.min(1,(t-t0)/600);b.textContent=Math.round(prev+(to-prev)*(1-Math.pow(1-k,3)));if(1>k)requestAnimationFrame(step)};
+  const step=t=>{const k=Math.min(1,(t-t0)/700),u=k-1,e=1+2.2*u*u*u+1.2*u*u;b.textContent=clamp(Math.round(prev+(to-prev)*e),0,100);if(1>k)requestAnimationFrame(step);else b.textContent=to};
   requestAnimationFrame(step);
 }
 const slug=t=>norm(t).replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,42);
@@ -1837,7 +1864,7 @@ function xUpdate(){
 function xFocus(){const f=xs!==5&& xs!==0&& xs!==7&& matchMedia('(hover:hover)').matches&& $('input[type=text],textarea',$('.xp-body',$('#xp'))||$('#xp'));(f||$('#xp-t')).focus({preventScroll:true})}
 function xHero(){const c=$('.hero .cta a[href="#express"]');if(c)c.textContent=xs>0&& xs<XN?`Reprendre ma fiche (étape ${xs+1})`:xs===XN?'Revoir ma fiche':'Créer ma fiche en 15 minutes'}
 function xGo(n){
-  xlq=n>xs?0:3;xs=clamp(n,0,XN);persist('xstep',xs);xRender();
+  xlq=n>xs?0:3;xs=clamp(n,0,XN);persist('xstep',xs);xRender();const xe=$('#xp');xe.classList.remove('xp-go');void xe.offsetWidth;xe.classList.add('xp-go');clearTimeout(xGo._t);xGo._t=setTimeout(()=>xe.classList.remove('xp-go'),900);
   const root=$('#xp'),r=root.getBoundingClientRect();
   if(r.top<60||r.top>innerHeight*.45)root.scrollIntoView({behavior:smooth(),block:'start'});
   xFocus();
