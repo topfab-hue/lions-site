@@ -90,6 +90,8 @@ extra="""
 #lfqv-ov.has-toc .toast{bottom:calc(132px + var(--lf-dodge,0px))}
 @media(max-width:1180px){#lfqv-ov.has-toc .fab{bottom:calc(118px + var(--lf-dodge,0px))}#lfqv-ov.has-toc .toast{bottom:calc(176px + var(--lf-dodge,0px))}}
 #lfqv-ov.lf-tall .toc,#lfqv-ov.lf-tall .fab{display:none}
+@media(max-width:700px){#lfqv-ov.xp-on .fab,#lfqv-ov.xp-on .toc{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}#lfqv.js .rv{opacity:1!important;transform:none!important}#lfqv *,#lfqv-ov *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
 #lfqv .sr,#lfqv-ov .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 """
 scoped+=extra
@@ -99,7 +101,7 @@ SPLIT=body.index('<button type="button" class="pill dark fab"')
 body_main,body_ov=body[:SPLIT],body[SPLIT:]
 # JS : tout est limité au conteneur, jamais au document entier
 js=js.replace("const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];",
-"const ROOT=document.getElementById('lfqv'),OV=document.getElementById('lfqv-ov');\nif(OV&&OV.parentNode!==document.body)document.body.appendChild(OV);\nconst $=(s,r)=>r?r.querySelector(s):(ROOT.querySelector(s)||(OV&&OV.querySelector(s)));\nconst $$=(s,r)=>r?[...r.querySelectorAll(s)]:[...ROOT.querySelectorAll(s),...(OV?OV.querySelectorAll(s):[])];\n[ROOT,OV].filter(Boolean).forEach(h=>h.addEventListener('click',e=>{const a=e.target.closest('a[href^=\"#\"]');if(!a)return;const id=a.getAttribute('href').slice(1);const t=id&&ROOT.querySelector('#'+id);if(!t)return;e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}));",1)
+"const ROOT=document.getElementById('lfqv'),OV=document.getElementById('lfqv-ov');\nif(OV&&OV.parentNode!==document.body)document.body.appendChild(OV);\nconst $=(s,r)=>r?r.querySelector(s):(ROOT.querySelector(s)||(OV&&OV.querySelector(s)));\nconst $$=(s,r)=>r?[...r.querySelectorAll(s)]:[...ROOT.querySelectorAll(s),...(OV?OV.querySelectorAll(s):[])];\n[ROOT,OV].filter(Boolean).forEach(h=>h.addEventListener('click',e=>{const a=e.target.closest('a[href^=\"#\"]');if(!a)return;const id=a.getAttribute('href').slice(1);const t=id&&ROOT.querySelector('#'+id);if(!t)return;e.preventDefault();t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});const hf=t.querySelector('h1,h2,h3')||t;if(!hf.hasAttribute('tabindex'))hf.setAttribute('tabindex','-1');hf.focus({preventScroll:true})}));",1)
 js=js.replace('&&','&& ')
 assert '&&' not in js.replace('&& ','')
 
