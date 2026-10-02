@@ -435,6 +435,7 @@ section.sec{padding:76px 0 6px}
 :is(#lfqv,#lfqv-ov) .xp{padding:clamp(20px,4vw,34px)}
 :is(#lfqv,#lfqv-ov) .xp-top{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--mut)}
 :is(#lfqv,#lfqv-ov) .xp-sc{text-transform:none;letter-spacing:0;font-weight:500;font-size:13px;color:var(--ink)}
+:is(#lfqv,#lfqv-ov) .xp-help{margin-left:auto;text-transform:none;letter-spacing:0;font-weight:500;font-size:13px}
 :is(#lfqv,#lfqv-ov) .xp-bar{display:flex;gap:4px;margin:12px 0 24px}
 :is(#lfqv,#lfqv-ov) .xp-bar i{flex:1;height:4px;border-radius:9px;background:rgba(43,42,43,.1);transition:background .4s}
 :is(#lfqv,#lfqv-ov) .xp-bar i.done{background:var(--ink)}
@@ -1823,7 +1824,7 @@ function xRender(){
   if(i===XN){root.innerHTML=xResult();armConfirm($('#xp-new'),'Confirmer : tout effacer ?',xNew);xUpdate();xHero();return}
   if(i===5)xf=parseFaq(ad[4]||'').map(x=>({q:x.q,a:x.a}));
   const bars=Array.from({length:XN},(_,k)=>`<i class="${k<i?'done':k===i?'cur':''}"></i>`).join('');
-  root.innerHTML=`<div class="xp-top"><span>Étape ${i+1} sur ${XN}${i===4?`, question ${xlq+1} sur 4`:''}</span><span class="xp-sc"></span></div><div class="xp-bar" aria-hidden="true">${bars}</div><h3 id="xp-t" tabindex="-1">${XS[i][0]}</h3><p class="why">${esc(XS[i][1])}</p><div class="xp-body">${xBody(i)}</div><div class="xp-nav"><button type="button" class="pill light" data-xb${i===0?' style="visibility:hidden" tabindex="-1" aria-hidden="true"':''}>Précédent</button><button type="button" class="pill dark" id="xp-next" data-xn></button></div>`;
+  root.innerHTML=`<div class="xp-top"><span>Étape ${i+1} sur ${XN}${i===4?`, question ${xlq+1} sur 4`:''}</span><span class="xp-sc"></span><button type="button" class="lnk xp-help" data-help>Besoin d'aide ?</button></div><div class="xp-bar" aria-hidden="true">${bars}</div><h3 id="xp-t" tabindex="-1">${XS[i][0]}</h3><p class="why">${esc(XS[i][1])}</p><div class="xp-body">${xBody(i)}</div><div class="xp-nav"><button type="button" class="pill light" data-xb${i===0?' style="visibility:hidden" tabindex="-1" aria-hidden="true"':''}>Précédent</button><button type="button" class="pill dark" id="xp-next" data-xn></button></div>`;
   if(i===5)xFaqList();
   if(i===7)xBindDrop();
   renderThumbs();xUpdate();xHero();
@@ -1882,6 +1883,7 @@ function xBindDrop(){
 const xpEl=$('#xp');
 xpEl.addEventListener('click',e=>{
   const t=e.target,q=s=>t.closest&& t.closest(s);
+  if(q('[data-help]')){openHelp();return}
   if(q('[data-xn]')){if(xs===4&& xlq<3){xlq++;xRender();xFocus();return}return xGo(xs+1)}
   if(q('[data-xb]')){if(xs===4&& xlq>0){xlq--;xRender();xFocus();return}return xGo(xs-1)}
   let b;
