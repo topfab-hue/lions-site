@@ -8,7 +8,7 @@
 
 Conseils :
 - Mettez la section en pleine largeur ou en conteneur standard : le guide gère lui-même sa largeur (740 px).
-- Le titre « La Fiche Qui Vend » est un titre de niveau 2 : gardez votre propre titre de page en niveau 1.
+- Le titre « La Fiche Qui Vend » du guide est le titre de niveau 1 (H1) de la page : n'en ajoutez pas un second.
 - Les polices HVOliveandFigs et SnellRoundhand sont chargées depuis votre site (`/wp-content/uploads/2025/06/` et `/2025/07/`). Ne déplacez pas ces fichiers.
 - Le guide utilise du JavaScript : l'élément Html doit pouvoir contenir des scripts (compte administrateur).
 - La police Montserrat est intégrée au fichier : aucun appel à Google Fonts (pas de transfert de données vers un tiers).
