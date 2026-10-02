@@ -440,6 +440,45 @@ footer.ft a{color:var(--ink)}
 .thumb img,.pv-big img,.pv-th img{display:block}
 .pill.xs,.pills button,.nt button,.tgb{min-height:36px}
 @media(max-width:700px){.pill.xs{min-height:40px}}
+
+.cgl{margin-top:44px;font-size:13px;color:var(--mut);text-align:center}
+.cgl+.cgrid{margin-top:14px}
+.xp{padding:clamp(20px,4vw,34px)}
+.xp-top{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--mut)}
+.xp-sc{text-transform:none;letter-spacing:0;font-weight:500;font-size:13px;color:var(--ink)}
+.xp-bar{display:flex;gap:4px;margin:12px 0 24px}
+.xp-bar i{flex:1;height:4px;border-radius:9px;background:rgba(43,42,43,.1);transition:background .4s}
+.xp-bar i.done{background:var(--ink)}.xp-bar i.cur{background:var(--wine)}
+.xp h3{font-family:var(--disp);font-weight:400;font-size:1.7rem;line-height:1.15}
+.xp h3:focus{outline:0}
+.xp .why{color:var(--mut);font-size:14px;margin:6px 0 20px}
+.xp-q{font-weight:600;color:var(--ink);font-size:14px;margin:18px 0 6px}
+.xp-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.xp-grid{grid-template-columns:1fr}}
+.xp label.q{display:grid;gap:6px;font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:12px}
+.xp label.q input,.xp label.q textarea,.xp-add input{background:#fff;border:1px solid rgba(43,42,43,.14);border-radius:16px;padding:11px 16px;font-size:14.5px;width:100%;font-weight:400;transition:border-color .3s}
+.xp label.q input:focus,.xp label.q textarea:focus,.xp-add input:focus{outline:0;border-color:var(--ink)}
+.xp textarea{resize:vertical;min-height:60px}
+.xp .eg{margin-top:14px;padding:13px 18px;border-radius:14px;background:var(--tint);font-size:13.5px;line-height:1.6;color:var(--txt)}
+.xp .eg b{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-bottom:3px}
+.xp .eg p{margin:0 0 8px}
+.xp .fb{margin-top:10px;font-size:13px;color:var(--mut);min-height:20px}
+.xp .fb.ok{color:var(--ink);font-weight:500}
+.xp-row{margin-top:2px}
+.xp-nav{display:flex;gap:10px;justify-content:space-between;margin-top:26px}
+.xp-chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.chip{padding:8px 16px;border-radius:40px;font-size:13px;font-weight:500;background:linear-gradient(145deg,rgba(255,255,255,.95),rgba(255,255,255,.7));border:1px solid rgba(43,42,43,.12);transition:.3s var(--ease);min-height:36px;text-align:left}
+.chip:hover{border-color:var(--ink)}
+.chip.on{background:linear-gradient(180deg,#3b3a3b,#262526);color:#fff;border-color:transparent}
+.xp-fl{display:grid;gap:4px;margin:12px 0}
+.xp-fq{display:flex;gap:10px;align-items:end}
+.xp-fq label.q{flex:1;margin-bottom:6px}
+.xp-fq .pill{margin-bottom:10px}
+.xp-add{display:flex;gap:10px;align-items:center;margin-top:8px}
+.xp-det{margin-top:12px;font-size:13.5px}.xp-det summary{cursor:pointer;color:var(--ink);font-weight:600}
+.xp-tips{margin:12px 0 0;padding-left:20px;font-size:13.5px;color:var(--mut);display:grid;gap:3px}
+.xp .lnk{background:none;color:var(--wine);text-decoration:underline;font-size:inherit;padding:0 2px;min-height:0}
+.xp-pv{margin-top:10px;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#fff;max-height:560px;overflow-y:auto}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.glass,.tip,.panel,.mbox{background:rgba(255,255,255,.95)}}
 
@@ -460,7 +499,8 @@ footer.ft a{color:var(--ink)}
 <header class="nav glass" id="top">
   <a class="wm" href="#accueil">Keza<i>Création</i></a>
   <nav id="navl" aria-label="Navigation principale">
-    <a href="#bienvenue" data-s="bienvenue">Bienvenue</a>
+    <a href="#express" data-s="express">Parcours rapide</a>
+    <a href="#bienvenue" data-s="bienvenue">Guide</a>
     <a href="#m1" data-s="m1">Template</a>
     <a href="#m2" data-s="m2">Titres</a>
     <a href="#m3" data-s="m3">Storytelling</a>
@@ -472,7 +512,7 @@ footer.ft a{color:var(--ink)}
   <button type="button" class="pill light sm menu" id="lf-burger" aria-expanded="false" aria-controls="lf-drawer">Menu</button>
 </header>
 <nav class="drawer glass" id="lf-drawer" aria-label="Menu mobile">
-  <a href="#bienvenue">Bienvenue</a><a href="#m1">1. Le template en 6 blocs</a><a href="#m2">2. Le générateur de titres</a><a href="#m3">3. La méthode storytelling</a><a href="#m4">4. La checklist</a><a href="#bonus">Les 3 fiches modèles</a><a href="#atelier">Mon atelier</a>
+  <a href="#express">Parcours rapide : ma fiche en 15 minutes</a><a href="#bienvenue">Guide complet</a><a href="#m1">1. Le template en 6 blocs</a><a href="#m2">2. Le générateur de titres</a><a href="#m3">3. La méthode storytelling</a><a href="#m4">4. La checklist</a><a href="#bonus">Les 3 fiches modèles</a><a href="#atelier">Mon atelier</a>
 </nav>
 
 <main>
@@ -481,12 +521,13 @@ footer.ft a{color:var(--ink)}
   <div class="wrap">
     <p class="eyebrow">KezaCréation présente</p>
     <h1 class="ttl"><span class="ln"><span class="i">L</span>a <span class="i">F</span>iche</span><span class="ln"><span class="i">Q</span>ui <span class="i">V</span>end</span></h1>
-    <p class="lead">Le kit complet pour écrire des fiches produits qui donnent envie d'acheter. Sans jargon : des modèles à copier, des outils à essayer et une aide à chaque étape.</p>
-    <p class="sub">Pour WooCommerce, Shopify, Etsy et toute boutique en ligne. Bijoux, bougies, cosmétiques, papeterie, céramique, textile.</p>
+    <p class="lead">Écrivez une fiche produit qui donne envie d'acheter, pas à pas et sans jargon. Comptez 15 minutes pour la première.</p>
+    <p class="sub">Pour WooCommerce, Shopify, Etsy et toute boutique en ligne.</p>
     <div class="cta">
-      <a class="pill dark" href="#bienvenue">Commencer le guide</a>
-      <button type="button" class="pill light" data-help>Je suis un peu perdu·e</button>
+      <a class="pill dark" href="#express">Créer ma fiche en 15 minutes</a>
+      <a class="pill light" href="#bienvenue">Lire le guide complet</a>
     </div>
+    <p class="cgl">Ou parcourez le guide complet :</p>
     <div class="cgrid">
       <a class="cc glass tint rv" href="#m1"><small>Module 1</small><b>Le template fiche en 6 blocs</b><span>La structure complète et remplissable</span></a>
       <a class="cc glass tint rv d1" href="#m2"><small>Module 2</small><b>Le générateur de titres</b><span>80 structures de titres SEO par niche</span></a>
@@ -498,11 +539,23 @@ footer.ft a{color:var(--ink)}
   </div>
 </div>
 
+<!-- ============ PARCOURS RAPIDE ============ -->
+<section class="sec" id="express" data-spy aria-labelledby="xp-h">
+  <div class="wrap">
+    <div class="mh rv">
+      <p class="eyebrow">Parcours rapide</p>
+      <h2 id="xp-h">Votre fiche produit <em>en 15 minutes</em></h2>
+      <p>Répondez à quelques questions simples, une à la fois. On construit votre fiche avec vous, puis on vous donne une note et les trois améliorations les plus utiles. Vous n'avez rien à lire avant.</p>
+    </div>
+    <div class="xp glass" id="xp" aria-label="Parcours rapide"></div>
+  </div>
+</section>
+
 <!-- ============ BIENVENUE ============ -->
 <section class="sec" id="bienvenue" data-spy>
   <div class="wrap">
     <div class="mh rv">
-      <p class="eyebrow">Bienvenue</p>
+      <p class="eyebrow">Guide complet</p>
       <h2>Avant de commencer, <em>lisez ceci</em></h2>
       <p>Ce kit a été créé pour une seule chose : vous aider à transformer vos fiches produits en véritables machines à vendre. Pas en vous apprenant à « mieux écrire » de façon abstraite, mais en vous donnant une structure, des exemples concrets et des formules directement applicables à vos produits.</p>
     </div>
@@ -778,6 +831,7 @@ footer.ft a{color:var(--ink)}
 <nav class="toc" id="lf-toc" aria-label="Sommaire du guide">
   <div class="toc-top"><b id="toclabel">La Fiche Qui Vend</b><div class="track" role="progressbar" aria-label="Avancement du guide" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="fill" id="tocfill"></div></div><span id="tocpct">0%</span></div>
   <div class="toc-dots">
+    <a href="#express" data-s="express" data-t="Parcours rapide" title="Parcours rapide" aria-label="Parcours rapide">R</a>
     <a href="#m1" data-s="m1" data-t="Le template en 6 blocs" title="Le template en 6 blocs" aria-label="Le template en 6 blocs">1</a>
     <a href="#m2" data-s="m2" data-t="Le générateur de titres" title="Le générateur de titres" aria-label="Le générateur de titres">2</a>
     <a href="#m3" data-s="m3" data-t="La méthode storytelling" title="La méthode storytelling" aria-label="La méthode storytelling">3</a>
@@ -890,7 +944,7 @@ function onScrollNow(){
   const r=ROOT.getBoundingClientRect(),p=Math.min(1,Math.max(0,-r.top/Math.max(1,r.height-innerHeight)));
   const f=$('#tocfill');
   if(f){f.style.width=(p*100)+'%';$('#tocpct').textContent=Math.round(p*100)+'%';const tr=$('#lf-toc .track');if(tr)tr.setAttribute('aria-valuenow',Math.round(p*100));
-    const bi=$('#bienvenue'),tc=$('#lf-toc');
+    const bi=$('#express'),tc=$('#lf-toc');
     if(tc&&bi){const on=innerHeight*.7>bi.getBoundingClientRect().top?r.bottom>innerHeight*.5:false;tc.classList.toggle('show',on);if(OV)OV.classList.toggle('has-toc',on)}}
   dodge();
 }
@@ -1356,13 +1410,7 @@ function okAt(i){
 }
 function aUpdate(i){
   const a=AT[i],el=$(`[data-a="${i}"]`),v=ad[i]||'',n=cnt(v,a[2]),s=$('.stt',el),u=unit[a[2]][0];
-  let txt='à remplir';
-  if(v.trim()){
-    if(i===1&&v.trim().length<50)txt=`${pl(v.trim().length,'caractère')}, trop courte`;
-    else if(i===1&&v.trim().length>240)txt=`${pl(v.trim().length,'caractère')}, trop longue`;
-    else if(i===5&&longTags(v).length)txt=`${pl(longTags(v).length,'tag')} de plus de 20 caractères`;
-    else txt=a[3]>n?`${pl(n,u)}, encore ${a[3]-n}`:n>a[4]?`${pl(n,u)}, ${n-a[4]} de trop`:`${pl(n,u)}, parfait`;
-  }
+  const txt=statusOf(i).txt;
   s.textContent=txt;s.classList.toggle('ok',okAt(i));
   $('.mini i',el).style.width=(v.trim()?Math.min(100,n/a[3]*100):0)+'%';
 }
@@ -1394,7 +1442,7 @@ function readPhoto(f){return new Promise((res,rej)=>{
   im.onerror=()=>{done();rej(new Error('lecture'))};
   im.src=url;
 })}
-let busy=false;
+let busy=false,xReady=false;
 async function addFiles(files){
   const all=[...files],list=all.filter(f=>OKT.includes(f.type));
   if(!all.length)return;
@@ -1416,16 +1464,20 @@ async function addFiles(files){
   }finally{busy=false}
 }
 function renderThumbs(){
-  const st=$('#phstt');st.textContent=photos.length?pl(photos.length,'photo'):'aucune photo';st.classList.toggle('ok',photos.length>=4);
-  $('#thumbs').innerHTML=photos.map((ph,i)=>`<figure class="thumb">${IMG} src="${ph.t||ph.d}" alt="Photo ${i+1}">${i===0?'<span class="main">Principale</span>':''}<figcaption>${ph.w} × ${ph.h}</figcaption><div class="tb">${i>0?`<button type="button" data-mk="${i}">Principale</button>`:''}<button type="button" data-rm="${i}">Retirer</button></div></figure>`).join('');
+  const txt=photos.length?pl(photos.length,'photo'):'aucune photo';
+  const st=$('#phstt');st.textContent=txt;st.classList.toggle('ok',photos.length>=4);
+  const html=photos.map((ph,i)=>`<figure class="thumb">${IMG} src="${ph.t||ph.d}" alt="Photo ${i+1}">${i===0?'<span class="main">Principale</span>':''}<figcaption>${ph.w} × ${ph.h}</figcaption><div class="tb">${i>0?`<button type="button" data-mk="${i}">Principale</button>`:''}<button type="button" data-rm="${i}">Retirer</button></div></figure>`).join('');
+  $('#thumbs').innerHTML=html;const xt=$('#xthumbs');if(xt)xt.innerHTML=html;
+  if(xReady&&$('#xp'))xSoon();
 }
-$('#thumbs').addEventListener('click',e=>{
+function thumbClick(e){
   const mk=e.target.closest('[data-mk]'),rm=e.target.closest('[data-rm]');
   if(mk){photos.unshift(photos.splice(+mk.dataset.mk,1)[0]);pvSel=0}
   else if(rm){photos.splice(+rm.dataset.rm,1);pvSel=0}
   else return;
   persist('photos',photos);renderThumbs();schedulePreview();
-});
+}
+$('#thumbs').addEventListener('click',thumbClick);
 $('#phin').addEventListener('change',e=>{addFiles(e.target.files);e.target.value=''});
 const drop=$('#lf-drop');
 ['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('over')}));
@@ -1519,6 +1571,165 @@ $('#atshop').addEventListener('input',e=>{atmeta.shop=e.target.value.slice(0,120
 $('#atprice').addEventListener('input',e=>{atmeta.price=e.target.value.slice(0,40);persist('atmeta',atmeta);schedulePreview()});
 renderThumbs();atSyncFields();
 
+/* ---------- parcours rapide ---------- */
+const XN=8;
+const XS=[
+ ['Votre boutique','Pour adapter les conseils (longueur du titre, mots-clés) à votre plateforme.'],
+ ['Le titre','C\'est ce que lisent Google et vos clientes en premier. Un bon titre dit : quoi, en quoi, pour quelle occasion, pour qui.'],
+ ['L\'accroche','La première phrase de la description. Elle doit faire voir une scène ou ressentir quelque chose.'],
+ ['La description courte','Elle répond vite à trois questions : pour qui, dans quel moment, pourquoi ce produit.'],
+ ['La description longue','C\'est là que vous racontez. Répondez simplement à 4 questions, le texte s\'assemble tout seul.'],
+ ['Les questions fréquentes','Une cliente qui a un doute sans réponse part sans acheter. Répondez d\'avance aux questions courantes.'],
+ ['Les mots-clés','Ce sont les mots que vos clientes tapent pour vous trouver.'],
+ ['Les photos','La première photo décide si on clique. Ajoutez-en 4 à 6 si vous le pouvez (vous pouvez aussi passer cette étape).']];
+const XH={
+ bijou:{p:'Bague',m:'Argent 925',o:'Cadeau anniversaire',d:'Femme'},
+ bougie:{p:'Bougie parfumée',m:'Cire de soja, ambre et santal',o:'Cadeau, cocooning',d:'Femme'},
+ cosmetique:{p:'Sérum visage',m:'Vitamine C naturelle',o:'Éclat de la peau',d:'Femme'}};
+const XFQ=['Dans combien de temps ma commande est-elle expédiée ?','Livrez-vous à l\'étranger ?','De quelle matière est-il fabriqué ?','Comment dois-je l\'entretenir ?','Puis-je le personnaliser ?','Est-ce un bon cadeau ?','Puis-je le retourner ?','Que faire s\'il arrive abîmé ?'];
+const XST=['Imaginez…','Un dimanche matin…','Ce moment où…','La pièce qui…'];
+const XL=[
+ ['Pourquoi l\'avez-vous créé ?','L\'histoire ou l\'inspiration, en 2 ou 3 phrases.'],
+ ['Comment est-il fabriqué ?','Le geste, les matières, le soin que personne ne voit.'],
+ ['Pour qui, et que ressent-on ?','La personne qui va l\'aimer, le moment, l\'émotion.'],
+ ['Quels sont les détails pratiques ?','Dimensions, entretien, livraison, conditionnement.']];
+let xq=store.get('xq',{},v=>!!v);
+const xt0=(xq.t&&typeof xq.t==='object')?xq.t:{};
+xq={ex:FICHES.some(f=>f.id===xq.ex)?xq.ex:FICHES[0].id,auto:xq.auto!==false,t:{p:String(xt0.p||'').slice(0,80),m:String(xt0.m||'').slice(0,80),o:String(xt0.o||'').slice(0,80),d:String(xt0.d||'').slice(0,80)}};
+let xs=store.get('xstep',0,v=>Number.isInteger(v)&&v>=0&&v<=XN);
+let xf=[],xTimer=0;
+const xex=()=>FICHES.find(f=>f.id===xq.ex)||FICHES[0];
+const tcase=s=>s.trim().split(/\s+/).filter(Boolean).map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(' ');
+function xCompose(){const t=xq.t;const main=[t.p,t.m,t.d].map(x=>x.trim()).filter(Boolean).join(' ');return tcase([main,t.o.trim()].filter(Boolean).join(', '))}
+function statusOf(i){
+  const a=AT[i],v=ad[i]||'',n=cnt(v,a[2]),u=unit[a[2]][0];
+  let txt='à remplir';
+  if(v.trim()){
+    if(i===1&&v.trim().length<50)txt=`${pl(v.trim().length,'caractère')}, trop courte`;
+    else if(i===1&&v.trim().length>240)txt=`${pl(v.trim().length,'caractère')}, trop longue`;
+    else if(i===5&&longTags(v).length)txt=`${pl(longTags(v).length,'tag')} de plus de 20 caractères`;
+    else txt=a[3]>n?`${pl(n,u)}, encore ${a[3]-n}`:n>a[4]?`${pl(n,u)}, ${n-a[4]} de trop`:`${pl(n,u)}, parfait`;
+  }
+  return{txt,ok:okAt(i)};
+}
+const xFilled=i=>i===0||i===7?(i===0||photos.length>0):!!(ad[i-1]||'').trim();
+const xSet=(i,v)=>{ad[i]=v;persist('atelier',ad);atSyncFields();xSoon()};
+function xSoon(){clearTimeout(xTimer);xTimer=setTimeout(xUpdate,120)}
+const chipHtml=(attr,val,label,on)=>`<button type="button" class="chip${on?' on':''}" ${attr}="${esc(val)}" aria-pressed="${!!on}">${esc(label)}</button>`;
+function xBody(i){
+  const ex=xex(),h=XH[ex.id]||XH.bijou;
+  if(i===0)return `<div class="pills" role="group" aria-label="Choisir votre plateforme">${Object.keys(PFS).map(k=>`<button type="button" data-pfk="${k}" class="${k===pf?'on':''}" aria-pressed="${k===pf}">${PFS[k].n}</button>`).join('')}</div><p class="pfnote">${esc(P().note)}</p><p class="xp-q">Quel exemple vous parle le plus ?</p><p class="tnote" style="margin-top:0">Il vous servira de modèle tout au long du parcours.</p><div class="xp-chips" role="group" aria-label="Choisir un exemple">${FICHES.map(f=>chipHtml('data-ex',f.id,f.n,f.id===ex.id)).join('')}</div>`;
+  if(i===1)return `<div class="xp-grid">${[['p','Quel est votre produit ?'],['m','En quoi est-il fait ?'],['o','Pour quelle occasion ou quel usage ?'],['d','Pour qui ?']].map(x=>`<label class="q">${x[1]}<input type="text" data-tf="${x[0]}" maxlength="80" autocomplete="off" placeholder="Ex. : ${esc(h[x[0]])}" value="${esc(xq.t[x[0]])}"></label>`).join('')}</div><label class="q" style="margin-top:14px">Votre titre (modifiable)<textarea id="xp-f" rows="2" maxlength="200" placeholder="Il se compose tout seul à partir de vos réponses">${esc(ad[0]||'')}</textarea></label><div class="xp-row"><button type="button" class="pill light xs" data-xrec>Recomposer avec mes réponses</button></div><div class="fb" id="xp-fb"></div><div class="eg"><b>Exemple</b>${esc(ftitle(ex))}</div><div id="xp-gg"></div>`;
+  if(i===2)return `<label class="q">Votre accroche (1 à 2 phrases)<textarea id="xp-f" rows="3" maxlength="400" placeholder="Ex. : ${esc(ex.accroche.slice(0,80))}…">${esc(ad[1]||'')}</textarea></label><div class="xp-chips" role="group" aria-label="Débuts de phrase"><span class="tnote" style="margin:0 4px 0 0;align-self:center">Besoin d'un départ ?</span>${XST.map(s=>chipHtml('data-st',s,s,false)).join('')}</div><div class="fb" id="xp-fb"></div><div class="eg"><b>Exemple</b>${esc(ex.accroche)}</div>`;
+  if(i===3)return `<label class="q">Votre description courte (50 à 80 mots)<textarea id="xp-f" rows="5" placeholder="Pour qui est-ce ? Dans quel moment l'utilise-t-on ? Pourquoi est-ce le bon choix ?">${esc(ad[2]||'')}</textarea></label><div class="fb" id="xp-fb"></div><div class="eg"><b>Exemple</b>${esc(ex.courte)}</div>`;
+  if(i===4){
+    let ps=(ad[3]||'').split(/\n\s*\n/).map(x=>x.trim()).filter(Boolean);
+    if(ps.length>4)ps=[ps[0],ps[1],ps[2],ps.slice(3).join('\n\n')];
+    const eg=ex.longue.split(/\n\n/);
+    return XL.map((q,k)=>`<label class="q">${k+1}. ${q[0]}<span class="tnote" style="margin:0;font-weight:400">${q[1]}</span><textarea data-xl="${k}" rows="3" placeholder="Ex. : ${esc((eg[k]||'').slice(0,90))}…">${esc(ps[k]||'')}</textarea></label>`).join('')+`<div class="fb" id="xp-fb"></div><details class="xp-det"><summary>Voir un exemple complet</summary><div class="eg">${eg.map(x=>`<p>${esc(x)}</p>`).join('')}</div></details>`;
+  }
+  if(i===5){
+    const have=xf.map(x=>norm(x.q));
+    return `<p class="xp-q">Choisissez au moins 4 questions, puis répondez en une phrase.</p><div class="xp-chips" role="group" aria-label="Questions suggérées">${XFQ.map((q,k)=>chipHtml('data-fs',String(k),q,have.includes(norm(q)))).join('')}</div><div id="xp-fl"></div><div class="xp-add"><input type="text" id="xp-fc" maxlength="140" placeholder="Une autre question ? Écrivez-la ici" aria-label="Ajouter votre propre question"><button type="button" class="pill light xs" data-xfa>Ajouter</button></div><div class="fb" id="xp-fb"></div><div class="eg"><b>Exemple</b><b style="display:inline;letter-spacing:0;text-transform:none;font-size:13.5px;color:var(--ink)">${esc(ex.faq[0][0])}</b> ${esc(ex.faq[0][1])}</div>`;
+  }
+  if(i===6)return `<label class="q">Vos mots-clés (un par ligne ou séparés par des virgules)<textarea id="xp-f" rows="4" placeholder="Ex. : ${esc(ex.tags.split(' · ').slice(0,3).join(', '))}">${esc(ad[5]||'')}</textarea></label><p class="xp-q" style="margin-top:14px">Suggestions à partir de vos réponses</p><div class="xp-chips" id="xp-ts" role="group" aria-label="Mots-clés suggérés"></div><div class="fb" id="xp-fb"></div><p class="tnote">${esc(pf==='etsy'?'Etsy : 13 tags de 20 caractères maximum chacun.':'Visez 5 à 15 expressions de 2 à 4 mots, plutôt que des mots seuls.')}</p>`;
+  return `<label class="drop" id="xp-drop" tabindex="0" role="button" aria-label="Ajouter des photos"><input type="file" id="xp-in" accept="image/jpeg,image/png,image/webp,image/gif" multiple hidden>Glissez vos photos ici ou <u>parcourez vos fichiers</u></label><div class="thumbs" id="xthumbs"></div><div class="fb" id="xp-fb"></div><ul class="xp-tips"><li>Le produit entier, sur fond clair, en lumière naturelle.</li><li>Un ou deux détails (matière, finition).</li><li>Une mise en situation (porté, posé, utilisé).</li><li>Un repère de taille.</li></ul><p class="tnote">Vos photos restent sur votre appareil : rien n'est envoyé.</p>`;
+}
+function xResult(){
+  const res=ficheScore(),v=verdict(res.score);
+  const goto={Titre:1,Accroche:2,'Description courte':3,'Description longue':4,FAQ:5,'Mots-clés':6,Photos:7};
+  const top=res.items.filter(i=>i.tip).sort((a,b)=>(b.max-b.pts)-(a.max-a.pts)).slice(0,3);
+  return `<div class="xp-top"><span>Terminé</span><span class="xp-sc"></span></div><div class="xp-bar" aria-hidden="true">${'<i class="done"></i>'.repeat(XN)}</div><h3 id="xp-t" tabindex="-1">Votre fiche est prête à être relue</h3><p class="why">Voici votre note et ce qui vous ferait gagner le plus de points. Rien n'est figé : vous pouvez revenir sur chaque étape.</p><div class="sc-card glass soft">${scTop(res,'Note de votre fiche')}</div><div class="prio">${top.length?`<h5 class="mini-h">Les 3 améliorations les plus utiles</h5><ol>${top.map(i=>`<li><b>${i.n} :</b> ${esc(i.tip)} <button type="button" class="lnk" data-xg="${goto[i.n]}">Corriger</button></li>`).join('')}</ol>`:'<h5 class="mini-h">Aucun point à corriger. Bravo !</h5>'}</div><h5 class="mini-h" style="margin-top:22px">Votre fiche, comme elle apparaîtra</h5><div class="xp-pv" data-lenis-prevent>${pageHTML(false)}</div><div class="row-c"><button type="button" class="pill dark" data-xcopy>Copier ma fiche complète</button><a class="pill light" href="#atelier">Affiner dans l'atelier</a><button type="button" class="pill light" id="xp-new">Nouvelle fiche</button></div><p class="tnote">Envie d'aller plus loin ? Le <a href="#bienvenue">guide complet</a> explique chaque bloc en détail.</p>`;
+}
+function xRender(){
+  const root=$('#xp');if(!root)return;
+  const i=xs;
+  if(i===XN){root.innerHTML=xResult();armConfirm($('#xp-new'),'Confirmer : tout effacer ?',xNew);xUpdate();return}
+  if(i===5)xf=parseFaq(ad[4]||'').map(x=>({q:x.q,a:x.a}));
+  const bars=Array.from({length:XN},(_,k)=>`<i class="${k<i?'done':k===i?'cur':''}"></i>`).join('');
+  root.innerHTML=`<div class="xp-top"><span>Étape ${i+1} sur ${XN}</span><span class="xp-sc"></span></div><div class="xp-bar" aria-hidden="true">${bars}</div><h3 id="xp-t" tabindex="-1">${XS[i][0]}</h3><p class="why">${esc(XS[i][1])}</p><div class="xp-body">${xBody(i)}</div><div class="xp-nav"><button type="button" class="pill light" data-xb${i===0?' style="visibility:hidden" tabindex="-1" aria-hidden="true"':''}>Précédent</button><button type="button" class="pill dark" id="xp-next" data-xn></button></div>`;
+  if(i===5)xFaqList();
+  if(i===7)xBindDrop();
+  renderThumbs();xUpdate();
+}
+function xFaqList(){
+  const l=$('#xp-fl');if(!l)return;
+  l.innerHTML=xf.length?`<div class="xp-fl">${xf.map((x,k)=>`<div class="xp-fq"><label class="q">${esc(x.q)}<input type="text" data-fa="${k}" maxlength="300" placeholder="Votre réponse en une phrase" value="${esc(x.a)}"></label><button type="button" class="pill light xs" data-fd="${k}" aria-label="Retirer la question ${k+1}">Retirer</button></div>`).join('')}</div>`:'';
+}
+const xFaqSync=()=>xSet(4,xf.map(x=>x.q+(x.a?' '+x.a:'')).join('\n'));
+function xTagSugg(){
+  const t=xq.t,low=s=>s.trim().toLowerCase();
+  const p=low(t.p),m=low(t.m),o=low(t.o),d=low(t.d);
+  let c=[[p,m],[p,d],[p,o],[o,d],[p,'fait main'],['idée cadeau',d],['cadeau',o]].map(a=>a.filter(Boolean).join(' ')).filter(x=>x.split(' ').length>=2);
+  if(!c.length)c=['idée cadeau femme','cadeau anniversaire','fait main','création artisanale'];
+  const have=tagList(ad[5]||'').map(norm),max=pf==='etsy'?P().tagLen:80;
+  return [...new Set(c)].filter(x=>max>=x.length&&!have.includes(norm(x))).slice(0,8);
+}
+function xUpdate(){
+  const i=xs,root=$('#xp');if(!root)return;
+  const sc=$('.xp-sc',root);
+  if(sc){if(i===XN){sc.textContent=`Note : ${ficheScore().score} sur 100`}else{const n=ad.filter(x=>x.trim()).length;sc.textContent=n?`${n} bloc${n>1?'s':''} sur 6 rempli${n>1?'s':''}`:''}}
+  if(i===XN)return;
+  const fb=$('#xp-fb'),nx=$('#xp-next');
+  const set=(txt,ok)=>{if(fb){fb.textContent=txt;fb.classList.toggle('ok',!!ok)}};
+  if(i===1){
+    const v=(ad[0]||'').trim();
+    if(!v)set('Remplissez les cases ci-dessus : votre titre se compose tout seul.',false);
+    else{const r=scoreTitle(v);const tip=(r.items.filter(x=>x.tip).sort((a,b)=>(b.max-b.pts)-(a.max-a.pts))[0]||{tip:''}).tip;set(`${pl(v.length,'caractère')} (visez ${rng()}). Note du titre : ${r.score} sur 100. ${tip||'Parfait.'}`,r.score>=85)}
+    const g=$('#xp-gg');if(g)g.innerHTML=v?'<h5 class="mini-h">Ce que ça donne dans Google</h5>'+googleSnippet(v,''):'';
+  }else if(i>=2&&i<=6&&i!==5){const k=i-1,st=statusOf(k);set(st.ok?'Parfait, ce bloc est prêt.':(ad[k]||'').trim()?st.txt:'Écrivez ici : un conseil s\'affichera au fur et à mesure.',st.ok)}
+  else if(i===5){const n=xf.length,full=xf.filter(x=>x.a.trim()).length;set(n?`${pl(n,'question')}, ${pl(full,'réponse')}${4>n?`. Encore ${4-n} question${4-n>1?'s':''} pour atteindre 4.`:'.'}`:'Cliquez sur au moins 4 questions ci-dessus.',n>=4&&full===n);}
+  else if(i===7)set(photos.length?`${pl(photos.length,'photo')}${photos.length>=4?', parfait.':'. Visez 4 à 6.'}`:'Aucune photo pour l\'instant. Vous pouvez passer cette étape et en ajouter plus tard.',photos.length>=4);
+  if(i===6){const ts=$('#xp-ts');if(ts){const s=xTagSugg();ts.innerHTML=s.length?s.map(x=>chipHtml('data-ts',x,x+' +',false)).join(''):'<span class="tnote" style="margin:0">Pas d\'autre suggestion : ajoutez vos propres mots-clés ci-dessus.</span>'}}
+  if(nx)nx.textContent=i===0?'Commencer':i===XN-1?'Voir ma fiche':xFilled(i)?'Suivant':'Passer cette étape';
+}
+function xGo(n){
+  xs=clamp(n,0,XN);persist('xstep',xs);xRender();
+  const root=$('#xp'),r=root.getBoundingClientRect();
+  if(r.top<60||r.top>innerHeight*.45)root.scrollIntoView({behavior:smooth(),block:'start'});
+  const f=matchMedia('(hover:hover)').matches&&$('input[type=text],textarea',$('.xp-body',root)||root);
+  (f||$('#xp-t')).focus({preventScroll:true});
+  live(xs===XN?'Votre fiche est prête à être relue.':`Étape ${xs+1} sur ${XN} : ${XS[xs][0]}`);
+}
+function xNew(){gen++;ad=['','','','','',''];photos=[];pvSel=0;xq.auto=true;xq.t={p:'',m:'',o:'',d:''};persist('xq',xq);persist('atelier',ad);persist('photos',photos);renderThumbs();atSyncFields();atDone=false;xGo(0)}
+function xBindDrop(){
+  const d=$('#xp-drop'),inp=$('#xp-in');if(!d||!inp)return;
+  inp.addEventListener('change',e=>{addFiles(e.target.files);e.target.value=''});
+  ['dragenter','dragover'].forEach(ev=>d.addEventListener(ev,e=>{e.preventDefault();d.classList.add('over')}));
+  ['dragleave','drop'].forEach(ev=>d.addEventListener(ev,e=>{e.preventDefault();d.classList.remove('over')}));
+  d.addEventListener('drop',e=>{if(e.dataTransfer&&e.dataTransfer.files)addFiles(e.dataTransfer.files)});
+  d.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();inp.click()}});
+}
+const xpEl=$('#xp');
+xpEl.addEventListener('click',e=>{
+  const t=e.target,q=s=>t.closest&&t.closest(s);
+  if(q('[data-xn]'))return xGo(xs+1);
+  if(q('[data-xb]'))return xGo(xs-1);
+  let b;
+  if(b=q('[data-ex]')){xq.ex=b.dataset.ex;persist('xq',xq);xRender();const on=$('[data-ex].on');on&&on.focus({preventScroll:true});return}
+  if(b=q('[data-xrec]')){xq.auto=true;persist('xq',xq);xSet(0,xCompose());const f=$('#xp-f');if(f)f.value=ad[0];return}
+  if(b=q('[data-st]')){const f=$('#xp-f');if(!f)return;f.value=b.dataset.st+' '+f.value;f.focus();xSet(1,f.value);return}
+  if(b=q('[data-fs]')){const s=XFQ[+b.dataset.fs],k=xf.findIndex(x=>norm(x.q)===norm(s));if(k>=0)xf.splice(k,1);else xf.push({q:s,a:''});xFaqSync();xFaqList();$$('[data-fs]',xpEl).forEach(c=>{const on=xf.some(x=>norm(x.q)===norm(XFQ[+c.dataset.fs]));c.classList.toggle('on',on);c.setAttribute('aria-pressed',on)});return}
+  if(b=q('[data-fd]')){xf.splice(+b.dataset.fd,1);xFaqSync();xFaqList();$$('[data-fs]',xpEl).forEach(c=>{const on=xf.some(x=>norm(x.q)===norm(XFQ[+c.dataset.fs]));c.classList.toggle('on',on);c.setAttribute('aria-pressed',on)});return}
+  if(q('[data-xfa]')){const f=$('#xp-fc');let v=f.value.trim().replace(/\s+/g,' ');if(!v)return toast('Écrivez votre question.');if(!/\?$/.test(v))v+=' ?';if(xf.some(x=>norm(x.q)===norm(v)))return toast('Cette question existe déjà.');xf.push({q:v,a:''});f.value='';xFaqSync();xFaqList();return}
+  if(b=q('[data-ts]')){const cur=(ad[5]||'').trim();xSet(5,cur?cur.replace(/[,\s]+$/,'')+', '+b.dataset.ts:b.dataset.ts);const f=$('#xp-f');if(f)f.value=ad[5];return}
+  if(b=q('[data-xg]'))return xGo(+b.dataset.xg);
+  if(b=q('[data-xcopy]')){copy(`TITRE\n${ad[0]}\n\n${ad[1]}\n\n${ad[2]}\n\n${ad[3]}\n\nFAQ\n${ad[4]}\n\nMOTS-CLÉS\n${ad[5]}`.replace(/\n{3,}/g,'\n\n'),b);return}
+  if(b=q('[data-sel]')){pvSel=+b.dataset.sel;const keep=xs;xRender();return}
+  if(b=q('[data-mk],[data-rm]')){thumbClick(e);return}
+});
+xpEl.addEventListener('input',e=>{
+  const t=e.target;
+  if(t.dataset.tf){xq.t[t.dataset.tf]=t.value;if(xq.auto){const c=xCompose();ad[0]=c;persist('atelier',ad);const f=$('#xp-f');if(f)f.value=c;atSyncFields()}persist('xq',xq);xSoon();return}
+  if(t.id==='xp-f'){
+    if(xs===1){const c=t.value.replace(/\s*\n+\s*/g,' ');if(c!==t.value)t.value=c;xq.auto=!c.trim();persist('xq',xq);xSet(0,c)}
+    else if(xs===2)xSet(1,t.value);else if(xs===3)xSet(2,t.value);else if(xs===6)xSet(5,t.value);
+    return}
+  if(t.dataset.xl!==undefined){xSet(3,$$('[data-xl]',xpEl).map(x=>x.value.trim()).filter(Boolean).join('\n\n'));return}
+  if(t.dataset.fa!==undefined){const k=+t.dataset.fa;if(xf[k]){xf[k].a=t.value.replace(/\s+/g,' ');xFaqSync()}return}
+});
+xpEl.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='xp-fc'){e.preventDefault();const b=$('[data-xfa]',xpEl);b&&b.click()}});
+xReady=true;
 /* ---------- applique le choix de plateforme partout ---------- */
 function applyPF(){
   const p=P();
@@ -1530,6 +1741,7 @@ function applyPF(){
   renderBlocs();render();test();ckBuild();showN(curN);
   AT=makeAT();$$('#lf-atel .hint').forEach((h,i)=>h.textContent=AT[i][1]);AT.forEach((_,i)=>aUpdate(i));atDone=AT.every((_,i)=>okAt(i));schedulePreview(true);
   showF(curF.id);
+  xRender();
 }
 
 /* ---------- étapes lues ---------- */
@@ -1588,7 +1800,7 @@ if(!store.get('toured',0,v=>typeof v==='number'))setTimeout(()=>{if(!panel.class
 armConfirm($('#pclear'),'Confirmer l\'effacement ?',()=>{try{Object.keys(localStorage).filter(k=>k.startsWith('lfqv:')).forEach(k=>localStorage.removeItem(k))}catch(e){}toast('Toutes vos données ont été effacées.');setTimeout(()=>location.reload(),700)});
 
 /* point d'entrée pour les tests automatiques */
-ROOT._t={scoreTitle,ficheScore,parseFaq,cnt,result,setAd:a=>{ad=a},setPhotos:p=>{photos=p},setPf:k=>{pf=k},getPf:()=>pf,has,TARGETW,OCC,MAT,BAN,NICHES,FICHES};
+ROOT._t={xGo,xq:()=>xq,scoreTitle,ficheScore,parseFaq,cnt,result,setAd:a=>{ad=a},setPhotos:p=>{photos=p},setPf:k=>{pf=k},getPf:()=>pf,has,TARGETW,OCC,MAT,BAN,NICHES,FICHES};
 
 applyPF();
 onScrollNow();
