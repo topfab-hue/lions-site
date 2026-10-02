@@ -1,5 +1,5 @@
-import re,sys
-D='/home/user/lions-site/guide-fiche-qui-vend/'
+import re,sys,os,base64
+D=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+'/'
 src=open(D+'_source/guide.src.html',encoding='utf-8').read()
 
 css=src.split('<style>\n',1)[1].split('</style>',1)[0]
@@ -83,13 +83,19 @@ extra="""
 #lfqv.js .rv.in{opacity:1;transform:none}
 #lfqv-ov.standalone .toc{display:none}
 #lfqv-ov .fab{transition:bottom .5s cubic-bezier(.22,.8,.24,1),transform .35s,box-shadow .35s}
-#lfqv-ov.has-toc .toast{bottom:132px}
-@media(max-width:1180px){#lfqv-ov.has-toc .fab{bottom:118px}}
 #lfqv.embed [id]{scroll-margin-top:130px}
+#lfqv-ov .fab{bottom:calc(20px + var(--lf-dodge,0px))}
+#lfqv-ov .toc{bottom:calc(14px + env(safe-area-inset-bottom,0px) + var(--lf-dodge,0px))}
+#lfqv-ov .toast{bottom:calc(84px + var(--lf-dodge,0px))}
+#lfqv-ov.has-toc .toast{bottom:calc(132px + var(--lf-dodge,0px))}
+@media(max-width:1180px){#lfqv-ov.has-toc .fab{bottom:calc(118px + var(--lf-dodge,0px))}}
+#lfqv-ov.lf-tall .toc,#lfqv-ov.lf-tall .fab{display:none}
+#lfqv .sr,#lfqv-ov .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 """
 scoped+=extra
 
-SPLIT=body.index('<button class="pill dark fab"')
+body=re.sub(r'<!--.*?-->','',body,flags=re.S)
+SPLIT=body.index('<button type="button" class="pill dark fab"')
 body_main,body_ov=body[:SPLIT],body[SPLIT:]
 # JS : tout est limité au conteneur, jamais au document entier
 js=js.replace("const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];",
@@ -108,6 +114,7 @@ def _risky(t):
 _r=_risky(js)
 assert not _r,'Risque WordPress (& dans un faux tag) : %s'%_r[:3]
 assert 'const ROOT' in js
+assert '<img' not in js,'<img en clair dans le script'
 
 FA_LOCAL="""@font-face{font-family:'HVOliveandFigs';src:url('fonts/HVOliveandFigs-Regular.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:'HVOliveandFigs';src:url('fonts/HVOliveandFigs-Italic.otf') format('opentype');font-weight:400;font-style:italic;font-display:swap}
@@ -121,12 +128,17 @@ FA_SITE+="@font-face{font-family:'SnellRoundhand';src:url('https://www.kezacreat
 
 head_meta=src.split('<style>',1)[0]
 # standalone
-gf='<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">'
-standalone=head_meta+'<style>\nhtml{scroll-behavior:smooth}\nbody{margin:0;background:#F7F4F2}\n'+FA_LOCAL+scoped+'\n</style>\n</head>\n<body>\n<div id="lfqv" class="standalone">'+body_main+'</div>\n<div id="lfqv-ov" class="standalone">'+body_ov+'</div>\n'+js+'\n</body>\n</html>\n'
+MONT=open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'montserrat.b64')).read().strip()
+FA_MONT="@font-face{font-family:'LFQV Montserrat';src:url(data:font/woff2;base64,"+MONT+") format('woff2');font-weight:100 900;font-style:normal;font-display:swap}\n"
+gf=''
+standalone=head_meta+'<style>\nhtml{scroll-behavior:smooth}\nbody{margin:0;background:#F7F4F2}\n'+FA_MONT+FA_LOCAL+scoped+'\n</style>\n</head>\n<body>\n<div id="lfqv" class="standalone">'+body_main+'</div>\n<div id="lfqv-ov" class="standalone">'+body_ov+'</div>\n'+js+'\n</body>\n</html>\n'
 open(D+'index.html','w',encoding='utf-8').write(standalone)
 
-# fragment pour WordPress
+# fragment WordPress : script en base64
+raw=js[len('<script>'):-len('</script>')]
+b64=base64.b64encode(raw.encode('utf-8')).decode()
+jsb='<script>(function(){try{(new Function(decodeURIComponent(escape(atob("'+b64+'")))))()}catch(e){if(window.console)console.error("LFQV",e)}})();</script>'
 bm=body_main.replace('<h1 class="ttl">','<h2 class="ttl">').replace('</h1>','</h2>')
-embed=(gf+"\n<style>\n"+FA_SITE+scoped+"\n</style>\n<div id=\"lfqv\" class=\"embed\">"+bm+"</div>\n<div id=\"lfqv-ov\" class=\"embed\">"+body_ov+"</div>\n"+js+"\n")
+embed=(gf+"\n<style>\n"+FA_MONT+FA_SITE+scoped+"\n</style>\n<div id=\"lfqv\" class=\"embed\">"+bm+"</div>\n<div id=\"lfqv-ov\" class=\"embed\">"+body_ov+"</div>\n"+jsb+"\n")
 open(D+'embed.html','w',encoding='utf-8').write(embed)
 print(len(standalone),len(embed))
