@@ -141,6 +141,10 @@ raw=js[len('<script>'):-len('</script>')]
 b64=base64.b64encode(raw.encode('utf-8')).decode()
 jsb='<script>(function(){try{(new Function(decodeURIComponent(escape(atob("'+b64+'")))))()}catch(e){if(window.console)console.error("LFQV",e)}})();</script>'
 bm=body_main
+bm=re.sub(r'<div class="prog".*?</div>\n','',bm,flags=re.S)
+bm=re.sub(r'<header class="nav glass".*?</header>\n','',bm,flags=re.S)
+bm=re.sub(r'<nav class="drawer.*?</nav>\n','',bm,flags=re.S)
+assert 'class="nav glass"' not in bm and 'class="drawer' not in bm
 embed=(gf+"\n<style>\n"+FA_MONT+FA_SITE+scoped+"\n</style>\n<div id=\"lfqv\" class=\"embed\">"+bm+"</div>\n<div id=\"lfqv-ov\" class=\"embed\">"+body_ov+"</div>\n"+jsb+"\n")
 open(D+'embed.html','w',encoding='utf-8').write(embed)
 print(len(standalone),len(embed))

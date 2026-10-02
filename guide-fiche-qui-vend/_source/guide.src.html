@@ -575,7 +575,7 @@ a,button,summary,[id]{scroll-margin-top:120px;scroll-margin-bottom:96px}
 <div class="hero" id="accueil" data-spy>
   <div class="wrap">
     <p class="eyebrow">KezaCréation présente</p>
-    <h1 class="ttl"><span class="ln"><span class="i">L</span>a <span class="i">F</span>iche</span><span class="ln"><span class="i">Q</span>ui <span class="i">V</span>end</span></h1>
+    <h1 class="ttl"><span class="ln"><span class="i">L</span>a <span class="i">F</span>iche</span> <span class="ln"><span class="i">Q</span>ui <span class="i">V</span>end</span></h1>
     <p class="lead">Écrivez une fiche produit qui donne envie d'acheter, pas à pas et sans jargon. Comptez 15 minutes pour la première.</p>
     <p class="sub">Pour WooCommerce, Shopify, Etsy et toute boutique en ligne.</p>
     <div class="cta">
@@ -956,7 +956,7 @@ const bar=$('#lf-bar');
 let scRaf=0;
 function onScrollNow(){
   const h=document.documentElement;
-  bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight||1)*100)+'%';
+  if(bar)bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight||1)*100)+'%';
   const r=ROOT.getBoundingClientRect(),p=Math.min(1,Math.max(0,-r.top/Math.max(1,r.height-innerHeight)));
   const f=$('#tocfill');
   if(f){f.style.width=(p*100)+'%';$('#tocpct').textContent=Math.round(p*100)+'%';const tr=$('#lf-toc .track');if(tr)tr.setAttribute('aria-valuenow',Math.round(p*100));
@@ -972,8 +972,8 @@ setInterval(dodge,1500);
 const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){$$('#navl a,.toc-dots a').forEach(a=>{const on=a.dataset.s===e.target.id;a.classList.toggle('on',on);if(a.closest('.toc-dots'))a.setAttribute('aria-current',on?'true':'false')});const cur=$('.toc-dots a.on');$('#toclabel').textContent=cur?cur.dataset.t:'La Fiche Qui Vend'}}),{rootMargin:'-45% 0px -50% 0px'});
 $$('[data-spy]').forEach(s=>spy.observe(s));
 const drawer=$('#lf-drawer'),burger=$('#lf-burger');
-burger.onclick=()=>{const o=drawer.classList.toggle('open');burger.setAttribute('aria-expanded',o);burger.textContent=o?'Fermer':'Menu'};
-$$('a',drawer).forEach(a=>a.addEventListener('click',()=>{drawer.classList.remove('open');burger.setAttribute('aria-expanded',false);burger.textContent='Menu'}));
+if(burger&&drawer){burger.onclick=()=>{const o=drawer.classList.toggle('open');burger.setAttribute('aria-expanded',o);burger.textContent=o?'Fermer':'Menu'};
+$$('a',drawer).forEach(a=>a.addEventListener('click',()=>{drawer.classList.remove('open');burger.setAttribute('aria-expanded',false);burger.textContent='Menu'}));}
 
 /* ---------- plateforme ---------- */
 const PFS={
@@ -1948,7 +1948,7 @@ function closeTour(){tour.classList.remove('on');persist('toured',1);lockPage(fa
 $$('[data-help]').forEach(b=>b.onclick=openHelp);$('#pclose').onclick=closeHelp;scrim.onclick=closeHelp;
 addEventListener('keydown',e=>{
   if(e.key==='Escape'&&tip.classList.contains('on'))hideTip();
-  if(e.key==='Escape'&&drawer.classList.contains('open')){drawer.classList.remove('open');burger.setAttribute('aria-expanded',false);burger.textContent='Menu';burger.focus()}
+  if(e.key==='Escape'&&drawer&&drawer.classList.contains('open')){drawer.classList.remove('open');burger.setAttribute('aria-expanded',false);burger.textContent='Menu';burger.focus()}
   const hOpen=panel.classList.contains('open'),tOpen=tour.classList.contains('on');
   if(!hOpen&&!tOpen)return;
   if(e.key==='Escape'){e.preventDefault();hOpen?closeHelp():closeTour();return}
