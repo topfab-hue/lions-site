@@ -375,7 +375,7 @@ details.ac .in{padding:0 0 18px;animation:swap .5s var(--ease)}
 .tg{display:flex;flex-wrap:wrap;gap:7px}
 .tg span{padding:5px 14px;border-radius:40px;font-size:12.5px;cursor:pointer;transition:.3s var(--ease);background:var(--tint)}
 .tg span:hover,.tg span.copied{background:var(--ink);color:#fff}
-@media(max-width:560px){.fiche>header,.fs{padding-left:20px;padding-right:20px}}
+@media(max-width:560px){.fiche>header,.fs,.fdet>summary{padding-left:20px;padding-right:20px}}
 
 .atelier{display:grid;gap:12px}
 .af{padding:20px 24px}
@@ -479,6 +479,7 @@ footer.ft a{color:var(--ink)}
 .xp-tips{margin:12px 0 0;padding-left:20px;font-size:13.5px;color:var(--mut);display:grid;gap:3px}
 .xp .lnk{background:none;color:var(--wine);text-decoration:underline;font-size:inherit;padding:0 2px;min-height:0}
 .tester>summary{cursor:pointer;margin:0}.tester[open]>summary{margin-bottom:12px}
+.fdet>summary{cursor:pointer;padding:16px 28px;font-weight:600;color:var(--ink);font-size:14px;border-top:1px solid var(--line)}
 .xp-pv{margin-top:10px;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#fff;max-height:560px;overflow-y:auto}
 
 @media(max-width:700px){.xp{padding-bottom:84px}.nav [data-help]{display:none}.fab{padding:9px 16px;font-size:12.5px}}
@@ -524,7 +525,7 @@ input,textarea{scroll-margin-top:120px}
   <button type="button" class="pill light sm menu" id="lf-burger" aria-expanded="false" aria-controls="lf-drawer">Menu</button>
 </header>
 <nav class="drawer glass" id="lf-drawer" aria-label="Menu mobile">
-  <a href="#express">Parcours rapide : ma fiche en 15 minutes</a><a href="#bienvenue">Guide complet</a><a href="#m1">1. Le template en 6 blocs</a><a href="#m2">2. Le générateur de titres</a><a href="#m3">3. La méthode storytelling</a><a href="#m4">4. La checklist</a><a href="#bonus">Les 3 fiches modèles</a><a href="#atelier">Mon atelier</a>
+  <a href="#express">Parcours rapide : ma fiche en 15 minutes</a><a href="#bienvenue">Guide complet</a><a href="#m1">1. Le template en 6 blocs</a><a href="#m2">2. Le générateur de titres</a><a href="#m3">3. La méthode storytelling</a><a href="#m4">4. La checklist</a><a href="#bonus">Les 6 fiches modèles</a><a href="#atelier">Mon atelier</a>
 </nav>
 
 <main>
@@ -545,7 +546,7 @@ input,textarea{scroll-margin-top:120px}
       <a class="cc glass tint rv d1" href="#m2"><small>Module 2</small><b>Le générateur de titres</b><span>80 structures de titres SEO par niche</span></a>
       <a class="cc glass tint rv d2" href="#m3"><small>Module 3</small><b>La méthode storytelling</b><span>Vendre avec les émotions et l'histoire</span></a>
       <a class="cc glass tint rv d3" href="#m4"><small>Module 4</small><b>La checklist de conversion</b><span>Les points à vérifier avant de publier</span></a>
-      <a class="cc glass tint rv d4" href="#bonus"><small>Bonus</small><b>3 fiches modèles</b><span>Bijou, bougie, cosmétique</span></a>
+      <a class="cc glass tint rv d4" href="#bonus"><small>Bonus</small><b>6 fiches modèles</b><span>Bijou, bougie, cosmétique, papeterie, céramique, textile</span></a>
       <a class="cc glass tint rv d4" href="#atelier"><small>Atelier</small><b>Construisez votre fiche</b><span>Photos, aperçu en direct et note sur 100</span></a>
     </div>
   </div>
@@ -579,7 +580,7 @@ input,textarea{scroll-margin-top:120px}
       <a class="step glass soft rv d1" href="#m2" data-step="2"><span class="n">2</span><div><b>Utilisez le Module 2</b><span class="d">Pour améliorer vos titres immédiatement. C'est là que la plupart des ventes se perdent.</span></div><span class="st" aria-hidden="true">Lu</span></a>
       <a class="step glass soft rv d2" href="#m3" data-step="3"><span class="n">3</span><div><b>Lisez le Module 3 attentivement</b><span class="d">Le storytelling est l'arme secrète des meilleures boutiques. Il transforme un produit ordinaire en objet désirable.</span></div><span class="st" aria-hidden="true">Lu</span></a>
       <a class="step glass soft rv d3" href="#m4" data-step="4"><span class="n">4</span><div><b>Passez la checklist du Module 4</b><span class="d">Avant chaque publication, vérifiez tous les points. Sans exception.</span></div><span class="st" aria-hidden="true">Terminée</span></a>
-      <a class="step glass soft rv d4" href="#bonus" data-step="5"><span class="n">5</span><div><b>Inspirez-vous des modèles bonus</b><span class="d">Utilisez les 3 fiches complètes comme référence. Copiez la structure, pas le texte.</span></div><span class="st" aria-hidden="true">Lu</span></a>
+      <a class="step glass soft rv d4" href="#bonus" data-step="5"><span class="n">5</span><div><b>Inspirez-vous des modèles bonus</b><span class="d">Utilisez les 6 fiches complètes comme référence. Copiez la structure, pas le texte.</span></div><span class="st" aria-hidden="true">Lu</span></a>
     </div>
 
     
@@ -698,28 +699,19 @@ input,textarea{scroll-margin-top:120px}
     <div class="mh rv">
       <p class="eyebrow">Module 3</p>
       <h2>La méthode <em>storytelling</em> créatrice</h2>
-      <p>Le <span class="gl" tabindex="0" data-g="story">storytelling</span>, c'est l'arme secrète des boutiques qui vendent bien plus que les autres avec les mêmes produits. Ce n'est pas inventer une histoire. C'est raconter la <b>vraie</b> histoire de façon à ce qu'elle donne envie d'acheter.</p>
-      <p class="meta">Lecture : 6 minutes, exercice inclus</p>
+      <p>Le <span class="gl" tabindex="0" data-g="story">storytelling</span>, c'est raconter la <b>vraie</b> histoire de votre produit pour qu'on ait envie de l'acheter. On choisit avec ses émotions, puis on se justifie avec la logique : une fiche qui ne liste que des caractéristiques ne parle qu'à la logique.</p>
+      <p class="meta">Lecture : 3 minutes, exercice inclus</p>
     </div>
 
-    <h3 class="sc rv" style="margin-top:0">Pourquoi le storytelling change tout</h3>
-    <p class="t rv">Les études en neurosciences le montrent : nous prenons nos décisions d'achat avec nos <b>émotions</b>, et nous les justifions ensuite avec la <b>logique</b>. Une fiche qui ne décrit que des caractéristiques s'adresse uniquement au cerveau rationnel. Une fiche avec du storytelling active les deux. Résultat annoncé : un taux de <span class="gl" tabindex="0" data-g="conv">conversion</span> jusqu'à 3 fois supérieur.</p>
-
-    <h3 class="sc rv">Les 5 leviers émotionnels</h3>
-    <p class="t rv" style="color:var(--mut);margin-top:-6px">Sélectionnez un levier pour voir l'exemple.</p>
+    <h3 class="sc rv" style="margin-top:0">Les 5 leviers émotionnels</h3>
     <div class="lev glass soft rv" id="lf-lev"></div>
 
-    <h3 class="sc rv">Intégrer le storytelling dans chaque bloc</h3>
-    <div class="acc glass soft rv">
-      <details class="ac"><summary>Dans le titre</summary><div class="in">Non applicable directement, mais pensez à l'occasion (Noël, anniversaire, mariage) qui crée un contexte émotionnel immédiat.</div></details>
-      <details class="ac" open><summary>Dans l'accroche (bloc 2)</summary><div class="in">C'est le lieu principal du storytelling. Une scène, un moment, une sensation. Écrivez en 1 ou 2 phrases, comme si vous ouvriez un court-métrage.</div></details>
-      <details class="ac"><summary>Dans la description courte (bloc 3)</summary><div class="in">Intégrez l'usage spécifique et la cible. Pas « pour tout le monde », mais « pour la femme qui… ». La spécificité crée l'identification.</div></details>
-      <details class="ac"><summary>Dans la description longue (bloc 4)</summary><div class="in">Racontez l'origine du produit. Comment l'idée est née. Quel problème vous vouliez résoudre. Ce que vous ressentez quand vous le créez. Les gens n'achètent pas un produit : ils achètent une histoire et une artisane.</div></details>
-      <details class="ac"><summary>Dans la FAQ (bloc 5)</summary><div class="in">Humanisez vos réponses. Pas « Livraison 5 à 7 jours » mais « Je prépare chaque commande avec soin dans mon atelier et j'expédie sous 2 à 3 jours ouvrés. »</div></details>
+    <div class="acc glass soft rv" style="margin-top:18px">
+      <details class="ac"><summary>Où mettre votre histoire, bloc par bloc ?</summary><div class="in"><b>Titre :</b> l'occasion (Noël, anniversaire, mariage). <b>Accroche :</b> le lieu principal du storytelling, une scène en 1 ou 2 phrases. <b>Description courte :</b> la cible et l'usage (« pour la femme qui… »). <b>Description longue :</b> l'origine du produit et le soin apporté. <b>FAQ :</b> des réponses humaines (« j'expédie sous 2 à 3 jours ouvrés » plutôt que « livraison 5 à 7 jours »).</div></details>
     </div>
 
     <h3 class="sc rv">Exercice : trouvez votre histoire</h3>
-    <p class="t rv">Répondez à ces 5 questions pour chaque produit. Vos réponses contiennent votre storytelling. <b>Écrivez comme vous parleriez à une amie</b> : il n'y a pas de mauvaise réponse. Tout est sauvegardé automatiquement.</p>
+    <p class="t rv">Répondez à ces 5 questions, comme vous parleriez à une amie : il n'y a pas de mauvaise réponse. Tout est sauvegardé automatiquement.</p>
     <div class="story" id="lf-story"></div>
     <div class="row-c"><button type="button" class="pill dark" id="sbuild">Assembler mon histoire</button><button type="button" class="pill light" id="sclear">Tout effacer</button></div>
     <div class="out glass" id="sout"></div>
@@ -751,14 +743,13 @@ input,textarea{scroll-margin-top:120px}
   <div class="wrap">
     <div class="mh rv">
       <p class="eyebrow">Bonus</p>
-      <h2>3 fiches modèles <em>complètes</em></h2>
-      <p>Ces 3 fiches sont des exemples complets, prêts à l'emploi. Utilisez-les comme référence de structure et de ton. <b>Ne les copiez pas mot pour mot</b> : adaptez-les à votre voix, à vos produits et à votre histoire.</p>
+      <h2>6 fiches modèles <em>complètes</em></h2>
+      <p>Six fiches complètes, une par univers, pour vous inspirer. <b>Ne les copiez pas mot pour mot</b> : adaptez-les à votre voix et à vos produits.</p>
       <p class="meta" id="bnote"></p>
     </div>
-    <div class="pf rv" data-pf-sel></div>
     <div class="nt" id="btabs" role="group" aria-label="Choisir une fiche modèle"></div>
     <div id="lf-fiche"></div>
-    <p class="t" style="margin-top:18px;color:var(--mut)">Sélectionnez un tag pour le copier seul, ou « Copier » pour récupérer un bloc.</p>
+    
   </div>
 </section>
 
@@ -1341,7 +1332,34 @@ const FICHES=[
   longue:'Cette formule a été développée sur deux ans. J\'ai commencé par ma propre peau, réactive et fatiguée par les écrans et un rythme de vie pas toujours raisonnable. J\'avais besoin d\'un soin qui fonctionne vraiment dans la vie de tous les jours, pas d\'un sérum marketing.\n\nLe résultat : une base d\'aloé vera, de la vitamine C stable (ascorbyl glucoside), de l\'acide hyaluronique et de l\'extrait de curcuma pour l\'éclat. Sans parfum de synthèse et sans colorant. Chaque lot est préparé en petite quantité dans mon atelier en France, puis embouteillé à la main.\n\nIl convient aux peaux normales, mixtes ou grasses, et aux personnes qui tolèrent mal les formules conventionnelles. Appliquez-le seul, ou avant votre crème habituelle, sur une peau propre et sèche. Je recommande de le tester d\'abord sur une petite zone.\n\nVolume : 30 ml, en flacon pompe en verre ambré, à conserver à l\'abri de la lumière et de la chaleur. Utilisez 3 à 5 gouttes, le matin ou le soir. La durée de conservation après ouverture est indiquée sur le flacon.',
   details:'Volume : 30 ml · Application : 3 à 5 gouttes sur peau propre · Fréquence : matin ou soir · Texture : sérum fluide, absorption rapide · Conditionnement : flacon pompe en verre ambré · Conservation : à l\'abri de la lumière et de la chaleur, durée indiquée sur le flacon · Fabrication : France · Expédition : 2 à 3 jours ouvrés en enveloppe rembourrée',
   faq:[['Convient-il aux peaux très sensibles ?','Testez-le d\'abord sur une petite zone pendant 2 jours. Sans réaction au bout de 48 h, vous pouvez l\'utiliser.'],['Peut-on l\'utiliser pendant la grossesse ?','Demandez conseil à votre médecin : chaque grossesse est différente.'],['Combien de temps dure un flacon ?','Avec une utilisation quotidienne, comptez 6 à 8 semaines.'],['Est-il compatible avec d\'autres soins ?','Oui, appliquez-le toujours en premier, sur une peau propre et sèche.']],
-  tags:'serum vitamine c · soin eclat · cosmetique naturelle · soin peau terne · serum aloe vera · cadeau soin beaute · routine beaute · serum fait main · soin visage · clean beauty · cadeau femme · serum eclat · soin du matin'}
+  tags:'serum vitamine c · soin eclat · cosmetique naturelle · soin peau terne · serum aloe vera · cadeau soin beaute · routine beaute · serum fait main · soin visage · clean beauty · cadeau femme · serum eclat · soin du matin'},
+ {id:'carnet',n:'Papeterie',h:'Carnet A5 en papier recyclé',
+  titre:'Carnet A5 Papier Recyclé Couverture Lin, Cadeau Femme Anniversaire, Journal Fait Main, Cahier de Notes Artisanal Reliure Cousue',
+  court:'Carnet A5 Papier Recyclé Lin, Cadeau Femme Anniversaire',
+  accroche:'Il y a des idées qui ne méritent pas un écran. Ce carnet est fait pour elles : celles qu\'on griffonne un matin, avec un café, avant que la journée ne commence.',
+  courte:'Pour celles qui aiment écrire à la main, noter leurs idées ou tenir un journal. Ce carnet A5 s\'ouvre bien à plat, se glisse dans un sac et se prend en main chaque jour, au bureau comme à la maison. Son papier recyclé accueille aussi bien le stylo que le crayon. Une idée de cadeau d\'anniversaire simple et utile, qui arrive prêt à offrir.',
+  longue:'Ce carnet est né d\'un constat tout bête : je ne trouvais pas de cahier qui donne envie d\'écrire. Trop fin, trop brillant, trop sérieux. J\'ai voulu un objet qu\'on a plaisir à poser sur sa table et à ouvrir chaque jour.\n\nChaque exemplaire est cousu à la main dans mon atelier, avec un fil de lin ciré. Les pages en papier recyclé sont découpées une à une, et la couverture en lin naturel est choisie pour sa texture douce. Je vérifie chaque reliure avant de l\'emballer.\n\nIl plaira aux personnes qui aiment prendre des notes, tenir un journal ou dessiner de petites choses. Offert à une amie pour son anniversaire, il se glisse dans une enveloppe kraft avec un mot de votre main, et il est rempli de souvenirs bien avant la fin de l\'année.\n\nFormat A5 (14,8 x 21 cm), 96 pages lignées. Couverture lin naturel, fil de lin ciré. Évitez l\'humidité et le soleil direct pour garder la couverture intacte.',
+  details:'Format : A5 (14,8 x 21 cm) · Pages : 96, lignées · Papier : recyclé, 100 g · Couverture : lin naturel · Reliure : cousue main, fil de lin ciré · Entretien : éviter l\'humidité et le soleil direct · Expédition : 2 à 3 jours ouvrés',
+  faq:[['Les pages sont-elles lignées ou unies ?','Elles sont lignées. Contactez-moi si vous souhaitez des pages unies ou quadrillées.'],['Le stylo traverse-t-il le papier ?','Non, avec un stylo bille ou un feutre fin. Les feutres très gras peuvent légèrement marquer le dos.'],['Peut-on personnaliser la couverture ?','Oui, je peux broder une initiale. Écrivez-moi avant la commande.'],['Est-il emballé pour offrir ?','Oui, il est livré dans une enveloppe kraft, avec une carte vierge.']],
+  tags:'carnet recyclé · carnet a5 lin · cadeau femme · cadeau anniversaire · journal fait main · cahier artisanal · carnet de notes · papeterie artisanale · carnet cousu main · idée cadeau · carnet lignés · bullet journal · carnet écologique'},
+ {id:'tasse',n:'Céramique',h:'Tasse en grès tournée main',
+  titre:'Tasse Grès Émaillé Tournée à la Main 300ml, Cadeau Femme Thé Café, Tasse Artisanale Bleu Nuit, Céramique Faite en France',
+  court:'Tasse Grès Émaillé Tournée Main, Cadeau Femme Thé Matin',
+  accroche:'Il y a des matins où l\'on a besoin de ralentir. Cette tasse, lourde juste ce qu\'il faut, se tient à deux mains et transforme la première gorgée en vrai moment à soi.',
+  courte:'Pour celles qui aiment prendre le temps d\'un thé ou d\'un café le matin. Cette tasse en grès émaillé se tient bien en main, garde la chaleur et se range sans façon dans la cuisine. Chaque pièce est unique : les petites variations d\'émail font son charme. Une idée de cadeau chaleureuse, pour un anniversaire ou une crémaillère.',
+  longue:'Cette tasse est née d\'une envie simple : fabriquer quelque chose qui donne envie de ralentir. J\'aime la céramique pour cette lenteur-là, celle de la terre qui prend forme sous les mains.\n\nElle est tournée à la main dans mon atelier en Bretagne, avec un grès local, puis émaillée dans un bleu nuit profond et cuite à 1 250 degrés. Chaque tasse sort du four différente : de petites nuances d\'émail apparaissent, et je les garde comme une signature. Aucune tasse n\'est jamais tout à fait la même que sa voisine.\n\nElle est faite pour celles qui commencent la journée avec un thé, un café ou un chocolat chaud, assises un instant avant que la maison ne se réveille. Offerte pour un anniversaire ou une crémaillère, elle trouve tout de suite sa place sur une étagère, et elle sert vraiment, tous les jours.\n\nContenance : environ 300 ml. Hauteur 9 cm, diamètre 8,5 cm. Passe au lave-vaisselle et au micro-ondes. Évitez les chocs thermiques brusques pour la garder longtemps.',
+  details:'Matière : grès émaillé · Contenance : environ 300 ml · Dimensions : 9 cm de haut, 8,5 cm de diamètre · Cuisson : 1 250 degrés · Entretien : lave-vaisselle et micro-ondes, éviter les chocs thermiques · Pièce unique : l\'émail varie légèrement · Expédition : 3 à 5 jours ouvrés, emballage protecteur',
+  faq:[['La tasse est-elle identique à la photo ?','Presque : chaque pièce est unique, l\'émail peut varier légèrement en nuance.'],['Passe-t-elle au lave-vaisselle ?','Oui, et au micro-ondes. Évitez simplement les chocs thermiques brusques.'],['Comment est-elle emballée ?','Dans un papier kraft et une boîte calée, pour arriver intacte.'],['Puis-je en commander plusieurs identiques ?','Je peux faire une série dans la même couleur : écrivez-moi pour connaître les délais.']],
+  tags:'tasse grès artisan · tasse faite main · cadeau femme · cadeau anniversaire · tasse à thé · tasse céramique · cadeau crémaillère · mug artisanal · tasse bleu nuit · poterie française · tasse tournée main · idée cadeau · céramique bretonne'},
+ {id:'tote',n:'Textile',h:'Tote bag en coton bio brodé',
+  titre:'Tote Bag Coton Bio Brodé Fleurs Sauvages, Cadeau Femme Quotidien Anniversaire, Sac Cabas Artisanal Fait Main Résistant Lavable',
+  court:'Tote Bag Coton Bio Brodé Fleurs, Cadeau Femme Quotidien',
+  accroche:'Certains sacs suivent une saison. Celui-ci suit tous vos jours : au marché, à la plage, au bureau, avec une petite prairie brodée qui vous fait sourire chaque matin, au moment de le prendre.',
+  courte:'Pour les femmes qui veulent un sac simple et solide pour tous les jours, du marché au bureau. Ce tote bag en coton bio est assez grand pour un ordinateur, un livre et le déjeuner. Les fleurs sont brodées à la main, et le sac se lave en machine. Une idée de cadeau d\'anniversaire utile, durable et personnelle.',
+  longue:'Ce tote bag est né d\'un petit agacement : mes sacs en toile étaient soit trop fragiles, soit trop tristes. J\'ai voulu un sac qui tienne vraiment le coup, et qui garde un peu de poésie.\n\nIl est cousu dans mon atelier à Lyon dans un coton bio épais de 280 g, avec des anses renforcées et des coutures doubles. Les fleurs sauvages sont brodées à la main, une par une, ce qui demande environ une heure de travail par sac. Je contrôle chaque couture avant l\'emballage.\n\nIl est fait pour celles qui portent leur journée avec elles : l\'ordinateur, un livre, la gourde, le pain du marché. Offert pour un anniversaire, il plaît parce qu\'il sert tout de suite, et qu\'on n\'en trouve pas deux pareils.\n\nDimensions 38 x 42 cm, anses de 60 cm. Lavable en machine à 30 degrés, à l\'envers. Repassez à l\'envers sur la broderie.',
+  details:'Matière : coton bio, 280 g · Dimensions : 38 x 42 cm · Anses : 60 cm, renforcées · Broderie : faite main, fleurs sauvages · Entretien : machine à 30 degrés, à l\'envers · Repassage : à l\'envers sur la broderie · Expédition : 2 à 3 jours ouvrés',
+  faq:[['Quelle taille fait le sac ?','38 x 42 cm, avec des anses de 60 cm : assez grand pour un ordinateur de 14 pouces.'],['La broderie résiste-t-elle au lavage ?','Oui, lavage en machine à 30 degrés, à l\'envers. Évitez le sèche-linge.'],['Le coton est-il certifié bio ?','Oui, le coton est biologique. Je peux vous envoyer le justificatif sur demande.'],['Peut-on choisir les fleurs ?','Oui, écrivez-moi pour une couleur de fil ou un petit motif sur mesure.']],
+  tags:'tote bag coton bio · sac cabas brodé · cadeau femme · cadeau anniversaire · sac fait main · tote bag brodé · sac artisanal · sac courses · tote bag fleurs · sac lavable · idée cadeau · broderie main · sac quotidien'}
 ];
 const ftitle=f=>pf==='etsy'?f.titre:f.court;
 const btabs=$('#btabs'),fiche=$('#lf-fiche');
@@ -1357,10 +1375,11 @@ function showF(id){
    sec(pf==='etsy'?'Titre (format Etsy)':'Titre (format court)','titre',`<p><b>${esc(t)}</b></p>`,pl(t.length,'caractère'))+
    sec('Accroche (bloc 2)','accroche',`<p>${esc(f.accroche)}</p>`)+
    sec('Description courte (bloc 3)','courte',`<p>${esc(f.courte)}</p>`,pl(words(f.courte),'mot'))+
+   `<details class="fdet"><summary>Voir la suite : description longue, FAQ et mots-clés</summary>`+
    sec('Description longue (bloc 4)','longue',f.longue.split(/\n\n/).map(x=>`<p>${esc(x)}</p>`).join(''),pl(words(f.longue),'mot'))+
    sec('Détails pratiques','details',`<p>${esc(f.details)}</p>`)+
    sec('FAQ','faq',`<div class="qa">${f.faq.map(q=>`<b>${esc(q[0])}</b><span>${esc(q[1])}</span>`).join('')}</div>`)+
-   sec('Mots-clés et tags','tags',`<div class="tg">${tg.map(x=>`<button type="button" class="tgb" data-tag="${esc(x)}">${esc(x)}</button>`).join('')}</div>`,pl(tg.length,'mot-clé'))+`</div>`;
+   sec('Mots-clés et tags','tags',`<div class="tg">${tg.map(x=>`<button type="button" class="tgb" data-tag="${esc(x)}">${esc(x)}</button>`).join('')}</div>`,pl(tg.length,'mot-clé'))+`</details></div>`;
 }
 fiche.addEventListener('click',e=>{
   const t=e.target.closest('[data-tag]');if(t){copy(t.dataset.tag,t);return}
@@ -1575,7 +1594,10 @@ const XS=[
 const XH={
  bijou:{p:'Bague',m:'Argent 925',o:'Cadeau anniversaire',d:'Femme'},
  bougie:{p:'Bougie parfumée',m:'Cire de soja, ambre et santal',o:'Cadeau, cocooning',d:'Femme'},
- cosmetique:{p:'Sérum visage',m:'Vitamine C naturelle',o:'Éclat de la peau',d:'Femme'}};
+ cosmetique:{p:'Sérum visage',m:'Vitamine C naturelle',o:'Éclat de la peau',d:'Femme'},
+ carnet:{p:'Carnet A5',m:'Papier recyclé, couverture lin',o:'Cadeau anniversaire',d:'Femme'},
+ tasse:{p:'Tasse',m:'Grès émaillé, tournée main',o:'Cadeau, thé du matin',d:'Femme'},
+ tote:{p:'Tote bag',m:'Coton bio brodé',o:'Cadeau, quotidien',d:'Femme'}};
 const XFQ=['Dans combien de temps ma commande est-elle expédiée ?','Livrez-vous à l\'étranger ?','De quelle matière est-il fabriqué ?','Comment dois-je l\'entretenir ?','Puis-je le personnaliser ?','Est-ce un bon cadeau ?','Puis-je le retourner ?','Que faire s\'il arrive abîmé ?'];
 const XFA=['Ex. : J\'expédie sous 2 à 3 jours ouvrés.','Ex. : Oui, partout en Europe. Contactez-moi pour les autres pays.','Ex. : Argent 925, hypoallergénique.','Ex. : Un chiffon doux suffit. Évitez le contact avec l\'eau.','Ex. : Oui, je peux graver une initiale. Écrivez-moi avant la commande.','Ex. : Oui, il est livré dans un écrin prêt à offrir.','Ex. : Oui, sous 14 jours si le produit est intact.','Ex. : Écrivez-moi avec une photo, je le remplace.'];
 const XST=['Imaginez…','Un dimanche matin…','Ce moment où…','La pièce qui…'];
