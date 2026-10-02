@@ -88,7 +88,7 @@ extra="""
 #lfqv-ov .toc{bottom:calc(14px + env(safe-area-inset-bottom,0px) + var(--lf-dodge,0px))}
 #lfqv-ov .toast{bottom:calc(84px + var(--lf-dodge,0px))}
 #lfqv-ov.has-toc .toast{bottom:calc(132px + var(--lf-dodge,0px))}
-@media(max-width:1180px){#lfqv-ov.has-toc .fab{bottom:calc(118px + var(--lf-dodge,0px))}}
+@media(max-width:1180px){#lfqv-ov.has-toc .fab{bottom:calc(118px + var(--lf-dodge,0px))}#lfqv-ov.has-toc .toast{bottom:calc(176px + var(--lf-dodge,0px))}}
 #lfqv-ov.lf-tall .toc,#lfqv-ov.lf-tall .fab{display:none}
 #lfqv .sr,#lfqv-ov .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 """

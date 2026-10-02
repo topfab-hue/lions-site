@@ -472,6 +472,20 @@ section.sec{padding:76px 0 6px}
 :is(#lfqv,#lfqv-ov) .tester>summary{cursor:pointer;margin:0}
 :is(#lfqv,#lfqv-ov) .tester[open]>summary{margin-bottom:12px}
 :is(#lfqv,#lfqv-ov) .xp-pv{margin-top:10px;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#fff;max-height:560px;overflow-y:auto}
+@media(max-width:700px){:is(#lfqv,#lfqv-ov) .xp{padding-bottom:84px}
+:is(#lfqv,#lfqv-ov) .nav [data-help]{display:none}
+:is(#lfqv,#lfqv-ov) .fab{padding:9px 16px;font-size:12.5px}}
+:is(#lfqv,#lfqv-ov) .xp-fa{display:flex;gap:14px;flex-wrap:wrap;margin:-6px 0 12px}
+:is(#lfqv,#lfqv-ov) .xp-fq{display:block}
+:is(#lfqv,#lfqv-ov) .xp .lnk{display:inline-block;padding:8px 4px;min-height:36px}
+:is(#lfqv,#lfqv-ov) .xp-add-ph{display:grid;gap:2px;place-items:center;padding:20px}
+:is(#lfqv,#lfqv-ov) .xp-add-ph b{font-size:15px;color:var(--ink);font-weight:600}
+:is(#lfqv,#lfqv-ov) .xp-add-ph small{font-size:12.5px}
+:is(#lfqv,#lfqv-ov) .thumbs{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+@media(hover:none){:is(#lfqv,#lfqv-ov) .thumb .tb{opacity:1;top:auto;bottom:6px;right:6px;left:6px;display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+:is(#lfqv,#lfqv-ov) .thumb figcaption{display:none}
+:is(#lfqv,#lfqv-ov) .thumb .tb button{padding:5px 10px;min-height:30px}}
+:is(#lfqv,#lfqv-ov) input,:is(#lfqv,#lfqv-ov) textarea{scroll-margin-top:120px}
 @media(prefers-reduced-motion:reduce){:is(#lfqv,#lfqv-ov) *,:is(#lfqv,#lfqv-ov) *::before,:is(#lfqv,#lfqv-ov) *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 :is(#lfqv,#lfqv-ov) .rv{opacity:1;transform:none}}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){:is(#lfqv,#lfqv-ov) .glass,:is(#lfqv,#lfqv-ov) .tip,:is(#lfqv,#lfqv-ov) .panel,:is(#lfqv,#lfqv-ov) .mbox{background:rgba(255,255,255,.95)}}
@@ -498,7 +512,7 @@ section.sec{padding:76px 0 6px}
 #lfqv-ov .toc{bottom:calc(14px + env(safe-area-inset-bottom,0px) + var(--lf-dodge,0px))}
 #lfqv-ov .toast{bottom:calc(84px + var(--lf-dodge,0px))}
 #lfqv-ov.has-toc .toast{bottom:calc(132px + var(--lf-dodge,0px))}
-@media(max-width:1180px){#lfqv-ov.has-toc .fab{bottom:calc(118px + var(--lf-dodge,0px))}}
+@media(max-width:1180px){#lfqv-ov.has-toc .fab{bottom:calc(118px + var(--lf-dodge,0px))}#lfqv-ov.has-toc .toast{bottom:calc(176px + var(--lf-dodge,0px))}}
 #lfqv-ov.lf-tall .toc,#lfqv-ov.lf-tall .fab{display:none}
 #lfqv .sr,#lfqv-ov .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
@@ -832,7 +846,7 @@ section.sec{padding:76px 0 6px}
 <aside class="panel glass" id="lf-panel" role="dialog" aria-modal="true" aria-label="Aide" aria-hidden="true" inert data-lenis-prevent>
   <header><div><h3>Nous vous aidons</h3><p>Les réponses aux questions les plus courantes.</p></div><button type="button" class="pill light xs" id="pclose">Fermer</button></header>
   <div class="pb" data-lenis-prevent>
-    <input class="search" id="psearch" type="search" placeholder="Cherchez : copier, tag, WooCommerce…" aria-label="Rechercher dans l'aide">
+    <input class="search" id="psearch" type="search" placeholder="Cherchez : copier, tag…" aria-label="Rechercher dans l'aide">
     <div class="acc glass soft" id="pfaq"></div>
     <p class="t" id="pnone" hidden>Aucune réponse trouvée. Essayez un autre mot, par exemple « titre », « photo » ou « tag ».</p>
     <h3 class="mini-t">Petit lexique</h3>
@@ -954,9 +968,9 @@ $$('a',drawer).forEach(a=>a.addEventListener('click',()=>{drawer.classList.remov
 /* ---------- plateforme ---------- */
 const PFS={
  woo:{n:'WooCommerce',min:50,max:60,hard:70,tmin:5,tmax:15,tagLen:0,tags:'5 à 15 mots-clés',
-  note:'Sur WooCommerce, le titre du produit est la base du titre affiché dans Google (un plugin SEO comme Yoast ou Rank Math permet de le personnaliser). Visez 50 à 60 caractères : au-delà, Google risque de couper la fin (70 au maximum). Les étiquettes produit n\'ont pas de limite stricte : choisissez-en quelques-unes, précises.'},
+  note:'Sur WooCommerce, le titre du produit sert aussi de titre dans Google. Visez 50 à 60 caractères (70 au maximum), sinon Google coupe la fin.'},
  shopify:{n:'Shopify',min:50,max:60,hard:70,tmin:5,tmax:15,tagLen:0,tags:'5 à 15 mots-clés',
-  note:'Sur Shopify, le titre qui s\'affiche dans Google se règle dans la partie « Référencement » (ou « Aperçu du résultat de recherche ») de chaque produit. Visez 50 à 60 caractères, 70 au maximum. Les tags servent surtout à classer vos produits en collections : placez vos mots-clés de recherche dans le titre et la description.'},
+  note:'Sur Shopify, le titre affiché dans Google se règle dans la partie « Référencement » de chaque produit. Visez 50 à 60 caractères (70 au maximum).'},
  etsy:{n:'Etsy',min:80,max:140,hard:140,tmin:13,tmax:13,tagLen:20,tags:'13 tags de 20 caractères maximum',
   note:'Sur Etsy, le titre peut atteindre 140 caractères et vous disposez de 13 tags, de 20 caractères chacun au maximum. Mettez les mots les plus importants au début du titre : seul le début s\'affiche dans les listes.'},
  autre:{n:'Autre plateforme',min:50,max:60,hard:70,tmin:5,tmax:15,tagLen:0,tags:'5 à 15 mots-clés',
@@ -1182,7 +1196,7 @@ const wordRe=w=>new RegExp('(^|[^a-z0-9])'+w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&
 const has=(t,list)=>list.some(w=>wordRe(w).test(t));
 
 /* ---------- notation ---------- */
-function verdict(n){return n>=85?['Excellent','Prêt à être publié.']:n>=70?['Bon','Quelques réglages et ce sera excellent.']:n>=50?['À améliorer','Suivez les conseils ci-dessous.']:['À retravailler','Reprenez les bases : produit, matière, occasion, destinataire.']}
+function verdict(n){return n>=85?['Excellent','Prêt à être publié.']:n>=70?['Bon','Quelques réglages et ce sera excellent.']:n>=50?['Bon début','Suivez les conseils ci-dessous pour gagner des points.']:['Premier jet','Reprenez les bases : produit, matière, occasion, destinataire.']}
 function scoreTitle(raw){
   const r=raw.trim();if(!r)return null;
   const p=P(),t=norm(r),len=r.length,ws=t.split(/[^a-z0-9]+/).filter(Boolean),items=[];
@@ -1538,7 +1552,7 @@ function pageHTML(mobile){
   const t=(ad[0]||'').trim(),l=(ad[1]||'').trim(),c=(ad[2]||'').trim(),lg=(ad[3]||'').trim(),f=parseFaq(ad[4]||''),tg=tagList(ad[5]||''),pr=fmtPrice(atmeta.price||''),shop=atmeta.shop.trim()||'votreboutique.fr';
   const sel=Math.min(pvSel,Math.max(0,photos.length-1));
   const gal=photos.length?`<div class="pv-big">${imgTag(photos[sel].d,'Photo '+(sel+1))}</div>${photos.length>1?`<div class="pv-th">${photos.map((x,i)=>`<button type="button" data-sel="${i}" class="${i===sel?'on':''}" aria-label="Voir la photo ${i+1}">${imgTag(x.t||x.d,'')}</button>`).join('')}</div>`:''}`:`<div class="pv-big empty">${ph('Votre photo principale s\'affichera ici')}</div>`;
-  return `<div class="pv${mobile?' pv-m':''}"><div class="pv-bar"><b>${esc(shop)}</b><span>Accueil › Boutique</span></div><div class="pv-main"><div class="pv-gal">${gal}</div><div class="pv-info"><h4 class="pv-t">${t?esc(t):ph('Le titre de votre produit')}</h4>${pr?`<p class="pv-p">${esc(pr)}</p>`:''}<p class="pv-l">${l?esc(l):ph('Votre accroche donnera envie de lire la suite.')}</p><div class="pv-s">${c?esc(c):ph('Votre description courte apparaîtra ici.')}</div><span class="pill dark sm pv-btn">Ajouter au panier</span></div></div><div class="pv-sec"><h5>Description</h5>${lg?paras(lg):ph('Votre description longue apparaîtra ici.')}</div><div class="pv-sec"><h5>Questions fréquentes</h5>${f.length?f.map(x=>`<details><summary>${esc(x.q)}</summary><p>${x.a?esc(x.a):ph('Réponse à écrire')}</p></details>`).join(''):ph('Votre FAQ apparaîtra ici.')}</div><div class="pv-sec"><h5>${pf==='woo'?'Étiquettes':'Mots-clés'}</h5>${tg.length?`<div class="tg">${tg.map(x=>`<span>${esc(x)}</span>`).join('')}</div>`:ph('Vos mots-clés apparaîtront ici.')}</div></div>`;
+  return `<div class="pv${mobile?' pv-m':''}"><div class="pv-bar"><b>${esc(shop)}</b><span>Accueil › Boutique</span></div><div class="pv-main"><div class="pv-gal">${gal}</div><div class="pv-info"><h4 class="pv-t">${t?esc(t):ph('Le titre de votre produit')}</h4>${pr?`<p class="pv-p">${esc(pr)}</p>`:''}<p class="pv-l">${l?esc(l):ph('Votre accroche donnera envie de lire la suite.')}</p><div class="pv-s">${c?esc(c):ph('Votre description courte apparaîtra ici.')}</div><span class="pill dark sm pv-btn">Ajouter au panier</span></div></div><div class="pv-sec"><h5>Description</h5>${lg?paras(lg):ph('Votre description longue apparaîtra ici.')}</div><div class="pv-sec"><h5>Questions fréquentes</h5>${f.filter(x=>x.a).length?f.filter(x=>x.a).map(x=>`<details><summary>${esc(x.q)}</summary><p>${x.a?esc(x.a):ph('Réponse à écrire')}</p></details>`).join(''):ph('Votre FAQ apparaîtra ici.')}</div><div class="pv-sec"><h5>${pf==='woo'?'Étiquettes':'Mots-clés'}</h5>${tg.length?`<div class="tg">${tg.map(x=>`<span>${esc(x)}</span>`).join('')}</div>`:ph('Vos mots-clés apparaîtront ici.')}</div></div>`;
 }
 function renderPreview(){
   const res=ficheScore();
@@ -1584,6 +1598,7 @@ const XH={
  bougie:{p:'Bougie parfumée',m:'Cire de soja, ambre et santal',o:'Cadeau, cocooning',d:'Femme'},
  cosmetique:{p:'Sérum visage',m:'Vitamine C naturelle',o:'Éclat de la peau',d:'Femme'}};
 const XFQ=['Dans combien de temps ma commande est-elle expédiée ?','Livrez-vous à l\'étranger ?','De quelle matière est-il fabriqué ?','Comment dois-je l\'entretenir ?','Puis-je le personnaliser ?','Est-ce un bon cadeau ?','Puis-je le retourner ?','Que faire s\'il arrive abîmé ?'];
+const XFA=['Ex. : J\'expédie sous 2 à 3 jours ouvrés.','Ex. : Oui, partout en Europe. Contactez-moi pour les autres pays.','Ex. : Argent 925, hypoallergénique.','Ex. : Un chiffon doux suffit. Évitez le contact avec l\'eau.','Ex. : Oui, je peux graver une initiale. Écrivez-moi avant la commande.','Ex. : Oui, il est livré dans un écrin prêt à offrir.','Ex. : Oui, sous 14 jours si le produit est intact.','Ex. : Écrivez-moi avec une photo, je le remplace.'];
 const XST=['Imaginez…','Un dimanche matin…','Ce moment où…','La pièce qui…'];
 const XL=[
  ['Pourquoi l\'avez-vous créé ?','L\'histoire ou l\'inspiration, en 2 ou 3 phrases.'],
@@ -1594,7 +1609,7 @@ let xq=store.get('xq',{},v=>!!v);
 const xt0=(xq.t&& typeof xq.t==='object')?xq.t:{};
 xq={ex:FICHES.some(f=>f.id===xq.ex)?xq.ex:FICHES[0].id,auto:xq.auto!==false,t:{p:String(xt0.p||'').slice(0,80),m:String(xt0.m||'').slice(0,80),o:String(xt0.o||'').slice(0,80),d:String(xt0.d||'').slice(0,80)}};
 let xs=store.get('xstep',0,v=>Number.isInteger(v)&& v>=0&& v<=XN);
-let xf=[],xTimer=0;
+let xf=[],xTimer=0,xlv=[];
 const xex=()=>FICHES.find(f=>f.id===xq.ex)||FICHES[0];
 const tcase=s=>s.trim().split(/\s+/).filter(Boolean).map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(' ');
 function xCompose(){const t=xq.t;const main=[t.p,t.m,t.d].map(x=>x.trim()).filter(Boolean).join(' ');return tcase([main,t.o.trim()].filter(Boolean).join(', '))}
@@ -1620,23 +1635,23 @@ function xBody(i){
   if(i===2)return `<label class="q">Votre accroche (1 à 2 phrases)<textarea id="xp-f" rows="3" maxlength="400" placeholder="Ex. : ${esc(ex.accroche.slice(0,80))}…">${esc(ad[1]||'')}</textarea></label><div class="xp-chips" role="group" aria-label="Débuts de phrase"><span class="tnote" style="margin:0 4px 0 0;align-self:center">Besoin d'un départ ?</span>${XST.map(s=>chipHtml('data-st',s,s,false)).join('')}</div><div class="fb" id="xp-fb"></div><div class="eg"><b>Exemple</b>${esc(ex.accroche)}</div>`;
   if(i===3)return `<label class="q">Votre description courte (50 à 80 mots)<textarea id="xp-f" rows="5" placeholder="Pour qui est-ce ? Dans quel moment l'utilise-t-on ? Pourquoi est-ce le bon choix ?">${esc(ad[2]||'')}</textarea></label><div class="fb" id="xp-fb"></div><div class="eg"><b>Exemple</b>${esc(ex.courte)}</div>`;
   if(i===4){
-    let ps=(ad[3]||'').split(/\n\s*\n/).map(x=>x.trim()).filter(Boolean);
-    if(ps.length>4)ps=[ps[0],ps[1],ps[2],ps.slice(3).join('\n\n')];
+    let ps=xlv.length===4&& xlv.filter(Boolean).join('\n\n')===(ad[3]||'').trim()?xlv.slice():null;
+    if(!ps){ps=(ad[3]||'').split(/\n\s*\n/).map(x=>x.trim()).filter(Boolean);if(ps.length>4)ps=[ps[0],ps[1],ps[2],ps.slice(3).join('\n\n')]}
     const eg=ex.longue.split(/\n\n/);
     return XL.map((q,k)=>`<label class="q">${k+1}. ${q[0]}<span class="tnote" style="margin:0;font-weight:400">${q[1]}</span><textarea data-xl="${k}" rows="3" placeholder="Ex. : ${esc((eg[k]||'').slice(0,90))}…">${esc(ps[k]||'')}</textarea></label>`).join('')+`<div class="fb" id="xp-fb"></div><details class="xp-det"><summary>Voir un exemple complet</summary><div class="eg">${eg.map(x=>`<p>${esc(x)}</p>`).join('')}</div></details>`;
   }
   if(i===5){
     const have=xf.map(x=>norm(x.q));
-    return `<p class="xp-q">Choisissez au moins 4 questions, puis répondez en une phrase.</p><div class="xp-chips" role="group" aria-label="Questions suggérées">${XFQ.map((q,k)=>chipHtml('data-fs',String(k),q,have.includes(norm(q)))).join('')}</div><div id="xp-fl"></div><div class="xp-add"><input type="text" id="xp-fc" maxlength="140" placeholder="Une autre question ? Écrivez-la ici" aria-label="Ajouter votre propre question"><button type="button" class="pill light xs" data-xfa>Ajouter</button></div><div class="fb" id="xp-fb"></div><div class="eg"><b>Exemple</b><b style="display:inline;letter-spacing:0;text-transform:none;font-size:13.5px;color:var(--ink)">${esc(ex.faq[0][0])}</b> ${esc(ex.faq[0][1])}</div>`;
+    return `<p class="xp-q">Choisissez au moins 4 questions, puis répondez en une phrase.</p><div class="xp-chips" role="group" aria-label="Questions suggérées">${XFQ.map((q,k)=>chipHtml('data-fs',String(k),q.replace(/ \?$/,'\u00a0?'),have.includes(norm(q)))).join('')}</div><div id="xp-fl"></div><div class="xp-add"><input type="text" id="xp-fc" maxlength="140" placeholder="Une autre question ? Écrivez-la ici" aria-label="Ajouter votre propre question"><button type="button" class="pill light xs" data-xfa>Ajouter</button></div><div class="fb" id="xp-fb"></div><div class="eg"><b>Exemple</b><b style="display:inline;letter-spacing:0;text-transform:none;font-size:13.5px;color:var(--ink)">${esc(ex.faq[0][0])}</b> ${esc(ex.faq[0][1])}</div>`;
   }
   if(i===6)return `<label class="q">Vos mots-clés (un par ligne ou séparés par des virgules)<textarea id="xp-f" rows="4" placeholder="Ex. : ${esc(ex.tags.split(' · ').slice(0,3).join(', '))}">${esc(ad[5]||'')}</textarea></label><p class="xp-q" style="margin-top:14px">Suggestions à partir de vos réponses</p><div class="xp-chips" id="xp-ts" role="group" aria-label="Mots-clés suggérés"></div><div class="fb" id="xp-fb"></div><p class="tnote">${esc(pf==='etsy'?'Etsy : 13 tags de 20 caractères maximum chacun.':'Visez 5 à 15 expressions de 2 à 4 mots, plutôt que des mots seuls.')}</p>`;
-  return `<label class="drop" id="xp-drop" tabindex="0" role="button" aria-label="Ajouter des photos"><input type="file" id="xp-in" accept="image/jpeg,image/png,image/webp,image/gif" multiple hidden>Glissez vos photos ici ou <u>parcourez vos fichiers</u></label><div class="thumbs" id="xthumbs"></div><div class="fb" id="xp-fb"></div><ul class="xp-tips"><li>Le produit entier, sur fond clair, en lumière naturelle.</li><li>Un ou deux détails (matière, finition).</li><li>Une mise en situation (porté, posé, utilisé).</li><li>Un repère de taille.</li></ul><p class="tnote">Vos photos restent sur votre appareil : rien n'est envoyé.</p>`;
+  return `<label class="drop xp-add-ph" id="xp-drop" tabindex="0" role="button"><input type="file" id="xp-in" accept="image/jpeg,image/png,image/webp,image/gif" multiple hidden><b>${matchMedia('(pointer:coarse)').matches?'Prendre ou choisir des photos':'Ajouter des photos'}</b><small>${matchMedia('(pointer:coarse)').matches?'JPG, PNG ou WebP':'Glissez-les ici ou cliquez pour les choisir'}</small></label><div class="thumbs" id="xthumbs"></div><div class="fb" id="xp-fb"></div><ul class="xp-tips"><li>Le produit entier, sur fond clair, en lumière naturelle.</li><li>Un ou deux détails (matière, finition).</li><li>Une mise en situation (porté, posé, utilisé).</li><li>Un repère de taille.</li></ul><p class="tnote">Vos photos restent sur votre appareil : rien n'est envoyé.</p>`;
 }
 function xResult(){
   const res=ficheScore(),v=verdict(res.score);
   const goto={Titre:1,Accroche:2,'Description courte':3,'Description longue':4,FAQ:5,'Mots-clés':6,Photos:7};
   const top=res.items.filter(i=>i.tip).sort((a,b)=>(b.max-b.pts)-(a.max-a.pts)).slice(0,3);
-  return `<div class="xp-top"><span>Terminé</span><span class="xp-sc"></span></div><div class="xp-bar" aria-hidden="true">${'<i class="done"></i>'.repeat(XN)}</div><h3 id="xp-t" tabindex="-1">Votre fiche est prête à être relue</h3><p class="why">Voici votre note et ce qui vous ferait gagner le plus de points. Rien n'est figé : vous pouvez revenir sur chaque étape.</p><div class="sc-card glass soft">${scTop(res,'Note de votre fiche')}</div><div class="prio">${top.length?`<h5 class="mini-h">Les 3 améliorations les plus utiles</h5><ol>${top.map(i=>`<li><b>${i.n} :</b> ${esc(i.tip)} <button type="button" class="lnk" data-xg="${goto[i.n]}">Corriger</button></li>`).join('')}</ol>`:'<h5 class="mini-h">Aucun point à corriger. Bravo !</h5>'}</div><h5 class="mini-h" style="margin-top:22px">Votre fiche, comme elle apparaîtra</h5><div class="xp-pv" data-lenis-prevent>${pageHTML(false)}</div><div class="row-c"><button type="button" class="pill dark" data-xcopy>Copier ma fiche complète</button><a class="pill light" href="#atelier">Affiner dans l'atelier</a><button type="button" class="pill light" id="xp-new">Nouvelle fiche</button></div><p class="tnote">Envie d'aller plus loin ? Le <a href="#bienvenue">guide complet</a> explique chaque bloc en détail.</p>`;
+  return `<div class="xp-top"><span>Terminé</span><span class="xp-sc"></span></div><div class="xp-bar" aria-hidden="true">${'<i class="done"></i>'.repeat(XN)}</div><h3 id="xp-t" tabindex="-1">${res.score>=85?'Votre fiche est prête à être publiée':res.score>=50?'Bravo, votre fiche prend forme':'Un premier jet, on l\'améliore ensemble'}</h3><p class="why">${ad.filter(x=>x.trim()).length} blocs sur 6 sont remplis. Voici votre note et ce qui vous ferait gagner le plus de points. Rien n'est figé : vous pouvez revenir sur chaque étape.</p><div class="sc-card glass soft">${scTop(res,'Note de votre fiche')}</div><div class="prio">${top.length?`<h5 class="mini-h">Les 3 améliorations les plus utiles</h5><ol>${top.map(i=>`<li><b>${i.n} :</b> ${esc(i.tip)} <button type="button" class="lnk" data-xg="${goto[i.n]}">Corriger</button></li>`).join('')}</ol>`:'<h5 class="mini-h">Aucun point à corriger. Bravo !</h5>'}</div><h5 class="mini-h" style="margin-top:22px">Votre fiche, comme elle apparaîtra</h5><div class="xp-pv" data-lenis-prevent>${pageHTML(false)}</div><div class="row-c"><button type="button" class="pill dark" data-xcopy>Copier ma fiche complète</button><a class="pill light" href="#atelier">Affiner dans l'atelier</a><button type="button" class="pill light" id="xp-new">Nouvelle fiche</button></div><p class="tnote">Envie d'aller plus loin ? Le <a href="#bienvenue">guide complet</a> explique chaque bloc en détail.</p>`;
 }
 function xRender(){
   const root=$('#xp');if(!root)return;
@@ -1651,13 +1666,13 @@ function xRender(){
 }
 function xFaqList(){
   const l=$('#xp-fl');if(!l)return;
-  l.innerHTML=xf.length?`<div class="xp-fl">${xf.map((x,k)=>`<div class="xp-fq"><label class="q">${esc(x.q)}<input type="text" data-fa="${k}" maxlength="300" placeholder="Votre réponse en une phrase" value="${esc(x.a)}"></label><button type="button" class="pill light xs" data-fd="${k}" aria-label="Retirer la question ${k+1}">Retirer</button></div>`).join('')}</div>`:'';
+  l.innerHTML=xf.length?`<p class="xp-q">Vos réponses (une phrase suffit)</p><div class="xp-fl">${xf.map((x,k)=>{const si=XFQ.findIndex(q=>norm(q)===norm(x.q));return `<div class="xp-fq"><label class="q">${esc(x.q).replace(/ \?$/,'\u00a0?')}<input type="text" data-fa="${k}" maxlength="300" placeholder="${esc(si>=0?XFA[si]:'Votre réponse en une phrase')}" value="${esc(x.a)}"></label><div class="xp-fa">${si>=0?`<button type="button" class="lnk" data-fx="${k}">Utiliser cet exemple</button>`:''}<button type="button" class="lnk" data-fd="${k}">Retirer la question</button></div></div>`}).join('')}</div>`:'';
 }
 const xFaqSync=()=>xSet(4,xf.map(x=>x.q+(x.a?' '+x.a:'')).join('\n'));
 function xTagSugg(){
   const t=xq.t,low=s=>s.trim().toLowerCase();
   const p=low(t.p),m=low(t.m),o=low(t.o),d=low(t.d);
-  let c=[[p,m],[p,d],[p,o],[o,d],[p,'fait main'],['idée cadeau',d],['cadeau',o]].map(a=>a.filter(Boolean).join(' ')).filter(x=>x.split(' ').length>=2);
+  let c=[[p,m],[p,d],[p,o],[o,d],[p,'fait main'],['idée cadeau',d]].map(a=>a.filter(Boolean).join(' ').split(/\s+/).filter((w,k,z)=>z.indexOf(w)===k).join(' ')).filter(x=>x.split(' ').length>=2);
   if(!c.length)c=['idée cadeau femme','cadeau anniversaire','fait main','création artisanale'];
   const have=tagList(ad[5]||'').map(norm),max=pf==='etsy'?P().tagLen:80;
   return [...new Set(c)].filter(x=>max>=x.length&& !have.includes(norm(x))).slice(0,8);
@@ -1674,6 +1689,7 @@ function xUpdate(){
     if(!v)set('Remplissez les cases ci-dessus : votre titre se compose tout seul.',false);
     else{const r=scoreTitle(v);const tip=(r.items.filter(x=>x.tip).sort((a,b)=>(b.max-b.pts)-(a.max-a.pts))[0]||{tip:''}).tip;set(`${pl(v.length,'caractère')} (visez ${rng()}). Note du titre : ${r.score} sur 100. ${tip||'Parfait.'}`,r.score>=85)}
     const g=$('#xp-gg');if(g)g.innerHTML=v?'<h5 class="mini-h">Ce que ça donne dans Google</h5>'+googleSnippet(v,''):'';
+  }else if(i===4){const st=statusOf(3),w=words(ad[3]||'');set(st.ok?'Parfait, ce bloc est prêt.':w?(150>w?`${pl(w,'mot')} pour l'instant. Une ou deux phrases par question suffisent pour commencer : vous pourrez compléter plus tard.`:st.txt):'Une ou deux phrases par question suffisent pour commencer.',st.ok)
   }else if(i>=2&& i<=6&& i!==5){const k=i-1,st=statusOf(k);set(st.ok?'Parfait, ce bloc est prêt.':(ad[k]||'').trim()?st.txt:'Écrivez ici : un conseil s\'affichera au fur et à mesure.',st.ok)}
   else if(i===5){const n=xf.length,full=xf.filter(x=>x.a.trim()).length;set(n?`${pl(n,'question')}, ${pl(full,'réponse')}${4>n?`. Encore ${4-n} question${4-n>1?'s':''} pour atteindre 4.`:'.'}`:'Cliquez sur au moins 4 questions ci-dessus.',n>=4&& full===n);}
   else if(i===7)set(photos.length?`${pl(photos.length,'photo')}${photos.length>=4?', parfait.':'. Visez 4 à 6.'}`:'Aucune photo pour l\'instant. Vous pouvez passer cette étape et en ajouter plus tard.',photos.length>=4);
@@ -1686,7 +1702,7 @@ function xGo(n){
   if(r.top<60||r.top>innerHeight*.45)root.scrollIntoView({behavior:smooth(),block:'start'});
   const f=matchMedia('(hover:hover)').matches&& $('input[type=text],textarea',$('.xp-body',root)||root);
   (f||$('#xp-t')).focus({preventScroll:true});
-  live(xs===XN?'Votre fiche est prête à être relue.':`Étape ${xs+1} sur ${XN} : ${XS[xs][0]}`);
+  live(xs===XN?'Votre fiche est prête, voici votre note.':`Étape ${xs+1} sur ${XN} : ${XS[xs][0]}`);
 }
 function xNew(){gen++;ad=['','','','','',''];photos=[];pvSel=0;xq.auto=true;xq.t={p:'',m:'',o:'',d:''};persist('xq',xq);persist('atelier',ad);persist('photos',photos);renderThumbs();atSyncFields();atDone=false;xGo(0)}
 function xBindDrop(){
@@ -1705,8 +1721,9 @@ xpEl.addEventListener('click',e=>{
   let b;
   if(b=q('[data-ex]')){xq.ex=b.dataset.ex;persist('xq',xq);xRender();const on=$('[data-ex].on');on&& on.focus({preventScroll:true});return}
   if(b=q('[data-xrec]')){xq.auto=true;persist('xq',xq);xSet(0,xCompose());const f=$('#xp-f');if(f)f.value=ad[0];return}
-  if(b=q('[data-st]')){const f=$('#xp-f');if(!f)return;f.value=b.dataset.st+' '+f.value;f.focus();xSet(1,f.value);return}
+  if(b=q('[data-st]')){const f=$('#xp-f');if(!f)return;f.value=b.dataset.st.replace(/…$/,'')+' '+f.value.replace(/^\s+/,'');f.focus();xSet(1,f.value);return}
   if(b=q('[data-fs]')){const s=XFQ[+b.dataset.fs],k=xf.findIndex(x=>norm(x.q)===norm(s));if(k>=0)xf.splice(k,1);else xf.push({q:s,a:''});xFaqSync();xFaqList();$$('[data-fs]',xpEl).forEach(c=>{const on=xf.some(x=>norm(x.q)===norm(XFQ[+c.dataset.fs]));c.classList.toggle('on',on);c.setAttribute('aria-pressed',on)});return}
+  if(b=q('[data-fx]')){const k=+b.dataset.fx,si=XFQ.findIndex(z=>norm(z)===norm(xf[k].q));if(si>=0){xf[k].a=XFA[si].replace(/^Ex\. : /,'');xFaqSync();xFaqList()}return}
   if(b=q('[data-fd]')){xf.splice(+b.dataset.fd,1);xFaqSync();xFaqList();$$('[data-fs]',xpEl).forEach(c=>{const on=xf.some(x=>norm(x.q)===norm(XFQ[+c.dataset.fs]));c.classList.toggle('on',on);c.setAttribute('aria-pressed',on)});return}
   if(q('[data-xfa]')){const f=$('#xp-fc');let v=f.value.trim().replace(/\s+/g,' ');if(!v)return toast('Écrivez votre question.');if(!/\?$/.test(v))v+=' ?';if(xf.some(x=>norm(x.q)===norm(v)))return toast('Cette question existe déjà.');xf.push({q:v,a:''});f.value='';xFaqSync();xFaqList();return}
   if(b=q('[data-ts]')){const cur=(ad[5]||'').trim();xSet(5,cur?cur.replace(/[,\s]+$/,'')+', '+b.dataset.ts:b.dataset.ts);const f=$('#xp-f');if(f)f.value=ad[5];return}
@@ -1722,7 +1739,7 @@ xpEl.addEventListener('input',e=>{
     if(xs===1){const c=t.value.replace(/\s*\n+\s*/g,' ');if(c!==t.value)t.value=c;xq.auto=!c.trim();persist('xq',xq);xSet(0,c)}
     else if(xs===2)xSet(1,t.value);else if(xs===3)xSet(2,t.value);else if(xs===6)xSet(5,t.value);
     return}
-  if(t.dataset.xl!==undefined){xSet(3,$$('[data-xl]',xpEl).map(x=>x.value.trim()).filter(Boolean).join('\n\n'));return}
+  if(t.dataset.xl!==undefined){xlv=$$('[data-xl]',xpEl).map(x=>x.value.trim());xSet(3,xlv.filter(Boolean).join('\n\n'));return}
   if(t.dataset.fa!==undefined){const k=+t.dataset.fa;if(xf[k]){xf[k].a=t.value.replace(/\s+/g,' ');xFaqSync()}return}
 });
 xpEl.addEventListener('keydown',e=>{if(e.key==='Enter'&& e.target.id==='xp-fc'){e.preventDefault();const b=$('[data-xfa]',xpEl);b&& b.click()}});
